@@ -1,0 +1,15 @@
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.Python
+build/
+_build/
+
+.DS_Store
+
+
