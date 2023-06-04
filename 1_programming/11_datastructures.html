@@ -1,0 +1,1404 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.3. pd.Series &#8212; CSC-272 Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/11_datastructures';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.5. Vectorized Operations" href="12_vectorops.html" />
+    <link rel="prev" title="1.2. Basic Elements of Computer Programming" href="11_python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    CSC-272 Data Mining
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/policies.html">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success (CAS; LIB 002)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/integrity.html">Academic Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Term Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="10_pandas.html">1. <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11_python.html">1.2. Basic Elements of Computer Programming</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. pd.Series</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="12_vectorops.html">1.5. Vectorized Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="20_matplotlib.html">2. Data Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="21_univariate.html">2.2. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">2.3. Multivariate Visualizations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="30_requests.html">3. Collecting Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="31_serverclient.html">3.1. Server Client architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32_html.html">3.2. HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_apis.html">4. beautifulsoup</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_xml.html">4.1. XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_json.html">4.2. JSON</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/10_probability.html">5. Probability and Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/11_randomvars.html">5.1. Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/12_centrality.html">5.2. Centrality Measures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/13_variability.html">5.3. Variability Measures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/14_distributions.html">5.4. Probability Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/20_logarithms.html">6. Logarithms</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/21_normalization.html">6.1. Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/22_simplification.html">6.2. Simplification</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/41_vectors_matrices.html">7.1. Scalars, Vectors and Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/42_pca.html">7.2. Principal Component Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/51_errors.html">8.1. Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_maths/52_optimization.html">8.2. Optimization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/11_pagerank.html">9.1. PageRank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/12_apriori.html">9.2. Apriori Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/20_clustering.html">10. Clustering</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/21_nn.html">10.1. Nearest Neighbor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10.2. K-Means</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">11.1. Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/32_generalized.html">11.2. Generalized Linear Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">12.1. Model: Naive Bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">12.2. Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/43_nn.html">12.3. Neural Networks</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">13. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">14. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">15. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">16. Positive Feedback Loops</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1_programming/11_datastructures.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/1_programming/11_datastructures.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pd.Series</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.3. pd.Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">1.3.1. Filtering using Boolean Maps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">1.4. pd.DataFrame</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv">1.4.1. <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape">1.4.2. <code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head">1.4.3. <code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max">1.4.4. <code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.4.5. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull">1.4.6. <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum">1.4.7. <code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0">1.4.8. <code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.4.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.4.10. <code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.4.11. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.4.12. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">1.4.13. Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">1.4.14. Accessing a individual column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">1.4.15. Accessing a individual row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">1.4.16. Unique Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.4.17. Value Counts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">1.4.18. Grouping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">1.4.19. Merging</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="pd-series">
+<h1><span class="section-number">1.3. </span>pd.Series<a class="headerlink" href="#pd-series" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>A Series is a one-dimensional array-like object containing a sequence of values</p></li>
+<li><p>Of the same type and an associated array of data labels, called its index.</p></li>
+<li><p>The simplest Series is formed from only an array of data:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The Series printed above shows the <strong>index on the left</strong> and the <strong>values on the right</strong>.</p></li>
+<li><p>Since <strong>we did not specify an index</strong> for the data, a <strong>default index</strong> consisting of the <strong>integers 0 through N - 1</strong> (where N is the length of the data) is created.</p></li>
+</ul>
+<ul class="simple">
+<li><p>You can get the index object of a Series via its <code class="docutils literal notranslate"><span class="pre">index</span></code> attribute:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can get the array representation of the Series via its <code class="docutils literal notranslate"><span class="pre">values</span></code> attribute:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The result of these attributes often returns an object of data type internal to <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. It is often a good idea to cast these to lists using <code class="docutils literal notranslate"><span class="pre">list(..)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Often, you’ll want to create a Series with an index identifying each data point with a label:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+
+<span class="n">obj2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filtering-using-boolean-maps">
+<h2><span class="section-number">1.3.1. </span>Filtering using Boolean Maps<a class="headerlink" href="#filtering-using-boolean-maps" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> as a Vector</p>
+</section>
+</section>
+<section id="pd-dataframe">
+<h1><span class="section-number">1.4. </span>pd.DataFrame<a class="headerlink" href="#pd-dataframe" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pd-read-csv">
+<h2><span class="section-number">1.4.1. </span><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code><a class="headerlink" href="#pd-read-csv" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/imdb_top_1000.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="df-shape">
+<h2><span class="section-number">1.4.2. </span><code class="docutils literal notranslate"><span class="pre">df.shape</span></code><a class="headerlink" href="#df-shape" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 16)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="df-head">
+<h2><span class="section-number">1.4.3. </span><code class="docutils literal notranslate"><span class="pre">df.head</span></code><a class="headerlink" href="#df-head" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Poster_Link</th>
+      <th>Series_Title</th>
+      <th>Released_Year</th>
+      <th>Certificate</th>
+      <th>Runtime</th>
+      <th>Genre</th>
+      <th>IMDB_Rating</th>
+      <th>Overview</th>
+      <th>Meta_score</th>
+      <th>Director</th>
+      <th>Star1</th>
+      <th>Star2</th>
+      <th>Star3</th>
+      <th>Star4</th>
+      <th>No_of_Votes</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMDFkYT...</td>
+      <td>The Shawshank Redemption</td>
+      <td>1994</td>
+      <td>A</td>
+      <td>142 min</td>
+      <td>Drama</td>
+      <td>9.3</td>
+      <td>Two imprisoned men bond over a number of years...</td>
+      <td>80.0</td>
+      <td>Frank Darabont</td>
+      <td>Tim Robbins</td>
+      <td>Morgan Freeman</td>
+      <td>Bob Gunton</td>
+      <td>William Sadler</td>
+      <td>2343110</td>
+      <td>28,341,469</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://m.media-amazon.com/images/M/MV5BM2MyNj...</td>
+      <td>The Godfather</td>
+      <td>1972</td>
+      <td>A</td>
+      <td>175 min</td>
+      <td>Crime, Drama</td>
+      <td>9.2</td>
+      <td>An organized crime dynasty's aging patriarch t...</td>
+      <td>100.0</td>
+      <td>Francis Ford Coppola</td>
+      <td>Marlon Brando</td>
+      <td>Al Pacino</td>
+      <td>James Caan</td>
+      <td>Diane Keaton</td>
+      <td>1620367</td>
+      <td>134,966,411</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMTMxNT...</td>
+      <td>The Dark Knight</td>
+      <td>2008</td>
+      <td>UA</td>
+      <td>152 min</td>
+      <td>Action, Crime, Drama</td>
+      <td>9.0</td>
+      <td>When the menace known as the Joker wreaks havo...</td>
+      <td>84.0</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale</td>
+      <td>Heath Ledger</td>
+      <td>Aaron Eckhart</td>
+      <td>Michael Caine</td>
+      <td>2303232</td>
+      <td>534,858,444</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMWMwMG...</td>
+      <td>The Godfather: Part II</td>
+      <td>1974</td>
+      <td>A</td>
+      <td>202 min</td>
+      <td>Crime, Drama</td>
+      <td>9.0</td>
+      <td>The early life and career of Vito Corleone in ...</td>
+      <td>90.0</td>
+      <td>Francis Ford Coppola</td>
+      <td>Al Pacino</td>
+      <td>Robert De Niro</td>
+      <td>Robert Duvall</td>
+      <td>Diane Keaton</td>
+      <td>1129952</td>
+      <td>57,300,000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMWU4N2...</td>
+      <td>12 Angry Men</td>
+      <td>1957</td>
+      <td>U</td>
+      <td>96 min</td>
+      <td>Crime, Drama</td>
+      <td>9.0</td>
+      <td>A jury holdout attempts to prevent a miscarria...</td>
+      <td>96.0</td>
+      <td>Sidney Lumet</td>
+      <td>Henry Fonda</td>
+      <td>Lee J. Cobb</td>
+      <td>Martin Balsam</td>
+      <td>John Fiedler</td>
+      <td>689845</td>
+      <td>4,360,000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="df-col-max">
+<h2><span class="section-number">1.4.4. </span><code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code><a class="headerlink" href="#df-col-max" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="dtypes">
+<h2><span class="section-number">1.4.5. </span><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code><a class="headerlink" href="#dtypes" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Poster_Link       object
+Series_Title      object
+Released_Year     object
+Certificate       object
+Runtime           object
+Genre             object
+IMDB_Rating      float64
+Overview          object
+Meta_score       float64
+Director          object
+Star1             object
+Star2             object
+Star3             object
+Star4             object
+No_of_Votes        int64
+Gross             object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="df-isnull">
+<h2><span class="section-number">1.4.6. </span><code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code><a class="headerlink" href="#df-isnull" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Poster_Link</th>
+      <th>Series_Title</th>
+      <th>Released_Year</th>
+      <th>Certificate</th>
+      <th>Runtime</th>
+      <th>Genre</th>
+      <th>IMDB_Rating</th>
+      <th>Overview</th>
+      <th>Meta_score</th>
+      <th>Director</th>
+      <th>Star1</th>
+      <th>Star2</th>
+      <th>Star3</th>
+      <th>Star4</th>
+      <th>No_of_Votes</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 16 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="df-col-sum">
+<h2><span class="section-number">1.4.7. </span><code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code><a class="headerlink" href="#df-col-sum" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Poster_Link       0.0
+Series_Title      0.0
+Released_Year     0.0
+Certificate      10.1
+Runtime           0.0
+Genre             0.0
+IMDB_Rating       0.0
+Overview          0.0
+Meta_score       15.7
+Director          0.0
+Star1             0.0
+Star2             0.0
+Star3             0.0
+Star4             0.0
+No_of_Votes       0.0
+Gross            16.9
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fillna-0">
+<h2><span class="section-number">1.4.8. </span><code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code><a class="headerlink" href="#fillna-0" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gross&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gross&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/1ab22f81733d69394a61dbedeae2c245741039ad681dc9dbb2fccbf6d18993a3.png" src="../_images/1ab22f81733d69394a61dbedeae2c245741039ad681dc9dbb2fccbf6d18993a3.png" />
+</div>
+</div>
+</section>
+<section id="apply">
+<h2><span class="section-number">1.4.9. </span><code class="docutils literal notranslate"><span class="pre">.apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="astype">
+<h2><span class="section-number">1.4.10. </span><code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code><a class="headerlink" href="#astype" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unique">
+<h2><span class="section-number">1.4.11. </span><code class="docutils literal notranslate"><span class="pre">.unique()</span></code><a class="headerlink" href="#unique" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Drama&#39;, &#39;Crime, Drama&#39;, &#39;Action, Crime, Drama&#39;,
+       &#39;Action, Adventure, Drama&#39;, &#39;Biography, Drama, History&#39;,
+       &#39;Action, Adventure, Sci-Fi&#39;, &#39;Drama, Romance&#39;, &#39;Western&#39;,
+       &#39;Action, Sci-Fi&#39;, &#39;Biography, Crime, Drama&#39;,
+       &#39;Action, Adventure, Fantasy&#39;, &#39;Comedy, Drama, Thriller&#39;,
+       &#39;Adventure, Drama, Sci-Fi&#39;, &#39;Animation, Adventure, Family&#39;,
+       &#39;Drama, War&#39;, &#39;Crime, Drama, Fantasy&#39;, &#39;Comedy, Drama, Romance&#39;,
+       &#39;Crime, Drama, Mystery&#39;, &#39;Crime, Drama, Thriller&#39;,
+       &#39;Action, Drama, Mystery&#39;, &#39;Drama, Family, Fantasy&#39;, &#39;Drama, Music&#39;,
+       &#39;Biography, Comedy, Drama&#39;, &#39;Drama, Mystery, Sci-Fi&#39;,
+       &#39;Biography, Drama, Music&#39;, &#39;Crime, Mystery, Thriller&#39;,
+       &#39;Animation, Adventure, Drama&#39;, &#39;Animation, Drama, War&#39;,
+       &#39;Adventure, Comedy, Sci-Fi&#39;, &#39;Horror, Mystery, Thriller&#39;,
+       &#39;Drama, Romance, War&#39;, &#39;Comedy, Drama, Family&#39;,
+       &#39;Animation, Drama, Fantasy&#39;, &#39;Action, Biography, Drama&#39;,
+       &#39;Animation, Action, Adventure&#39;, &#39;Drama, Western&#39;,
+       &#39;Action, Adventure&#39;, &#39;Comedy, Drama&#39;, &#39;Drama, Family&#39;,
+       &#39;Drama, Mystery, Thriller&#39;, &#39;Mystery, Thriller&#39;, &#39;Drama, Horror&#39;,
+       &#39;Drama, Mystery, War&#39;, &#39;Horror, Sci-Fi&#39;, &#39;Drama, Musical&#39;,
+       &#39;Comedy&#39;, &#39;Drama, Film-Noir&#39;, &#39;Comedy, Drama, War&#39;,
+       &#39;Drama, Thriller, War&#39;, &#39;Drama, Fantasy, Horror&#39;,
+       &#39;Crime, Drama, Music&#39;, &#39;Adventure, Drama, War&#39;,
+       &#39;Drama, Romance, Sci-Fi&#39;, &#39;Comedy, Romance&#39;, &#39;Comedy, Crime&#39;,
+       &#39;Drama, Family, Sport&#39;, &#39;Animation, Adventure, Comedy&#39;,
+       &#39;Adventure, Drama, Thriller&#39;, &#39;Comedy, Crime, Drama&#39;,
+       &#39;Crime, Drama, Sci-Fi&#39;, &#39;Adventure, Sci-Fi&#39;,
+       &#39;Adventure, Biography, Drama&#39;, &#39;Adventure, Mystery, Thriller&#39;,
+       &#39;Mystery, Romance, Thriller&#39;, &#39;Comedy, Musical, Romance&#39;,
+       &#39;Crime, Drama, Film-Noir&#39;, &#39;Drama, Mystery&#39;, &#39;Drama, Sci-Fi&#39;,
+       &#39;Action, Drama, War&#39;, &#39;Action, Drama&#39;, &#39;Adventure, Comedy, Drama&#39;,
+       &#39;Biography, Drama, Sport&#39;, &#39;Action, Comedy, Crime&#39;,
+       &#39;Action, Biography, Crime&#39;, &#39;Drama, Mystery, Romance&#39;,
+       &#39;Action, Drama, Sport&#39;, &#39;Drama, Fantasy, War&#39;,
+       &#39;Action, Drama, Sci-Fi&#39;, &#39;Biography, Drama&#39;,
+       &#39;Action, Comedy, Romance&#39;, &#39;Animation, Family, Fantasy&#39;,
+       &#39;Action, Thriller&#39;, &#39;Action, Adventure, Comedy&#39;,
+       &#39;Adventure, Comedy, Fantasy&#39;, &#39;Adventure, Drama, History&#39;,
+       &#39;Action, Drama, Thriller&#39;, &#39;Comedy, Music, Romance&#39;,
+       &#39;Drama, Fantasy, History&#39;, &#39;Crime, Thriller&#39;,
+       &#39;Adventure, Drama, Western&#39;, &#39;Comedy, War&#39;, &#39;Drama, Thriller&#39;,
+       &#39;Animation, Drama, Family&#39;, &#39;Drama, Romance, Thriller&#39;,
+       &#39;Comedy, Drama, Musical&#39;, &#39;Comedy, Drama, Fantasy&#39;,
+       &#39;Adventure, Comedy, Crime&#39;, &#39;Adventure, Drama, Fantasy&#39;,
+       &#39;Biography, Drama, Family&#39;, &#39;Animation, Comedy, Drama&#39;,
+       &#39;Drama, Sport&#39;, &#39;Animation, Action, Drama&#39;,
+       &#39;Adventure, Drama, Musical&#39;, &#39;Drama, Music, Romance&#39;,
+       &#39;Comedy, Crime, Romance&#39;, &#39;Comedy, Crime, Sport&#39;,
+       &#39;Drama, History, Romance&#39;, &#39;Adventure, Drama&#39;,
+       &#39;Animation, Adventure, Fantasy&#39;, &#39;Horror, Mystery, Sci-Fi&#39;,
+       &#39;Drama, Fantasy, Music&#39;, &#39;Action, Sci-Fi, Thriller&#39;,
+       &#39;Drama, Fantasy&#39;, &#39;Drama, Horror, Thriller&#39;, &#39;Drama, History&#39;,
+       &#39;Film-Noir, Mystery, Thriller&#39;, &#39;Fantasy, Horror, Mystery&#39;,
+       &#39;Action, Crime, Thriller&#39;, &#39;Comedy, Drama, Music&#39;,
+       &#39;Biography, Drama, Thriller&#39;, &#39;Animation, Biography, Drama&#39;,
+       &#39;Action, Mystery, Thriller&#39;, &#39;Crime, Drama, Romance&#39;,
+       &#39;Action, Adventure, Thriller&#39;, &#39;Crime, Drama, Musical&#39;,
+       &#39;Animation, Crime, Mystery&#39;, &#39;Action, Crime, Comedy&#39;,
+       &#39;Mystery, Sci-Fi, Thriller&#39;, &#39;Animation, Action, Crime&#39;,
+       &#39;Comedy, Fantasy, Romance&#39;, &#39;Drama, History, Thriller&#39;,
+       &#39;Animation, Action, Sci-Fi&#39;, &#39;Adventure, Family, Fantasy&#39;,
+       &#39;Drama, Fantasy, Romance&#39;, &#39;Drama, History, War&#39;,
+       &#39;Adventure, Thriller&#39;, &#39;Horror&#39;, &#39;Drama, Family, Musical&#39;,
+       &#39;Action, Drama, Western&#39;, &#39;Crime, Drama, Horror&#39;,
+       &#39;Drama, Film-Noir, Mystery&#39;, &#39;Comedy, Crime, Thriller&#39;,
+       &#39;Film-Noir, Mystery&#39;, &#39;Comedy, Crime, Mystery&#39;,
+       &#39;Drama, Fantasy, Mystery&#39;, &#39;Comedy, Horror&#39;,
+       &#39;Action, Adventure, History&#39;, &#39;Drama, Music, Mystery&#39;,
+       &#39;Comedy, Music&#39;, &#39;Comedy, Family&#39;, &#39;Drama, Music, Musical&#39;,
+       &#39;Action, Adventure, Horror&#39;, &#39;Action, Adventure, Biography&#39;,
+       &#39;Biography, Drama, War&#39;, &#39;Action, Adventure, Western&#39;,
+       &#39;Horror, Thriller&#39;, &#39;Comedy, Mystery, Romance&#39;,
+       &#39;Drama, Thriller, Western&#39;, &#39;Crime, Film-Noir, Thriller&#39;,
+       &#39;Drama, Film-Noir, Romance&#39;, &#39;Crime, Film-Noir, Mystery&#39;,
+       &#39;Action, Adventure, Romance&#39;, &#39;Comedy, Music, Musical&#39;,
+       &#39;Adventure, Horror, Sci-Fi&#39;, &#39;Fantasy, Horror&#39;,
+       &#39;Action, Drama, History&#39;, &#39;Adventure, Comedy, Family&#39;,
+       &#39;Animation, Biography, Crime&#39;, &#39;Adventure, Biography, Crime&#39;,
+       &#39;Adventure, Fantasy&#39;, &#39;Drama, History, Mystery&#39;,
+       &#39;Action, Comedy, Mystery&#39;, &#39;Adventure, Drama, Romance&#39;,
+       &#39;Drama, Sci-Fi, Thriller&#39;, &#39;Crime, Drama, History&#39;,
+       &#39;Action, Comedy, Fantasy&#39;, &#39;Family, Sci-Fi&#39;,
+       &#39;Adventure, History, War&#39;, &#39;Animation, Sci-Fi&#39;,
+       &#39;Family, Fantasy, Musical&#39;, &#39;Thriller&#39;, &#39;Comedy, Family, Fantasy&#39;,
+       &#39;Adventure, Comedy, Film-Noir&#39;, &#39;Film-Noir, Thriller&#39;,
+       &#39;Comedy, Family, Romance&#39;, &#39;Drama, Horror, Sci-Fi&#39;,
+       &#39;Comedy, Musical, War&#39;, &#39;Biography, Drama, Romance&#39;,
+       &#39;Drama, History, Music&#39;, &#39;Animation, Action, Fantasy&#39;,
+       &#39;Animation, Comedy, Fantasy&#39;, &#39;Comedy, Western&#39;,
+       &#39;Action, Adventure, War&#39;, &#39;Drama, Horror, Mystery&#39;,
+       &#39;Animation, Comedy, Crime&#39;, &#39;Action, Adventure, Crime&#39;,
+       &#39;Action, Adventure, Mystery&#39;, &#39;Action, Adventure, Family&#39;,
+       &#39;Action, Crime, Mystery&#39;, &#39;Animation, Drama, Romance&#39;,
+       &#39;Drama, War, Western&#39;, &#39;Adventure, Comedy, War&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="value-counts">
+<h2><span class="section-number">1.4.12. </span><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code><a class="headerlink" href="#value-counts" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Drama                        85
+Drama, Romance               37
+Comedy, Drama                35
+Comedy, Drama, Romance       31
+Action, Crime, Drama         30
+                             ..
+Adventure, Thriller           1
+Animation, Action, Sci-Fi     1
+Action, Crime, Comedy         1
+Animation, Crime, Mystery     1
+Adventure, Comedy, War        1
+Name: Genre, Length: 202, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creation">
+<h2><span class="section-number">1.4.13. </span>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="accessing-a-individual-column">
+<h2><span class="section-number">1.4.14. </span>Accessing a individual column<a class="headerlink" href="#accessing-a-individual-column" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="accessing-a-individual-row">
+<h2><span class="section-number">1.4.15. </span>Accessing a individual row<a class="headerlink" href="#accessing-a-individual-row" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="unique-values">
+<h2><span class="section-number">1.4.16. </span>Unique Values<a class="headerlink" href="#unique-values" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="id1">
+<h2><span class="section-number">1.4.17. </span>Value Counts<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="grouping">
+<h2><span class="section-number">1.4.18. </span>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="merging">
+<h2><span class="section-number">1.4.19. </span>Merging<a class="headerlink" href="#merging" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./1_programming"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Basic Elements of Computer Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="12_vectorops.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.5. </span>Vectorized Operations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.3. pd.Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">1.3.1. Filtering using Boolean Maps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">1.4. pd.DataFrame</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv">1.4.1. <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape">1.4.2. <code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head">1.4.3. <code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max">1.4.4. <code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.4.5. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull">1.4.6. <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum">1.4.7. <code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0">1.4.8. <code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.4.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.4.10. <code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.4.11. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.4.12. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">1.4.13. Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">1.4.14. Accessing a individual column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">1.4.15. Accessing a individual row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">1.4.16. Unique Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.4.17. Value Counts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">1.4.18. Grouping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">1.4.19. Merging</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Syed Fahad Sultan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
