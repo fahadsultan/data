@@ -1,4 +1,4 @@
-# CSC-272 Data Mining 
+# CSC-272 Data Mining (under construction)
 
 Hi! Welcome to the CSC-272 Data Mining course website 👋🏾
 
