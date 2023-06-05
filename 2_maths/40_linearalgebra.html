@@ -60,10 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/40_linearalgebra';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. Scalars, Vectors and Matrices" href="41_vectors_matrices.html" />
+    <link rel="next" title="7.8. Scalars, Vectors and Matrices" href="41_vectors_matrices.html" />
     <link rel="prev" title="6.2. Simplification" href="22_simplification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining
+                    CSC-272 Data Mining (under construction)
                 </a>
             </li>
         </ul>
@@ -218,13 +220,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.1. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.2. Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.9. Principal Component Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.1. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.2. Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -240,24 +242,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10.2. Model: Gaussian Mixture Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">11.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/32_generalized.html">11.2. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">12.1. Model: Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">12.2. Perceptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/43_nn.html">12.3. Neural Networks</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/31_linear.html">13. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/32_generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15. Model: Naive Bayes</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/42_perceptron.html">16. Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/43_nn.html">17. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">13. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">14. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">15. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">16. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">21. Positive Feedback Loops</a></li>
 </ul>
 
     </div>
@@ -428,7 +432,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -444,6 +450,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">7.1. Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">7.2. Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">7.3. Linear Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvectors-and-eigenvalues">7.4. Eigenvectors and Eigenvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition">7.5. Matrix Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">7.6. Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">7.7. Matrix Multiplication</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -455,13 +475,86 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-and-geometry">
 <h1><span class="section-number">7. </span>Linear Algebra and Geometry<a class="headerlink" href="#linear-algebra-and-geometry" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Linear algebra is the branch of mathematics that deals with vector spaces. It is a fundamental tool in many fields, including data science and machine learning. In this section, we will review some of the basic concepts of linear algebra.</p>
+<section id="vectors">
+<h2><span class="section-number">7.1. </span>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h2>
+<p>A vector is a quantity that has both magnitude and direction. Vectors are often represented as arrows in a coordinate system. The length of the arrow represents the magnitude of the vector, and the direction of the arrow represents the direction of the vector.</p>
+<p>Vectors are often used to represent physical quantities such as velocity, acceleration, and force. For example, the velocity of a car can be represented as a vector with a magnitude of 60 miles per hour and a direction of east.</p>
+<p>Vectors can also be used to represent abstract quantities such as the number of people in a city. For example, the population of a city can be represented as a vector with a magnitude of 100,000 and a direction of north.</p>
+<p>Vectors can be added together to form new vectors. For example, the velocity of a car can be added to the velocity of another car to form the velocity of a third car. Vectors can also be multiplied by scalars to form new vectors. For example, the velocity of a car can be multiplied by 2 to form the velocity of a car that is twice as fast.</p>
+</section>
+<section id="matrices">
+<h2><span class="section-number">7.2. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h2>
+<p>A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.</p>
+<p>Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
+<p>Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
+</section>
+<section id="linear-transformations">
+<h2><span class="section-number">7.3. </span>Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
+<p>A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.</p>
+<p>Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+</section>
+<section id="eigenvectors-and-eigenvalues">
+<h2><span class="section-number">7.4. </span>Eigenvectors and Eigenvalues<a class="headerlink" href="#eigenvectors-and-eigenvalues" title="Permalink to this headline">#</a></h2>
+<p>An eigenvector is a vector that does not change direction when a linear transformation is applied to it. For example, the vector (1, 0) is an eigenvector of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>because it does not change direction when the matrix is applied to it.</p>
+<p>An eigenvalue is a scalar that represents the amount by which an eigenvector is scaled when a linear transformation is applied to it. For example, the eigenvalue of the vector (1, 0) for the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>is 1 because the vector is not scaled when the matrix is applied to it.</p>
+</section>
+<section id="matrix-decomposition">
+<h2><span class="section-number">7.5. </span>Matrix Decomposition<a class="headerlink" href="#matrix-decomposition" title="Permalink to this headline">#</a></h2>
+<p>Matrix decomposition is the process of breaking a matrix down into its constituent parts. For example, the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>can be decomposed into the product of two matrices</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>The matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>is called the left eigenvector of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>and the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>is called the right eigenvector of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+</section>
+<section id="matrix-inversion">
+<h2><span class="section-number">7.6. </span>Matrix Inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">#</a></h2>
+<p>Matrix inversion is the process of finding the inverse of a matrix. For example, the inverse of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>is the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>because</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \end{split}\]</div>
+</section>
+<section id="matrix-multiplication">
+<h2><span class="section-number">7.7. </span>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">#</a></h2>
+<p>Matrix multiplication is the process of multiplying two matrices together. Conceptually, matrix multiplication is the process of applying a linear transformation to a vector. For example, the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<p>can be multiplied by the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 1 \\ 0 \end{bmatrix} \end{split}\]</div>
+<p>to produce the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 \\ 1 \end{bmatrix} \end{split}\]</div>
+<p>because</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \end{split}\]</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -511,7 +604,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Scalars, Vectors and Matrices</p>
+        <p class="prev-next-title"><span class="section-number">7.8. </span>Scalars, Vectors and Matrices</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -524,6 +617,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">7.1. Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">7.2. Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">7.3. Linear Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvectors-and-eigenvalues">7.4. Eigenvectors and Eigenvalues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition">7.5. Matrix Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">7.6. Matrix Inversion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">7.7. Matrix Multiplication</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

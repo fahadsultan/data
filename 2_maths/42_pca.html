@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7.2. Principal Component Analysis &#8212; CSC-272 Data Mining</title>
+    <title>7.9. Principal Component Analysis &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -60,11 +60,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/42_pca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. Calculus" href="50_calculus.html" />
-    <link rel="prev" title="7.1. Scalars, Vectors and Matrices" href="41_vectors_matrices.html" />
+    <link rel="prev" title="7.8. Scalars, Vectors and Matrices" href="41_vectors_matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining
+                    CSC-272 Data Mining (under construction)
                 </a>
             </li>
         </ul>
@@ -218,13 +220,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.1. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.9. Principal Component Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.1. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.2. Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -240,24 +242,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10.2. Model: Gaussian Mixture Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">11.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/32_generalized.html">11.2. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">12.1. Model: Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">12.2. Perceptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/43_nn.html">12.3. Neural Networks</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/31_linear.html">13. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/32_generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15. Model: Naive Bayes</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/42_perceptron.html">16. Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/43_nn.html">17. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">13. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">14. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">15. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">16. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">21. Positive Feedback Loops</a></li>
 </ul>
 
     </div>
@@ -428,7 +432,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -444,6 +450,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">7.9.1. Singular Value Decomposition (SVD)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -454,14 +468,23 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis">
-<h1><span class="section-number">7.2. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h1><span class="section-number">7.9. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h1>
+<p>Principal Component Analysis (PCA) is a dimensionality reduction technique that is used to transform a high-dimensional dataset into a smaller-dimensional subspace prior to running a machine learning algorithm on the data. PCA is used to overcome the curse of dimensionality and also to reduce the computational complexity of the machine learning algorithms (e.g., due to reduced number of features).</p>
+<p>PCA is an unsupervised algorithm, which means that it does not require labels for training. PCA is a linear transformation technique that projects the data onto a new coordinate system such that the greatest variance by any projection of the data comes to lie on the first coordinate (called the first principal component), the second greatest variance on the second coordinate, and so on.</p>
+<p>The following figure illustrates the concept of PCA:</p>
+<p>PCA is a very useful technique for feature extraction and data visualization. In this tutorial, we will discuss the following topics:</p>
+<ul class="simple">
+<li><p>PCA for dimensionality reduction</p></li>
+<li><p>PCA for data visualization</p></li>
+<li><p>PCA for feature extraction</p></li>
+</ul>
+<section id="singular-value-decomposition-svd">
+<h2><span class="section-number">7.9.1. </span>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h2>
+<p>Before we discuss PCA, let’s first discuss Singular Value Decomposition (SVD). SVD is a matrix factorization technique that is used to decompose a matrix into three other matrices as follows:</p>
+<div class="math notranslate nohighlight">
+\[A = U \Sigma V^T\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, <span class="math notranslate nohighlight">\(U\)</span> is an <span class="math notranslate nohighlight">\(m \times m\)</span> orthogonal matrix, <span class="math notranslate nohighlight">\(\Sigma\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> diagonal matrix, and <span class="math notranslate nohighlight">\(V\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix. The diagonal elements of <span class="math notranslate nohighlight">\(\Sigma\)</span> are known as the singular values of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -501,7 +524,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Scalars, Vectors and Matrices</p>
+        <p class="prev-next-title"><span class="section-number">7.8. </span>Scalars, Vectors and Matrices</p>
       </div>
     </a>
     <a class="right-next"
@@ -522,6 +545,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">7.9.1. Singular Value Decomposition (SVD)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

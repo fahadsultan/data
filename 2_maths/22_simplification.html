@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/22_simplification';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining
+                    CSC-272 Data Mining (under construction)
                 </a>
             </li>
         </ul>
@@ -218,13 +220,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.1. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.2. Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.9. Principal Component Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.1. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.2. Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -240,24 +242,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10.2. Model: Gaussian Mixture Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">11.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/32_generalized.html">11.2. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">12.1. Model: Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">12.2. Perceptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/43_nn.html">12.3. Neural Networks</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/31_linear.html">13. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/32_generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15. Model: Naive Bayes</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/42_perceptron.html">16. Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/43_nn.html">17. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">13. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">14. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">15. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">16. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">21. Positive Feedback Loops</a></li>
 </ul>
 
     </div>
@@ -455,18 +459,46 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="simplification">
 <h1><span class="section-number">6.2. </span>Simplification<a class="headerlink" href="#simplification" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Logarithms&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logarithms
-</pre></div>
-</div>
-</div>
-</div>
+<p>Logarithms are a useful tool for simplifying expressions. They are especially useful when dealing with large numbers. For example, consider the following expression:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} 10000000000\]</div>
+<p>This is a very large number, but we can simplify it using logarithms. We know that <span class="math notranslate nohighlight">\(10^{10} = 10000000000\)</span>, so we can rewrite the expression as:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} 10000000000 = \log_{10} 10^{10} = 10\]</div>
+<p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with negative exponents. For example, consider the following expression:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} \frac{1}{10000000000}\]</div>
+<p>We can rewrite this expression as:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10\]</div>
+<p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with <strong>fractional exponents</strong>. For example, consider the following expression:</p>
+<p><span class="math notranslate nohighlight">\(\log_{10} \sqrt{10000000000}\)</span></p>
+<p>We can rewrite this expression as:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} \sqrt{10000000000} = \log_{10} 10^{\frac{1}{2}} = \frac{1}{2}\]</div>
+<p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with <strong>negative exponents</strong>. For example, consider the following expression:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} \frac{1}{10000000000}\]</div>
+<p>We can rewrite this expression as:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10\]</div>
+<p>This is a much simpler expression, and it is much easier to work with.</p>
+<p>Logarithms are also useful for simplifying our probability formulas. For example, consider the Bayes’ theorem formula:</p>
+<div class="math notranslate nohighlight">
+\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]</div>
+<p>If we take the logarithm of both sides of this equation, we get:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} P(A|B) = \log_{10} \frac{P(B|A)P(A)}{P(B)}\]</div>
+<p>We can simplify this expression by using the logarithm rules:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} P(A|B) = \log_{10} P(B|A) + \log_{10} P(A) - \log_{10} P(B)\]</div>
+<p>This is a much simpler expression, and it is much easier to work with.</p>
+<p>Similarly, we can simplify the formula for the <strong>joint probability</strong> of two events:</p>
+<div class="math notranslate nohighlight">
+\[P(A \cap B) = P(A)P(B|A)\]</div>
+<p>If we take the logarithm of both sides of this equation, we get:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10} P(A \cap B) = \log_{10} P(A) + \log_{10} P(B|A)\]</div>
 </section>
 
     <script type="text/x-thebe-config">

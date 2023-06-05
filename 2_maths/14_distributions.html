@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/14_distributions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining
+                    CSC-272 Data Mining (under construction)
                 </a>
             </li>
         </ul>
@@ -218,13 +220,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.1. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.2. Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.9. Principal Component Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.1. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.2. Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -240,24 +242,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10.2. Model: Gaussian Mixture Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">11.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/32_generalized.html">11.2. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">12.1. Model: Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">12.2. Perceptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/43_nn.html">12.3. Neural Networks</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/31_linear.html">13. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/32_generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15. Model: Naive Bayes</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/42_perceptron.html">16. Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/43_nn.html">17. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">13. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">14. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">15. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">16. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_problems_with/40_feedback.html">21. Positive Feedback Loops</a></li>
 </ul>
 
     </div>
@@ -451,9 +455,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribtion">5.4.1. Uniform Distribtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">5.4.1. Uniform Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian">5.4.2. Gaussian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal">5.4.3. Normal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-normal">5.4.3. Standard Normal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bionomial">5.4.4. Bionomial</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-law-distribution">5.4.5. Power Law Distribution</a></li>
 </ul>
@@ -469,20 +473,85 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability-distributions">
 <h1><span class="section-number">5.4. </span>Probability Distributions<a class="headerlink" href="#probability-distributions" title="Permalink to this headline">#</a></h1>
-<section id="uniform-distribtion">
-<h2><span class="section-number">5.4.1. </span>Uniform Distribtion<a class="headerlink" href="#uniform-distribtion" title="Permalink to this headline">#</a></h2>
+<p>If the random variable is discrete, the probability distribution is called a probability mass function (pmf). If the random variable is continuous, the probability distribution is called a probability density function (pdf).</p>
+<section id="uniform-distribution">
+<h2><span class="section-number">5.4.1. </span>Uniform Distribution<a class="headerlink" href="#uniform-distribution" title="Permalink to this headline">#</a></h2>
+<p>Uniform distribution is a probability distribution where all outcomes are equally likely. For example, rolling a dice, the probability of getting any number between 1 to 6 is equally likely.</p>
+<p>The probability density function of the uniform distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{b-a}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is the minimum possible value and <span class="math notranslate nohighlight">\(b\)</span> is the maximum possible value.</p>
+<p>The probability distribution function of the uniform distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F(x) = \frac{x-a}{b-a}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is the minimum possible value and <span class="math notranslate nohighlight">\(b\)</span> is the maximum possible value.</p>
+<p>The mean of the uniform distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{a+b}{2}\]</div>
+<p>The variance of the uniform distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2 = \frac{(b-a)^2}{12}\]</div>
+<p>The standard deviation of the uniform distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \frac{b-a}{\sqrt{12}}\]</div>
+<p>The shape of the uniform distribution is flat. The probability of getting any value between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is the same. The probability of getting a value less than <span class="math notranslate nohighlight">\(a\)</span> is 0 and the probability of getting a value greater than <span class="math notranslate nohighlight">\(b\)</span> is 1.</p>
+<p>The uniform distribution is a special case of the beta distribution where <span class="math notranslate nohighlight">\(\alpha=1\)</span> and <span class="math notranslate nohighlight">\(\beta=1\)</span>.</p>
+<p>The uniform distribution is a special case of the gamma distribution where <span class="math notranslate nohighlight">\(\alpha=1\)</span>.</p>
+<p>The uniform distribution is a special case of the normal distribution where <span class="math notranslate nohighlight">\(\mu=\frac{a+b}{2}\)</span> and <span class="math notranslate nohighlight">\(\sigma=\frac{b-a}{\sqrt{12}}\)</span>.</p>
+<p>The uniform distribution is a special case of the exponential distribution where <span class="math notranslate nohighlight">\(\lambda=\frac{1}{b-a}\)</span>.</p>
+<p>The uniform distribution is a special case of the chi-squared distribution where <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(\lambda=\frac{1}{2(b-a)}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">uniform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">uniform</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d350ecabac04f4eab4ab27e87b4ca1122016ae2cb07aebd477ae511ab174971e.png" src="../_images/d350ecabac04f4eab4ab27e87b4ca1122016ae2cb07aebd477ae511ab174971e.png" />
+</div>
+</div>
 </section>
 <section id="gaussian">
 <h2><span class="section-number">5.4.2. </span>Gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">#</a></h2>
+<p>The shape of the Gaussian distribution is like a bell. The Gaussian distribution is also known as the normal distribution. The Gaussian distribution is a continuous probability distribution. The Gaussian distribution is defined by two parameters, the mean <span class="math notranslate nohighlight">\(\mu\)</span> and the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. The mean <span class="math notranslate nohighlight">\(\mu\)</span> determines the location of the center of the distribution and the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> determines the width of the distribution. The Gaussian distribution is symmetric about the mean <span class="math notranslate nohighlight">\(\mu\)</span>. The mean <span class="math notranslate nohighlight">\(\mu\)</span> is also the median and the mode of the Gaussian distribution. The Gaussian distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</div>
+<p>Gaussion distribution is a probability distribution where the values are symmetrically distributed around the mean. The mean, median and mode of the Gaussian distribution are equal. The probability density function of the Gaussian distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation.</p>
+<p>The probability distribution function of the Gaussian distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F(x) = \frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation.</p>
+<p>The difference between Gaussian distribution and normal distribution is that Gaussian distribution is a probability distribution and normal distribution is a probability density function.</p>
 </section>
-<section id="normal">
-<h2><span class="section-number">5.4.3. </span>Normal<a class="headerlink" href="#normal" title="Permalink to this headline">#</a></h2>
+<section id="standard-normal">
+<h2><span class="section-number">5.4.3. </span>Standard Normal<a class="headerlink" href="#standard-normal" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="bionomial">
 <h2><span class="section-number">5.4.4. </span>Bionomial<a class="headerlink" href="#bionomial" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="power-law-distribution">
 <h2><span class="section-number">5.4.5. </span>Power Law Distribution<a class="headerlink" href="#power-law-distribution" title="Permalink to this headline">#</a></h2>
+<p>Power law distributions are probability distributions where the probability of an event with value <span class="math notranslate nohighlight">\(x\)</span> is proportional to <span class="math notranslate nohighlight">\(x^{-\alpha}\)</span>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is a constant. Power law distributions are also known as Pareto distributions. Power law distributions are used to model the distribution of wealth, city population, earthquake magnitude, word frequency, etc. The probability density function of the power law distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{\alpha-1}{x_{min}}\left(\frac{x}{x_{min}}\right)^{-\alpha}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the exponent and <span class="math notranslate nohighlight">\(x_{min}\)</span> is the minimum possible value.</p>
+<p>The probability distribution function of the power law distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F(x) = 1-\left(\frac{x}{x_{min}}\right)^{-\alpha+1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the exponent and <span class="math notranslate nohighlight">\(x_{min}\)</span> is the minimum possible value.</p>
+<p>The mean of the power law distribution is <span class="math notranslate nohighlight">\(\mu = \frac{\alpha-1}{\alpha-2}x_{min}\)</span></p>
+<p>The variance of the power law distribution is <span class="math notranslate nohighlight">\(\sigma^2 = \frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2\)</span></p>
+<p>The standard deviation of the power law distribution is <span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2}\)</span></p>
+<p>The shape of the power law distribution is a straight line on a log-log plot. The probability of getting a value less than <span class="math notranslate nohighlight">\(x_{min}\)</span> is 0 and the probability of getting a value greater than <span class="math notranslate nohighlight">\(x_{min}\)</span> is 1.</p>
+<p>The power law distribution is a special case of the exponential distribution where <span class="math notranslate nohighlight">\(\lambda=\frac{\alpha-1}{x_{min}}\)</span>.</p>
 </section>
 </section>
 
@@ -553,9 +622,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribtion">5.4.1. Uniform Distribtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">5.4.1. Uniform Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian">5.4.2. Gaussian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal">5.4.3. Normal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-normal">5.4.3. Standard Normal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bionomial">5.4.4. Bionomial</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-law-distribution">5.4.5. Power Law Distribution</a></li>
 </ul>
