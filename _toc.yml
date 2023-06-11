@@ -84,36 +84,41 @@ parts:
         - file: 3_problems_in/11_pagerank
         - file: 3_problems_in/12_apriori
     - file: 3_problems_in/20_clustering
-      sections: 
-        - file: 3_problems_in/21_nn
-        - file: 3_problems_in/22_kmeans
     - file: 3_problems_in/30_regression
-      sections: 
-        - file: 3_problems_in/31_linear
-        - file: 3_problems_in/32_generalized
     - file: 3_problems_in/40_classification
-      sections: 
-        - file: 3_problems_in/41_naivebayes
+  - caption: Models in Data Science
+    numbered: true
+    chapters:
+      - file: 3_problems_in/22_kmeans
+      - file: 4_models/generalized
+        sections: 
+        - file: 3_problems_in/31_linear
         - file: 3_problems_in/42_perceptron
-        - file: 3_problems_in/43_nn
+      - file: 4_models/graphical
+        sections: 
+        - file: 3_problems_in/41_naivebayes
+      - file: 4_models/nn
+  - caption: Algorithms in Data Science
+    numbered: true
+    chapters:
+      - file: 5_algos/em
+      - file: 5_algos/gradient_descent
+      - file: 5_algos/backprop
   - caption: Problems with Data Science
     numbered: true
     chapters:
-    - file: 4_problems_with/10_representation
-    - file: 4_problems_with/20_boundaries
-    - file: 4_problems_with/30_incentives
-    - file: 4_problems_with/40_feedback
-  # - caption: Applications of Data Science
-  #   numbered: true
-  #   chapters:
-  #   - file: 5_applications/10_text
+    - file: 6_problems_with/10_representation
+    - file: 6_problems_with/20_boundaries
+    - file: 6_problems_with/30_incentives
+    - file: 6_problems_with/40_feedback
+  - caption: Applications of Data Science
+    numbered: true
+    chapters:
+    - file: 7_applications/40_recommendation
+    # - file: 5_applications/10_text
   #     sections: 
   #       - file: 5_applications/11_sentiment
   #       - file: 5_applications/12_genre
-  #   - file: 5_applications/20_recommendations
-  #     sections: 
-  #       - file: 5_applications/21_movies
-  #       - file: 5_applications/22_genre
   #   - file: 5_applications/30_timeseries
   #     sections: 
   #       - file: 5_applications/31_sentiment
