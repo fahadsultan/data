@@ -31,16 +31,24 @@ Following data sets and ideas are only there to give you a starting point. You a
 
 <!-- ### Movie / Song / TV Recommendation System   -->
 
-* Implement a **Recommendation System** using the data sets above. **Unsupervised**{: .label .label-purple }  
+* Implement a **Recommendation System** using the data sets above. 
+{bdg-primary}`Unsupervised`
+<!-- **Unsupervised**{: .label .label-purple }   -->
 <!-- **Tabular**{: .label .label-purple } **Text**{: .label .label-purple }  -->
 
-* Predict the **Genre / Artist** of the media using the data sets above. **Classification**{: .label .label-purple }  
+* Predict the **Genre / Artist** of the media using the data sets above. 
+{bdg-primary}`Supervised`
+<!-- **Classification**{: .label .label-purple }   -->
 <!-- **Tabular**{: .label .label-purple } **Text**{: .label .label-purple }  -->
 
-* Predict the **Rating / Popularity / Revenue** of the media using the data sets above. **Regression**{: .label .label-purple } 
+* Predict the **Rating / Popularity / Revenue** of the media using the data sets above. 
+{bdg-primary}`Regression`
+<!-- **Regression**{: .label .label-purple }  -->
  <!-- **Tabular**{: .label .label-purple } **Text**{: .label .label-purple }  -->
 
-* Use **historical trend to predict future value of an indicator**. **Time Series**{: .label .label-purple }
+* Use **historical trend to predict future value of an indicator**. 
+{bdg-primary}`Time Series`
+<!-- **Time Series**{: .label .label-purple } -->
 
 <!-- 
 * IPEDS
