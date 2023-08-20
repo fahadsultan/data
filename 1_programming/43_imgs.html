@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/43_imgs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.5. Audio" href="44_audio.html" />
+    <link rel="next" title="4.4. Audio" href="44_audio.html" />
     <link rel="prev" title="4.2. Graphs" href="42_graphs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -151,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining (under construction)
+                    CSC-272 Data Mining (Fall 2023)
                 </a>
             </li>
         </ul>
@@ -177,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Fast Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="11_python.html">1.3. Basic Elements of Computer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_pandas.html">1.4. pandas</a></li>
 
@@ -199,8 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="41_text.html">4.1. Text data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="42_graphs.html">4.2. Graphs</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. Images</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="44_audio.html">4.5. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44_audio.html">4.4. Audio</a></li>
 </ul>
 </li>
 </ul>
@@ -256,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">17. EM Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">17. Expectation Maximization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">18. Gradient Descent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">19. Backpropogation</a></li>
 </ul>
@@ -440,9 +439,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -458,24 +455,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.3. Images</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">4.3.1. Crop the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.3.2. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">4.3.3. Image datasets</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">4.4. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">4.4.1. Reading in the data</a></li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -485,200 +464,81 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="images">
+  <section id="images">
 <h1><span class="section-number">4.3. </span>Images<a class="headerlink" href="#images" title="Permalink to this headline">#</a></h1>
-<p>An image is a 2D array of pixels. Each pixel is a 3D vector of red, green, and blue (RGB) values. The RGB values are usually represented as integers between 0 and 255. The RGB values are used to represent the color of the pixel. For example, a pixel with RGB values of (255, 0, 0) is red, (0, 255, 0) is green, and (0, 0, 255) is blue. A pixel with RGB values of (0, 0, 0) is black and (255, 255, 255) is white.</p>
-<p>In this notebook, we will learn how to read and write images, and how to manipulate them.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<!-- An image is a 2D array of pixels. Each pixel is a 3D vector of red, green, and blue (RGB) values. The RGB values are usually represented as integers between 0 and 255. The RGB values are used to represent the color of the pixel. For example, a pixel with RGB values of (255, 0, 0) is red, (0, 255, 0) is green, and (0, 0, 255) is blue. A pixel with RGB values of (0, 0, 0) is black and (255, 255, 255) is white.
+
+In this notebook, we will learn how to read and write images, and how to manipulate them. --><!-- import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
 
 
-<span class="c1"># Read an image</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../data/belltower.jpg&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d01789347ee04a9e5a8602c525f4fd1462d53d93c4a46c5c3aecb9ab9e81df78.png" src="../_images/d01789347ee04a9e5a8602c525f4fd1462d53d93c4a46c5c3aecb9ab9e81df78.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># (height, width, channels)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1600, 1267, 3)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]</span> <span class="c1"># RGB values of the first pixel</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([240, 241, 243], dtype=uint8)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to grayscale</span>
-<span class="n">img_gray</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/fd2530b58714e946acf85120f28a520b74d81c46b4717d7d15fcf1da62a9735e.png" src="../_images/fd2530b58714e946acf85120f28a520b74d81c46b4717d7d15fcf1da62a9735e.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Invert the image</span>
+# Read an image
+img = plt.imread('../data/belltower.jpg');
+plt.imshow(img); --><!-- img.shape # (height, width, channels) --><!-- img[0,0,:] # RGB values of the first pixel --><!-- # Convert to grayscale
+img_gray = img.mean(axis=2)
+plt.imshow(img_gray, cmap='gray'); --><!-- # Invert the image
 
-<span class="n">img_inv</span> <span class="o">=</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">img_gray</span>
+img_inv = 255 - img_gray
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_inv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/3e55811b6bd5b21ce3d70607b138a9dce696b12d5a867e695c4daf74a6a3366d.png" src="../_images/3e55811b6bd5b21ce3d70607b138a9dce696b12d5a867e695c4daf74a6a3366d.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Threshold the image</span>
+plt.imshow(img_inv, cmap='gray'); --><!-- # Threshold the image
 
-<span class="n">img_thresh</span> <span class="o">=</span> <span class="n">img_gray</span> <span class="o">&gt;</span> <span class="mi">100</span> 
+img_thresh = img_gray > 100 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_thresh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/52e059e89ba99b30b3550352b88c767473bc5b7d9373655a3d69a6c4242fc649.png" src="../_images/52e059e89ba99b30b3550352b88c767473bc5b7d9373655a3d69a6c4242fc649.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1600, 1267, 3)
-</pre></div>
-</div>
-</div>
-</div>
-<section id="crop-the-image">
-<h2><span class="section-number">4.3.1. </span>Crop the image<a class="headerlink" href="#crop-the-image" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_crop</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[:</span><span class="mi">700</span><span class="p">,</span> <span class="p">:</span><span class="mi">700</span><span class="p">]</span>
+plt.imshow(img_thresh, cmap='gray'); --><!-- img.shape --><!-- ## Crop the image --><!-- img_crop = img_gray[:700, :700]
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_crop</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/cd8b1e92fa0ea437380466b8fb25543c9671bcb0537451f7b5ccdbb9330afdc6.png" src="../_images/cd8b1e92fa0ea437380466b8fb25543c9671bcb0537451f7b5ccdbb9330afdc6.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resize the image</span>
+plt.imshow(img_crop, cmap='gray');
 
-<span class="n">img_resize</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># every other pixel</span>
+# Resize the image
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image resized from </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_gray</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">img_resize</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+img_resize = img_gray[::2, ::2] # every other pixel
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_resize</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image resized from (1600, 1267) to (800, 634)
-</pre></div>
-</div>
-<img alt="../_images/4235bb58d1ec41d307fc6060eeae8bd3cd4eff8c6c27f09e30e939c1b4046c0d.png" src="../_images/4235bb58d1ec41d307fc6060eeae8bd3cd4eff8c6c27f09e30e939c1b4046c0d.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rotate the image</span>
+print("Image resized from {} to {}".format(img_gray.shape, img_resize.shape))
 
-<span class="n">img_rot</span> <span class="o">=</span> <span class="n">img_gray</span><span class="o">.</span><span class="n">T</span>
+plt.imshow(img_resize, cmap='gray');
+plt.colorbar();
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d71cf121400a62fc4700bcd04664c8756058f3de939c5c2bc13c1fe1a8adac71.png" src="../_images/d71cf121400a62fc4700bcd04664c8756058f3de939c5c2bc13c1fe1a8adac71.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Flip the image</span>
+# Rotate the image
 
-<span class="n">img_flip</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># reverse the rows and columns</span>
+img_rot = img_gray.T
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1b4b82c3857dd9459f7d95b52acd1f9609898502a305aa744a67c4c8e7656386.png" src="../_images/1b4b82c3857dd9459f7d95b52acd1f9609898502a305aa744a67c4c8e7656386.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the image</span>
+plt.imshow(img_rot, cmap='gray');
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;../data/belltower_gray.jpg&#39;</span><span class="p">,</span> <span class="n">img_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercises">
-<h2><span class="section-number">4.3.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>1</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, invert the image and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_inv.jpg</span></code>.</p>
-<p><strong>2</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, crop the image to the top-left 700x700 pixels and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_crop.jpg</span></code>.</p>
-<p><strong>3</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, resize the image to half its size and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_resize.jpg</span></code>.</p>
-<p><strong>4</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, rotate the image 90 degrees and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_rot.jpg</span></code>.</p>
-<p><strong>5</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, flip the image vertically and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_flip.jpg</span></code>.</p>
-</section>
-<section id="image-datasets">
-<h2><span class="section-number">4.3.3. </span>Image datasets<a class="headerlink" href="#image-datasets" title="Permalink to this headline">#</a></h2>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="reading-in-handwritten-digits">
-<h1><span class="section-number">4.4. </span>Reading in handwritten digits<a class="headerlink" href="#reading-in-handwritten-digits" title="Permalink to this headline">#</a></h1>
-<p>In this notebook, we will read in the handwritten digits dataset from the UCI Machine Learning Repository. The dataset consists of 1797 images of handwritten digits. Each image is a 2D array of pixels, where each pixel is an integer between 0 and 255. The images are 8x8 pixels, so there are 64 pixels in total. Each image is labeled with the digit it represents.</p>
-<p>You can find the dataset <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits">here</a>.</p>
-<section id="reading-in-the-data">
-<h2><span class="section-number">4.4.1. </span>Reading in the data<a class="headerlink" href="#reading-in-the-data" title="Permalink to this headline">#</a></h2>
-<p>The data is stored in a CSV file. We can read it in using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/digits.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
+# Flip the image
+
+img_flip = img_gray[::-1, ::-1] # reverse the rows and columns
+
+plt.imshow(img_flip, cmap='gray');
+
+# Save the image
+
+plt.imsave('../data/belltower_gray.jpg', img_gray, cmap='gray'); --><!-- 
+## Exercises
+
+**1**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, invert the image and save it as `../data/belltower_inv.jpg`.
+
+**2**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, crop the image to the top-left 700x700 pixels and save it as `../data/belltower_crop.jpg`.
+
+**3**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, resize the image to half its size and save it as `../data/belltower_resize.jpg`.
+
+**4**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, rotate the image 90 degrees and save it as `../data/belltower_rot.jpg`.
+
+**5**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, flip the image vertically and save it as `../data/belltower_flip.jpg`. -->
+<!-- ## Image datasets --><!-- # Reading in handwritten digits
+
+In this notebook, we will read in the handwritten digits dataset from the UCI Machine Learning Repository. The dataset consists of 1797 images of handwritten digits. Each image is a 2D array of pixels, where each pixel is an integer between 0 and 255. The images are 8x8 pixels, so there are 64 pixels in total. Each image is labeled with the digit it represents.
+
+You can find the dataset [here](https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits).
+
+## Reading in the data
+
+The data is stored in a CSV file. We can read it in using `pandas`.
+
+```python
+import pandas as pd
+df = pd.read_csv('../data/digits.csv')
+``` -->
 </section>
 
     <script type="text/x-thebe-config">
@@ -726,7 +586,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.5. </span>Audio</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Audio</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -739,30 +599,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.3. Images</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">4.3.1. Crop the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.3.2. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">4.3.3. Image datasets</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">4.4. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">4.4.1. Reading in the data</a></li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

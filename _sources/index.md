@@ -1,10 +1,10 @@
-# CSC-272 Data Mining (under construction)
+# CSC-272 Data Mining (Fall 2023)
 
 Hi! Welcome to the CSC-272 Data Mining course website 👋🏾
 
 I am excited to talk math 🔢, programming 💻 and all-things data 📊 in this course with you! 
 
-👈🏾 From the sidebar on the left, you can navigate to any information relevant to the course. There should also be a search bar in the top right corner ↗️. 
+👈🏾 From the sidebar on the left, you should be able to navigate to any topic relevant to the course. If that does not help, there should also be a search icon 🔍 in the top right corner ↗️
 
 👇🏾 Below, you can find important links and important announcements. 
 
@@ -22,7 +22,7 @@ Pre-course survey due **September 1st**
 ```
 
 ```{tip}
-**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](http://moodle.com)** 
+**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://outlook.office.com/bookwithme/user/7f43cdadbc6f4eacabe535b66abeeea8@furman.edu/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink)** 
 ```
 
 ```{seealso}

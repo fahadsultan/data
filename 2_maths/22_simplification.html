@@ -60,8 +60,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/22_simplification';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    CSC-272 Data Mining (under construction)
+                    CSC-272 Data Mining (Fall 2023)
                 </a>
             </li>
         </ul>
@@ -179,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Fast Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/11_python.html">1.3. Basic Elements of Computer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/12_pandas.html">1.4. pandas</a></li>
 
@@ -258,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">17. EM Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">17. Expectation Maximization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">18. Gradient Descent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">19. Backpropogation</a></li>
 </ul>
@@ -467,48 +465,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="simplification">
+  <section id="simplification">
 <h1><span class="section-number">6.2. </span>Simplification<a class="headerlink" href="#simplification" title="Permalink to this headline">#</a></h1>
 <p>Logarithms are a useful tool for simplifying expressions. They are especially useful when dealing with large numbers. For example, consider the following expression:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} 10000000000\]</div>
-<p>This is a very large number, but we can simplify it using logarithms. We know that <span class="math notranslate nohighlight">\(10^{10} = 10000000000\)</span>, so we can rewrite the expression as:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} 10000000000 = \log_{10} 10^{10} = 10\]</div>
+<p>$$\log_{10} 10000000000$$</p>
+<p>This is a very large number, but we can simplify it using logarithms. We know that $10^{10} = 10000000000$, so we can rewrite the expression as:</p>
+<p>$$\log_{10} 10000000000 = \log_{10} 10^{10} = 10$$</p>
 <p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with negative exponents. For example, consider the following expression:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} \frac{1}{10000000000}\]</div>
+<p>$$\log_{10} \frac{1}{10000000000}$$</p>
 <p>We can rewrite this expression as:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10\]</div>
+<p>$$\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10$$</p>
 <p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with <strong>fractional exponents</strong>. For example, consider the following expression:</p>
-<p><span class="math notranslate nohighlight">\(\log_{10} \sqrt{10000000000}\)</span></p>
+<p>$\log_{10} \sqrt{10000000000}$</p>
 <p>We can rewrite this expression as:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} \sqrt{10000000000} = \log_{10} 10^{\frac{1}{2}} = \frac{1}{2}\]</div>
+<p>$$\log_{10} \sqrt{10000000000} = \log_{10} 10^{\frac{1}{2}} = \frac{1}{2}$$</p>
 <p>This is a much simpler expression, and it is much easier to work with. We can also use logarithms to simplify expressions with <strong>negative exponents</strong>. For example, consider the following expression:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} \frac{1}{10000000000}\]</div>
+<p>$$\log_{10} \frac{1}{10000000000}$$</p>
 <p>We can rewrite this expression as:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10\]</div>
+<p>$$\log_{10} \frac{1}{10000000000} = \log_{10} 10^{-10} = -10$$</p>
 <p>This is a much simpler expression, and it is much easier to work with.</p>
 <p>Logarithms are also useful for simplifying our probability formulas. For example, consider the Bayes’ theorem formula:</p>
-<div class="math notranslate nohighlight">
-\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]</div>
+<p>$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$</p>
 <p>If we take the logarithm of both sides of this equation, we get:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} P(A|B) = \log_{10} \frac{P(B|A)P(A)}{P(B)}\]</div>
+<p>$$\log_{10} P(A|B) = \log_{10} \frac{P(B|A)P(A)}{P(B)}$$</p>
 <p>We can simplify this expression by using the logarithm rules:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} P(A|B) = \log_{10} P(B|A) + \log_{10} P(A) - \log_{10} P(B)\]</div>
+<p>$$\log_{10} P(A|B) = \log_{10} P(B|A) + \log_{10} P(A) - \log_{10} P(B)$$</p>
 <p>This is a much simpler expression, and it is much easier to work with.</p>
 <p>Similarly, we can simplify the formula for the <strong>joint probability</strong> of two events:</p>
-<div class="math notranslate nohighlight">
-\[P(A \cap B) = P(A)P(B|A)\]</div>
+<p>$$P(A \cap B) = P(A)P(B|A)$$</p>
 <p>If we take the logarithm of both sides of this equation, we get:</p>
-<div class="math notranslate nohighlight">
-\[\log_{10} P(A \cap B) = \log_{10} P(A) + \log_{10} P(B|A)\]</div>
+<p>$$\log_{10} P(A \cap B) = \log_{10} P(A) + \log_{10} P(B|A)$$</p>
 </section>
 
     <script type="text/x-thebe-config">

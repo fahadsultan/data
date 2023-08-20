@@ -8,7 +8,7 @@
 ## Fulfills requirements
 
 * Core course requirement for Data Analytics minor
-* Human Behavior GER
+* Human Behavior (HB) General Education Requirement (GER) 
 
 ## Course Description
 
