@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/20_logarithms';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.1. Normalization" href="21_normalization.html" />
-    <link rel="prev" title="5.4. Probability Distributions" href="14_distributions.html" />
+    <link rel="next" title="7. Linear Algebra and Geometry" href="40_linearalgebra.html" />
+    <link rel="prev" title="5. Probability and Statistics" href="10_probability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Term Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
 </ul>
 </li>
@@ -181,60 +181,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/11_python.html">1.3. Basic Elements of Computer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/12_pandas.html">1.4. pandas</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/13_notes.html">1.6. <em>Notes</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/14_exercises.html">1.7. <em>Exercises</em></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">2. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">2.1. Univariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">2.2. Multivariate Visualizations</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/30_collecting.html">3. Collecting Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/31_apis.html">3.3. APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/32_scraping.html">3.4. Web Scraping</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/40_modalities.html">4. Modalities of Data</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/41_text.html">4.1. Text data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/42_graphs.html">4.2. Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/43_imgs.html">4.3. Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/44_audio.html">4.4. Audio</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/30_collecting.html">2. Collecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/40_modalities.html">3. Modalities of Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/20_visualization.html">4. Visualizing Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="10_probability.html">5. Probability and Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="11_randomvars.html">5.1. Random Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12_centrality.html">5.2. Centrality Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13_variability.html">5.3. Variability Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14_distributions.html">5.4. Probability Distributions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">6. Logarithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="21_normalization.html">6.1. Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22_simplification.html">6.2. Simplification</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.9. Principal Component Analysis</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="10_probability.html">5. Probability and Statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Logarithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_calculus.html">8. Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/11_pagerank.html">9.1. PageRank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/12_apriori.html">9.2. Apriori Algorithm</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">10. Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
@@ -242,15 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">13. Mixture Models</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">14.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">14.2. Perceptron</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15.1. Model: Naive Bayes</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">16. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -261,14 +216,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">20. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">21. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">22. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">23. Positive Feedback Loops</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications of Data Science</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7_applications/40_recommendation.html">24. Recommendation Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">20. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">21. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">22. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">23. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -466,27 +417,43 @@ document.write(`
                   
   <section id="logarithms">
 <h1><span class="section-number">6. </span>Logarithms<a class="headerlink" href="#logarithms" title="Permalink to this headline">#</a></h1>
-<p>Logarithms are the inverse of exponentials. They are useful for transforming data that is skewed towards large values and also for making data more interpretable.</p>
-<p>The logarithm of a number is the exponent to which another fixed value, the base, must be raised to produce that number. For example, the logarithm of 1000 to base 10 is 3, because 1000 is 10 to the power 3: 1000 = 10 × 10 × 10 = 10^3.</p>
-<p>In mathematics, the logarithm is the inverse function to exponentiation. That means the logarithm of a given number x is the exponent to which another fixed number, the base b, must be raised, to produce that number x. In the simplest case, the logarithm counts the number of occurrences of the same factor in repeated multiplication; e.g., since 1000 = 10 × 10 × 10 = 10^3, the “logarithm base 10” of 1000 is 3, or log10(1000) = 3. The logarithm of x to base b is denoted as logb (x), or without parentheses, logb x, or even without the explicit base, log x, when no confusion is possible, or when the base does not matter such as in big O notation.</p>
-<p>The logarithm to base 10 (that is b = 10) is called the common logarithm and has many applications in science and engineering. The natural logarithm has the number e (that is b = e) as its base; its use is widespread in mathematics and physics, because of its simpler derivative. The binary logarithm uses base 2 (that is b = 2) and is commonly used in computer science.</p>
-<p>Logarithms were introduced by John Napier in the early 17th century as a means to simplify calculations. They were rapidly adopted by navigators, scientists, engineers, and others to perform computations more easily, using slide rules and logarithm tables. Tedious multi-digit multiplication steps can be replaced by table look-ups and simpler addition because of the fact—important in its own right—that the logarithm of a product is the sum of the logarithms of the factors: logb (xy) = logb x + logb y, a result first published by Napier in 1619.</p>
-<p>The present-day notion of logarithms comes from Leonhard Euler, who connected them to the exponential function in the 18th century.</p>
-<p>Logarithms are useful for solving equations in which the unknown appears as the exponent of some other quantity. For example, logarithms are used to solve for the half-life, decay constant, or unknown time in exponential decay problems. They are important in many branches of mathematics and the sciences and are used in finance to solve problems involving compound interest.</p>
-<p>Logarithms are intimately related to exponentiation, the inverse operation. For example, raising 2 to the third power yields 8, because 8 is the product of three factors of 2:</p>
-<p>2^3 = 2 × 2 × 2 = 8.</p>
-<p>It follows that the logarithm of 8 to base 2 is 3:</p>
-<p>log2(8) = 3,</p>
-<p>because 2^3 = 8.</p>
-<p>The third power of some number b is the product of three factors equal to b:</p>
-<p>b^3 = b × b × b.</p>
-<p>It follows that the logarithm of b^3 is 3:</p>
-<p>logb(b^3) = 3.</p>
-<p>The logarithm is a monotonically increasing function, meaning that the logarithm of a positive real number x is greater than the logarithm of a smaller positive number y whenever x &gt; y. Furthermore, the logarithm is a concave function, meaning that the logarithm of a convex function’s values is always less than or equal to the convex function of the logarithm of that function’s values:</p>
-<p>logb(λx + (1 − λ)y) ≥ λlogb(x) + (1 − λ)logb(y)</p>
-<p>for any positive real numbers x and y, and any number λ between 0 and 1.</p>
-<div class="toctree-wrapper compound">
-</div>
+<!-- Logarithms are the inverse of exponentials. They are useful for transforming data that is skewed towards large values and also for making data more interpretable.
+
+The logarithm of a number is the exponent to which another fixed value, the base, must be raised to produce that number. For example, the logarithm of 1000 to base 10 is 3, because 1000 is 10 to the power 3: 1000 = 10 × 10 × 10 = 10^3.
+
+In mathematics, the logarithm is the inverse function to exponentiation. That means the logarithm of a given number x is the exponent to which another fixed number, the base b, must be raised, to produce that number x. In the simplest case, the logarithm counts the number of occurrences of the same factor in repeated multiplication; e.g., since 1000 = 10 × 10 × 10 = 10^3, the “logarithm base 10” of 1000 is 3, or log10(1000) = 3. The logarithm of x to base b is denoted as logb (x), or without parentheses, logb x, or even without the explicit base, log x, when no confusion is possible, or when the base does not matter such as in big O notation.
+
+The logarithm to base 10 (that is b = 10) is called the common logarithm and has many applications in science and engineering. The natural logarithm has the number e (that is b = e) as its base; its use is widespread in mathematics and physics, because of its simpler derivative. The binary logarithm uses base 2 (that is b = 2) and is commonly used in computer science.
+
+Logarithms were introduced by John Napier in the early 17th century as a means to simplify calculations. They were rapidly adopted by navigators, scientists, engineers, and others to perform computations more easily, using slide rules and logarithm tables. Tedious multi-digit multiplication steps can be replaced by table look-ups and simpler addition because of the fact—important in its own right—that the logarithm of a product is the sum of the logarithms of the factors: logb (xy) = logb x + logb y, a result first published by Napier in 1619.
+
+The present-day notion of logarithms comes from Leonhard Euler, who connected them to the exponential function in the 18th century.
+
+Logarithms are useful for solving equations in which the unknown appears as the exponent of some other quantity. For example, logarithms are used to solve for the half-life, decay constant, or unknown time in exponential decay problems. They are important in many branches of mathematics and the sciences and are used in finance to solve problems involving compound interest.
+
+Logarithms are intimately related to exponentiation, the inverse operation. For example, raising 2 to the third power yields 8, because 8 is the product of three factors of 2:
+
+2^3 = 2 × 2 × 2 = 8.
+
+It follows that the logarithm of 8 to base 2 is 3:
+
+log2(8) = 3,
+
+because 2^3 = 8.
+
+The third power of some number b is the product of three factors equal to b:
+
+b^3 = b × b × b.
+
+It follows that the logarithm of b^3 is 3:
+
+logb(b^3) = 3.
+
+The logarithm is a monotonically increasing function, meaning that the logarithm of a positive real number x is greater than the logarithm of a smaller positive number y whenever x > y. Furthermore, the logarithm is a concave function, meaning that the logarithm of a convex function’s values is always less than or equal to the convex function of the logarithm of that function’s values:
+
+logb(λx + (1 − λ)y) ≥ λlogb(x) + (1 − λ)logb(y)
+
+for any positive real numbers x and y, and any number λ between 0 and 1. -->
 </section>
 
     <script type="text/x-thebe-config">
@@ -521,20 +488,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="14_distributions.html"
+       href="10_probability.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.4. </span>Probability Distributions</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Probability and Statistics</p>
       </div>
     </a>
     <a class="right-next"
-       href="21_normalization.html"
+       href="40_linearalgebra.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.1. </span>Normalization</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Linear Algebra and Geometry</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

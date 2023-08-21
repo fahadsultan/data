@@ -63,6 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Vectorized Operations on Data" href="1_programming/10_dataops.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -170,8 +172,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="calendar.html">Calendar</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
 <ul class="nav bd-sidenav">
@@ -183,22 +186,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="1_programming/14_exercises.html">1.7. <em>Exercises</em></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/20_visualization.html">2. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/21_univariate.html">2.1. Univariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/22_multivariate.html">2.2. Multivariate Visualizations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/30_collecting.html">2. Collecting Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/31_apis.html">2.3. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/32_scraping.html">2.4. Web Scraping</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/30_collecting.html">3. Collecting Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/31_apis.html">3.3. APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/32_scraping.html">3.4. Web Scraping</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/40_modalities.html">3. Modalities of Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/41_text.html">3.1. Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/42_graphs.html">3.2. Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/43_imgs.html">3.3. Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/44_audio.html">3.4. Audio</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/40_modalities.html">4. Modalities of Data</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/41_text.html">4.1. Text data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/42_graphs.html">4.2. Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_programming/43_imgs.html">4.3. Images</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="1_programming/44_audio.html">4.5. Audio</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1_programming/20_visualization.html">4. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/21_univariate.html">4.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_programming/22_multivariate.html">4.2. Multivariate Visualizations</a></li>
 </ul>
 </li>
 </ul>
@@ -462,6 +464,23 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-me">About Me</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reach-me">How to Reach Me</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-week">Course Week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grade-breakdown">Grade Breakdown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-website">Course Website</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-data-mining">What is <em>Data Mining</em>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignments">Assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-assignment">Written Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming">Programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project">Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What is Data Mining?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modalities">Data Modalities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentative-plan-subject-to-change">* Tentative Plan, subject to change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-0">Assignment 0</a></li>
 </ul>
             </nav>
         </div>
@@ -481,12 +500,209 @@ document.write(`
 <p>سید فہد سلطان</p>
 <p><strong>Pronunciation</strong>:  sæjjɪd fah(aː)d  solˈtˤɑːn</p>
 <p><em>Just call me <strong>“Dr. Sultan”</strong></em> (Pronounced: Sool-tahn <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/c/cd/LL-Q9292_%28aze%29-Azerbaijani_audiorecordings-sultan.wav">🔈</a>)</p>
-<figure class="align-center" id="id1">
+<!-- 
+:::{figure-md} markdown-fig
+
+<img src="assets/name.png" alt="name" class="bg-primary mb-1" width="50%">
+
+::: -->
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="_images/name.png"><img alt="_images/name.png" src="_images/name.png" style="width: 558.0px; height: 231.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Names work differently in different parts of the world!</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Names work differently in different parts of the world!</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>I am originally from <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Lahore">Lahore, Pakistan</a></strong> (<em>Fun fact: Population of Lahore &gt;
+Population of New York City</em>) and joined <strong>Furman University</strong> in Fall 2022 after earning my Ph.D. in Computer Science from <strong>State University of New York at Stony Brook</strong>.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/lahore.png"><img alt="_images/lahore.png" src="_images/lahore.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Badshahi Mosque, Lahore, Pakistan.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Fresh out of college, I worked as a professional video game developer for a startup that later got acquired by the Japanese gaming giant DeNA. During this time, I was part of the team that built TapFish, the top-grossing game worldwide, for two weeks in 2011, on both the App Store and Google Play.</p>
+<p>I then went on to work at Technology for People Initiative, an applied research lab in my where I mined social media and cell phone data for proxies of socio-economic indicators that allowed more inclusive policy-making for marginalized communities. During these years, I also dabbled in data journalism and helped organize a boot camp on using data for journalists with the support of the International Center for Journalists (ICFJ) and the Knight Foundation.</p>
+<p>In 2015, Fahad moved to Mecca, Saudi Arabia to work for the GIS Innovation Center. There he worked on innovative urban sensing techniques for better crowd control during the annual pilgrimage to the city, the largest human gathering in the world every year.</p>
+<p>During my PhD, Fahad worked at the intersection of computational neuroscience, bioinformatics and machine learning. My work focused on identifying neurological and genetic biomarkers linking type-2 diabetes with cognitive disorders such as Alzheimer’s and other dementias.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="assets/tapfish.png"><img alt="assets/tapfish.png" src="assets/tapfish.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">TapFish</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="teaching-assistant">
+<h2>Teaching Assistant<a class="headerlink" href="#teaching-assistant" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Mister Cat</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="assets/mister.png"><img alt="assets/mister.png" src="assets/mister.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">TapFish</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="how-to-reach-me">
+<h2>How to Reach Me<a class="headerlink" href="#how-to-reach-me" title="Permalink to this headline">#</a></h2>
+<!-- <center><img align="right" width="35%" style="float:right" src="assets/office.png"></center> -->
+<p><strong>Office</strong>: Riley Hall 200-D</p>
+<p><strong>Email</strong>: fahad.sultan&#64;furman.edu</p>
+<p><strong>Office hours</strong>:</p>
+<p>Monday:   1:30 PM – 4:30 PM</p>
+<p>Friday:   9:30 AM – 11:30 AM</p>
+<p><em>Drop by office, for any other time</em></p>
+<p><strong>Open door policy</strong>, when not in class or meeting
+OR
+Email to schedule time</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/office.png"><img alt="_images/office.png" src="_images/office.png" style="width: 335.0px; height: 386.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Computer Science Department Suite in Riley Hall.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="course-week">
+<h2>Course Week<a class="headerlink" href="#course-week" title="Permalink to this headline">#</a></h2>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="assets/week.png"><img alt="assets/week.png" src="assets/week.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Course week</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="grade-breakdown">
+<h2>Grade Breakdown<a class="headerlink" href="#grade-breakdown" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Percentage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Project</p></td>
+<td><p>30%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exam 1</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>Exam 2</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exam 3</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>Exam 4</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Written Assignments</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>Programming Assignments</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Class Participation</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Fest</p></td>
+<td><p>10% (bonus)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="course-website">
+<h2>Course Website<a class="headerlink" href="#course-website" title="Permalink to this headline">#</a></h2>
+<p><strong><a class="reference external" href="https://fahadsultan.com/datascience_ml">https://fahadsultan.com/datascience_ml</a></strong></p>
+<p>All of the content will be posted on the course website</p>
+<p>Some might also be uploaded on <span class="xref myst">Moodle</span>, as needed/requested</p>
+<p>All submissions on <span class="xref myst">Moodle</span></p>
+<p>All grades will be uploaded on <span class="xref myst">Moodle</span></p>
+</section>
+<section id="what-is-data-mining">
+<h2>What is <em>Data Mining</em>?<a class="headerlink" href="#what-is-data-mining" title="Permalink to this headline">#</a></h2>
+<p>In the 1990’s “data mining” was an exciting and popular new concept. Around 2010, people instead started to speak of “big data”. Today, the popular term is “data science”. However, during all this time, the concept remained the same: use the most powerful hardware, the most powerful programming systems, and the most efficient algorithms to solve problems in science, commerce, healthcare, government, the humanities, and many other fields of human endeavor.</p>
+<p>Statisticians were the first to use the term “data mining.” Originally, “data mining” or “data dredging” was a derogatory term referring to attempts to extract information that was not supported by the data. Section 1.2 illustrates the sort of errors one can make by trying to extract what really isn’t in the data.
+Today, “data mining” has taken on a positive meaning. Now, statisticians view data mining as the construction of a statistical model, that is, an underlying distribution from which the visible data is drawn.</p>
+<p>Computer Science is the confluence of mathematics, algorithms, software (programming), and hardware.</p>
+<p>In this course, with the exception of hardware, we will summon all of these to study data mining.</p>
+</section>
+<section id="assignments">
+<h2>Assignments<a class="headerlink" href="#assignments" title="Permalink to this headline">#</a></h2>
+<p>Approach assignments purely as opportunities to:</p>
+<ul class="simple">
+<li><p>Learn</p></li>
+<li><p>Prepare for Career/Grad School</p></li>
+<li><p>Prepare for Exams</p></li>
+<li><p>Find the joy in the course material!</p></li>
+</ul>
+<p>Expect near maximum flexibility from me</p>
+<ul class="simple">
+<li><p>Soft deadlines: Weekly</p></li>
+<li><p>Hard deadlines: Before next Exam</p></li>
+</ul>
+</section>
+<section id="written-assignment">
+<h2>Written Assignment<a class="headerlink" href="#written-assignment" title="Permalink to this headline">#</a></h2>
+<p>These would build on your understanding of algorithms covered in class</p>
+<p>Would generally involve tracing algorithms and dry-runs. May involve math.</p>
+<p>Expect similar questions on the exams</p>
+<p>Both handwritten or typed submissions are acceptable</p>
+<p>Submit soft copy on Moodle</p>
+<section id="math">
+<h3>Math<a class="headerlink" href="#math" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="programming">
+<h3>Programming<a class="headerlink" href="#programming" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="id1">
+<h2>What is Data Mining?<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="data-modalities">
+<h2>Data Modalities<a class="headerlink" href="#data-modalities" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="tentative-plan-subject-to-change">
+<h2>* Tentative Plan, subject to change<a class="headerlink" href="#tentative-plan-subject-to-change" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>This is my first teaching this course</p></li>
+<li><p><strong>Any and all feedback</strong> is welcome!</p></li>
+<li><p>“Feedback (Anonymous)” on <strong>Moodle</strong></p></li>
+<li><p><strong>Anonymously</strong> share any feedback</p></li>
+<li><p>Share <strong>any changes</strong> you want me to make in the course</p></li>
+<li><p>At any point in the semester.</p></li>
+<li><p>You can submit multiple times over the span of the semester.</p></li>
+<li><p>Think of it as a <strong>Complaints Box</strong> for the course</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="assets/complaints.png"><img alt="assets/complaints.png" src="assets/complaints.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Complaints Box</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="assignment-0">
+<h2>Assignment 0<a class="headerlink" href="#assignment-0" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple" start="0">
+<li><p>Go over course syllabus</p>
+<ul class="simple">
+<li><p>Course website homepage</p></li>
+<li><p>This slide deck</p></li>
+</ul>
+</li>
+<li><p>Written Assignment 0: Pre-course Survey  (On Moodle)</p>
+<ul class="simple">
+<li><p>Please complete before next class</p></li>
+</ul>
+</li>
+<li><p>Programming Assignment 0: Set up Anaconda and Jupyter Notebook environment</p>
+<ul class="simple">
+<li><p>Please complete before next lab</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
@@ -521,6 +737,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1_programming/10_dataops.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Vectorized Operations on Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -540,6 +774,23 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-me">About Me</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reach-me">How to Reach Me</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-week">Course Week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grade-breakdown">Grade Breakdown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-website">Course Website</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-data-mining">What is <em>Data Mining</em>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignments">Assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-assignment">Written Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming">Programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project">Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What is Data Mining?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modalities">Data Modalities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentative-plan-subject-to-change">* Tentative Plan, subject to change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-0">Assignment 0</a></li>
 </ul>
   </nav></div>
 

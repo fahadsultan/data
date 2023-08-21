@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/50_calculus';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.7. Cost and Objective Functions" href="51_errors.html" />
-    <link rel="prev" title="7.9. Principal Component Analysis" href="42_pca.html" />
+    <link rel="next" title="9. Rankings and Association" href="../3_problems_in/10_ranking_assoc.html" />
+    <link rel="prev" title="7. Linear Algebra and Geometry" href="40_linearalgebra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Term Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
 </ul>
 </li>
@@ -181,60 +181,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/11_python.html">1.3. Basic Elements of Computer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/12_pandas.html">1.4. pandas</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/13_notes.html">1.6. <em>Notes</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/14_exercises.html">1.7. <em>Exercises</em></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">2. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">2.1. Univariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">2.2. Multivariate Visualizations</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/30_collecting.html">3. Collecting Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/31_apis.html">3.3. APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/32_scraping.html">3.4. Web Scraping</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/40_modalities.html">4. Modalities of Data</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/41_text.html">4.1. Text data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/42_graphs.html">4.2. Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/43_imgs.html">4.3. Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/44_audio.html">4.4. Audio</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/30_collecting.html">2. Collecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/40_modalities.html">3. Modalities of Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/20_visualization.html">4. Visualizing Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="10_probability.html">5. Probability and Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="11_randomvars.html">5.1. Random Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12_centrality.html">5.2. Centrality Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13_variability.html">5.3. Variability Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14_distributions.html">5.4. Probability Distributions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="20_logarithms.html">6. Logarithms</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="21_normalization.html">6.1. Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22_simplification.html">6.2. Simplification</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_pca.html">7.9. Principal Component Analysis</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8. Calculus</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="51_errors.html">8.7. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52_optimization.html">8.8. Optimization</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="10_probability.html">5. Probability and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_logarithms.html">6. Logarithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_linearalgebra.html">7. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/11_pagerank.html">9.1. PageRank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/12_apriori.html">9.2. Apriori Algorithm</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">10. Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
@@ -242,15 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">13. Mixture Models</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">14.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">14.2. Perceptron</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15.1. Model: Naive Bayes</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">16. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -261,14 +216,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">20. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">21. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">22. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">23. Positive Feedback Loops</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications of Data Science</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7_applications/40_recommendation.html">24. Recommendation Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">20. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">21. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">22. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">23. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -439,9 +390,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -457,19 +406,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">8.1. Limits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">8.2. Derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">8.3. Integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-derivatives">8.4. Common Derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-integrals">8.5. Common Integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost-functions">8.6. Cost Functions</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -481,137 +417,88 @@ document.write(`
                   
   <section id="calculus">
 <h1><span class="section-number">8. </span>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">#</a></h1>
-<p>Calculus is the study of continuous change. It has two major branches, differential calculus and integral calculus. The former concerns instantaneous rates of change (derivatives), while the latter concerns accumulation of quantities (integrals).</p>
-<p>Both branches are relevant to machine learning. For example, the derivative of a function is used to find the slope of a line tangent to a curve. This is useful for finding the minimum of a function, which is a common task in machine learning. The integral of a function is used to find the area under a curve. This is useful for finding the probability of an event occurring, which is also a common task in machine learning.</p>
-<section id="limits">
-<h2><span class="section-number">8.1. </span>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">#</a></h2>
-<p>The limit of a function $f(x)$ as $x$ approaches $a$ is the value that $f(x)$ approaches as $x$ gets closer and closer to $a$. It is written as:</p>
-<p>$$\lim_{x \to a} f(x)$$</p>
-<p>For example, the limit of $f(x) = x^2$ as $x$ approaches $2$ is $4$:</p>
-</section>
-<section id="derivatives">
-<h2><span class="section-number">8.2. </span>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">#</a></h2>
-<p>The derivative of a function $f(x)$ is defined as the limit of the difference quotient as $\Delta x$ approaches zero:</p>
-<p>$$f’(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}$$</p>
-</section>
-<section id="integrals">
-<h2><span class="section-number">8.3. </span>Integrals<a class="headerlink" href="#integrals" title="Permalink to this headline">#</a></h2>
-<p>The integral of a function $f(x)$ is defined as the limit of the Riemann sum as $n$ approaches infinity:</p>
-<p>$$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$$</p>
-</section>
-<section id="common-derivatives">
-<h2><span class="section-number">8.4. </span>Common Derivatives<a class="headerlink" href="#common-derivatives" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Function</p></th>
-<th class="head"><p>Derivative</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>$c$</p></td>
-<td><p>$0$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$x$</p></td>
-<td><p>$1$</p></td>
-</tr>
-<tr class="row-even"><td><p>$x^n$</p></td>
-<td><p>$nx^{n-1}$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\sqrt{x}$</p></td>
-<td><p>$\frac{1}{2\sqrt{x}}$</p></td>
-</tr>
-<tr class="row-even"><td><p>$e^x$</p></td>
-<td><p>$e^x$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$a^x$</p></td>
-<td><p>$a^x \ln a$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\ln x$</p></td>
-<td><p>$\frac{1}{x}$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\log_a x$</p></td>
-<td><p>$\frac{1}{x \ln a}$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\sin x$</p></td>
-<td><p>$\cos x$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\cos x$</p></td>
-<td><p>$-\sin x$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\tan x$</p></td>
-<td><p>$\sec^2 x$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\sec x$</p></td>
-<td><p>$\sec x \tan x$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\cot x$</p></td>
-<td><p>$-\csc^2 x$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\csc x$</p></td>
-<td><p>$-\csc x \cot x$</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="common-integrals">
-<h2><span class="section-number">8.5. </span>Common Integrals<a class="headerlink" href="#common-integrals" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Function</p></th>
-<th class="head"><p>Integral</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>$x^n$</p></td>
-<td><p>$\frac{x^{n+1}}{n+1} + C$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\frac{1}{x}$</p></td>
-<td><p>$ ln |x| + C$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\frac{1}{x^2 + 1}$</p></td>
-<td><p>$\arctan x + C$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$e^x$</p></td>
-<td><p>$e^x + C$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\frac{1}{x \ln a}$</p></td>
-<td><p>$ log_a |\ln x| + C$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\sin x$</p></td>
-<td><p>$-\cos x + C$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\cos x$</p></td>
-<td><p>$\sin x + C$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\sec^2 x$</p></td>
-<td><p>$\tan x + C$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\sec x \tan x$</p></td>
-<td><p>$\sec x + C$</p></td>
-</tr>
-<tr class="row-odd"><td><p>$\csc^2 x$</p></td>
-<td><p>$-\cot x + C$</p></td>
-</tr>
-<tr class="row-even"><td><p>$\csc x \cot x$</p></td>
-<td><p>$-\csc x + C$</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="cost-functions">
-<h2><span class="section-number">8.6. </span>Cost Functions<a class="headerlink" href="#cost-functions" title="Permalink to this headline">#</a></h2>
-<p>A cost function is a function that measures the performance of a machine learning model. It is used to find the parameters of the model that minimize the cost function. The cost function is also known as the loss function or the error function.</p>
-<p>The cost function is usually written as $J(\theta)$, where $\theta$ is a vector of parameters. For example, in linear regression, $\theta$ is a vector of weights. The cost function is a function of the training data and the parameters:</p>
-<p>$$J(\theta) = J(X, y, \theta)$$</p>
-<p>The cost function is a measure of how well the model fits the training data. It is usually defined as the sum of the squared errors between the model’s predictions and the actual values:</p>
-<p>$$J(\theta) = \sum_{i=1}^n (y_i - \hat{y}_i)^2$$</p>
-<p>The cost function is a measure of how well the model fits the training data. It is usually defined as the sum of the squared errors between the model’s predictions and the actual values:</p>
-<p>$$J(\theta) = \sum_{i=1}^n (y_i - \hat{y}_i)^2$$</p>
-<p>Other cost functions are used for other types of machine learning models. For example, the cost function for logistic regression is the negative log-likelihood:</p>
-<p>$$J(\theta) = -\sum_{i=1}^n \left[ y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i) \right]$$</p>
-</section>
-<div class="toctree-wrapper compound">
-</div>
+<!-- Calculus is the study of continuous change. It has two major branches, differential calculus and integral calculus. The former concerns instantaneous rates of change (derivatives), while the latter concerns accumulation of quantities (integrals).
+
+Both branches are relevant to machine learning. For example, the derivative of a function is used to find the slope of a line tangent to a curve. This is useful for finding the minimum of a function, which is a common task in machine learning. The integral of a function is used to find the area under a curve. This is useful for finding the probability of an event occurring, which is also a common task in machine learning.
+
+## Limits
+
+The limit of a function $f(x)$ as $x$ approaches $a$ is the value that $f(x)$ approaches as $x$ gets closer and closer to $a$. It is written as:
+
+$$\lim_{x \to a} f(x)$$
+
+For example, the limit of $f(x) = x^2$ as $x$ approaches $2$ is $4$:
+
+
+## Derivatives
+
+The derivative of a function $f(x)$ is defined as the limit of the difference quotient as $\Delta x$ approaches zero:
+
+$$f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}$$
+
+## Integrals
+
+The integral of a function $f(x)$ is defined as the limit of the Riemann sum as $n$ approaches infinity:
+
+$$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$$
+
+
+ -->
+<!-- ## Common Derivatives
+
+| Function | Derivative |
+| --- | --- |
+| $c$ | $0$ |
+| $x$ | $1$ |
+| $x^n$ | $nx^{n-1}$ |
+| $\sqrt{x}$ | $\frac{1}{2\sqrt{x}}$ |
+| $e^x$ | $e^x$ |
+| $a^x$ | $a^x \ln a$ |
+| $\ln x$ | $\frac{1}{x}$ |
+| $\log_a x$ | $\frac{1}{x \ln a}$ |
+| $\sin x$ | $\cos x$ |
+| $\cos x$ | $-\sin x$ |
+| $\tan x$ | $\sec^2 x$ |
+| $\sec x$ | $\sec x \tan x$ |
+| $\cot x$ | $-\csc^2 x$ |
+| $\csc x$ | $-\csc x \cot x$ |
+
+## Common Integrals
+
+| Function | Integral |
+| --- | --- |
+| $x^n$ | $\frac{x^{n+1}}{n+1} + C$ |
+| $\frac{1}{x}$ | $ ln \|x\| + C$ |
+| $\frac{1}{x^2 + 1}$ | $\arctan x + C$ |
+| $e^x$ | $e^x + C$ |
+| $\frac{1}{x \ln a}$ | $ log_a \|\ln x\| + C$ |
+| $\sin x$ | $-\cos x + C$ |
+| $\cos x$ | $\sin x + C$ |
+| $\sec^2 x$ | $\tan x + C$ |
+| $\sec x \tan x$ | $\sec x + C$ |
+| $\csc^2 x$ | $-\cot x + C$ |
+| $\csc x \cot x$ | $-\csc x + C$ |
+
+## Cost Functions
+
+A cost function is a function that measures the performance of a machine learning model. It is used to find the parameters of the model that minimize the cost function. The cost function is also known as the loss function or the error function.
+
+The cost function is usually written as $J(\theta)$, where $\theta$ is a vector of parameters. For example, in linear regression, $\theta$ is a vector of weights. The cost function is a function of the training data and the parameters:
+
+$$J(\theta) = J(X, y, \theta)$$
+
+The cost function is a measure of how well the model fits the training data. It is usually defined as the sum of the squared errors between the model's predictions and the actual values:
+
+$$J(\theta) = \sum_{i=1}^n (y_i - \hat{y}_i)^2$$
+
+The cost function is a measure of how well the model fits the training data. It is usually defined as the sum of the squared errors between the model's predictions and the actual values:
+
+$$J(\theta) = \sum_{i=1}^n (y_i - \hat{y}_i)^2$$
+
+Other cost functions are used for other types of machine learning models. For example, the cost function for logistic regression is the negative log-likelihood:
+
+$$J(\theta) = -\sum_{i=1}^n \left[ y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i) \right]$$
+ -->
 </section>
 
     <script type="text/x-thebe-config">
@@ -646,20 +533,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="42_pca.html"
+       href="40_linearalgebra.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.9. </span>Principal Component Analysis</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Linear Algebra and Geometry</p>
       </div>
     </a>
     <a class="right-next"
-       href="51_errors.html"
+       href="../3_problems_in/10_ranking_assoc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.7. </span>Cost and Objective Functions</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Rankings and Association</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -672,25 +559,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">8.1. Limits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">8.2. Derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">8.3. Integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-derivatives">8.4. Common Derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-integrals">8.5. Common Integrals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost-functions">8.6. Cost Functions</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

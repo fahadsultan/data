@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Collecting Data &#8212; CSC-272 Data Mining</title>
+    <title>2. Collecting Data &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/30_collecting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.3. APIs" href="31_apis.html" />
-    <link rel="prev" title="2.2. Multivariate Visualizations" href="22_multivariate.html" />
+    <link rel="next" title="3. Modalities of Data" href="40_modalities.html" />
+    <link rel="prev" title="1.4. pandas" href="12_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Term Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
 </ul>
 </li>
@@ -181,60 +181,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="11_python.html">1.3. Basic Elements of Computer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_pandas.html">1.4. pandas</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="13_notes.html">1.6. <em>Notes</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="14_exercises.html">1.7. <em>Exercises</em></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="20_visualization.html">2. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="21_univariate.html">2.1. Univariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">2.2. Multivariate Visualizations</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3. Collecting Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="31_apis.html">3.3. APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="32_scraping.html">3.4. Web Scraping</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">4. Modalities of Data</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_text.html">4.1. Text data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_graphs.html">4.2. Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43_imgs.html">4.3. Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44_audio.html">4.4. Audio</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Collecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">3. Modalities of Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/10_probability.html">5. Probability and Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/11_randomvars.html">5.1. Random Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/12_centrality.html">5.2. Centrality Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/13_variability.html">5.3. Variability Measures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/14_distributions.html">5.4. Probability Distributions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/20_logarithms.html">6. Logarithms</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/21_normalization.html">6.1. Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/22_simplification.html">6.2. Simplification</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/40_linearalgebra.html">7. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/41_vectors_matrices.html">7.8. Scalars, Vectors and Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/42_pca.html">7.9. Principal Component Analysis</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/50_calculus.html">8. Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/51_errors.html">8.7. Cost and Objective Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/52_optimization.html">8.8. Optimization</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/10_probability.html">5. Probability and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/20_logarithms.html">6. Logarithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/40_linearalgebra.html">7. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/50_calculus.html">8. Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/11_pagerank.html">9.1. PageRank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/12_apriori.html">9.2. Apriori Algorithm</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">10. Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
@@ -242,15 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">13. Mixture Models</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/31_linear.html">14.1. Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_perceptron.html">14.2. Perceptron</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_naivebayes.html">15.1. Model: Naive Bayes</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">16. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -261,14 +216,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">20. Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">21. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">22. Majority Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">23. Positive Feedback Loops</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications of Data Science</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7_applications/40_recommendation.html">24. Recommendation Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">20. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">21. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">22. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">23. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -439,9 +390,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -457,29 +406,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-of-the-internet">3.1. Architecture of the Internet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-model">3.1.1. Client Server model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http">3.1.2. HTTP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url">3.1.3. URL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html">3.1.4. HTML</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-ip">3.1.5. TCP/IP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-address">3.1.6. IP Address</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypertext">3.1.7. Hypertext</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-and-parsing-content">3.2. Requesting and Parsing Content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requests">3.2.1. <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beautifulsoup">3.2.2. <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.2.3. <code class="docutils literal notranslate"><span class="pre">beautifulsoup</span></code></a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -490,81 +416,68 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="collecting-data">
-<h1><span class="section-number">3. </span>Collecting Data<a class="headerlink" href="#collecting-data" title="Permalink to this headline">#</a></h1>
-<p>Collecting data is the first step in the data science process. It is the process of gathering data from various sources. The data can be structured or unstructured. The data can be collected from various sources like databases, web, sensors, etc. The data can be collected in various formats like CSV, JSON, XML, etc. The data can be collected using various tools like Python, R, etc.</p>
-<p>In this section, we will go over two ways of collecting data:</p>
-<ol class="arabic simple">
-<li><p>Using an API</p></li>
-<li><p>Using a Web Scraper</p></li>
-</ol>
-<p>Both of the methods above rely on the internet to collect data. This requires knowing how to use Python to make requests to the internet. We will go over this in the next section and understand the basic architecture of the internet.</p>
-<section id="architecture-of-the-internet">
-<h2><span class="section-number">3.1. </span>Architecture of the Internet<a class="headerlink" href="#architecture-of-the-internet" title="Permalink to this headline">#</a></h2>
-<p>The basic architecture of the internet is the client-server architecture. The client is the computer that makes the request to the server. The server is the computer that responds to the request. The client and server communicate using the HTTP protocol. The client sends a request to the server using the HTTP protocol. The server responds to the request using the HTTP. This communication is done using the TCP/IP protocol.</p>
-<p>The client and server can be any computer.</p>
-<p>A server is a computer generally located in a data center. A data center is a building that houses many computers. The data center is connected to the internet. The server is connected to the internet. The client is also connected to the internet.</p>
-<p>The server is generally a web server, database server, etc. The client can be a web browser, mobile app, etc.</p>
-<section id="client-server-model">
-<h3><span class="section-number">3.1.1. </span>Client Server model<a class="headerlink" href="#client-server-model" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="http">
-<h3><span class="section-number">3.1.2. </span>HTTP<a class="headerlink" href="#http" title="Permalink to this headline">#</a></h3>
-<p>HTTP stands for Hyper Text Transfer Protocol. It is a protocol that is used to transfer hypertext over the internet.</p>
-<p>HTTP status codes are used to indicate the status of the request. The status codes are in the range 100 to 599. The status codes in the range 100 to 199 are informational. The status codes in the range 200 to 299 are success codes. The status codes in the range 300 to 399 are redirection codes. The status codes in the range 400 to 499 are client error codes. The status codes in the range 500 to 599 are server error codes.</p>
-<p>The most common status codes are 200, 404, and 500. The status code 200 means that the request was successful. The status code 404 means that the resource was not found. The status code 500 means that there was an internal server error.</p>
-</section>
-<section id="url">
-<h3><span class="section-number">3.1.3. </span>URL<a class="headerlink" href="#url" title="Permalink to this headline">#</a></h3>
-<p>URL stands for Uniform Resource Locator. It is a string that identifies a resource on the internet. It is written in the form of a protocol, domain name, and path. The protocol is the protocol used to access the resource. The domain name is the name of the server that hosts the resource. The path is the path to the resource on the server.</p>
-</section>
-<section id="html">
-<h3><span class="section-number">3.1.4. </span>HTML<a class="headerlink" href="#html" title="Permalink to this headline">#</a></h3>
-<p>HTML stands for HyperText Markup Language. It is a markup language that is used to create web pages.</p>
-<p>Structure of an HTML document:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Page Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Heading<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="tcp-ip">
-<h3><span class="section-number">3.1.5. </span>TCP/IP<a class="headerlink" href="#tcp-ip" title="Permalink to this headline">#</a></h3>
-<p>TCP/IP stands for Transmission Control Protocol/Internet Protocol. It is a protocol that is used to transfer data over the internet.</p>
-</section>
-<section id="ip-address">
-<h3><span class="section-number">3.1.6. </span>IP Address<a class="headerlink" href="#ip-address" title="Permalink to this headline">#</a></h3>
-<p>An IP address is a unique number that identifies a computer on the internet. It is a 32-bit number. It is written in the form of four numbers separated by dots. Each number is between 0 and 255.</p>
-</section>
-<section id="hypertext">
-<h3><span class="section-number">3.1.7. </span>Hypertext<a class="headerlink" href="#hypertext" title="Permalink to this headline">#</a></h3>
-<p>HyperText is text that contains links to other text. The links are called hyperlinks. The text containing the links is called hypertext. The hypertext is displayed in a web browser.</p>
-</section>
-</section>
-<section id="requesting-and-parsing-content">
-<h2><span class="section-number">3.2. </span>Requesting and Parsing Content<a class="headerlink" href="#requesting-and-parsing-content" title="Permalink to this headline">#</a></h2>
-<section id="requests">
-<h3><span class="section-number">3.2.1. </span><code class="docutils literal notranslate"><span class="pre">requests</span></code><a class="headerlink" href="#requests" title="Permalink to this headline">#</a></h3>
-<p>requests library is a Python library that is used to make HTTP requests. It is a third-party library. It is not part of the Python standard library. It is installed using the pip command. It is imported using the import statement.</p>
-<p>An HTTP request is made using the requests.get() function. The requests.get() function takes a URL as an argument. The requests.get() function returns a response object. The response object contains the response from the server. The response object has a status code. The status code is a number that indicates the status of the request. The status code is 200 if the request is successful. The status code is 404 if the request is not found. The status code is 500 if there is an internal server error.</p>
-</section>
-<section id="beautifulsoup">
-<h3><span class="section-number">3.2.2. </span><code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code><a class="headerlink" href="#beautifulsoup" title="Permalink to this headline">#</a></h3>
-<p>BeautifulSoup is a Python library that is used to parse HTML. It is a third-party library. It is not part of the Python standard library. It is installed using the pip command. It is imported using the import statement.</p>
-</section>
-<section id="id1">
-<h3><span class="section-number">3.2.3. </span><code class="docutils literal notranslate"><span class="pre">beautifulsoup</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
-</section>
-</section>
-<div class="toctree-wrapper compound">
-</div>
-</section>
+<h1><span class="section-number">2. </span>Collecting Data<a class="headerlink" href="#collecting-data" title="Permalink to this headline">#</a></h1>
+<!-- Collecting data is the first step in the data science process. It is the process of gathering data from various sources. The data can be structured or unstructured. The data can be collected from various sources like databases, web, sensors, etc. The data can be collected in various formats like CSV, JSON, XML, etc. The data can be collected using various tools like Python, R, etc.
+
+In this section, we will go over two ways of collecting data: 
+
+1. Using an API
+2. Using a Web Scraper
+
+Both of the methods above rely on the internet to collect data. This requires knowing how to use Python to make requests to the internet. We will go over this in the next section and understand the basic architecture of the internet. --><!-- ## Architecture of the Internet --><!-- The basic architecture of the internet is the client-server architecture. The client is the computer that makes the request to the server. The server is the computer that responds to the request. The client and server communicate using the HTTP protocol. The client sends a request to the server using the HTTP protocol. The server responds to the request using the HTTP. This communication is done using the TCP/IP protocol. 
+
+The client and server can be any computer. 
+
+A server is a computer generally located in a data center. A data center is a building that houses many computers. The data center is connected to the internet. The server is connected to the internet. The client is also connected to the internet.
+
+The server is generally a web server, database server, etc. The client can be a web browser, mobile app, etc.  --><!-- ### Client Server model --><!-- ### HTTP
+
+HTTP stands for Hyper Text Transfer Protocol. It is a protocol that is used to transfer hypertext over the internet.
+
+HTTP status codes are used to indicate the status of the request. The status codes are in the range 100 to 599. The status codes in the range 100 to 199 are informational. The status codes in the range 200 to 299 are success codes. The status codes in the range 300 to 399 are redirection codes. The status codes in the range 400 to 499 are client error codes. The status codes in the range 500 to 599 are server error codes.
+
+The most common status codes are 200, 404, and 500. The status code 200 means that the request was successful. The status code 404 means that the resource was not found. The status code 500 means that there was an internal server error.
+
+### URL
+
+URL stands for Uniform Resource Locator. It is a string that identifies a resource on the internet. It is written in the form of a protocol, domain name, and path. The protocol is the protocol used to access the resource. The domain name is the name of the server that hosts the resource. The path is the path to the resource on the server.
+
+### HTML
+
+HTML stands for HyperText Markup Language. It is a markup language that is used to create web pages. 
+
+Structure of an HTML document:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<h1>Heading</h1>
+<p>Paragraph</p>
+</body>
+</html>
+```
+
+### TCP/IP
+
+TCP/IP stands for Transmission Control Protocol/Internet Protocol. It is a protocol that is used to transfer data over the internet.
+
+### IP Address
+
+An IP address is a unique number that identifies a computer on the internet. It is a 32-bit number. It is written in the form of four numbers separated by dots. Each number is between 0 and 255.
+
+### Hypertext
+
+HyperText is text that contains links to other text. The links are called hyperlinks. The text containing the links is called hypertext. The hypertext is displayed in a web browser. --><!-- ## Requesting and Parsing Content --><!-- ### `requests` --><!-- requests library is a Python library that is used to make HTTP requests. It is a third-party library. It is not part of the Python standard library. It is installed using the pip command. It is imported using the import statement.
+
+An HTTP request is made using the requests.get() function. The requests.get() function takes a URL as an argument. The requests.get() function returns a response object. The response object contains the response from the server. The response object has a status code. The status code is a number that indicates the status of the request. The status code is 200 if the request is successful. The status code is 404 if the request is not found. The status code is 500 if there is an internal server error.
+
+### `BeautifulSoup`
+
+BeautifulSoup is a Python library that is used to parse HTML. It is a third-party library. It is not part of the Python standard library. It is installed using the pip command. It is imported using the import statement. --><!-- ### `beautifulsoup` --></section>
 
     <script type="text/x-thebe-config">
     {
@@ -598,20 +511,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="22_multivariate.html"
+       href="12_pandas.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Multivariate Visualizations</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>pandas</p>
       </div>
     </a>
     <a class="right-next"
-       href="31_apis.html"
+       href="40_modalities.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>APIs</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Modalities of Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -624,35 +537,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-of-the-internet">3.1. Architecture of the Internet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-model">3.1.1. Client Server model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http">3.1.2. HTTP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url">3.1.3. URL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html">3.1.4. HTML</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-ip">3.1.5. TCP/IP</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-address">3.1.6. IP Address</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypertext">3.1.7. Hypertext</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-and-parsing-content">3.2. Requesting and Parsing Content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requests">3.2.1. <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beautifulsoup">3.2.2. <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.2.3. <code class="docutils literal notranslate"><span class="pre">beautifulsoup</span></code></a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -1,9 +1,9 @@
 
-# Term Project 
+# Course Project 
 
-In this course, you are expected to plan, execute, and present the results of a term-long group project of your choosing. 
+In this course, you are expected to plan, execute, and present the results of a semester-long group project of your choosing. 
 
-Your project code should be on **[Github](https://github.com)**. Each group will be responsible to turn in **3-5 page project proposals and progress reports** as of the dates above.  
+Each group will be responsible to turn in **3-5 page project proposals and progress reports** as of the dates above.  
 
 Take the time to investigate multiple options during the proposal phase.  You should have gotten some preliminary results by then, enough to provide confidence you will be able to successfully complete the project. 
 
