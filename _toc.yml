@@ -32,57 +32,57 @@ parts:
       sections: 
         - file: 1_programming/11_python
         - file: 1_programming/12_pandas
-        - file: 1_programming/13_notes
-        - file: 1_programming/14_exercises
-    - file: 1_programming/20_visualization
-      sections: 
-        - file: 1_programming/21_univariate
-        - file: 1_programming/22_multivariate
-        - file: 1_programming/23_notes
+        # - file: 1_programming/13_notes
+        # - file: 1_programming/14_exercises
     - file: 1_programming/30_collecting
-      sections: 
-        - file: 1_programming/31_apis
-        - file: 1_programming/32_scraping
-        - file: 1_programming/33_notes
+      # sections: 
+      #   - file: 1_programming/31_apis
+      #   - file: 1_programming/32_scraping
+      #   - file: 1_programming/33_notes
     - file: 1_programming/40_modalities
-      sections: 
-        - file: 1_programming/41_text
-        - file: 1_programming/42_graphs
-        - file: 1_programming/43_imgs
-        - file: 1_programming/44_audio
-        - file: 1_programming/45_notes
+      # sections: 
+      #   - file: 1_programming/41_text
+      #   - file: 1_programming/42_graphs
+      #   - file: 1_programming/43_imgs
+      #   - file: 1_programming/44_audio
+      #   - file: 1_programming/45_notes
+    - file: 1_programming/20_visualization
+      # sections: 
+      #   - file: 1_programming/21_univariate
+      #   - file: 1_programming/22_multivariate
+      #   - file: 1_programming/23_notes
   - caption: Mathematics for Data Science
     numbered: true
     chapters: 
     - file: 2_maths/10_probability.ipynb
-      sections: 
-        - file: 2_maths/11_randomvars
-        - file: 2_maths/12_centrality
-        - file: 2_maths/13_variability
-        - file: 2_maths/14_distributions
-        - file: 2_maths/15_prob_notes
+      # sections: 
+      #   - file: 2_maths/11_randomvars
+      #   - file: 2_maths/12_centrality
+      #   - file: 2_maths/13_variability
+      #   - file: 2_maths/14_distributions
+      #   - file: 2_maths/15_prob_notes
     - file: 2_maths/20_logarithms.ipynb
-      sections: 
-        - file: 2_maths/21_normalization
-        - file: 2_maths/22_simplification
-        - file: 2_maths/23_log_notes
+      # sections: 
+      #   - file: 2_maths/21_normalization
+      #   - file: 2_maths/22_simplification
+      #   - file: 2_maths/23_log_notes
     - file: 2_maths/40_linearalgebra.ipynb
-      sections: 
-        - file: 2_maths/41_vectors_matrices
-        - file: 2_maths/42_pca
-        - file: 2_maths/43_linearalgebra_notes
+      # sections: 
+      #   - file: 2_maths/41_vectors_matrices
+      #   - file: 2_maths/42_pca
+      #   - file: 2_maths/43_linearalgebra_notes
     - file: 2_maths/50_calculus.ipynb
-      sections: 
-        - file: 2_maths/51_errors
-        - file: 2_maths/52_optimization
-        - file: 2_maths/53_calculus_notes
+      # sections: 
+      #   - file: 2_maths/51_errors
+      #   - file: 2_maths/52_optimization
+      #   - file: 2_maths/53_calculus_notes
   - caption: Problems in Data Science
     numbered: true
     chapters:
     - file: 3_problems_in/10_ranking_assoc
-      sections: 
-        - file: 3_problems_in/11_pagerank
-        - file: 3_problems_in/12_apriori
+      # sections: 
+      #   - file: 3_problems_in/11_pagerank
+      #   - file: 3_problems_in/12_apriori
     - file: 3_problems_in/20_clustering
     - file: 3_problems_in/30_regression
     - file: 3_problems_in/40_classification
@@ -91,12 +91,12 @@ parts:
     chapters:
       - file: 3_problems_in/22_kmeans
       - file: 4_models/generalized
-        sections: 
-        - file: 3_problems_in/31_linear
-        - file: 3_problems_in/42_perceptron
+        # sections: 
+        # - file: 3_problems_in/31_linear
+        # - file: 3_problems_in/42_perceptron
       - file: 4_models/graphical
-        sections: 
-        - file: 3_problems_in/41_naivebayes
+        # sections: 
+        # - file: 3_problems_in/41_naivebayes
       - file: 4_models/nn
   - caption: Algorithms in Data Science
     numbered: true
@@ -107,14 +107,14 @@ parts:
   - caption: Problems with Data Science
     numbered: true
     chapters:
+    - file: 6_problems_with/40_feedback
     - file: 6_problems_with/10_representation
     - file: 6_problems_with/20_boundaries
     - file: 6_problems_with/30_incentives
-    - file: 6_problems_with/40_feedback
-  - caption: Applications of Data Science
-    numbered: true
-    chapters:
-    - file: 7_applications/40_recommendation
+  # - caption: Applications of Data Science
+  #   numbered: true
+  #   chapters:
+  #   - file: 7_applications/40_recommendation
     # - file: 5_applications/10_text
   #     sections: 
   #       - file: 5_applications/11_sentiment
