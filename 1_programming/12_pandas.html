@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.4. pandas &#8212; CSC-272 Data Mining</title>
+    <title>pandas &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -63,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/12_pandas';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Collecting Data" href="30_collecting.html" />
-    <link rel="prev" title="1.3. Basic Elements of Computer Programming" href="11_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -156,6 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
@@ -170,19 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="11_python.html">1.3. Basic Elements of Computer Programming</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.4. pandas</a></li>
-
-</ul>
-</li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40_modalities.html">3. Modalities of Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
@@ -261,53 +254,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1_programming/12_pandas.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -413,40 +359,40 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.4. pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations">1.5. Vectorized Operations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-lambda-x">1.5.1. <code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-considerations">1.5.2. Space Considerations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-pandas">1.5.2.1. Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">pandas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations">Vectorized Operations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-lambda-x"><code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-considerations">Space Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-pandas">Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series">1.5.3. pd.Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">1.5.3.1. Filtering using Boolean Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series">pd.Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">Filtering using Boolean Maps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">1.5.4. pd.DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv">1.5.4.1. <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape">1.5.4.2. <code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head">1.5.4.3. <code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max">1.5.4.4. <code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.5.4.5. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull">1.5.4.6. <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum">1.5.4.7. <code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0">1.5.4.8. <code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.5.4.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.5.4.10. <code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.5.4.11. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.5.4.12. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">1.5.4.13. Creation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">1.5.4.14. Accessing a individual column</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">1.5.4.15. Accessing a individual row</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">1.5.4.16. Unique Values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.5.4.17. Value Counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">1.5.4.18. Grouping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">1.5.4.19. Merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">pd.DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv"><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape"><code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head"><code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max"><code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes"><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull"><code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum"><code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0"><code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype"><code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts"><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">Accessing a individual column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">Accessing a individual row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">Unique Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Value Counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">Grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">Merging</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cheatsheet">1.5.5. Cheatsheet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cheatsheet">Cheatsheet</a></li>
 </ul>
 </li>
 </ul>
@@ -462,7 +408,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="pandas">
-<h1><span class="section-number">1.4. </span>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
+<h1>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> is a powerful Python library used for <strong>data science</strong>.</p></li>
 <li><p>It has functions for <strong>analyzing</strong>, <strong>cleaning</strong>, <strong>exploring</strong>, and <strong>manipulating data</strong>.</p></li>
@@ -471,15 +417,15 @@ document.write(`
 </ul>
 </section>
 <section id="vectorized-operations">
-<h1><span class="section-number">1.5. </span>Vectorized Operations<a class="headerlink" href="#vectorized-operations" title="Permalink to this headline">#</a></h1>
+<h1>Vectorized Operations<a class="headerlink" href="#vectorized-operations" title="Permalink to this headline">#</a></h1>
 <p>There are two primary considerations in Computer Science: speed and space.</p>
 <p>The bottleneck in speed comes from repetition aka loops.</p>
 <p>And loops come from size of data i.e. length of an array, number of key-value pairs in a dictionary etc. i.e. <code class="docutils literal notranslate"><span class="pre">len(x)</span></code></p>
 <section id="apply-lambda-x">
-<h2><span class="section-number">1.5.1. </span><code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code><a class="headerlink" href="#apply-lambda-x" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code><a class="headerlink" href="#apply-lambda-x" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="space-considerations">
-<h2><span class="section-number">1.5.2. </span>Space Considerations<a class="headerlink" href="#space-considerations" title="Permalink to this headline">#</a></h2>
+<h2>Space Considerations<a class="headerlink" href="#space-considerations" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>: Size of RAM</p>
 <p>Scale of data:</p>
 <p>Not really big data. For real big data: Batch processing, Distributed computing, Threaded programming, Map-Reduce.</p>
@@ -504,7 +450,7 @@ document.write(`
 <li><p>Thus, whenever you see <code class="docutils literal notranslate"><span class="pre">pd.</span></code> in code, it’s referring to <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
 </ul>
 <section id="data-structures-in-pandas">
-<h3><span class="section-number">1.5.2.1. </span>Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h3>
+<h3>Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>To get started with pandas, you will need to get comfortable with its two workhorse <strong>data structures</strong>:</p></li>
 </ul>
@@ -518,7 +464,7 @@ document.write(`
 </section>
 </section>
 <section id="pd-series">
-<h2><span class="section-number">1.5.3. </span>pd.Series<a class="headerlink" href="#pd-series" title="Permalink to this headline">#</a></h2>
+<h2>pd.Series<a class="headerlink" href="#pd-series" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>A Series is a one-dimensional array-like object containing a sequence of values</p></li>
 <li><p>Of the same type and an associated array of data labels, called its index.</p></li>
@@ -589,12 +535,12 @@ document.write(`
 </div>
 </div>
 <section id="filtering-using-boolean-maps">
-<h3><span class="section-number">1.5.3.1. </span>Filtering using Boolean Maps<a class="headerlink" href="#filtering-using-boolean-maps" title="Permalink to this headline">#</a></h3>
+<h3>Filtering using Boolean Maps<a class="headerlink" href="#filtering-using-boolean-maps" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> as a Vector</p>
 </section>
 </section>
 <section id="pd-dataframe">
-<h2><span class="section-number">1.5.4. </span>pd.DataFrame<a class="headerlink" href="#pd-dataframe" title="Permalink to this headline">#</a></h2>
+<h2>pd.DataFrame<a class="headerlink" href="#pd-dataframe" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -603,7 +549,7 @@ document.write(`
 </div>
 </div>
 <section id="pd-read-csv">
-<h3><span class="section-number">1.5.4.1. </span><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code><a class="headerlink" href="#pd-read-csv" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code><a class="headerlink" href="#pd-read-csv" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/imdb_top_1000.csv&#39;</span><span class="p">)</span>
@@ -613,7 +559,7 @@ document.write(`
 </div>
 </section>
 <section id="df-shape">
-<h3><span class="section-number">1.5.4.2. </span><code class="docutils literal notranslate"><span class="pre">df.shape</span></code><a class="headerlink" href="#df-shape" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">df.shape</span></code><a class="headerlink" href="#df-shape" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
@@ -628,7 +574,7 @@ document.write(`
 </div>
 </section>
 <section id="df-head">
-<h3><span class="section-number">1.5.4.3. </span><code class="docutils literal notranslate"><span class="pre">df.head</span></code><a class="headerlink" href="#df-head" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">df.head</span></code><a class="headerlink" href="#df-head" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -774,10 +720,10 @@ document.write(`
 </div>
 </section>
 <section id="df-col-max">
-<h3><span class="section-number">1.5.4.4. </span><code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code><a class="headerlink" href="#df-col-max" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code><a class="headerlink" href="#df-col-max" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="dtypes">
-<h3><span class="section-number">1.5.4.5. </span><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code><a class="headerlink" href="#dtypes" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code><a class="headerlink" href="#dtypes" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
@@ -808,7 +754,7 @@ dtype: object
 </div>
 </section>
 <section id="df-isnull">
-<h3><span class="section-number">1.5.4.6. </span><code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code><a class="headerlink" href="#df-isnull" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code><a class="headerlink" href="#df-isnull" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
@@ -1069,7 +1015,7 @@ dtype: object
 </div>
 </section>
 <section id="df-col-sum">
-<h3><span class="section-number">1.5.4.7. </span><code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code><a class="headerlink" href="#df-col-sum" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code><a class="headerlink" href="#df-col-sum" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1100,7 +1046,7 @@ dtype: float64
 </div>
 </section>
 <section id="fillna-0">
-<h3><span class="section-number">1.5.4.8. </span><code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code><a class="headerlink" href="#fillna-0" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code><a class="headerlink" href="#fillna-0" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gross&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gross&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1116,10 +1062,10 @@ dtype: float64
 </div>
 </section>
 <section id="apply">
-<h3><span class="section-number">1.5.4.9. </span><code class="docutils literal notranslate"><span class="pre">.apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="astype">
-<h3><span class="section-number">1.5.4.10. </span><code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code><a class="headerlink" href="#astype" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code><a class="headerlink" href="#astype" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -1129,7 +1075,7 @@ dtype: float64
 </div>
 </section>
 <section id="unique">
-<h3><span class="section-number">1.5.4.11. </span><code class="docutils literal notranslate"><span class="pre">.unique()</span></code><a class="headerlink" href="#unique" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.unique()</span></code><a class="headerlink" href="#unique" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -1236,7 +1182,7 @@ dtype: float64
 </div>
 </section>
 <section id="value-counts">
-<h3><span class="section-number">1.5.4.12. </span><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code><a class="headerlink" href="#value-counts" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code><a class="headerlink" href="#value-counts" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -1262,29 +1208,29 @@ Name: Genre, Length: 202, dtype: int64
 </div>
 </section>
 <section id="creation">
-<h3><span class="section-number">1.5.4.13. </span>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">#</a></h3>
+<h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="accessing-a-individual-column">
-<h3><span class="section-number">1.5.4.14. </span>Accessing a individual column<a class="headerlink" href="#accessing-a-individual-column" title="Permalink to this headline">#</a></h3>
+<h3>Accessing a individual column<a class="headerlink" href="#accessing-a-individual-column" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="accessing-a-individual-row">
-<h3><span class="section-number">1.5.4.15. </span>Accessing a individual row<a class="headerlink" href="#accessing-a-individual-row" title="Permalink to this headline">#</a></h3>
+<h3>Accessing a individual row<a class="headerlink" href="#accessing-a-individual-row" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="unique-values">
-<h3><span class="section-number">1.5.4.16. </span>Unique Values<a class="headerlink" href="#unique-values" title="Permalink to this headline">#</a></h3>
+<h3>Unique Values<a class="headerlink" href="#unique-values" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="id1">
-<h3><span class="section-number">1.5.4.17. </span>Value Counts<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Value Counts<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="grouping">
-<h3><span class="section-number">1.5.4.18. </span>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">#</a></h3>
+<h3>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="merging">
-<h3><span class="section-number">1.5.4.19. </span>Merging<a class="headerlink" href="#merging" title="Permalink to this headline">#</a></h3>
+<h3>Merging<a class="headerlink" href="#merging" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 <section id="cheatsheet">
-<h2><span class="section-number">1.5.5. </span>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">#</a></h2>
+<h2>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">#</a></h2>
 <p>https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</p>
 </section>
 </section>
@@ -1320,24 +1266,6 @@ Name: Genre, Length: 202, dtype: int64
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="11_python.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Basic Elements of Computer Programming</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="30_collecting.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Collecting Data</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1356,40 +1284,40 @@ Name: Genre, Length: 202, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.4. pandas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations">1.5. Vectorized Operations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-lambda-x">1.5.1. <code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-considerations">1.5.2. Space Considerations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-pandas">1.5.2.1. Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">pandas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations">Vectorized Operations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-lambda-x"><code class="docutils literal notranslate"><span class="pre">.apply(lambda</span> <span class="pre">x:</span> <span class="pre">...</span> <span class="pre">)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-considerations">Space Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-in-pandas">Data Structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series">1.5.3. pd.Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">1.5.3.1. Filtering using Boolean Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series">pd.Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-using-boolean-maps">Filtering using Boolean Maps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">1.5.4. pd.DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv">1.5.4.1. <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape">1.5.4.2. <code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head">1.5.4.3. <code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max">1.5.4.4. <code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.5.4.5. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull">1.5.4.6. <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum">1.5.4.7. <code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0">1.5.4.8. <code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.5.4.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.5.4.10. <code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.5.4.11. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.5.4.12. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">1.5.4.13. Creation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">1.5.4.14. Accessing a individual column</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">1.5.4.15. Accessing a individual row</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">1.5.4.16. Unique Values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.5.4.17. Value Counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">1.5.4.18. Grouping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">1.5.4.19. Merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-dataframe">pd.DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-read-csv"><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-shape"><code class="docutils literal notranslate"><span class="pre">df.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-head"><code class="docutils literal notranslate"><span class="pre">df.head</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-max"><code class="docutils literal notranslate"><span class="pre">df[col].max()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes"><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-isnull"><code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-col-sum"><code class="docutils literal notranslate"><span class="pre">df[col].sum()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fillna-0"><code class="docutils literal notranslate"><span class="pre">.fillna(0)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype"><code class="docutils literal notranslate"><span class="pre">.astype(..)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts"><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation">Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-column">Accessing a individual column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-individual-row">Accessing a individual row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-values">Unique Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Value Counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">Grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging">Merging</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cheatsheet">1.5.5. Cheatsheet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cheatsheet">Cheatsheet</a></li>
 </ul>
 </li>
 </ul>

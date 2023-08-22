@@ -156,6 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
@@ -170,19 +171,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="data.html">Data sets and Project ideas</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/11_python.html">1.3. Basic Elements of Computer Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/12_pandas.html">1.4. pandas</a></li>
-
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_programming/30_collecting.html">2. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_programming/40_modalities.html">3. Modalities of Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_programming/20_visualization.html">4. Visualizing Data</a></li>
@@ -261,53 +256,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproject/project.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -414,14 +362,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groups">Groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-or-collect-a-data-set">Identify or Collect a Data set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">Pre-processing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-analysis">Preliminary Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-and-evaluation">Supervised Learning and Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-the-results">Analyze the results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation">Presentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-grading">Peer Grading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-lifecycle">Data Science Lifecycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-a-question-and-obtain-data">1. Ask a Question <em>and</em> Obtain Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-data">2. Understand the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-world-1">3. Understand the World 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-world-2">4. Understand the World 2</a></li>
 </ul>
             </nav>
         </div>
@@ -436,113 +381,222 @@ document.write(`
   <section id="course-project">
 <h1>Course Project<a class="headerlink" href="#course-project" title="Permalink to this headline">#</a></h1>
 <p>In this course, you are expected to plan, execute, and present the results of a semester-long group project of your choosing.</p>
-<p>Each group will be responsible to turn in <strong>3-5 page project proposals and progress reports</strong> as of the dates above.</p>
 <p>Take the time to investigate multiple options during the proposal phase.  You should have gotten some preliminary results by then, enough to provide confidence you will be able to successfully complete the project.</p>
 <section id="groups">
 <h2>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">#</a></h2>
 <p>Working alone on the project is strongly discouraged. Group sizes should range from <strong>two to three students</strong>. It is possible for multiple groups working on the same data set. However, such groups must work independently and are not allowed to share code or results. Each dataset leaves enough room to pursue different directions so I expect to see variety among the submissions from each group.</p>
 <hr class="docutils" />
-<p>To ensure consistent progress, there is a project deadline roughly every 2 weeks. This will allow you to apply the techniques you learn in class to your project in a timely manner.</p>
-<p><strong>The steps of your project are to mirror the general data analysis pipeline</strong></p>
+<p>To ensure consistent progress, there is a <strong>project deadline roughly every month, before each of the four exams</strong>. This will allow you to apply the techniques you learn in class to your project in a timely manner.</p>
 </section>
-<section id="identify-or-collect-a-data-set">
-<h2>Identify or Collect a Data set<a class="headerlink" href="#identify-or-collect-a-data-set" title="Permalink to this headline">#</a></h2>
+<section id="data-science-lifecycle">
+<h2>Data Science Lifecycle<a class="headerlink" href="#data-science-lifecycle" title="Permalink to this headline">#</a></h2>
+<p>The steps of your project are to mirror the general data science lifecycle pipeline.</p>
+<p>The data science lifecycle is a high-level overview of the data science workflow. It’s a cycle of stages that a data scientist should explore as they conduct a thorough analysis of a data-driven problem.</p>
+<p>There are many variations of the key ideas present in the data science lifecycle. Here, we visualize the stages of the lifecycle using a flow diagram.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/data_life_cycle.png"><img alt="../_images/data_life_cycle.png" src="../_images/data_life_cycle.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Data Science Lifecycle</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ask-a-question-and-obtain-data">
+<h2>1. Ask a Question <em>and</em> Obtain Data<a class="headerlink" href="#ask-a-question-and-obtain-data" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Due September 15</strong></p>
+<p><strong>Due before Exam 1</strong></p>
 </div>
-<p>Identify or collect a <em>publicly available</em> data set that you will use for your project. A list of possible datasets and project ideas are <span class="xref myst">provided here</span> but you are allowed to propose your own project and data set. Just be mindful of the scale of the data: it should be large enough to be appropriate for usage in Machine Learning, but not so large that it is unwieldy.</p>
-</section>
-<section id="pre-processing">
-<h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">#</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Due October 1</strong></p>
-</div>
-<p>Preprocess data to change raw feature vectors into a representation that is more suitable for the downstream analysis. This may include data cleaning, calculating derivative or second-order variables, feature extraction, and feature selection.</p>
-</section>
-<section id="preliminary-analysis">
-<h2>Preliminary Analysis<a class="headerlink" href="#preliminary-analysis" title="Permalink to this headline">#</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Due October 15</strong></p>
-</div>
-<p>Perform some exploratory analysis to help you get acquainted with the data. This may include data visualization and basic preliminary analysis. Identify interesting aspects of the data set that would be useful for downstream prediction: correlations, outliers, missing values, etc.</p>
-</section>
-<section id="unsupervised-learning">
-<h2>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Due November 1</strong></p>
-</div>
-<p>Your project must involve atleast one unsupervised learning model. This should inform your supervised learning model. This may include, but is not limited to, clustering, dimensionality reduction, and density estimation.</p>
-</section>
-<section id="supervised-learning-and-evaluation">
-<h2>Supervised Learning and Evaluation<a class="headerlink" href="#supervised-learning-and-evaluation" title="Permalink to this headline">#</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Due November 15</strong></p>
-</div>
-<p>Identify, implement and apply a model covered in the class to predict some aspect of the data. This must be a supervised learning model. This may include, model selection, and model evaluation.</p>
-<p>You must compare your results to a number of baselines, including random predictor, major class classifier and/or autocorrelation model. An example table is shown below:</p>
+<p>Whether by curiosity or necessity, data scientists will constantly ask questions. For example, in the business world, data scientists may be interested in predicting the profit generated by a certain investment. In the field of medicine, they may ask whether some patients are more likely than others to benefit from a treatment.</p>
+<p>Posing questions is one of the primary ways the data science lifecycle begins. It helps to fully define the question. Here are some things you should ask yourself before framing a question.</p>
+<ul class="simple">
+<li><p>What do we want to know?</p>
+<ul>
+<li><p>A question that is too ambiguous may lead to confusion.</p></li>
+</ul>
+</li>
+<li><p>What problems are we trying to solve?</p>
+<ul>
+<li><p>The goal of asking a question should be clear in order to justify your efforts to stakeholders.</p></li>
+</ul>
+</li>
+<li><p>What are the hypotheses we want to test?</p>
+<ul>
+<li><p>This gives a clear perspective from which to analyze final results.</p></li>
+</ul>
+</li>
+<li><p>What are the metrics for our success?</p>
+<ul>
+<li><p>This gives a clear point to know when to finish the project.</p></li>
+</ul>
+</li>
+</ul>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Model</p></th>
-<th class="head"><p>Accuracy</p></th>
-<th class="head"><p>Precision</p></th>
-<th class="head"><p>Recall</p></th>
-<th class="head"><p>F1-score</p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-center head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Random baseline</p></td>
-<td><p>0.5</p></td>
-<td><p>0.52</p></td>
-<td><p>0.55</p></td>
-<td><p>0.53</p></td>
+<tr class="row-even"><td class="text-center"><p><a class="bg-primary reference internal" href="../_images/ask_question.png"><img alt="fishy" class="bg-primary" src="../_images/ask_question.png" style="width: 100%;" /></a></p></td>
+<td class="text-center"><p><a class="bg-primary reference internal" href="../_images/data_acquisition.png"><img alt="fishy" class="bg-primary" src="../_images/data_acquisition.png" style="width: 100%;" /></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Majority class / Autocorrelation</p></td>
-<td><p>0.75</p></td>
-<td><p>0.5</p></td>
-<td><p>1</p></td>
-<td><p>0.66</p></td>
-</tr>
-<tr class="row-even"><td><p>Model 1</p></td>
-<td><p>0.77</p></td>
-<td><p>0.72</p></td>
-<td><p>0.74</p></td>
-<td><p>0.73</p></td>
-</tr>
-<tr class="row-odd"><td><p>Model 2</p></td>
-<td><p><strong>0.85</strong></p></td>
-<td><p><strong>0.79</strong></p></td>
-<td><p><strong>0.89</strong></p></td>
-<td><p><strong>0.88</strong></p></td>
+<tr class="row-odd"><td class="text-center"><p>1. Ask a Question</p></td>
+<td class="text-center"><p>2. Obtain Data</p></td>
 </tr>
 </tbody>
 </table>
+<p>The second entry point to the lifecycle is by obtaining data. A careful analysis of any problem requires the use of data. Data may be readily available to us, or we may have to embark on a process to collect it. When doing so, its crucial to ask the following:</p>
+<ul class="simple">
+<li><p>What data do we have and what data do we need?</p>
+<ul>
+<li><p>Define the units of the data (people, cities, points in time, etc.) and what features to measure.</p></li>
+</ul>
+</li>
+<li><p>How will we sample more data?</p>
+<ul>
+<li><p>Scrape the web, collect manually, etc.</p></li>
+</ul>
+</li>
+<li><p>Is our data representative of the population we want to study?</p>
+<ul>
+<li><p>If our data is not representative of our population of interest, then we can come to incorrect conclusions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Project Phase 1</div>
+<p class="sd-card-text">Identify or collect a <em>publicly available</em> data set that you will use for your project. A list of possible datasets and project ideas are <span class="xref myst">provided here</span> but you are allowed to propose your own project and data set. Just be mindful of the scale of the data: it should be large enough to be appropriate for usage in Machine Learning, but not so large that it is unwieldy.</p>
+<p class="sd-card-text">Key procedures: <strong>Data Acquisition</strong>, <strong>Data Cleaning</strong></p>
+</div>
+</div>
 </section>
-<section id="analyze-the-results">
-<h2>Analyze the results<a class="headerlink" href="#analyze-the-results" title="Permalink to this headline">#</a></h2>
+<section id="understand-the-data">
+<h2>2. Understand the Data<a class="headerlink" href="#understand-the-data" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Due December 1</strong></p>
+<p><strong>Due before Exam 2</strong></p>
 </div>
-<p>Discuss the results of your analysis. This must include stating the assumptions of the model, the limitations of the model, a thorough error analysis and future directions.</p>
+<p>Raw data itself is not inherently useful. It’s impossible to discern all the patterns and relationships between variables without carefully investigating them. Therefore, translating pure data to actionable insights is a key job of a data scientist. For example, we may choose to ask:</p>
+<ul class="simple">
+<li><p>How is our data organized and what does it contain?</p>
+<ul>
+<li><p>Knowing what the data says about the world helps us better understand the world.</p></li>
+</ul>
+</li>
+<li><p>Do we have relevant data?</p>
+<ul>
+<li><p>If the data we have collected is not useful to the question at hand, then we must collected more data.</p></li>
+</ul>
+</li>
+<li><p>What are the biases, anomalies, or other issues with the data?</p>
+<ul>
+<li><p>These can lead to many false conclusions if ignored, so data scientists must always be aware of these issues.</p></li>
+</ul>
+</li>
+<li><p>How do we transform the data to enable effective analysis?</p>
+<ul>
+<li><p>Data is not always easy to interpret at first glance, so a data scientist should reveal these hidden insights.</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Project Phase 2</div>
+<p class="sd-card-text">Perform some exploratory analysis to help you get acquainted with the data. This may include data visualization and basic preliminary analysis. Identify interesting aspects of the data set that would be useful for downstream prediction: correlations, outliers, missing values, etc.</p>
+<p class="sd-card-text">Key procedures: <strong>Exploratory data analysis</strong>, <strong>Data visualization</strong>.</p>
+</div>
+</div>
 </section>
-<section id="presentation">
-<h2>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">#</a></h2>
+<section id="understand-the-world-1">
+<h2>3. Understand the World 1<a class="headerlink" href="#understand-the-world-1" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Last two weeks of class</strong></p>
+<p><strong>Due before Exam 3</strong></p>
 </div>
-<p>Present your findings to the class. This will be a 10 minute presentation followed by 5 minutes of questions.</p>
+<p>After observing the patterns in our data, we can begin answering our question. This may require that we predict a quantity (machine learning), or measure the effect of some treatment (inference).</p>
+<p>From here, we may choose to report our results, or possibly conduct more analysis. We may not be satisfied by our findings, or our initial exploration may have brought up new questions that require a new data.</p>
+<ul class="simple">
+<li><p>What does the data say about the world?</p>
+<ul>
+<li><p>Given our models, the data will lead us to certain conclusions about the real world.</p></li>
+</ul>
+</li>
+<li><p>Does it answer our questions or accurately solve the problem?</p>
+<ul>
+<li><p>If our model and data can not accomplish our goals, then we must reform our question, model, or both.</p></li>
+</ul>
+</li>
+<li><p>How robust are our conclusions and can we trust the predictions?</p>
+<ul>
+<li><p>Inaccurate models can lead to untrue conclusions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Project Phase 3</div>
+<p class="sd-card-text">Preprocess data to change raw feature vectors into a representation that is more suitable for the downstream analysis. This may include data cleaning, calculating derivative or second-order variables, feature extraction, and feature selection.</p>
+<p class="sd-card-text">Implement baseline models covered in class and report their performance.</p>
+<p class="sd-card-text">Key procedures: <strong>Model Creation</strong>, <strong>Prediction</strong>, <strong>Inference</strong>.</p>
+</div>
+</div>
 </section>
-<hr class="docutils" />
-<section id="peer-grading">
-<h2>Peer Grading<a class="headerlink" href="#peer-grading" title="Permalink to this headline">#</a></h2>
-<p>A substantial part of the grading of the projects will be done by peers: each student will be charged with grading three other projects on the same topic. <em>Peer review is how research papers are selected for publication in academia</em>, and I hope this will be revealing.  I am hoping that this review will provide insights to improve your own projects as well.</p>
-<p>To preserve <strong>anonymity in submissions</strong>, it is important that the papers you submit online for grading <strong>not contain your names</strong> or ID numbers. Indeed, the peer grading form/rubric will include a question if the grader can figure out whose paper they have, and if so we will take off points.</p>
+<section id="understand-the-world-2">
+<h2>4. Understand the World 2<a class="headerlink" href="#understand-the-world-2" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Due before Exam 4 (Finals)</strong></p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Project Phase 4</div>
+<p class="sd-card-text">Identify, implement and apply as many models as relevant from  class to predict some aspect of the data. This must be a supervised learning model. This may include, model selection, and model evaluation.</p>
+<p class="sd-card-text">You must compare your results to a number of baselines, including random predictor, major class classifier and/or autocorrelation model. An example table is shown below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Model</p></th>
+<th class="head"><p class="sd-card-text">Accuracy</p></th>
+<th class="head"><p class="sd-card-text">Precision</p></th>
+<th class="head"><p class="sd-card-text">Recall</p></th>
+<th class="head"><p class="sd-card-text">F1-score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Random baseline</p></td>
+<td><p class="sd-card-text">0.5</p></td>
+<td><p class="sd-card-text">0.52</p></td>
+<td><p class="sd-card-text">0.55</p></td>
+<td><p class="sd-card-text">0.53</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Majority class / Autocorrelation</p></td>
+<td><p class="sd-card-text">0.75</p></td>
+<td><p class="sd-card-text">0.5</p></td>
+<td><p class="sd-card-text">1</p></td>
+<td><p class="sd-card-text">0.66</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Model 1</p></td>
+<td><p class="sd-card-text">0.77</p></td>
+<td><p class="sd-card-text">0.72</p></td>
+<td><p class="sd-card-text">0.74</p></td>
+<td><p class="sd-card-text">0.73</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Model 2</p></td>
+<td><p class="sd-card-text"><strong>0.85</strong></p></td>
+<td><p class="sd-card-text"><strong>0.79</strong></p></td>
+<td><p class="sd-card-text"><strong>0.89</strong></p></td>
+<td><p class="sd-card-text"><strong>0.88</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p class="sd-card-text">Discuss the results of your analysis. This must include stating the assumptions of the model, the limitations of the model, a thorough error analysis and future directions.</p>
+<p class="sd-card-text">Key procedures: <strong>Model Creation</strong>, <strong>Prediction</strong>, <strong>Inference</strong>, <strong>Model Selection</strong>, <strong>Error Analysis</strong>.</p>
+</div>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -616,14 +670,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groups">Groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-or-collect-a-data-set">Identify or Collect a Data set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">Pre-processing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-analysis">Preliminary Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-and-evaluation">Supervised Learning and Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-the-results">Analyze the results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation">Presentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-grading">Peer Grading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-lifecycle">Data Science Lifecycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-a-question-and-obtain-data">1. Ask a Question <em>and</em> Obtain Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-data">2. Understand the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-world-1">3. Understand the World 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-world-2">4. Understand the World 2</a></li>
 </ul>
   </nav></div>
 

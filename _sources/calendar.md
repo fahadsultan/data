@@ -1,55 +1,55 @@
 # Calendar
 
-* Introduction
-
-## Programming for Data Science
-
-| #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | LAB | WRITTEN  ASSIGNMENT |
-|---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 1       | Data I/O                   |         | Pandas                     | Distributions          |     |
-| 2       | Data Visualization         |         | Histograms, BarsLine Plots | Scatter Plots,Heatmaps |     |                   |
-| 3       | Data Cleaning              |         | Normalization              | Missing Values         |     |
-| 4       | Data Collection            |         | APIs / XML                 | Web Scraping           |     |
-| 5       | Feature Extraction         |         | Bag of Words / TFIDF       | Graphs?                |     |
-
-Exam 1                       
-## Unsupervised Learning        
-| #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | LAB | WRITTEN  ASSIGNMENT |
-|---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 6                            | Dimensionality Reduction   |         | PCA/SVD                    | TSNE                   |     |
-| 5                            | Association Rule Mining    |         | Market Basket Model        | A-Priori Algorithm     |     |
-| 7                            | Nearest Neighbor & K-Means |         | Nearest Neighbor           | KMeans                 |     |
-| 8                            | Recommendation Engines     |         | Collaborative Filtering    |                        |
-
-Exam 2                       
-## Supervised Learning
-
-| #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | LAB | WRITTEN  ASSIGNMENT |
-|---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 9                            | Linear Regression          |         | Gradient Descent           |                        |
-| 10                           | Logistic Regression        |         |                            |                        |
-| 11                           | Naive Bayes                |         |                            |                        |
-| 12                           | Model Validation           |         |                            |                        |
-| Exam 3                       |
-| Ethics and Algorithmic Bias  |
-| 13                           | Decision Trees             |         |                            |                        |
-| 14                           | Perceptron                 |         |                            |                        |
-| 15                           | Presentation               |
-| 16                           | Neural Networks            |
-
-  
+```{note}
+ Please note that this is a tentative plan and is subject to change.
+```
 
 <br/>
+<center><i>September: Programming for Data Science</i></center>
 
+| #       | TOPIC                      | READING | MEETING 1                  | MEETING 2       | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
+|---------|----------------------------|---------|----------------------------|-----------------|-----|-------------------|
+| 1       | Vectorized Operations      |         | Pandas                     | Pandas          |     |
+| 2       | Vectorized Operations      |         | Pandas                     | Pandas          |     |                   |
+| 3       | Data Collection            |         | APIs + XML                 | Web Scraping    |     |
+| 4       | Data Modalities            |         | Text + Networks            | Images + Sound  |     |
 
-| Topic        | Textbook Reading          | Lecture 1 | Lecture 2 | Written Assignment | Lab |
-|:-------------|:------------------|:------|:------|:------|:------|
-| Introduction | good swedish fish | nice  |nice  |nice  |nice  |
-| Data I/O | good and plenty   | nice  |nice  |nice  |nice  |
-| Plotting Data | good `oreos`      | hmm   |nice  |nice  |nice  |
-| Collecting Data | good `zoute` drop | yumm  |nice  |nice  |nice  |
-| Introduction | good swedish fish | nice  |nice  |nice  |nice  |
-| Data I/O | good and plenty   | nice  |nice  |nice  |nice  |
-| Plotting Data | good `oreos`      | hmm   |nice  |nice  |nice  |
-| Collecting Data | good `zoute` drop | yumm  |nice  |nice  |nice  |
+<center><b><i>Project phase 1 due</i></b><center>
+<center><b><i>EXAM 1</i></b><center>
+<br><br>
+<center><i>October: Mathematics for Data Science</i></center>        
+
+| #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
+|-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
+| 5     | Data Visualization         |         |                  |            |     |
+| 6     | Prob + Stats               |         |            |     |     |
+| 7     | Logarithms + Linear Algebra|         |         |      |     |
+| 8     | Rankings and Associations  |         |            |                  |     |
+
+<center><b><i>Project phase 2 due</i></b><center>
+<center><b><i>EXAM 2</i></b><center>
+<br><br>        
+<center><i>November: Problems, Models and Algorithms of Data Science</i></center> 
+
+| #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
+|-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
+| 9     | Clustering            |         |                            |                        |
+| 10     | Calculus          |         |                           |                        |
+| 11    | Classification        |         |                            |                        |
+| 12    | Regression                |         |                            |                        |
+
+<center><b><i>Project phase 3 due</i></b><center>
+<center><b><i>EXAM 3</i></b><center>
+<br><br>        
+<center><i>December: Problems, Models and Algorithms of Data Science</i></center> 
+
+| #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
+|---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
+| 13      | Mixture Models             |         |                            |                        |
+| 14      | Generalized Linear Models                 |         |                            |                        |
+| 15      | Graphical Models               |
+| 16      | Neural Networks            |
+
+<center><b><i>Project phase 4 due</i></b><center>
+<center><b><i>FINAL EXAM</i></b></center>
 

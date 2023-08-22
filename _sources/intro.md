@@ -47,14 +47,20 @@ In 2015, I moved to Mecca, Saudi Arabia to work for the GIS Innovation Center (n
 
 During my PhD, Fahad worked at the intersection of computational neuroscience, bioinformatics and machine learning. My work focused on identifying neurological and genetic biomarkers linking type-2 diabetes with cognitive disorders such as Alzheimer's and other dementias.
 
-```{figure} assets/tapfish.jpeg
+| | | |
+|:---:|:---:|:---:|
+|<img src="assets/tapfish.jpeg" alt="fishy" class="bg-primary" width="350px"> |<img src="assets/mobility.gif" alt="fishy" class="bg-primary" width="200px"> | <img src="assets/neuroimaging2.jpeg" alt="fishy" class="bg-primary" width="400px"> |
+ | 1. Video games developer | 2. City Planner | 3. Neuroscientist |
+
+## Teaching Assistant
+
+```{figure} assets/mister.jpeg
 ---
-width: 20%
+width: 50%
 align: center
 ---
-TapFish 1
+If your code has bugs, **Mister Cat** will find them!
 ``` 
-
 
 ## How to Reach Me
 
@@ -91,7 +97,7 @@ If you don't like your odds for catching me in my office, **schedule a meeting**
 width: 100%
 align: center
 ---
-Course week
+Course week. I am in my office most weekdays from 9 AM - 5 PM and have an open-door policy.
 ``` 
 
 
@@ -109,76 +115,91 @@ Important announcements will be made on both the course website homepage and on 
 
 All assignments and exams should be submitted on [Moodle](moodle.com). All grades will be uploaded on [Moodle](moodle.com)
 
+## Exams 
+
+There will be **four** exams in the course, one roughly every month, including the final. Exams constitute 40% of your course grade.
+
+All exams will be on the computer, with a large programming component. Questions will be posted on Moodle and you will have to submit your solutions on Moodle, just like assignments.
+
+You will be evaluated on your ability to apply knowledge to new problems and not just on your ability to retain and recall information.
+
+The exams (and the project), more than the assignments, are primarily going to determine your grade.
+
+All exams are going to be cumulative, with focus on the topics covered since last exam. 
+
+You will be assigned an interim grade on Workday after every Exam. 
+
+Diligent work on the homework and assignments will be rewarded here. 
+
+```{figure} assets/exams.png
+---
+scale: 50%
+align: center
+---
+Consistent effort and regular feedback. 
+``` 
+
 ## Assignments 
 
-Approach assignments purely as opportunities to:
+Approach assignments purely as opportunities to learn, prepare for exams and to prepare for your career.
 
-* Learn
+It is not worth cheating on assignments. Just come talk to me if you are struggling with an assignment. I will literally just tell you the answer. 
 
-* Prepare for Career/Grad School
+On assignments, expect **near maximal flexibility** from me. For every assignment, the soft (recommended) deadline will be a week after the assignment is posted. The hard deadline will be before the next exam. 
 
-* Prepare for Exams
+In other words, as long as you submit the assignment before the next exam, you will get full credit.
 
-* Find the joy in the course material!
+<u>**Written Assignments:**</u>
 
-Expect near maximum flexibility from me
+Written assignments are to help you build a deeper understanding of algorithms and math covered in class.  
 
-* Soft deadlines: Weekly
+These could simply be math problems or involve tracing algorithms and dry-runs. 
 
-* Hard deadlines: Before next Exam
+Both handwritten or typed submissions are acceptable. Submissions, as always, on Moodle. 
 
-## Written Assignment
+<u>**Programming Assignments:**</u>
 
-These would build on your understanding of algorithms covered in class
+Programming assignments are going to be posted at the start of the lab session each week and will be due before the start of the next lab session. 
 
-Would generally involve tracing algorithms and dry-runs. May involve math. 
+You should expect similar questions on the exams. 
 
-Expect similar questions on the exams
+## Class Participation
 
-Both handwritten or typed submissions are acceptable 
+I may periodically give out class participation points during class for answering or asking a question
 
-Submit soft copy on Moodle
+Given the glut of information accessible online and otherwise in this day and age, **meaningful interactions with your peers and teachers is essentially what you are paying college tuition for**. 
 
-## * Tentative Plan, subject to change
+Please come to class, labs and office hours 
 
+Please ask questions during class
+
+Please answer questions and participate in discussions during class
+
+## Giant Asterisk * 
+
+<i><u>**Everything is tentative and subject to change**</u></i>
 
 ```{figure} assets/complaints.jpeg
 ---
 width: 50%
 align: right
 ---
-<!-- (Anonymous) Complaints Box on Moodle -->
+Complaints Box on Moodle
 ``` 
 
-* This is my first teaching this course 
 
-* **Any and all feedback** is welcome! 
+This is my first teaching this course. **Any and all feedback** is welcome! 
 
-* “Feedback (Anonymous)” on **Moodle**
+I have created an anonymous feedback poll on **Moodle**. Please use this to **anonymously** share any feedback. 
  
-* **Anonymously** share any feedback
- 
-* Share **any changes** you want me to make in the course
+Share **any changes** you want me to make in the course, **at any point in the semester**. You can submit multiple times over the span of the semester.  
 
-* At any point in the semester. 
-
-* You can submit multiple times over the span of the semester.  
-
-* Think of it as a **Complaints Box** for the course 
+Think of it as a _Complaints Box_ for the course.
 
 
 ## What is _Data Mining_?
 
-In the 1990’s "data mining" was an exciting and popular new concept. Around 2010, people instead started to speak of "big data". Today, the popular term is "data science". There are some who even regard data mining as synonymous with machine learning. There is no question that some data mining appropriately uses algorithms from machine learning. However, during all this time, the concept remained the same: use the most powerful hardware, the most powerful programming systems, and the most efficient algorithms to solve problems in science, commerce, healthcare, government, the humanities, and many other fields of human endeavor. 
-
-In this course, I 
-
-Statisticians were the first to use the term “data mining.” Originally, “data mining” or “data dredging” was a derogatory term referring to attempts to extract information that was not supported by the data. Section 1.2 illustrates the sort of errors one can make by trying to extract what really isn’t in the data.
-Today, “data mining” has taken on a positive meaning. Now, statisticians view data mining as the construction of a statistical model, that is, an underlying distribution from which the visible data is drawn. 
-
-Computer Science is the confluence of mathematics, algorithms, software (programming), and hardware.
-
-In this course, with the exception of hardware, we will summon all of these to study data mining. 
+"Data Mining" is a term from the 1990s, back when it was an exciting and popular new field. Around 2010, people instead started to speak of "big data". Today, the popular term is "data science". There are some who even regard data mining as synonymous with machine learning. There is no question that some data mining appropriately uses algorithms from machine learning. However, during all this time, the concept remained the same: use the most powerful hardware, the most powerful programming systems, and the most efficient algorithms to solve problems in science, commerce, healthcare, government, the humanities, and many other fields of human endeavor. 
 
 ```{figure} assets/venn.png
 ---
@@ -188,149 +209,44 @@ align: center
 Drew Conway's Data Science Venn Diagram
 ``` 
 
-## Expect lots of Programming and lots of Math! 
+From the Venn Diagram, the course content is going to cover ✅ Hacking Skills and ✅ Math & Statistics in detail but not ☐ Substantive Expertise. For that missing piece, I strongly encourage you to bring in knowledge from your GERs and other Non-CS department courses into this class and the term project in particular. Nothing would make me happier than to see projects that combines CS with your other interests.
 
+`````{admonition} Expect lots of Programming and lots of Math in the Course! 
+:class: warning
 
-## Math anxiety / trauma 
+_"But wait, I am not a Math Person!"_ you say!  
 
-* **Math anxiety** is a real thing and is very common. 
+There is no such thing as a "_Math Person_". I do recognize, however, that **Math Anxiety** is a real thing and is very common. It is a feeling of fear based on a belief that one is not good at math or that math is inherently difficult. 
 
+`````{admonition} Please use this course as an opportunity to overcome your Math anxiety!
+:class: tip
+In this course, the code you write will be mostly math. Most modern _"AI"_ is just that: math, in code.
 
-## Teaching Assistant
+This presents a unique opportunity for you to overcome your Math anxiety. You will be able to see the math in action, be able to visualize the results and have a conversation with it. 
 
-
-```{figure} assets/mister.jpeg
----
-width: 50%
-align: center
----
-If your code has bugs, **Mister Cat** will find them!
-``` 
-
-## Data Science Lifecycle
-
-The data science lifecycle is a high-level overview of the data science workflow. It's a cycle of stages that a data scientist should explore as they conduct a thorough analysis of a data-driven problem. 
-
-There are many variations of the key ideas present in the data science lifecycle. In Data 100, we visualize the stages of the lifecycle using a flow diagram. Notice how there are two entry points. 
-
-
-```{figure} assets/data_life_cycle.png
----
-width: 50%
-align: center
----
-Data Science Lifecycle
-``` 
-
-### Ask a Question 
-
-Whether by curiosity or necessity, data scientists will constantly ask questions. For example, in the business world, data scientists may be interested in predicting the profit generated by a certain investment. In the field of medicine, they may ask whether some patients are more likely than others to benefit from a treatment. 
-
-Posing questions is one of the primary ways the data science lifecycle begins. It helps to fully define the question. Here are some things you should ask yourself before framing a question.
-
-- What do we want to know? 
-    - A question that is too ambiguous may lead to confusion.
-- What problems are we trying to solve?
-    - The goal of asking a question should be clear in order to justify your efforts to stakeholders.
-- What are the hypotheses we want to test?
-    - This gives a clear perspective from which to analyze final results.
-- What are the metrics for our success?
-    - This gives a clear point to know when to finish the project.
-
-```{figure} assets/ask_question.png
----
-width: 50%
-align: center
----
-Ask a question
-``` 
-
-### Obtain Data 
-
-The second entry point to the lifecycle is by obtaining data. A careful analysis of any problem requires the use of data. Data may be readily available to us, or we may have to embark on a process to collect it. When doing so, its crucial to ask the following:  
-
-- What data do we have and what data do we need?
-    - Define the units of the data (people, cities, points in time, etc.) and what features to measure.
-- How will we sample more data?
-    - Scrape the web, collect manually, etc.
-- Is our data representative of the population we want to study?
-    - If our data is not representative of our population of interest, then we can come to incorrect conclusions.
-    
-Key procedures: *data acquisition*, *data cleaning*
-
-```{figure} assets/data_acquisition.png
----
-width: 50%
-align: center
----
-Acquire data
-``` 
-
-### Understand the Data
-
-Raw data itself is not inherently useful. It's impossible to discern all the patterns and relationships between variables without carefully investigating them. Therefore, translating pure data to actionable insights is a key job of a data scientist. For example, we may choose to ask:
-
-- How is our data organized and what does it contain?
-    - Knowing what the data says about the world helps us better understand the world. 
-- Do we have relevant data?
-    - If the data we have collected is not useful to the question at hand, then we must collected more data.
-- What are the biases, anomalies, or other issues with the data?
-    - These can lead to many false conclusions if ignored, so data scientists must always be aware of these issues. 
-- How do we transform the data to enable effective analysis?
-    - Data is not always easy to interpret at first glance, so a data scientist should reveal these hidden insights. 
-    
-Key procedures: *exploratory data analysis*, *data visualization*.
-
-
-```{figure} assets/understand_data.png
----
-width: 50%
-align: center
----
-Understand the data
-``` 
-
-### Understand the World
-
-After observing the patterns in our data, we can begin answering our question. This may require that we predict a quantity (machine learning), or measure the effect of some treatment (inference). 
-
-From here, we may choose to report our results, or possibly conduct more analysis. We may not be satisfied by our findings, or our initial exploration may have brought up new questions that require a new data.
-
-- What does the data say about the world?
-    - Given our models, the data will lead us to certain conclusions about the real world.   
-- Does it answer our questions or accurately solve the problem?
-    - If our model and data can not accomplish our goals, then we must reform our question, model, or both.  
-- How robust are our conclusions and can we trust the predictions?
-    - Inaccurate models can lead to untrue conclusions.
-
-Key procedures: *model creation*, *prediction*, *inference*.
-
-
-```{figure} assets/understand_world.png
----
-width: 50%
-align: center
----
-Understand the world
-``` 
+Trust me, there is a tremendous amount of beauty and joy to be found in mathematics. And if beauty and joy aren't really your thing, then let me also assure you there is a lot of money to be made these days by being good at coding math. Either way, the rewards are well worth the effort! 
+`````
 
 ## Central Dogma of Data Science 
 
+Originally, “data mining” or “data dredging” was a derogatory term referring to attempts to extract information that was not supported by the data. 
+Later, around the same time the iPhone was released and social networks started to take off, “data mining” took on a more positive meaning.  Data was declared to be the _"new oil"_ and the job of a Data Scientist was declared as _"The Sexiest Job of the 21st Century"_. 
+
+Today, I argue that the term "data mining" has mixed connotations. At the heart of the ambivalence towards data mining is the central dogma of data science: 
+
 ```{figure} assets/dogma.png
 ---
-width: 50%
+width: 80%
 align: center
 ---
-AKA Central Dogma of Statistics
+Commonly known as Central Dogma of Statistics. 
 ``` 
 
+The central dogma of data science, simply put, is that general claims about a population can be made from a sample of data. This raises all sorts of questions and concerns about the sampling process such as the representativeness of the sample, the size of the sample, the sampling bias, etc. Which in turn raises concerns about potential negative effects of the claims made based on questionable data. 
 
-## Conclusion
+I'll end here. I hope you are excited about the course and the term project.
 
-The data science lifecycle is meant to be a set of general guidelines rather than a hard list of requirements. In our journey exploring the lifecycle, we'll cover both the underlying theory and technologies used in data science, and we hope you'll build an appreciation for the field.
-
-With that, let's begin by introducing one of the most important tools in exploratory data analysis: `pandas`.
-
+In the next lecture, we will begin by introducing one of the most important tools in exploratory data analysis: `pandas`.
 
 ## Assignment 0
 
@@ -338,13 +254,8 @@ With that, let's begin by introducing one of the most important tools in explora
 
     * Course website homepage
 
-    * This slide deck
 
 1. Written Assignment 0: Pre-course Survey  (On Moodle)
 
     * Please complete before next class
 
-2. Programming Assignment 0: Set up Anaconda and Jupyter Notebook environment
-
-    * Please complete before next lab 
- 
