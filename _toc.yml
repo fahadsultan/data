@@ -7,6 +7,7 @@ root: index.md
 parts: 
   - caption: 
     chapters:
+    - file: calendar
     - file: syllabus/index
       sections: 
       - file: syllabus/grading
@@ -20,7 +21,7 @@ parts:
     - file: project/project
       sections: 
       - file: project/data
-    - file: calendar
+    
   - caption: 
     chapters:
     - file: intro
@@ -29,9 +30,9 @@ parts:
     numbered: true
     chapters:
     - file: 1_programming/10_dataops
-      sections: 
-        - file: 1_programming/11_python
-        - file: 1_programming/12_pandas
+      # sections: 
+      #   - file: 1_programming/11_python
+      #   - file: 1_programming/12_pandas
         # - file: 1_programming/13_notes
         # - file: 1_programming/14_exercises
     - file: 1_programming/30_collecting
