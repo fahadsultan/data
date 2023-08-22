@@ -18,15 +18,15 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-Pre-course survey due **September 1st**
+Pre-course survey due **August 24th**
 ```
 
 ```{tip}
-**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://outlook.office.com/bookwithme/user/7f43cdadbc6f4eacabe535b66abeeea8@furman.edu/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink)** 
+**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://calendly.com/ssultan-dpq)** 
 ```
 
 ```{seealso}
-**[Course page on Moodle](http://moodle.com)**; used mostly for submitting assignments and uploading grades
+**[Course page on Moodle](https://courses.furman.edu/course/view.php?id=16185)**; used mostly for submitting assignments and uploading grades
 ```
 
 <!-- ## Important Annoucements:  -->
