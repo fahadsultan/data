@@ -18,7 +18,7 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-Pre-course survey due **September 1st**
+Pre-course survey due **August 24th**
 ```
 
 ```{tip}
@@ -26,7 +26,7 @@ Pre-course survey due **September 1st**
 ```
 
 ```{seealso}
-**[Course page on Moodle](http://moodle.com)**; used mostly for submitting assignments and uploading grades
+**[Course page on Moodle](https://courses.furman.edu/course/view.php?id=16185)**; used mostly for submitting assignments and uploading grades
 ```
 
 <!-- ## Important Annoucements:  -->
