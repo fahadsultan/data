@@ -365,91 +365,64 @@ document.write(`
                   
   <section id="vectorized-operations-on-data">
 <h1><span class="section-number">1. </span>Vectorized Operations on Data<a class="headerlink" href="#vectorized-operations-on-data" title="Permalink to this headline">#</a></h1>
-<!-- Computer Science is all about getting computers to perform tasks for us efficiently, reliably and correctly.
-
-When we talk about efficiency, we are talking both space and time. 
-
-Given we are living through the data deluge of the 21st century, when working with data, the issues of time (speed) and space (memory) are particularly relevant.
-
-Let's talk about speed first.  --><!-- ## Time Complexity --><!-- 
-
-Computer Scientists are a little paranoid, when it comes to speed. They/We always assume the worst! 
-
-Wait, how do we even measure speed? 
-
-And what are we even measuring the speed of? 
-
-Should we be measuring the amount of time it takes for our code to run? 
-
-We know computers are much faster today then they were only a few years ago and my Dad's computer today is much slower than mine. 
-
-So if we are measuring the speed of a computer program, whose computer should we measure the speed on? 
-
-Should we measure speed on an "average computer" available to buy in the market today? Identifying such an average computer sounds like a lot of work! 
-
-What do we do when newer faster computers come out in the future? 
-
-We also know some programming languages are faster than others. 
-
-It sounds like what we need is an abstract theoretical framework for measuring speed that is independent of any particular hardware specifications and any programming language. 
-
-Thankfully, this is a solved problem. 
-
-Computer Scientists long ago decided to measure speed of an algorithm, as opposed to any particular program in any programming language. An Algorithm if you recall is simply a sequence of instructions that maps inputs to outputs. 
-
-Five basic instructions of an algorithm: 
-
-1. Input
-2. Output
-3. Math 
-4. Branching
-5. Repetition
-
-Guess which of the five above is most relevant to measuring speed of an algorithm? 
-
-It is number 5: Repetitions! AKA LOOPS! 
-
-That is, in computer science, we measure the speed of an algorithm in terms of iterations of a loop. 
-
-If an algorithm does not have any loops in it, it is said to be a **constant time algorithm**, even if that has a million input/output/math/branching instructions. A constant time label given to an algorithm is akin to 3-michelin star rating given to a restaurant. Just like you can't do better than 3-michelin stars in the Michelin star rating system, you can't do better than constant-time algorithms. They are the crème de la crème of algorithms. 
-
-Algorithms however don't follow the Michelin star ratings. The Michelin star rating equivalent in the world of algorithms is called the **Big O-Notation**. A constant time algorithm in Big $O(1)$. 
-
-Your average algorithm has atleast one loop that iterates over some particular data structure. So what label do we give to an algorithm with one loop that follows the basic template: 
-
-```
-arr = [1, 2, 3, 4, 5]
-n_even = 0
-i = 0 
-while i < len(arr):
-    if arr[i] % 2 == 0:
-        n_even = n_even + 1
-    i = i + 1
-print(n_even)
-```
-
-Such algorithms are given the label **linear time** or, in Big-O notation, $O(n)$. 
-
-$n$ here is the size of the data structure i.e. `len(arr)`. Length of a data structure also happens to be the number of iterations of the loop. 
-
-In summary, we measure the speed of an algorithm in relation to: 
-
-* size of data 
-* number of iterations in all loops in the algorithm
-
-For algorithms containing a single loop, the two quantities above are the same in most cases. If an algorithm contains nested loops, then the algorithm is said to be $O(n^2)$
-
-This is a good theoretical framework because it measures how the algorithm's speed scales as size of the data increases. 
-
-## Space Complexity
-
-I don't have a lot to say on the issue of space or memory consumption but it is critical. 
-
-Improving speed of an algorithm often comes at the cost of more memory consumption. That is, improving speed of an algorithm often necessitates creation or use of data structures that allow faster data retrieval and processing times. In that sense, speed and memory have an inherent tension in Computer Science. In this course, we are going to use such data structures that are going to result in very fast code. But the price we have to pay as a result is that we can only work with data sets that can fit within our memory. For most people it is going to be on the order of 8-16 GB. 
-
-Datasets of today are often much larger than this and require alternative paradigms of computer programming such as Distibuted Computing etc. 
- -->
-<!-- There are two primary considerations in Computer Science: speed and space.  --></section>
+<p>Computer Science is all about getting computers to perform tasks for us efficiently, reliably and correctly.</p>
+<p>When we talk about efficiency, we are talking both space (memory) and time (speed).</p>
+<p>Given we are living through the data deluge of the 21st century, when working with data, the issues of time and space are particularly relevant.</p>
+<p>Let’s talk about speed first.</p>
+<p><strong>Time Complexity</strong></p>
+<p>Computer scientists are a little paranoid when it comes to speed. We always assume the worst!</p>
+<p>How do we measure the speed of an algorithm? We can use the <code class="docutils literal notranslate"><span class="pre">time</span></code> module to measure the time it takes to run a function.</p>
+<p>Computer Scientists are a little paranoid, when it comes to speed. They/We always assume the worst!</p>
+<p>Wait, how do we even measure speed?</p>
+<p>And what are we even measuring the speed of?</p>
+<p>Should we be measuring the amount of time it takes for our code to run?</p>
+<p>We know computers are much faster today then they were only a few years ago and my Dad’s computer today is much slower than mine.</p>
+<p>So if we are measuring the speed of a computer program, whose computer should we measure the speed on?</p>
+<p>Should we measure speed on an “average computer” available to buy in the market today? Identifying such an average computer sounds like a lot of work!</p>
+<p>What do we do when newer faster computers come out in the future?</p>
+<p>We also know some programming languages are faster than others.</p>
+<p>It sounds like what we need is an abstract theoretical framework for measuring speed that is independent of any particular hardware specifications and any programming language.</p>
+<p>Thankfully, this is a solved problem.</p>
+<p>Computer Scientists long ago decided to measure speed of an algorithm, as opposed to any particular program in any programming language. An Algorithm if you recall is simply a sequence of instructions that maps inputs to outputs.</p>
+<p>Five basic instructions of an algorithm:</p>
+<ol class="arabic simple">
+<li><p>Input</p></li>
+<li><p>Output</p></li>
+<li><p>Math</p></li>
+<li><p>Branching</p></li>
+<li><p>Repetition</p></li>
+</ol>
+<p>Guess which of the five above is most relevant to measuring speed of an algorithm?</p>
+<p>It is number 5: Repetitions! AKA LOOPS!</p>
+<p>That is, in computer science, we measure the speed of an algorithm in terms of iterations of a loop.</p>
+<p>If an algorithm does not have any loops in it, it is said to be a <strong>constant time algorithm</strong>, even if that has a million input/output/math/branching instructions. A constant time label given to an algorithm is akin to 3-michelin star rating given to a restaurant. Just like you can’t do better than 3-michelin stars in the Michelin star rating system, you can’t do better than constant-time algorithms. They are the crème de la crème of algorithms.</p>
+<p>Algorithms however don’t follow the Michelin star ratings. The Michelin star rating equivalent in the world of algorithms is called the <strong>Big O-Notation</strong>. A constant time algorithm in Big $O(1)$.</p>
+<p>Your average algorithm has atleast one loop that iterates over some particular data structure. So what label do we give to an algorithm with one loop that follows the basic template:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">n_even</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n_even</span> <span class="o">=</span> <span class="n">n_even</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_even</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Such algorithms are given the label <strong>linear time</strong> or, in Big-O notation, $O(n)$.</p>
+<p>$n$ here is the size of the data structure i.e. <code class="docutils literal notranslate"><span class="pre">len(arr)</span></code>. Length of a data structure also happens to be the number of iterations of the loop.</p>
+<p>In summary, we measure the speed of an algorithm in relation to:</p>
+<ul class="simple">
+<li><p>size of data</p></li>
+<li><p>number of iterations in all loops in the algorithm</p></li>
+</ul>
+<p>For algorithms containing a single loop, the two quantities above are the same in most cases. If an algorithm contains nested loops, then the algorithm is said to be $O(n^2)$</p>
+<p>This is a good theoretical framework because it measures how the algorithm’s speed scales as size of the data increases.</p>
+<p><strong>Space Complexity</strong></p>
+<p>I don’t have a lot to say on the issue of space or memory consumption but it is critical.</p>
+<p>Improving speed of an algorithm often comes at the cost of more memory consumption. That is, improving speed of an algorithm often necessitates creation or use of data structures that allow faster data retrieval and processing times. In that sense, speed and memory have an inherent tension in Computer Science. In this course, we are going to use such data structures that are going to result in very fast code. But the price we have to pay as a result is that we can only work with data sets that can fit within our memory. For most people it is going to be on the order of 8-16 GB.</p>
+<p>Datasets of today are often much larger than this and require alternative paradigms of computer programming such as Distibuted Computing etc.</p>
+<p><strong>Vectorization</strong></p>
+</section>
 
     <script type="text/x-thebe-config">
     {

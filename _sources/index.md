@@ -22,7 +22,7 @@ Pre-course survey due **August 24th**
 ```
 
 ```{tip}
-**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://outlook.office.com/bookwithme/user/7f43cdadbc6f4eacabe535b66abeeea8@furman.edu/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ep=mlink)** 
+**Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://calendly.com/ssultan-dpq)** 
 ```
 
 ```{seealso}
