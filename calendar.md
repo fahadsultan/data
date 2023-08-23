@@ -9,7 +9,7 @@
 
 | #       | TOPIC                      | READING | MEETING 1                  | MEETING 2       | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |---------|----------------------------|---------|----------------------------|-----------------|-----|-------------------|
-| 1       | Vectorized Operations      |         | Pandas                     | Pandas          |     |
+| 1       | Vectorized Operations      |         | Pandas                     | Pandas          |     | **[PA 1](https://colab.research.google.com/drive/1coRRvXOuoEn1NzTLjvz9TXwAGkG1gsMJ?usp=sharing)**
 | 2       | Vectorized Operations      |         | Pandas                     | Pandas          |     |                   |
 | 3       | Data Collection            |         | APIs + XML                 | Web Scraping    |     |
 | 4       | Data Modalities            |         | Text + Networks            | Images + Sound  |     |
