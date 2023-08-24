@@ -21,6 +21,10 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 Pre-course survey due **August 24th**
 ```
 
+```{important}
+**[Programming Assignment 1](https://colab.research.google.com/drive/1coRRvXOuoEn1NzTLjvz9TXwAGkG1gsMJ?usp=sharing)** is due on **August 29th** at 11:59 PM
+```
+
 ```{tip}
 **Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://calendly.com/ssultan-dpq)** 
 ```
