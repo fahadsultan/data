@@ -30,7 +30,8 @@ parts:
     numbered: true
     chapters:
     - file: 1_programming/10_dataops
-      # sections: 
+      sections: 
+          - file: 1_programming/pandas1
       #   - file: 1_programming/11_python
       #   - file: 1_programming/12_pandas
         # - file: 1_programming/13_notes
