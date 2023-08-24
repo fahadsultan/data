@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.1. Pandas I &#8212; CSC-272 Data Mining</title>
+    <title>Pandas I &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -60,11 +60,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas1 copy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Collecting Data" href="30_collecting.html" />
-    <link rel="prev" title="1. Vectorized Operations on Data" href="10_dataops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -176,9 +174,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Pandas I</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
@@ -272,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/pandas1.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/pandas1 copy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/1_programming/pandas1.ipynb" target="_blank"
+      <li><a href="../_sources/1_programming/pandas1 copy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,35 +393,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">DataFrames, Series and Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">Selection in Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">A Single Index Label</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">A List of Index Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">A Filtering Condition</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">1.1.4.1.2. From a Dictionary</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">1.1.4.1.3. From a Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">Creating a DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">Using a List and Column Names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">From a Dictionary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">From a Series</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">1.1.5. Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">1.1.6. Slicing in DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">1.1.6.1. Extracting data with .head and .tail</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">1.1.6.2. Indexing with .loc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">1.1.6.3. Indexing with .iloc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">1.1.6.4. Indexing with []</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.1.6.4.1. A slice of row numbers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.1.6.4.2. A list of column labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.1.6.4.3. A single column label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">Slicing in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">Extracting data with .head and .tail</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">Indexing with .loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">Indexing with .iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">Indexing with []</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">A single column label</a></li>
 </ul>
 </li>
 </ul>
@@ -440,21 +438,21 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="pandas-i">
-<h1><span class="section-number">1.1. </span>Pandas I<a class="headerlink" href="#pandas-i" title="Permalink to this headline">#</a></h1>
+<h1>Pandas I<a class="headerlink" href="#pandas-i" title="Permalink to this headline">#</a></h1>
 <p>Lets dive right into things by having you explore and manipulate real-world data. To do so, we’ll introduce <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, a popular Python library for interacting with tabular data.</p>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> is generally accepted in the data science community as the industry- and academia-standard tool for manipulating tabular data.</p>
 <section id="tabular-data">
-<h2><span class="section-number">1.1.1. </span>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">#</a></h2>
-<p>Data scientists work with data stored in a variety of formats. The primary focus of this class is in understanding <em>tabular data</em> –– data that is stored in a table.</p>
+<h2>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">#</a></h2>
+<p>Data scientists work with data stored in a variety of formats. The primary focus of this class is in understanding )<em>tabular data</em> –– data that is stored in a table.</p>
 <p>Tabular data is one of the most common systems that data scientists use to organize data. This is in large part due to the simplicity and flexibility of tables. Tables allow us to represent each <strong>observation</strong>, or instance of collecting data from an individual, as its own row. We can record distinct characteristics, or <strong>features</strong>, of each observation in separate columns.</p>
 <p>To see this in action, we’ll explore the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset, which stores information about political candidates who ran for president of the United States in various years.</p>
 <p>To begin our studies in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, we must first import the library into our Python environment. This will allow us to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures and methods in our code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas, as `np` is for NumPy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/elections.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -593,7 +591,7 @@ document.write(`
 <p>In the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset, each row represents one instance of a candidate running for president in a particular year. For example, the first row represents Andrew Jackson running for president in the year 1824. Each column represents one characteristic piece of information about each presidential candidate. For example, the column named <code class="docutils literal notranslate"><span class="pre">Result</span></code> stores whether or not the candidate won the election.</p>
 </section>
 <section id="dataframes-series-and-indices">
-<h2><span class="section-number">1.1.2. </span>DataFrames, Series and Indices<a class="headerlink" href="#dataframes-series-and-indices" title="Permalink to this headline">#</a></h2>
+<h2>DataFrames, Series and Indices<a class="headerlink" href="#dataframes-series-and-indices" title="Permalink to this headline">#</a></h2>
 <p>There are three fundamental data structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
 <ol class="arabic simple">
 <li><p><strong>Series</strong>: 1D labeled array data; best thought of as columnar data</p></li>
@@ -604,13 +602,13 @@ document.write(`
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/data_structure.png"><img alt="../_images/data_structure.png" src="../_images/data_structure.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Three fundamental <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures: <strong>Series</strong>, <strong>DataFrame</strong>, <strong>Index</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Three fundamental <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures: <strong>Series</strong>, <strong>DataFrame</strong>, <strong>Index</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Notice how the <strong>DataFrame</strong> is a two-dimensional object – it contains both rows and columns. The <strong>Series</strong> above is a singular column of this <strong>DataFrame</strong>, namely, the <code class="docutils literal notranslate"><span class="pre">Result</span></code> column. Both contain an <strong>Index</strong>, or a shared list of row labels (here, the integers from 0 to 4, inclusive).</p>
 </section>
 <section id="series">
-<h2><span class="section-number">1.1.3. </span>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
+<h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
 <p>A Series represents a column of a DataFrame; more generally, it can be any 1-dimensional array-like object containing values of the same type with associated data labels, called its index. In the cell below, we create a Series named <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,7 +686,7 @@ dtype: int64
 </div>
 </div>
 <section id="selection-in-series">
-<h3><span class="section-number">1.1.3.1. </span>Selection in Series<a class="headerlink" href="#selection-in-series" title="Permalink to this headline">#</a></h3>
+<h3>Selection in Series<a class="headerlink" href="#selection-in-series" title="Permalink to this headline">#</a></h3>
 <p>We can select a single value or a set of values from a Series. There are 3 primary methods of selecting data.</p>
 <ol class="arabic simple">
 <li><p>A single index label</p></li>
@@ -714,7 +712,7 @@ dtype: int64
 </div>
 </div>
 <section id="a-single-index-label">
-<h4><span class="section-number">1.1.3.1.1. </span>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h4>
+<h4>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
@@ -729,7 +727,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-list-of-index-labels">
-<h4><span class="section-number">1.1.3.1.2. </span>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h4>
+<h4>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
@@ -746,7 +744,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-filtering-condition">
-<h4><span class="section-number">1.1.3.1.3. </span>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h4>
+<h4>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h4>
 <p>Perhaps the most interesting (and useful) method of selecting data from a Series is with a filtering condition.</p>
 <p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
 <div class="cell docutils container">
@@ -784,7 +782,7 @@ dtype: int64
 </section>
 </section>
 <section id="dataframe">
-<h2><span class="section-number">1.1.4. </span>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
+<h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
 <p>With our new understanding of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in hand, let’s return to the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset from before. Now, we recognize that it is represented as a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,7 +937,7 @@ dtype: int64
 <p>This code stores our DataFrame object in the <code class="docutils literal notranslate"><span class="pre">elections</span></code> variable. We see that our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame has 182 rows and 6 columns (<code class="docutils literal notranslate"><span class="pre">Year</span></code>, <code class="docutils literal notranslate"><span class="pre">Candidate</span></code>, <code class="docutils literal notranslate"><span class="pre">Party</span></code>, <code class="docutils literal notranslate"><span class="pre">Popular</span> <span class="pre">Vote</span></code>, <code class="docutils literal notranslate"><span class="pre">Result</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>). Each row represents a single record – in our example, a presedential candidate from some particular year. Each column represents a single attribute, or feature of the record.</p>
 <p>In the example above, we constructed a DataFrame object using data from a CSV file. As we’ll explore in the next section, we can also create a DataFrame with data of our own.</p>
 <section id="creating-a-dataframe">
-<h3><span class="section-number">1.1.4.1. </span>Creating a DataFrame<a class="headerlink" href="#creating-a-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Creating a DataFrame<a class="headerlink" href="#creating-a-dataframe" title="Permalink to this headline">#</a></h3>
 <p>There are many ways to create a DataFrame. Here, we will cover the most popular approaches.</p>
 <ol class="arabic simple">
 <li><p>Using a list and column names</p></li>
@@ -947,7 +945,7 @@ dtype: int64
 <li><p>From a Series</p></li>
 </ol>
 <section id="using-a-list-and-column-names">
-<h4><span class="section-number">1.1.4.1.1. </span>Using a List and Column Names<a class="headerlink" href="#using-a-list-and-column-names" title="Permalink to this headline">#</a></h4>
+<h4>Using a List and Column Names<a class="headerlink" href="#using-a-list-and-column-names" title="Permalink to this headline">#</a></h4>
 <p>Consider the following examples. The first code cell creates a DataFrame with a single column <code class="docutils literal notranslate"><span class="pre">Numbers</span></code>. The second creates a DataFrame with the columns <code class="docutils literal notranslate"><span class="pre">Numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code>. Notice how a 2D list of values is required to initialize the second DataFrame – each nested list represents a single row of data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1042,7 +1040,7 @@ dtype: int64
 </div>
 </section>
 <section id="from-a-dictionary">
-<h4><span class="section-number">1.1.4.1.2. </span>From a Dictionary<a class="headerlink" href="#from-a-dictionary" title="Permalink to this headline">#</a></h4>
+<h4>From a Dictionary<a class="headerlink" href="#from-a-dictionary" title="Permalink to this headline">#</a></h4>
 <p>A second (and more common) way to create a DataFrame is with a dictionary. The dictionary keys represent the column names, and the dictionary values represent the column values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1091,7 +1089,7 @@ dtype: int64
 </div>
 </section>
 <section id="from-a-series">
-<h4><span class="section-number">1.1.4.1.3. </span>From a Series<a class="headerlink" href="#from-a-series" title="Permalink to this headline">#</a></h4>
+<h4>From a Series<a class="headerlink" href="#from-a-series" title="Permalink to this headline">#</a></h4>
 <p>Earlier, we noted that a Series is usually thought of as a column in a DataFrame. It follows then, that a DataFrame is equivalent to a collection of Series, which all share the same index.</p>
 <p>In fact, we can initialize a DataFrame by merging two or more Series.</p>
 <div class="cell docutils container">
@@ -1152,7 +1150,7 @@ dtype: int64
 </section>
 </section>
 <section id="indices">
-<h2><span class="section-number">1.1.5. </span>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">#</a></h2>
+<h2>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">#</a></h2>
 <p>The major takeaway: we can think of a <strong>DataFrame</strong> as a collection of <strong>Series</strong> that all share the same <strong>Index</strong>.</p>
 <p>On a more technical note, an Index doesn’t have to be an integer, nor does it have to be unique. For example, we can set the index of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> Dataframe to be the name of presidential candidates.</p>
 <div class="cell docutils container">
@@ -1193,7 +1191,7 @@ dtype: int64
 </div>
 </section>
 <section id="slicing-in-dataframes">
-<h2><span class="section-number">1.1.6. </span>Slicing in DataFrames<a class="headerlink" href="#slicing-in-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>Slicing in DataFrames<a class="headerlink" href="#slicing-in-dataframes" title="Permalink to this headline">#</a></h2>
 <p>Now that we’ve learned how to create DataFrames, let’s dive more deeply into their capabilities.</p>
 <p>The API (application programming interface) for the DataFrame class is enormous. In this section, we’ll discuss several methods of the DataFrame API that allow us to extract subsets of data.</p>
 <p>The simplest way to manipulate a DataFrame is to extract a subset of rows and columns, known as <strong>slicing</strong>. We will do so with four primary methods of the DataFrame class:</p>
@@ -1202,7 +1200,7 @@ dtype: int64
 <p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
 <section id="extracting-data-with-head-and-tail">
-<h3><span class="section-number">1.1.6.1. </span>Extracting data with .head and .tail<a class="headerlink" href="#extracting-data-with-head-and-tail" title="Permalink to this headline">#</a></h3>
+<h3>Extracting data with .head and .tail<a class="headerlink" href="#extracting-data-with-head-and-tail" title="Permalink to this headline">#</a></h3>
 <p>The simplest scenario in which we want to extract data is when we simply want to select the first or last few rows of the DataFrame.</p>
 <p>To extract the first n rows of a DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, we use the syntax <code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code>.</p>
 <div class="cell docutils container">
@@ -1376,7 +1374,7 @@ dtype: int64
 </div>
 </section>
 <section id="indexing-with-loc">
-<h3><span class="section-number">1.1.6.2. </span>Indexing with .loc<a class="headerlink" href="#indexing-with-loc" title="Permalink to this headline">#</a></h3>
+<h3>Indexing with .loc<a class="headerlink" href="#indexing-with-loc" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator selects rows and columns in a DataFrame by their row and column label(s), respectively. The <strong>row labels</strong> (commonly referred to as the <strong>indices</strong>) are the bold text on the far <em>left</em> of a DataFrame, while the <strong>column labels</strong> are the column names found at the <em>top</em> of a DataFrame.</p>
 <p>To grab data with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we must specify the row and column label(s) where the data exists. The row labels are the first argument to the .loc function; the column labels are the second. For example, we can select the the row labeled <code class="docutils literal notranslate"><span class="pre">0</span></code> and the column labeled <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> from the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
 <div class="cell docutils container">
@@ -1669,7 +1667,7 @@ dtype: int64
 </div>
 </section>
 <section id="indexing-with-iloc">
-<h3><span class="section-number">1.1.6.3. </span>Indexing with .iloc<a class="headerlink" href="#indexing-with-iloc" title="Permalink to this headline">#</a></h3>
+<h3>Indexing with .iloc<a class="headerlink" href="#indexing-with-iloc" title="Permalink to this headline">#</a></h3>
 <p>Slicing with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> works similarily to <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, however, <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> uses the index positions of rows and columns rather the labels (think to yourself: <strong><code class="docutils literal notranslate"><span class="pre">l</span></code></strong><code class="docutils literal notranslate"><span class="pre">oc</span></code> uses <strong>l</strong>abels; <strong><code class="docutils literal notranslate"><span class="pre">i</span></code></strong><code class="docutils literal notranslate"><span class="pre">loc</span></code> uses <strong>i</strong>ndices). The arguments to the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> function also behave similarly -– single values, lists, indices, and any combination of these are permitted.</p>
 <p>Let’s begin reproducing our results from above. We’ll begin by selecting for the first presidential candidate in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame:</p>
 <div class="cell docutils container">
@@ -1821,7 +1819,7 @@ dtype: int64
 <p>This discussion begs the question: when should we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>? In most cases, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is generally safer to use. You can imagine <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> may return incorrect values when applied to a dataset where the ordering of data can change.</p>
 </section>
 <section id="indexing-with">
-<h3><span class="section-number">1.1.6.4. </span>Indexing with []<a class="headerlink" href="#indexing-with" title="Permalink to this headline">#</a></h3>
+<h3>Indexing with []<a class="headerlink" href="#indexing-with" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator is the most baffling of all, yet the most commonly used. It only takes a single argument, which may be one of the following:</p>
 <ol class="arabic simple">
 <li><p>A slice of row numbers</p></li>
@@ -1830,7 +1828,7 @@ dtype: int64
 </ol>
 <p>That is, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is <em>context dependent</em>. Let’s see some examples.</p>
 <section id="a-slice-of-row-numbers">
-<h4><span class="section-number">1.1.6.4.1. </span>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
+<h4>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
 <p>Say we wanted the first four rows of our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1908,7 +1906,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-list-of-column-labels">
-<h4><span class="section-number">1.1.6.4.2. </span>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
+<h4>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
 <p>Suppose we now want the first four columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2026,7 +2024,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-single-column-label">
-<h4><span class="section-number">1.1.6.4.3. </span>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
+<h4>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
 <p>Lastly, <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> allows us to extract only the <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2088,24 +2086,6 @@ Name: Candidate, Length: 182, dtype: object
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="10_dataops.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Vectorized Operations on Data</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="30_collecting.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Collecting Data</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -2124,35 +2104,35 @@ Name: Candidate, Length: 182, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">DataFrames, Series and Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">Selection in Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">A Single Index Label</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">A List of Index Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">A Filtering Condition</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">1.1.4.1.2. From a Dictionary</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">1.1.4.1.3. From a Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">Creating a DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">Using a List and Column Names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">From a Dictionary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">From a Series</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">1.1.5. Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">1.1.6. Slicing in DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">1.1.6.1. Extracting data with .head and .tail</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">1.1.6.2. Indexing with .loc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">1.1.6.3. Indexing with .iloc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">1.1.6.4. Indexing with []</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.1.6.4.1. A slice of row numbers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.1.6.4.2. A list of column labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.1.6.4.3. A single column label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">Slicing in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">Extracting data with .head and .tail</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">Indexing with .loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">Indexing with .iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">Indexing with []</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">A single column label</a></li>
 </ul>
 </li>
 </ul>
