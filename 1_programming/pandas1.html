@@ -1,0 +1,2182 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.1. Pandas I &#8212; CSC-272 Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Collecting Data" href="30_collecting.html" />
+    <link rel="prev" title="1. Vectorized Operations on Data" href="10_dataops.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    CSC-272 Data Mining (Fall 2023)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/integrity.html">Academic Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Pandas I</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">3. Modalities of Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/10_probability.html">5. Probability and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/20_logarithms.html">6. Logarithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/40_linearalgebra.html">7. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_maths/50_calculus.html">8. Calculus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/10_ranking_assoc.html">9. Rankings and Association</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">10. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">11. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">12. Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">13. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">14. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">15. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">16. Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">17. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">18. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">19. Backpropogation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">20. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">21. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">22. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">23. Majority Rule</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/1_programming/pandas1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">1.1.4.1.2. From a Dictionary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">1.1.4.1.3. From a Series</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">1.1.5. Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">1.1.6. Slicing in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">1.1.6.1. Extracting data with .head and .tail</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">1.1.6.2. Indexing with .loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">1.1.6.3. Indexing with .iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">1.1.6.4. Indexing with []</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.1.6.4.1. A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.1.6.4.2. A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.1.6.4.3. A single column label</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="pandas-i">
+<h1><span class="section-number">1.1. </span>Pandas I<a class="headerlink" href="#pandas-i" title="Permalink to this headline">#</a></h1>
+<p>Lets dive right into things by having you explore and manipulate real-world data. To do so, we’ll introduce <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, a popular Python library for interacting with tabular data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> is generally accepted in the data science community as the industry- and academia-standard tool for manipulating tabular data.</p>
+<section id="tabular-data">
+<h2><span class="section-number">1.1.1. </span>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">#</a></h2>
+<p>Data scientists work with data stored in a variety of formats. The primary focus of this class is in understanding )<em>tabular data</em> –– data that is stored in a table.</p>
+<p>Tabular data is one of the most common systems that data scientists use to organize data. This is in large part due to the simplicity and flexibility of tables. Tables allow us to represent each <strong>observation</strong>, or instance of collecting data from an individual, as its own row. We can record distinct characteristics, or <strong>features</strong>, of each observation in separate columns.</p>
+<p>To see this in action, we’ll explore the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset, which stores information about political candidates who ran for president of the United States in various years.</p>
+<p>To begin our studies in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, we must first import the library into our Python environment. This will allow us to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures and methods in our code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas, as `np` is for NumPy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/elections.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset, each row represents one instance of a candidate running for president in a particular year. For example, the first row represents Andrew Jackson running for president in the year 1824. Each column represents one characteristic piece of information about each presidential candidate. For example, the column named <code class="docutils literal notranslate"><span class="pre">Result</span></code> stores whether or not the candidate won the election.</p>
+</section>
+<section id="dataframes-series-and-indices">
+<h2><span class="section-number">1.1.2. </span>DataFrames, Series and Indices<a class="headerlink" href="#dataframes-series-and-indices" title="Permalink to this headline">#</a></h2>
+<p>There are three fundamental data structures in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
+<ol class="arabic simple">
+<li><p><strong>Series</strong>: 1D labeled array data; best thought of as columnar data</p></li>
+<li><p><strong>DataFrame</strong>: 2D tabular data with rows and columns</p></li>
+<li><p><strong>Index</strong>: A sequence of row/column labels</p></li>
+</ol>
+<p>DataFrames, Series, and Indices can be represented visually in the following diagram, which considers the first few rows of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/data_structure.png"><img alt="../_images/data_structure.png" src="../_images/data_structure.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Three fundamental <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures: <strong>Series</strong>, <strong>DataFrame</strong>, <strong>Index</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Notice how the <strong>DataFrame</strong> is a two-dimensional object – it contains both rows and columns. The <strong>Series</strong> above is a singular column of this <strong>DataFrame</strong>, namely, the <code class="docutils literal notranslate"><span class="pre">Result</span></code> column. Both contain an <strong>Index</strong>, or a shared list of row labels (here, the integers from 0 to 4, inclusive).</p>
+</section>
+<section id="series">
+<h2><span class="section-number">1.1.3. </span>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
+<p>A Series represents a column of a DataFrame; more generally, it can be any 1-dimensional array-like object containing values of the same type with associated data labels, called its index. In the cell below, we create a Series named <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -1
+1    10
+2     2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">values</span> <span class="c1"># Data contained within the Series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1, 10,  2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="c1"># The Index of the Series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=3, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the Index of a Series is a sequential list of integers beginning from 0.</p>
+<p>Optionally, a manually-specified list of desired indices can be passed to the <code class="docutils literal notranslate"><span class="pre">index</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    -1
+b    10
+c     2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indices can also be changed after initialization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">]</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first     -1
+second    10
+third      2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="selection-in-series">
+<h3><span class="section-number">1.1.3.1. </span>Selection in Series<a class="headerlink" href="#selection-in-series" title="Permalink to this headline">#</a></h3>
+<p>We can select a single value or a set of values from a Series. There are 3 primary methods of selecting data.</p>
+<ol class="arabic simple">
+<li><p>A single index label</p></li>
+<li><p>A list of index labels</p></li>
+<li><p>A filtering condition</p></li>
+</ol>
+<p>To demonstrate this, let’s define the Series ser</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span>
+<span class="n">ser</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
+b   -2
+c    0
+d    6
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-single-index-label">
+<h4><span class="section-number">1.1.3.1.1. </span>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-list-of-index-labels">
+<h4><span class="section-number">1.1.3.1.2. </span>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
+c    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-filtering-condition">
+<h4><span class="section-number">1.1.3.1.3. </span>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h4>
+<p>Perhaps the most interesting (and useful) method of selecting data from a Series is with a filtering condition.</p>
+<p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a     True
+b    False
+c    False
+d     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then use this boolean condition to index into our original Series. pandas will select only the entries in the original Series that satisfy the condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
+d    6
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="dataframe">
+<h2><span class="section-number">1.1.4. </span>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
+<p>With our new understanding of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in hand, let’s return to the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset from before. Now, we recognize that it is represented as a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas, as `np` is for NumPy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">elections</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/elections.csv&quot;</span><span class="p">)</span>
+
+<span class="n">elections</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Let’s dissect the code above.</p>
+<ol class="arabic simple">
+<li><p>We first import the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library into our Python environment, using the alias <code class="docutils literal notranslate"><span class="pre">pd</span></code>.
+ <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p></li>
+<li><p>There are a number of ways to read data into a DataFrame. In this course, our datasets are typically stored in a CSV (comma-seperated values) file format. We can import a CSV file into a DataFrame by passing the data path as an argument to the following <code class="docutils literal notranslate"><span class="pre">pandas</span></code> function.
+ <code class="docutils literal notranslate"><span class="pre">pd.read_csv(&quot;data/elections.csv&quot;)</span></code></p></li>
+</ol>
+<p>This code stores our DataFrame object in the <code class="docutils literal notranslate"><span class="pre">elections</span></code> variable. We see that our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame has 182 rows and 6 columns (<code class="docutils literal notranslate"><span class="pre">Year</span></code>, <code class="docutils literal notranslate"><span class="pre">Candidate</span></code>, <code class="docutils literal notranslate"><span class="pre">Party</span></code>, <code class="docutils literal notranslate"><span class="pre">Popular</span> <span class="pre">Vote</span></code>, <code class="docutils literal notranslate"><span class="pre">Result</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>). Each row represents a single record – in our example, a presedential candidate from some particular year. Each column represents a single attribute, or feature of the record.</p>
+<p>In the example above, we constructed a DataFrame object using data from a CSV file. As we’ll explore in the next section, we can also create a DataFrame with data of our own.</p>
+<section id="creating-a-dataframe">
+<h3><span class="section-number">1.1.4.1. </span>Creating a DataFrame<a class="headerlink" href="#creating-a-dataframe" title="Permalink to this headline">#</a></h3>
+<p>There are many ways to create a DataFrame. Here, we will cover the most popular approaches.</p>
+<ol class="arabic simple">
+<li><p>Using a list and column names</p></li>
+<li><p>From a dictionary</p></li>
+<li><p>From a Series</p></li>
+</ol>
+<section id="using-a-list-and-column-names">
+<h4><span class="section-number">1.1.4.1.1. </span>Using a List and Column Names<a class="headerlink" href="#using-a-list-and-column-names" title="Permalink to this headline">#</a></h4>
+<p>Consider the following examples. The first code cell creates a DataFrame with a single column <code class="docutils literal notranslate"><span class="pre">Numbers</span></code>. The second creates a DataFrame with the columns <code class="docutils literal notranslate"><span class="pre">Numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code>. Notice how a 2D list of values is required to initialize the second DataFrame – each nested list represents a single row of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_list_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Numbers&quot;</span><span class="p">])</span>
+<span class="n">df_list_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Numbers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_list_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Number&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">])</span>
+<span class="n">df_list_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>one</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>two</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="from-a-dictionary">
+<h4><span class="section-number">1.1.4.1.2. </span>From a Dictionary<a class="headerlink" href="#from-a-dictionary" title="Permalink to this headline">#</a></h4>
+<p>A second (and more common) way to create a DataFrame is with a dictionary. The dictionary keys represent the column names, and the dictionary values represent the column values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Fruit&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Strawberry&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">],</span> <span class="s2">&quot;Price&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.49</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">]})</span>
+<span class="n">df_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fruit</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Strawberry</td>
+      <td>5.49</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Orange</td>
+      <td>3.99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="from-a-series">
+<h4><span class="section-number">1.1.4.1.3. </span>From a Series<a class="headerlink" href="#from-a-series" title="Permalink to this headline">#</a></h4>
+<p>Earlier, we noted that a Series is usually thought of as a column in a DataFrame. It follows then, that a DataFrame is equivalent to a collection of Series, which all share the same index.</p>
+<p>In fact, we can initialize a DataFrame by merging two or more Series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notice how our indices, or row labels, are the same</span>
+
+<span class="n">s_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="s2">&quot;a2&quot;</span><span class="p">,</span> <span class="s2">&quot;a3&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r1&quot;</span><span class="p">,</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="s2">&quot;r3&quot;</span><span class="p">])</span>
+<span class="n">s_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;b1&quot;</span><span class="p">,</span> <span class="s2">&quot;b2&quot;</span><span class="p">,</span> <span class="s2">&quot;b3&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r1&quot;</span><span class="p">,</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="s2">&quot;r3&quot;</span><span class="p">])</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A-column&quot;</span><span class="p">:</span> <span class="n">s_a</span><span class="p">,</span> <span class="s2">&quot;B-column&quot;</span><span class="p">:</span> <span class="n">s_b</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A-column</th>
+      <th>B-column</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>r1</th>
+      <td>a1</td>
+      <td>b1</td>
+    </tr>
+    <tr>
+      <th>r2</th>
+      <td>a2</td>
+      <td>b2</td>
+    </tr>
+    <tr>
+      <th>r3</th>
+      <td>a3</td>
+      <td>b3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="indices">
+<h2><span class="section-number">1.1.5. </span>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">#</a></h2>
+<p>The major takeaway: we can think of a <strong>DataFrame</strong> as a collection of <strong>Series</strong> that all share the same <strong>Index</strong>.</p>
+<p>On a more technical note, an Index doesn’t have to be an integer, nor does it have to be unique. For example, we can set the index of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> Dataframe to be the name of presidential candidates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This sets the index to be the &quot;Candidate&quot; column</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Candidate&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Andrew Jackson&#39;, &#39;John Quincy Adams&#39;, &#39;Andrew Jackson&#39;,
+       &#39;John Quincy Adams&#39;, &#39;Andrew Jackson&#39;, &#39;Henry Clay&#39;, &#39;William Wirt&#39;,
+       &#39;Hugh Lawson White&#39;, &#39;Martin Van Buren&#39;, &#39;William Henry Harrison&#39;,
+       ...
+       &#39;Darrell Castle&#39;, &#39;Donald Trump&#39;, &#39;Evan McMullin&#39;, &#39;Gary Johnson&#39;,
+       &#39;Hillary Clinton&#39;, &#39;Jill Stein&#39;, &#39;Joseph Biden&#39;, &#39;Donald Trump&#39;,
+       &#39;Jo Jorgensen&#39;, &#39;Howard Hawkins&#39;],
+      dtype=&#39;object&#39;, name=&#39;Candidate&#39;, length=182)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And, if we’d like, we can revert the index back to the default list of integers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This resets the index to be the default list of integers</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">elections</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=182, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-in-dataframes">
+<h2><span class="section-number">1.1.6. </span>Slicing in DataFrames<a class="headerlink" href="#slicing-in-dataframes" title="Permalink to this headline">#</a></h2>
+<p>Now that we’ve learned how to create DataFrames, let’s dive more deeply into their capabilities.</p>
+<p>The API (application programming interface) for the DataFrame class is enormous. In this section, we’ll discuss several methods of the DataFrame API that allow us to extract subsets of data.</p>
+<p>The simplest way to manipulate a DataFrame is to extract a subset of rows and columns, known as <strong>slicing</strong>. We will do so with four primary methods of the DataFrame class:</p>
+<p><code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<section id="extracting-data-with-head-and-tail">
+<h3><span class="section-number">1.1.6.1. </span>Extracting data with .head and .tail<a class="headerlink" href="#extracting-data-with-head-and-tail" title="Permalink to this headline">#</a></h3>
+<p>The simplest scenario in which we want to extract data is when we simply want to select the first or last few rows of the DataFrame.</p>
+<p>To extract the first n rows of a DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, we use the syntax <code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the first 5 rows of the DataFrame</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andrew Jackson</td>
+      <td>1832</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similarly, calling <code class="docutils literal notranslate"><span class="pre">df.tail(n)</span></code> allows us to extract the last n rows of the DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the last 5 rows of the DataFrame</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>177</th>
+      <td>Jill Stein</td>
+      <td>2016</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>Joseph Biden</td>
+      <td>2020</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>Donald Trump</td>
+      <td>2020</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>Jo Jorgensen</td>
+      <td>2020</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>Howard Hawkins</td>
+      <td>2020</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="indexing-with-loc">
+<h3><span class="section-number">1.1.6.2. </span>Indexing with .loc<a class="headerlink" href="#indexing-with-loc" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator selects rows and columns in a DataFrame by their row and column label(s), respectively. The <strong>row labels</strong> (commonly referred to as the <strong>indices</strong>) are the bold text on the far <em>left</em> of a DataFrame, while the <strong>column labels</strong> are the column names found at the <em>top</em> of a DataFrame.</p>
+<p>To grab data with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we must specify the row and column label(s) where the data exists. The row labels are the first argument to the .loc function; the column labels are the second. For example, we can select the the row labeled <code class="docutils literal notranslate"><span class="pre">0</span></code> and the column labeled <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> from the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Andrew Jackson&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To select <em>multiple</em> rows and columns, we can use Python slice notation. Here, we select the rows from labels <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">3</span></code> and the columns from labels <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Popular</span> <span class="pre">vote&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">:</span><span class="s1">&#39;Popular vote&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Suppose that instead, we wanted <em>every</em> column value for the first four rows in the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. The shorthand <code class="docutils literal notranslate"><span class="pre">:</span></code> is useful for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are a couple of things we should note. Firstly, unlike conventional Python, Pandas allows us to slice string values (in our example, the column labels). Secondly, slicing with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is <em>inclusive</em>. Notice how our resulting DataFrame includes every row and column between and including the slice labels we specified.</p>
+<p>Equivalently, we can use a list to obtain multiple rows and columns in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">,</span> <span class="s1">&#39;Party&#39;</span><span class="p">,</span> <span class="s1">&#39;Popular vote&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Lastly, we can interchange list and slicing notation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="indexing-with-iloc">
+<h3><span class="section-number">1.1.6.3. </span>Indexing with .iloc<a class="headerlink" href="#indexing-with-iloc" title="Permalink to this headline">#</a></h3>
+<p>Slicing with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> works similarily to <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, however, <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> uses the index positions of rows and columns rather the labels (think to yourself: <strong><code class="docutils literal notranslate"><span class="pre">l</span></code></strong><code class="docutils literal notranslate"><span class="pre">oc</span></code> uses <strong>l</strong>abels; <strong><code class="docutils literal notranslate"><span class="pre">i</span></code></strong><code class="docutils literal notranslate"><span class="pre">loc</span></code> uses <strong>i</strong>ndices). The arguments to the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> function also behave similarly -– single values, lists, indices, and any combination of these are permitted.</p>
+<p>Let’s begin reproducing our results from above. We’ll begin by selecting for the first presidential candidate in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0, &quot;Candidate&quot;] - Previous approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1824
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how the first argument to both <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are the same. This is because the row with a label of 0 is conveniently in the 0th index (equivalently, the first position) of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. Generally, this is true of any DataFrame where the row labels are incremented in ascending order from 0.</p>
+<p>However, when we select the first four rows and columns using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, we notice something.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0:3, &#39;Year&#39;:&#39;Popular vote&#39;] - Previous approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Slicing is no longer inclusive in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> -– it’s exclusive. In other words, the right-end of a slice is not included when using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. This is one of the subtleties of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax; you will get used to it with practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#elections.loc[[0, 1, 2, 3], [&#39;Year&#39;, &#39;Candidate&#39;, &#39;Party&#39;, &#39;Popular vote&#39;]] - Previous Approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This discussion begs the question: when should we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>? In most cases, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is generally safer to use. You can imagine <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> may return incorrect values when applied to a dataset where the ordering of data can change.</p>
+</section>
+<section id="indexing-with">
+<h3><span class="section-number">1.1.6.4. </span>Indexing with []<a class="headerlink" href="#indexing-with" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator is the most baffling of all, yet the most commonly used. It only takes a single argument, which may be one of the following:</p>
+<ol class="arabic simple">
+<li><p>A slice of row numbers</p></li>
+<li><p>A list of column labels</p></li>
+<li><p>A single column label</p></li>
+</ol>
+<p>That is, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is <em>context dependent</em>. Let’s see some examples.</p>
+<section id="a-slice-of-row-numbers">
+<h4><span class="section-number">1.1.6.4.1. </span>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
+<p>Say we wanted the first four rows of our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Candidate</th>
+      <th>Year</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Andrew Jackson</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John Quincy Adams</td>
+      <td>1824</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Andrew Jackson</td>
+      <td>1828</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Quincy Adams</td>
+      <td>1828</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="a-list-of-column-labels">
+<h4><span class="section-number">1.1.6.4.2. </span>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
+<p>Suppose we now want the first four columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Candidate&quot;</span><span class="p">,</span> <span class="s2">&quot;Party&quot;</span><span class="p">,</span> <span class="s2">&quot;Popular vote&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="a-single-column-label">
+<h4><span class="section-number">1.1.6.4.3. </span>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
+<p>Lastly, <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> allows us to extract only the <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         Andrew Jackson
+1      John Quincy Adams
+2         Andrew Jackson
+3      John Quincy Adams
+4         Andrew Jackson
+             ...        
+177           Jill Stein
+178         Joseph Biden
+179         Donald Trump
+180         Jo Jorgensen
+181       Howard Hawkins
+Name: Candidate, Length: 182, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output is a Series! In this course, we’ll become very comfortable with <code class="docutils literal notranslate"><span class="pre">[]</span></code>, especially for selecting columns. In practice, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is much more common than <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./1_programming"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10_dataops.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Vectorized Operations on Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="30_collecting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Collecting Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-dictionary">1.1.4.1.2. From a Dictionary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-series">1.1.4.1.3. From a Series</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">1.1.5. Indices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-dataframes">1.1.6. Slicing in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-with-head-and-tail">1.1.6.1. Extracting data with .head and .tail</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-loc">1.1.6.2. Indexing with .loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with-iloc">1.1.6.3. Indexing with .iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-with">1.1.6.4. Indexing with []</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.1.6.4.1. A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.1.6.4.2. A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.1.6.4.3. A single column label</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Syed Fahad Sultan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
