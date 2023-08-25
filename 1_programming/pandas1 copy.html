@@ -452,7 +452,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/elections.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/elections.csv&quot;</span><span class="p">)</span>
+
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -599,12 +601,13 @@ document.write(`
 <li><p><strong>Index</strong>: A sequence of row/column labels</p></li>
 </ol>
 <p>DataFrames, Series, and Indices can be represented visually in the following diagram, which considers the first few rows of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset.</p>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/data_structure.png"><img alt="../_images/data_structure.png" src="../_images/data_structure.png" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-text">Three fundamental <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures: <strong>Series</strong>, <strong>DataFrame</strong>, <strong>Index</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<img src="../assets/data_structure.png">
+<!-- ---
+width: 100%
+align: center
+---
+Three fundamental `pandas` data structures: **Series**, **DataFrame**, **Index** -->
+``` 
 <p>Notice how the <strong>DataFrame</strong> is a two-dimensional object – it contains both rows and columns. The <strong>Series</strong> above is a singular column of this <strong>DataFrame</strong>, namely, the <code class="docutils literal notranslate"><span class="pre">Result</span></code> column. Both contain an <strong>Index</strong>, or a shared list of row labels (here, the integers from 0 to 4, inclusive).</p>
 </section>
 <section id="series">
@@ -640,12 +643,12 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="c1"># The Index of the Series</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="c1"># The Index of the Series</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=3, step=1)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2]
 </pre></div>
 </div>
 </div>
@@ -654,15 +657,15 @@ dtype: int64
 <p>Optionally, a manually-specified list of desired indices can be passed to the <code class="docutils literal notranslate"><span class="pre">index</span></code> argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;furman&quot;</span><span class="p">,</span> <span class="s2">&quot;university&quot;</span><span class="p">,</span> <span class="s2">&quot;SC&quot;</span><span class="p">])</span>
 <span class="n">s</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    -1
-b    10
-c     2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>furman        -1
+university    10
+SC             2
 dtype: int64
 </pre></div>
 </div>
@@ -715,12 +718,12 @@ dtype: int64
 <h4>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -728,6 +731,22 @@ dtype: int64
 </section>
 <section id="a-list-of-index-labels">
 <h4>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
+b   -2
+c    0
+d    6
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
@@ -749,16 +768,15 @@ dtype: int64
 <p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ser</span><span class="p">[</span><span class="n">ser</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a     True
-b    False
-c    False
-d     True
-dtype: bool
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    3
+5    6
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -949,6 +967,54 @@ dtype: int64
 <p>Consider the following examples. The first code cell creates a DataFrame with a single column <code class="docutils literal notranslate"><span class="pre">Numbers</span></code>. The second creates a DataFrame with the columns <code class="docutils literal notranslate"><span class="pre">Numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code>. Notice how a 2D list of values is required to initialize the second DataFrame – each nested list represents a single row of data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">majors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="s2">&quot;CS&quot;</span><span class="p">,</span> <span class="s2">&quot;Econ&quot;</span><span class="p">,</span> <span class="s2">&quot;Math&quot;</span><span class="p">],</span> \
+                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;programs&#39;</span><span class="p">],</span> \
+                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">majors</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>programs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>CS</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>Econ</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>Math</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_list_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Numbers&quot;</span><span class="p">])</span>
 <span class="n">df_list_1</span>
 </pre></div>
@@ -1097,7 +1163,7 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notice how our indices, or row labels, are the same</span>
 
 <span class="n">s_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="s2">&quot;a2&quot;</span><span class="p">,</span> <span class="s2">&quot;a3&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r1&quot;</span><span class="p">,</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="s2">&quot;r3&quot;</span><span class="p">])</span>
-<span class="n">s_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;b1&quot;</span><span class="p">,</span> <span class="s2">&quot;b2&quot;</span><span class="p">,</span> <span class="s2">&quot;b3&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r1&quot;</span><span class="p">,</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="s2">&quot;r3&quot;</span><span class="p">])</span>
+<span class="n">s_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;b1&quot;</span><span class="p">,</span> <span class="s2">&quot;b2&quot;</span><span class="p">,</span> <span class="s2">&quot;b3&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r4&quot;</span><span class="p">,</span> <span class="s2">&quot;r5&quot;</span><span class="p">,</span> <span class="s2">&quot;r6&quot;</span><span class="p">])</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A-column&quot;</span><span class="p">:</span> <span class="n">s_a</span><span class="p">,</span> <span class="s2">&quot;B-column&quot;</span><span class="p">:</span> <span class="n">s_b</span><span class="p">})</span>
 </pre></div>
@@ -1130,16 +1196,31 @@ dtype: int64
     <tr>
       <th>r1</th>
       <td>a1</td>
-      <td>b1</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>r2</th>
       <td>a2</td>
-      <td>b2</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>r3</th>
       <td>a3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>r4</th>
+      <td>NaN</td>
+      <td>b1</td>
+    </tr>
+    <tr>
+      <th>r5</th>
+      <td>NaN</td>
+      <td>b2</td>
+    </tr>
+    <tr>
+      <th>r6</th>
+      <td>NaN</td>
       <td>b3</td>
     </tr>
   </tbody>
@@ -1153,6 +1234,144 @@ dtype: int64
 <h2>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">#</a></h2>
 <p>The major takeaway: we can think of a <strong>DataFrame</strong> as a collection of <strong>Series</strong> that all share the same <strong>Index</strong>.</p>
 <p>On a more technical note, an Index doesn’t have to be an integer, nor does it have to be unique. For example, we can set the index of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> Dataframe to be the name of presidential candidates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Result&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Result</th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>loss</td>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>win</td>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>win</td>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>loss</td>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>win</td>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>loss</td>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>1.073699</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>win</td>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>51.311515</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>loss</td>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>46.858542</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>loss</td>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>1.177979</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>loss</td>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>0.255731</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 6 columns</p>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This sets the index to be the &quot;Candidate&quot; column</span>
