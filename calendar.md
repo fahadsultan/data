@@ -9,7 +9,7 @@
 
 | #       | TOPIC                      | READING | MEETING 1                  | MEETING 2       | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |---------|----------------------------|---------|----------------------------|-----------------|-----|-------------------|
-| 1       | Vectorized Operations      |         | Pandas                     | Pandas          |     | **[PA 1](https://colab.research.google.com/drive/1coRRvXOuoEn1NzTLjvz9TXwAGkG1gsMJ?usp=sharing)**
+| 1       | Vectorized Operations      |  Skiena Ch.1    | **[Introduction](intro.md)** | -**[Vectorized Operations](1_programming/10_dataops.ipynb)**</br>-**[Pandas I](1_programming/pandas1.ipynb)**          | **[WA 1](https://docs.google.com/document/d/1-V69jP6oYPr6TiiSsxq93TnL8xLxElhHIrCkQyicbzc/edit?usp=sharing)**  |  **[PA 1](https://colab.research.google.com/drive/1coRRvXOuoEn1NzTLjvz9TXwAGkG1gsMJ?usp=sharing)** |
 | 2       | Vectorized Operations      |         | Pandas                     | Pandas          |     |                   |
 | 3       | Data Collection            |         | APIs + XML                 | Web Scraping    |     |
 | 4       | Data Modalities            |         | Text + Networks            | Images + Sound  |     |

@@ -3,7 +3,6 @@
 
 * [The Data Science Design Manual by Steven S. Skiena](https://furman.bncollege.com/c/Data-Science-Design-Manual/p/MBS_2121948_used)
 
-
 ```{figure} ../assets/datascience_manual.jpg
 ---
 width: 40%
