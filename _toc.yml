@@ -32,6 +32,8 @@ parts:
     - file: 1_programming/10_dataops
       sections: 
           - file: 1_programming/pandas1
+          - file: 1_programming/pandas2
+          - file: 1_programming/pandas3
       #   - file: 1_programming/11_python
       #   - file: 1_programming/12_pandas
         # - file: 1_programming/13_notes
