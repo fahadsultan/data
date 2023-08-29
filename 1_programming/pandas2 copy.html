@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.2. Pandas II: Selection, Filtering and Dropping &#8212; CSC-272 Data Mining</title>
+    <title>Pandas II: Selection, Filtering and Dropping &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -69,11 +69,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas2 copy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.3. Pandas III: Aggregation, Merging and Concatenation" href="pandas3.html" />
-    <link rel="prev" title="1.1. Pandas I: Data Structures" href="pandas1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -185,10 +183,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
@@ -283,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/pandas2.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/pandas2 copy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/1_programming/pandas2.ipynb" target="_blank"
+      <li><a href="../_sources/1_programming/pandas2 copy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,36 +404,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-from-a-series">1.2.1. Extracting values from a Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.2.1.1. A Single Index Label</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.2.1.2. A List of Index Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.2.1.3. A Filtering Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-from-a-series">Extracting values from a Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">A Single Index Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">A List of Index Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">A Filtering Condition</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracing-data-from-dataframes">1.2.2. Extracing data from DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-head-and-tail">1.2.2.1. Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-iloc">1.2.2.2. Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with-loc">1.2.2.3. Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with">1.2.2.4. Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.2.2.4.1. A slice of row numbers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.2.2.4.2. A list of column labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.2.2.4.3. A single column label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracing-data-from-dataframes">Extracing data from DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-head-and-tail">Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-iloc">Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with-loc">Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with">Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">A single column label</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-extraction">1.2.3. Conditional Extraction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-and-modifying-columns">1.2.4. Adding, Removing, and Modifying Columns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-utility-functions">1.2.5. Handy Utility Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-and-size">1.2.5.1. <code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.2.5.2. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.2.5.3. <code class="docutils literal notranslate"><span class="pre">.astype()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">1.2.5.4. <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample">1.2.5.5. <code class="docutils literal notranslate"><span class="pre">.sample()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.2.5.6. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.2.5.7. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-values">1.2.5.8. <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.2.5.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-extraction">Conditional Extraction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-and-modifying-columns">Adding, Removing, and Modifying Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-utility-functions">Handy Utility Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-and-size"><code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes"><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype"><code class="docutils literal notranslate"><span class="pre">.astype()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe"><code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample"><code class="docutils literal notranslate"><span class="pre">.sample()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts"><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-values"><code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -450,7 +448,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-ii-selection-filtering-and-dropping">
-<h1><span class="section-number">1.2. </span>Pandas II: Selection, Filtering and Dropping<a class="headerlink" href="#pandas-ii-selection-filtering-and-dropping" title="Permalink to this headline">#</a></h1>
+<h1>Pandas II: Selection, Filtering and Dropping<a class="headerlink" href="#pandas-ii-selection-filtering-and-dropping" title="Permalink to this headline">#</a></h1>
 <p>Previously, we studied the three basic data structures in Pandas: <code class="docutils literal notranslate"><span class="pre">Series</span></code>, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, and <code class="docutils literal notranslate"><span class="pre">Index</span></code>. We also learned how to create these data structures from scratch. In this section, we will learn how to extract data from these structures. The two primary operations of data extraction are:</p>
 <ol class="arabic simple">
 <li><p><strong>Selection</strong>: Extracting subset of columns.</p></li>
@@ -458,7 +456,7 @@ document.write(`
 </ol>
 <p>Finally, we will learn how to drop rows and columns in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> as well as go over some useful methods.</p>
 <section id="extracting-values-from-a-series">
-<h2><span class="section-number">1.2.1. </span>Extracting values from a Series<a class="headerlink" href="#extracting-values-from-a-series" title="Permalink to this headline">#</a></h2>
+<h2>Extracting values from a Series<a class="headerlink" href="#extracting-values-from-a-series" title="Permalink to this headline">#</a></h2>
 <p>We can select a single value or a set of values from a Series. There are 3 primary methods of selecting data.</p>
 <ol class="arabic simple">
 <li><p>A single index label</p></li>
@@ -485,7 +483,7 @@ dtype: int64
 </div>
 </div>
 <section id="a-single-index-label">
-<h3><span class="section-number">1.2.1.1. </span>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h3>
+<h3>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
@@ -500,7 +498,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-list-of-index-labels">
-<h3><span class="section-number">1.2.1.2. </span>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h3>
+<h3>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
@@ -517,7 +515,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-filtering-condition">
-<h3><span class="section-number">1.2.1.3. </span>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h3>
+<h3>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h3>
 <p>Perhaps the most interesting (and useful) method of selecting data from a Series is with a filtering condition.</p>
 <p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
 <div class="cell docutils container">
@@ -555,7 +553,7 @@ dtype: int64
 </section>
 </section>
 <section id="extracing-data-from-dataframes">
-<h2><span class="section-number">1.2.2. </span>Extracing data from DataFrames<a class="headerlink" href="#extracing-data-from-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>Extracing data from DataFrames<a class="headerlink" href="#extracing-data-from-dataframes" title="Permalink to this headline">#</a></h2>
 <p>Now that we’ve learned how to create DataFrames, let’s dive more deeply into their capabilities.</p>
 <p>The API (application programming interface) for the DataFrame class is enormous. In this section, we’ll discuss several methods of the DataFrame API that allow us to extract subsets of data.</p>
 <p>The simplest way to manipulate a DataFrame is to extract a subset of rows and columns, known as <strong>slicing</strong>. We will do so with four primary methods of the DataFrame class:</p>
@@ -564,7 +562,7 @@ dtype: int64
 <p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
 <section id="filtering-rows-with-head-and-tail">
-<h3><span class="section-number">1.2.2.1. </span>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code><a class="headerlink" href="#filtering-rows-with-head-and-tail" title="Permalink to this headline">#</a></h3>
+<h3>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code><a class="headerlink" href="#filtering-rows-with-head-and-tail" title="Permalink to this headline">#</a></h3>
 <p>The simplest scenario in which we want to extract data is when we simply want to select the first or last few rows of the DataFrame.</p>
 <p>To extract the first n rows of a DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, we use the syntax <code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code>.</p>
 <div class="cell docutils container">
@@ -742,7 +740,7 @@ dtype: int64
 </div>
 </section>
 <section id="filtering-rows-with-iloc">
-<h3><span class="section-number">1.2.2.2. </span>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#filtering-rows-with-iloc" title="Permalink to this headline">#</a></h3>
+<h3>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#filtering-rows-with-iloc" title="Permalink to this headline">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you find yourself needing to use <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> then stop and think if you are about to implement a loop. If so, there is probably a better way to do it.</p>
@@ -898,7 +896,7 @@ dtype: int64
 <p>This discussion begs the question: when should we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>? In most cases, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is generally safer to use. You can imagine <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> may return incorrect values when applied to a dataset where the ordering of data can change.</p>
 </section>
 <section id="extracting-with-loc">
-<h3><span class="section-number">1.2.2.3. </span>Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#extracting-with-loc" title="Permalink to this headline">#</a></h3>
+<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#extracting-with-loc" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator selects rows and columns in a DataFrame by their row and column label(s), respectively. The <strong>row labels</strong> (commonly referred to as the <strong>indices</strong>) are the bold text on the far <em>left</em> of a DataFrame, while the <strong>column labels</strong> are the column names found at the <em>top</em> of a DataFrame.</p>
 <p>To grab data with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we must specify the row and column label(s) where the data exists. The row labels are the first argument to the .loc function; the column labels are the second. For example, we can select the the row labeled <code class="docutils literal notranslate"><span class="pre">0</span></code> and the column labeled <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> from the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
 <div class="cell docutils container">
@@ -1196,7 +1194,7 @@ dtype: int64
 </div>
 </section>
 <section id="extracting-with">
-<h3><span class="section-number">1.2.2.4. </span>Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#extracting-with" title="Permalink to this headline">#</a></h3>
+<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#extracting-with" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator is the most baffling of all, yet the most commonly used. It only takes a single argument, which may be one of the following:</p>
 <ol class="arabic simple">
 <li><p>A slice of row numbers</p></li>
@@ -1205,7 +1203,7 @@ dtype: int64
 </ol>
 <p>That is, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is <em>context dependent</em>. Let’s see some examples.</p>
 <section id="a-slice-of-row-numbers">
-<h4><span class="section-number">1.2.2.4.1. </span>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
+<h4>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
 <p>Say we wanted the first four rows of our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1283,7 +1281,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-list-of-column-labels">
-<h4><span class="section-number">1.2.2.4.2. </span>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
+<h4>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
 <p>Suppose we now want the first four columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1401,7 +1399,7 @@ dtype: int64
 </div>
 </section>
 <section id="a-single-column-label">
-<h4><span class="section-number">1.2.2.4.3. </span>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
+<h4>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
 <p>Lastly, <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> allows us to extract only the <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1431,7 +1429,7 @@ Name: Candidate, Length: 182, dtype: object
 </section>
 </section>
 <section id="conditional-extraction">
-<h2><span class="section-number">1.2.3. </span>Conditional Extraction<a class="headerlink" href="#conditional-extraction" title="Permalink to this headline">#</a></h2>
+<h2>Conditional Extraction<a class="headerlink" href="#conditional-extraction" title="Permalink to this headline">#</a></h2>
 <p>Conditional selection allows us to select a subset of rows in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> if they follow some specified condition.</p>
 <p>To understand how to use conditional selection, we must look at another possible input of the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">[]</span></code> methods – a boolean array, which is simply an array or <code class="docutils literal notranslate"><span class="pre">Series</span></code> where each element is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. This boolean array must have a length equal to the number of rows in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. It will return all rows that correspond to a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> in the array. We used a very similar technique when performing conditional extraction from a <code class="docutils literal notranslate"><span class="pre">Series</span></code> in the last lecture.</p>
 <p>To see this in action, let’s select all even-indexed rows in the first 10 rows of our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
@@ -2529,7 +2527,7 @@ The 181-th item in this &#39;logical_operator&#39; is: False
 </div>
 </section>
 <section id="adding-removing-and-modifying-columns">
-<h2><span class="section-number">1.2.4. </span>Adding, Removing, and Modifying Columns<a class="headerlink" href="#adding-removing-and-modifying-columns" title="Permalink to this headline">#</a></h2>
+<h2>Adding, Removing, and Modifying Columns<a class="headerlink" href="#adding-removing-and-modifying-columns" title="Permalink to this headline">#</a></h2>
 <p>In many data science tasks, we may need to change the columns contained in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in some way. Fortunately, the syntax to do so is fairly straightforward.</p>
 <p>To add a new column to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we use a syntax similar to that used when accessing an existing column. Specify the name of the new column by writing <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code>, then assign this to a <code class="docutils literal notranslate"><span class="pre">Series</span></code> or array containing the values that will populate this column.</p>
 <div class="cell docutils container">
@@ -2988,14 +2986,12 @@ The 181-th item in this &#39;logical_operator&#39; is: False
 </div>
 </section>
 <section id="handy-utility-functions">
-<h2><span class="section-number">1.2.5. </span>Handy Utility Functions<a class="headerlink" href="#handy-utility-functions" title="Permalink to this headline">#</a></h2>
+<h2>Handy Utility Functions<a class="headerlink" href="#handy-utility-functions" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> contains an extensive library of functions that can help shorten the process of setting and getting information from its data structures. In the following section, we will give overviews of each of the main utility functions that will help us in in this course.</p>
 <p>Discussing all functionality offered by <code class="docutils literal notranslate"><span class="pre">pandas</span></code> could take an entire semester! We will walk you through the most commonly-used functions, and encourage you to explore and experiment on your own.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.shape</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.size</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.astype()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.describe()</span> </code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.sample()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></p></li>
@@ -3005,7 +3001,7 @@ The 181-th item in this &#39;logical_operator&#39; is: False
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/reference/index.html">documentation</a> will be a valuable resource.</p>
 <section id="shape-and-size">
-<h3><span class="section-number">1.2.5.1. </span><code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code><a class="headerlink" href="#shape-and-size" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code><a class="headerlink" href="#shape-and-size" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code> are attributes of <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s that measure the “amount” of data stored in the structure. Calling <code class="docutils literal notranslate"><span class="pre">.shape</span></code> returns a tuple containing the number of rows and columns present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">Series</span></code>. <code class="docutils literal notranslate"><span class="pre">.size</span></code> is used to find the total number of elements in a structure, equivalent to the number of rows times the number of columns.</p>
 <p>Many functions strictly require the dimensions of the arguments along certain axes to match. Calling these dimension-finding functions is much faster than counting all of the items by hand.</p>
 <div class="cell docutils container">
@@ -3036,7 +3032,7 @@ The 181-th item in this &#39;logical_operator&#39; is: False
 </div>
 </section>
 <section id="dtypes">
-<h3><span class="section-number">1.2.5.2. </span><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code><a class="headerlink" href="#dtypes" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code><a class="headerlink" href="#dtypes" title="Permalink to this headline">#</a></h3>
 <p>This returns a Series with the data type of each column.
 The result’s index is the original DataFrame’s columns. Columns with mixed types are stored with the <code class="docutils literal notranslate"><span class="pre">object</span></code> dtype.</p>
 <div class="cell docutils container">
@@ -3059,7 +3055,7 @@ dtype: object
 </div>
 </section>
 <section id="astype">
-<h3><span class="section-number">1.2.5.3. </span><code class="docutils literal notranslate"><span class="pre">.astype()</span></code><a class="headerlink" href="#astype" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.astype()</span></code><a class="headerlink" href="#astype" title="Permalink to this headline">#</a></h3>
 <p>Cast a pandas object to a specified dtype</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3086,7 +3082,7 @@ Name: %, Length: 182, dtype: int64
 </div>
 </section>
 <section id="describe">
-<h3><span class="section-number">1.2.5.4. </span><code class="docutils literal notranslate"><span class="pre">.describe()</span></code><a class="headerlink" href="#describe" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.describe()</span></code><a class="headerlink" href="#describe" title="Permalink to this headline">#</a></h3>
 <p>If many statistics are required from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> (minimum value, maximum value, mean value, etc.), then <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a> can be used to compute all of them at once.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3210,7 +3206,7 @@ Name: Popular vote, dtype: int64
 </div>
 </section>
 <section id="sample">
-<h3><span class="section-number">1.2.5.5. </span><code class="docutils literal notranslate"><span class="pre">.sample()</span></code><a class="headerlink" href="#sample" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.sample()</span></code><a class="headerlink" href="#sample" title="Permalink to this headline">#</a></h3>
 <p>As we will see later in the semester, random processes are at the heart of many data science techniques (for example, train-test splits, bootstrapping, and cross-validation). <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html"><code class="docutils literal notranslate"><span class="pre">.sample()</span></code></a> lets us quickly select random entries (a row if called from a DataFrame, or a value if called from a Series).</p>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">.sample()</span></code> selects entries <em>without</em> replacement. Pass in the argument <code class="docutils literal notranslate"><span class="pre">replace=True</span></code> to sample with replacement.</p>
 <div class="cell docutils container">
@@ -3422,7 +3418,7 @@ Name: Popular vote, dtype: int64
 </div>
 </section>
 <section id="value-counts">
-<h3><span class="section-number">1.2.5.6. </span><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code><a class="headerlink" href="#value-counts" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code><a class="headerlink" href="#value-counts" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code class="docutils literal notranslate"><span class="pre">Series.value_counts()</span></code></a> methods counts the number of occurrence of each unique value in a <code class="docutils literal notranslate"><span class="pre">Series</span></code>. In other words, it <em>counts</em> the number of times each unique <em>value</em> appears. This is often useful for determining the most or least common entries in a <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
 <p>In the example below, we can determine the name with the most years in which at least one person has taken that name by counting the number of times each name appears in the <code class="docutils literal notranslate"><span class="pre">&quot;Name&quot;</span></code> column of <code class="docutils literal notranslate"><span class="pre">elections</span></code>.</p>
 <div class="cell docutils container">
@@ -3444,7 +3440,7 @@ Name: Party, dtype: int64
 </div>
 </section>
 <section id="unique">
-<h3><span class="section-number">1.2.5.7. </span><code class="docutils literal notranslate"><span class="pre">.unique()</span></code><a class="headerlink" href="#unique" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.unique()</span></code><a class="headerlink" href="#unique" title="Permalink to this headline">#</a></h3>
 <p>If we have a Series with many repeated values, then <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a> can be used to identify only the <em>unique</em> values. Here we return an array of all the names in <code class="docutils literal notranslate"><span class="pre">elections</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3460,7 +3456,7 @@ Name: Party, dtype: int64
 </div>
 </section>
 <section id="sort-values">
-<h3><span class="section-number">1.2.5.8. </span><code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code><a class="headerlink" href="#sort-values" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code><a class="headerlink" href="#sort-values" title="Permalink to this headline">#</a></h3>
 <p>Ordering a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be useful for isolating extreme values. For example, the first 5 entries of a row sorted in descending order (that is, from highest to lowest) are the largest 5 values. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html"><code class="docutils literal notranslate"><span class="pre">.sort_values</span></code></a> allows us to order a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">Series</span></code> by a specified column. We can choose to either receive the rows in <code class="docutils literal notranslate"><span class="pre">ascending</span></code> order (default) or <code class="docutils literal notranslate"><span class="pre">descending</span></code> order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3567,7 +3563,7 @@ Name: Candidate, dtype: object
 </div>
 </section>
 <section id="apply">
-<h3><span class="section-number">1.2.5.9. </span><code class="docutils literal notranslate"><span class="pre">.apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h3>
 <p>A frequent operation in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is applying a function on to either each column or row of a DataFrame.</p>
 <p>DataFrame’s <code class="docutils literal notranslate"><span class="pre">apply</span></code> method does exactly this.</p>
 <a class="reference internal image-reference" href="https://fahadsultan.com/datascience_ml/_images/vectorized2.png"><img alt="https://fahadsultan.com/datascience_ml/_images/vectorized2.png" class="align-center" src="https://fahadsultan.com/datascience_ml/_images/vectorized2.png" style="width: 30%;" /></a>
@@ -3664,24 +3660,6 @@ Length: 182, dtype: int64
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="pandas1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>Pandas I: Data Structures</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="pandas3.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Pandas III: Aggregation, Merging and Concatenation</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -3700,36 +3678,36 @@ Length: 182, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-from-a-series">1.2.1. Extracting values from a Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.2.1.1. A Single Index Label</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.2.1.2. A List of Index Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.2.1.3. A Filtering Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-from-a-series">Extracting values from a Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">A Single Index Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">A List of Index Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">A Filtering Condition</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracing-data-from-dataframes">1.2.2. Extracing data from DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-head-and-tail">1.2.2.1. Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-iloc">1.2.2.2. Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with-loc">1.2.2.3. Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with">1.2.2.4. Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">1.2.2.4.1. A slice of row numbers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">1.2.2.4.2. A list of column labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">1.2.2.4.3. A single column label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracing-data-from-dataframes">Extracing data from DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-head-and-tail">Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-rows-with-iloc">Filtering rows with <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with-loc">Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-with">Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slice-of-row-numbers">A slice of row numbers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-column-labels">A list of column labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-column-label">A single column label</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-extraction">1.2.3. Conditional Extraction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-and-modifying-columns">1.2.4. Adding, Removing, and Modifying Columns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-utility-functions">1.2.5. Handy Utility Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-and-size">1.2.5.1. <code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes">1.2.5.2. <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype">1.2.5.3. <code class="docutils literal notranslate"><span class="pre">.astype()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe">1.2.5.4. <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample">1.2.5.5. <code class="docutils literal notranslate"><span class="pre">.sample()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">1.2.5.6. <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">1.2.5.7. <code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-values">1.2.5.8. <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">1.2.5.9. <code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-extraction">Conditional Extraction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-and-modifying-columns">Adding, Removing, and Modifying Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-utility-functions">Handy Utility Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-and-size"><code class="docutils literal notranslate"><span class="pre">.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">.size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dtypes"><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astype"><code class="docutils literal notranslate"><span class="pre">.astype()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe"><code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample"><code class="docutils literal notranslate"><span class="pre">.sample()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts"><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-values"><code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">.apply</span></code></a></li>
 </ul>
 </li>
 </ul>
