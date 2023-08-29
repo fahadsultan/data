@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.3. Pandas III: GroupBy, Aggregation and Merging &#8212; CSC-272 Data Mining</title>
+    <title>1.3. Pandas III: Aggregation, Merging and Concatenation &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -67,11 +67,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Collecting Data" href="30_collecting.html" />
-    <link rel="prev" title="1.2. Pandas II: Selecting and Filtering Data" href="pandas2.html" />
+    <link rel="prev" title="1.2. Pandas II: Selection, Filtering and Dropping" href="pandas2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -186,8 +188,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selecting and Filtering Data</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Pandas III: GroupBy, Aggregation and Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
@@ -394,7 +396,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pandas III: GroupBy, Aggregation and Merging</h1>
+    <h1>Pandas III: Aggregation, Merging and Concatenation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,8 +426,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="pandas-iii-groupby-aggregation-and-merging">
-<h1><span class="section-number">1.3. </span>Pandas III: GroupBy, Aggregation and Merging<a class="headerlink" href="#pandas-iii-groupby-aggregation-and-merging" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-iii-aggregation-merging-and-concatenation">
+<h1><span class="section-number">1.3. </span>Pandas III: Aggregation, Merging and Concatenation<a class="headerlink" href="#pandas-iii-aggregation-merging-and-concatenation" title="Permalink to this headline">#</a></h1>
 <section id="aggregating-data-with-groupby">
 <h2><span class="section-number">1.3.1. </span>Aggregating Data with <code class="docutils literal notranslate"><span class="pre">.groupby</span></code><a class="headerlink" href="#aggregating-data-with-groupby" title="Permalink to this headline">#</a></h2>
 <p>Up until this point, we have been working with individual rows of <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>. As data scientists, we often wish to investigate trends across a larger <em>subset</em> of our data. For example, we may want to compute some summary statistic (the mean, median, sum, etc.) for a group of rows in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To do this, we’ll use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> objects.</p>
@@ -699,7 +701,7 @@ document.write(`
 <section id="filtering-by-group">
 <h3><span class="section-number">1.3.2.3. </span>Filtering by Group<a class="headerlink" href="#filtering-by-group" title="Permalink to this headline">#</a></h3>
 <p>Another common use for <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> objects is to filter data by group.</p>
-<p><code class="docutils literal notranslate"><span class="pre">groupby.filter</span></code> takes an argument $\text{f}$, where $\text{f}$ is a function that:</p>
+<p><code class="docutils literal notranslate"><span class="pre">groupby.filter</span></code> takes an argument <span class="math notranslate nohighlight">\(\text{f}\)</span>, where <span class="math notranslate nohighlight">\(\text{f}\)</span> is a function that:</p>
 <ul class="simple">
 <li><p>Takes a DataFrame object as input</p></li>
 <li><p>Returns a single <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> for the each sub-DataFrame</p></li>
@@ -719,7 +721,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>What’s going on here? In this example, we’ve defined our filtering function, $\text{f}$, to be <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">sf:</span> <span class="pre">sf[&quot;%&quot;].max()</span> <span class="pre">&lt;</span> <span class="pre">45</span></code>. This filtering function will find the maximum <code class="docutils literal notranslate"><span class="pre">&quot;%&quot;</span></code> value among all entries in the grouped sub-DataFrame, which we call <code class="docutils literal notranslate"><span class="pre">sf</span></code>. If the maximum value is less than 45, then the filter function will return <code class="docutils literal notranslate"><span class="pre">True</span></code> and all rows in that grouped sub-DataFrame will appear in the final output DataFrame.</p>
+<p>What’s going on here? In this example, we’ve defined our filtering function, <span class="math notranslate nohighlight">\(\text{f}\)</span>, to be <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">sf:</span> <span class="pre">sf[&quot;%&quot;].max()</span> <span class="pre">&lt;</span> <span class="pre">45</span></code>. This filtering function will find the maximum <code class="docutils literal notranslate"><span class="pre">&quot;%&quot;</span></code> value among all entries in the grouped sub-DataFrame, which we call <code class="docutils literal notranslate"><span class="pre">sf</span></code>. If the maximum value is less than 45, then the filter function will return <code class="docutils literal notranslate"><span class="pre">True</span></code> and all rows in that grouped sub-DataFrame will appear in the final output DataFrame.</p>
 <p>Examine the DataFrame above. Notice how, in this preview of the first 9 rows, all entries from the years 1860 and 1912 appear. This means that in 1860 and 1912, no candidate in that year won more than 45% of the total vote.</p>
 <p>You may ask: how is the <code class="docutils literal notranslate"><span class="pre">groupby.filter</span></code> procedure different to the boolean filtering we’ve seen previously? Boolean filtering considers <em>individual</em> rows when applying a boolean condition. For example, the code <code class="docutils literal notranslate"><span class="pre">elections[elections[&quot;%&quot;]</span> <span class="pre">&lt;</span> <span class="pre">45]</span></code> will check the <code class="docutils literal notranslate"><span class="pre">&quot;%&quot;</span></code> value of every single row in <code class="docutils literal notranslate"><span class="pre">elections</span></code>; if it is less than 45, then that row will be kept in the output. <code class="docutils literal notranslate"><span class="pre">groupby.filter</span></code>, in contrast, applies a boolean condition <em>across</em> all rows in a group. If not all rows in that group satisfy the condition specified by the filter, the entire group will be discarded in the output.</p>
 </section>
@@ -903,7 +905,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Pandas II: Selecting and Filtering Data</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Pandas II: Selection, Filtering and Dropping</p>
       </div>
     </a>
     <a class="right-next"

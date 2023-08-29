@@ -67,6 +67,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/14_distributions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas1.html">1.1. Pandas I: Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas2.html">1.2. Pandas II: Selecting and Filtering Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas3.html">1.3. Pandas III: GroupBy, Aggregation and Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../1_programming/30_collecting.html">2. Collecting Data</a></li>
@@ -418,30 +420,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="probability-distributions">
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-distributions">
 <h1>Probability Distributions<a class="headerlink" href="#probability-distributions" title="Permalink to this headline">#</a></h1>
 <p>If the random variable is discrete, the probability distribution is called a probability mass function (pmf). If the random variable is continuous, the probability distribution is called a probability density function (pdf).</p>
 <section id="uniform-distribution">
 <h2>Uniform Distribution<a class="headerlink" href="#uniform-distribution" title="Permalink to this headline">#</a></h2>
 <p>Uniform distribution is a probability distribution where all outcomes are equally likely. For example, rolling a dice, the probability of getting any number between 1 to 6 is equally likely.</p>
 <p>The probability density function of the uniform distribution is defined as:</p>
-<p>$$f(x) = \frac{1}{b-a}$$</p>
-<p>where $a$ is the minimum possible value and $b$ is the maximum possible value.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{b-a}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is the minimum possible value and <span class="math notranslate nohighlight">\(b\)</span> is the maximum possible value.</p>
 <p>The probability distribution function of the uniform distribution is defined as:</p>
-<p>$$F(x) = \frac{x-a}{b-a}$$</p>
-<p>where $a$ is the minimum possible value and $b$ is the maximum possible value.</p>
+<div class="math notranslate nohighlight">
+\[F(x) = \frac{x-a}{b-a}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is the minimum possible value and <span class="math notranslate nohighlight">\(b\)</span> is the maximum possible value.</p>
 <p>The mean of the uniform distribution is:</p>
-<p>$$\mu = \frac{a+b}{2}$$</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{a+b}{2}\]</div>
 <p>The variance of the uniform distribution is:</p>
-<p>$$\sigma^2 = \frac{(b-a)^2}{12}$$</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2 = \frac{(b-a)^2}{12}\]</div>
 <p>The standard deviation of the uniform distribution is:</p>
-<p>$$\sigma = \frac{b-a}{\sqrt{12}}$$</p>
-<p>The shape of the uniform distribution is flat. The probability of getting any value between $a$ and $b$ is the same. The probability of getting a value less than $a$ is 0 and the probability of getting a value greater than $b$ is 1.</p>
-<p>The uniform distribution is a special case of the beta distribution where $\alpha=1$ and $\beta=1$.</p>
-<p>The uniform distribution is a special case of the gamma distribution where $\alpha=1$.</p>
-<p>The uniform distribution is a special case of the normal distribution where $\mu=\frac{a+b}{2}$ and $\sigma=\frac{b-a}{\sqrt{12}}$.</p>
-<p>The uniform distribution is a special case of the exponential distribution where $\lambda=\frac{1}{b-a}$.</p>
-<p>The uniform distribution is a special case of the chi-squared distribution where $k=2$ and $\lambda=\frac{1}{2(b-a)}$.</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \frac{b-a}{\sqrt{12}}\]</div>
+<p>The shape of the uniform distribution is flat. The probability of getting any value between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is the same. The probability of getting a value less than <span class="math notranslate nohighlight">\(a\)</span> is 0 and the probability of getting a value greater than <span class="math notranslate nohighlight">\(b\)</span> is 1.</p>
+<p>The uniform distribution is a special case of the beta distribution where <span class="math notranslate nohighlight">\(\alpha=1\)</span> and <span class="math notranslate nohighlight">\(\beta=1\)</span>.</p>
+<p>The uniform distribution is a special case of the gamma distribution where <span class="math notranslate nohighlight">\(\alpha=1\)</span>.</p>
+<p>The uniform distribution is a special case of the normal distribution where <span class="math notranslate nohighlight">\(\mu=\frac{a+b}{2}\)</span> and <span class="math notranslate nohighlight">\(\sigma=\frac{b-a}{\sqrt{12}}\)</span>.</p>
+<p>The uniform distribution is a special case of the exponential distribution where <span class="math notranslate nohighlight">\(\lambda=\frac{1}{b-a}\)</span>.</p>
+<p>The uniform distribution is a special case of the chi-squared distribution where <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(\lambda=\frac{1}{2(b-a)}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -460,14 +467,17 @@ document.write(`
 </section>
 <section id="gaussian">
 <h2>Gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">#</a></h2>
-<p>The shape of the Gaussian distribution is like a bell. The Gaussian distribution is also known as the normal distribution. The Gaussian distribution is a continuous probability distribution. The Gaussian distribution is defined by two parameters, the mean $\mu$ and the standard deviation $\sigma$. The mean $\mu$ determines the location of the center of the distribution and the standard deviation $\sigma$ determines the width of the distribution. The Gaussian distribution is symmetric about the mean $\mu$. The mean $\mu$ is also the median and the mode of the Gaussian distribution. The Gaussian distribution is defined as:</p>
-<p>$$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</p>
+<p>The shape of the Gaussian distribution is like a bell. The Gaussian distribution is also known as the normal distribution. The Gaussian distribution is a continuous probability distribution. The Gaussian distribution is defined by two parameters, the mean <span class="math notranslate nohighlight">\(\mu\)</span> and the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. The mean <span class="math notranslate nohighlight">\(\mu\)</span> determines the location of the center of the distribution and the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> determines the width of the distribution. The Gaussian distribution is symmetric about the mean <span class="math notranslate nohighlight">\(\mu\)</span>. The mean <span class="math notranslate nohighlight">\(\mu\)</span> is also the median and the mode of the Gaussian distribution. The Gaussian distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</div>
 <p>Gaussion distribution is a probability distribution where the values are symmetrically distributed around the mean. The mean, median and mode of the Gaussian distribution are equal. The probability density function of the Gaussian distribution is defined as:</p>
-<p>$$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</p>
-<p>where $\mu$ is the mean and $\sigma$ is the standard deviation.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation.</p>
 <p>The probability distribution function of the Gaussian distribution is defined as:</p>
-<p>$$F(x) = \frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt$$</p>
-<p>where $\mu$ is the mean and $\sigma$ is the standard deviation.</p>
+<div class="math notranslate nohighlight">
+\[F(x) = \frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation.</p>
 <p>The difference between Gaussian distribution and normal distribution is that Gaussian distribution is a probability distribution and normal distribution is a probability density function.</p>
 </section>
 <section id="standard-normal">
@@ -478,17 +488,19 @@ document.write(`
 </section>
 <section id="power-law-distribution">
 <h2>Power Law Distribution<a class="headerlink" href="#power-law-distribution" title="Permalink to this headline">#</a></h2>
-<p>Power law distributions are probability distributions where the probability of an event with value $x$ is proportional to $x^{-\alpha}$, where $\alpha$ is a constant. Power law distributions are also known as Pareto distributions. Power law distributions are used to model the distribution of wealth, city population, earthquake magnitude, word frequency, etc. The probability density function of the power law distribution is defined as:</p>
-<p>$$f(x) = \frac{\alpha-1}{x_{min}}\left(\frac{x}{x_{min}}\right)^{-\alpha}$$</p>
-<p>where $\alpha$ is the exponent and $x_{min}$ is the minimum possible value.</p>
+<p>Power law distributions are probability distributions where the probability of an event with value <span class="math notranslate nohighlight">\(x\)</span> is proportional to <span class="math notranslate nohighlight">\(x^{-\alpha}\)</span>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is a constant. Power law distributions are also known as Pareto distributions. Power law distributions are used to model the distribution of wealth, city population, earthquake magnitude, word frequency, etc. The probability density function of the power law distribution is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{\alpha-1}{x_{min}}\left(\frac{x}{x_{min}}\right)^{-\alpha}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the exponent and <span class="math notranslate nohighlight">\(x_{min}\)</span> is the minimum possible value.</p>
 <p>The probability distribution function of the power law distribution is defined as:</p>
-<p>$$F(x) = 1-\left(\frac{x}{x_{min}}\right)^{-\alpha+1}$$</p>
-<p>where $\alpha$ is the exponent and $x_{min}$ is the minimum possible value.</p>
-<p>The mean of the power law distribution is $\mu = \frac{\alpha-1}{\alpha-2}x_{min}$</p>
-<p>The variance of the power law distribution is $\sigma^2 = \frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2$</p>
-<p>The standard deviation of the power law distribution is $\sigma = \sqrt{\frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2}$</p>
-<p>The shape of the power law distribution is a straight line on a log-log plot. The probability of getting a value less than $x_{min}$ is 0 and the probability of getting a value greater than $x_{min}$ is 1.</p>
-<p>The power law distribution is a special case of the exponential distribution where $\lambda=\frac{\alpha-1}{x_{min}}$.</p>
+<div class="math notranslate nohighlight">
+\[F(x) = 1-\left(\frac{x}{x_{min}}\right)^{-\alpha+1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the exponent and <span class="math notranslate nohighlight">\(x_{min}\)</span> is the minimum possible value.</p>
+<p>The mean of the power law distribution is <span class="math notranslate nohighlight">\(\mu = \frac{\alpha-1}{\alpha-2}x_{min}\)</span></p>
+<p>The variance of the power law distribution is <span class="math notranslate nohighlight">\(\sigma^2 = \frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2\)</span></p>
+<p>The standard deviation of the power law distribution is <span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{\alpha-1}{(\alpha-3)(\alpha-2)^2}x_{min}^2}\)</span></p>
+<p>The shape of the power law distribution is a straight line on a log-log plot. The probability of getting a value less than <span class="math notranslate nohighlight">\(x_{min}\)</span> is 0 and the probability of getting a value greater than <span class="math notranslate nohighlight">\(x_{min}\)</span> is 1.</p>
+<p>The power law distribution is a special case of the exponential distribution where <span class="math notranslate nohighlight">\(\lambda=\frac{\alpha-1}{x_{min}}\)</span>.</p>
 </section>
 </section>
 

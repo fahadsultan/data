@@ -67,6 +67,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/21_univariate';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selecting and Filtering Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: GroupBy, Aggregation and Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
@@ -460,7 +462,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-index-of-accessibility-to-radial-highways">| RAD | index of accessibility to radial highways</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tax-full-value-property-tax-rate-per-10-000">| TAX | full-value property-tax rate per $10,000</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ptratio-pupil-teacher-ratio-by-town">| PTRATIO | pupil-teacher ratio by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | $1000(B_k - 0.63)^2$ where $B_k$ is the proportion of black population by town</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstat-lower-status-of-the-population">| LSTAT | % lower status of the population</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#medv-median-value-of-owner-occupied-homes-in-1000-s">| MEDV | Median value of owner-occupied homes in $1000’s</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pima-indians-diabetes-database">“”” Pima Indians Diabetes Database “””</a></li>
@@ -541,385 +543,385 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="univariate-visualizations">
+  <section class="tex2jax_ignore mathjax_ignore" id="univariate-visualizations">
 <h1>Univariate Visualizations<a class="headerlink" href="#univariate-visualizations" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute">
+<section class="tex2jax_ignore mathjax_ignore" id="uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute">
 <h1>Uni-variate visualizations are used to understand each attribute in the dataset. In this section, we will look at techniques to understand the “distribution” of each attribute.<a class="headerlink" href="#uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value">
+<section class="tex2jax_ignore mathjax_ignore" id="distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value">
 <h1>Distribution of a variable is the frequency of each value of the variable. For example, if we have a variable “age”, then the distribution of age is the frequency of each age value.<a class="headerlink" href="#distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes">
+<section class="tex2jax_ignore mathjax_ignore" id="we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes">
 <h1>We will discuss Distributions in much greater detail when we look at Probability and Statistics in a future chapter. For now, we will look at techniques that you can use to understand the distribution of your attributes.<a class="headerlink" href="#we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values">
+<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values">
 <h1>We will use the Pima Indians Diabetes dataset to demonstrate the uni-variate visualizations. This is a binary classification problem where all of the attributes are numeric and have different scales. It is a great dataset for practicing on with neural networks because all of the inputs are small numeric values.<a class="headerlink" href="#we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-will-look-at-the-following-techniques-in-this-section">
+<section class="tex2jax_ignore mathjax_ignore" id="we-will-look-at-the-following-techniques-in-this-section">
 <h1>We will look at the following techniques in this section:<a class="headerlink" href="#we-will-look-at-the-following-techniques-in-this-section" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="histograms">
+<section class="tex2jax_ignore mathjax_ignore" id="histograms">
 <h1>- Histograms.<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="density-plots">
+<section class="tex2jax_ignore mathjax_ignore" id="density-plots">
 <h1>- Density Plots.<a class="headerlink" href="#density-plots" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="box-and-whisker-plots">
+<section class="tex2jax_ignore mathjax_ignore" id="box-and-whisker-plots">
 <h1>- Box and Whisker Plots.<a class="headerlink" href="#box-and-whisker-plots" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="histogram-ordinal-variables">
+<section class="tex2jax_ignore mathjax_ignore" id="histogram-ordinal-variables">
 <h1>## Histogram: Ordinal Variables<a class="headerlink" href="#histogram-ordinal-variables" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers">
+<section class="tex2jax_ignore mathjax_ignore" id="histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers">
 <h1>Histograms group data into bins and provide you a count of the number of observations in each bin. From the shape of the bins you can quickly get a feeling for whether an attribute is Gaussian, skewed or even has an exponential distribution. It can also help you see possible outliers.<a class="headerlink" href="#histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value">
+<section class="tex2jax_ignore mathjax_ignore" id="for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value">
 <h1>For a nominal or categorical variable, you can create a bar chart showing the count of each class value.<a class="headerlink" href="#for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="distributions-often-take-on-one-of-the-following-shapes">
+<section class="tex2jax_ignore mathjax_ignore" id="distributions-often-take-on-one-of-the-following-shapes">
 <h1>Distributions often take on one of the following shapes:<a class="headerlink" href="#distributions-often-take-on-one-of-the-following-shapes" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="bell">
+<section class="tex2jax_ignore mathjax_ignore" id="bell">
 <h1>- Bell<a class="headerlink" href="#bell" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="long-tail">
+<section class="tex2jax_ignore mathjax_ignore" id="long-tail">
 <h1>- Long tail<a class="headerlink" href="#long-tail" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="skewed">
+<section class="tex2jax_ignore mathjax_ignore" id="skewed">
 <h1>- Skewed<a class="headerlink" href="#skewed" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="twin-peaked">
+<section class="tex2jax_ignore mathjax_ignore" id="twin-peaked">
 <h1>- Twin peaked<a class="headerlink" href="#twin-peaked" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="flat">
+<section class="tex2jax_ignore mathjax_ignore" id="flat">
 <h1>- Flat<a class="headerlink" href="#flat" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="shapes">
+<section class="tex2jax_ignore mathjax_ignore" id="shapes">
 <h1><img alt="Shapes" src="https://cdn-comlp.nitrocdn.com/jHZYXVQcGrlgKuxnSthsdCgKBQAsIMJC/assets/images/optimized/rev-bfec2c5/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg" /><a class="headerlink" href="#shapes" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling">
+<section class="tex2jax_ignore mathjax_ignore" id="the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling">
 <h1>The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling.<a class="headerlink" href="#the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables">
+<section class="tex2jax_ignore mathjax_ignore" id="the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables">
 <h1>The example below creates a histogram plot of the diabetes dataset input variables.<a class="headerlink" href="#the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6">
+<section class="tex2jax_ignore mathjax_ignore" id="running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6">
 <h1>Running the example creates a histogram plot for each numeric input variable in the dataset. We can see that some attributes may have an exponential distribution, such as attributes 3 and 6.<a class="headerlink" href="#running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7">
+<section class="tex2jax_ignore mathjax_ignore" id="we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7">
 <h1>We can also see that other attributes may have a skewed distribution such as attributes 1, 5 and 7.<a class="headerlink" href="#we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8">
+<section class="tex2jax_ignore mathjax_ignore" id="finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8">
 <h1>Finally, perhaps we can see a few attributes that have a Gaussian distribution such as attributes 0, 4 and 8.<a class="headerlink" href="#finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="imports">
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
 <h1>## Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-will-use-the-following-libraries">
+<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-following-libraries">
 <h1>We will use the following libraries:<a class="headerlink" href="#we-will-use-the-following-libraries" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="pandas-to-load-the-data">
+<section class="tex2jax_ignore mathjax_ignore" id="pandas-to-load-the-data">
 <h1>- Pandas: to load the data.<a class="headerlink" href="#pandas-to-load-the-data" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="matplotlib-to-create-the-plots">
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-to-create-the-plots">
 <h1>- Matplotlib: to create the plots.<a class="headerlink" href="#matplotlib-to-create-the-plots" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="seaborn-to-create-the-plots">
+<section class="tex2jax_ignore mathjax_ignore" id="seaborn-to-create-the-plots">
 <h1>- Seaborn: to create the plots.<a class="headerlink" href="#seaborn-to-create-the-plots" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="in-order-to-use-pandas-we-need-to-import-it">
+<section class="tex2jax_ignore mathjax_ignore" id="in-order-to-use-pandas-we-need-to-import-it">
 <h1>In order to use pandas we need to import it:<a class="headerlink" href="#in-order-to-use-pandas-we-need-to-import-it" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="python">
+<section class="tex2jax_ignore mathjax_ignore" id="python">
 <h1>```python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="import-pandas-as-pd">
+<section class="tex2jax_ignore mathjax_ignore" id="import-pandas-as-pd">
 <h1>import pandas as pd<a class="headerlink" href="#import-pandas-as-pd" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id1">
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>```<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials">
+<section class="tex2jax_ignore mathjax_ignore" id="it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials">
 <h1>It is common to import pandas as pd. This is not required, but it is a convention that you will see used in other code and documentation, and in these tutorials.<a class="headerlink" href="#it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object">
+<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object">
 <h1>We will use the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function to load the data. This is a function in pandas that will load data from a CSV file into a DataFrame object.<a class="headerlink" href="#we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id2">
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
 <h1>```python<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="dataset-pd-read-csv-pima-indians-diabetes-csv">
+<section class="tex2jax_ignore mathjax_ignore" id="dataset-pd-read-csv-pima-indians-diabetes-csv">
 <h1>dataset = pd.read_csv(‘pima-indians-diabetes.csv’)<a class="headerlink" href="#dataset-pd-read-csv-pima-indians-diabetes-csv" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id3">
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
 <h1>```<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id4">
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
 <h1>import pandas as pd<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="from-matplotlib-import-pyplot-as-plt">
+<section class="tex2jax_ignore mathjax_ignore" id="from-matplotlib-import-pyplot-as-plt">
 <h1>from matplotlib import pyplot as plt<a class="headerlink" href="#from-matplotlib-import-pyplot-as-plt" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="import-seaborn-as-sns">
+<section class="tex2jax_ignore mathjax_ignore" id="import-seaborn-as-sns">
 <h1>import seaborn as sns<a class="headerlink" href="#import-seaborn-as-sns" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="matplotlib-inline">
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-inline">
 <h1>%matplotlib inline<a class="headerlink" href="#matplotlib-inline" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="set-the-style-to-whitegrid">
+<section class="tex2jax_ignore mathjax_ignore" id="set-the-style-to-whitegrid">
 <h1># Set the style to “whitegrid”<a class="headerlink" href="#set-the-style-to-whitegrid" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-set-theme-style-ticks-color-codes-true">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-set-theme-style-ticks-color-codes-true">
 <h1>sns.set_theme(style=”ticks”, color_codes=True)<a class="headerlink" href="#sns-set-theme-style-ticks-color-codes-true" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns">
+<section class="tex2jax_ignore mathjax_ignore" id="the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns">
 <h1>The Boston Housing Dataset is a derived from information collected by the U.S. Census Service concerning housing in the area of Boston MA. The following describes the dataset columns:<a class="headerlink" href="#the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="column-description">
+<section class="tex2jax_ignore mathjax_ignore" id="column-description">
 <h1>| Column | Description |<a class="headerlink" href="#column-description" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id5">
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
 <h1>| — | — |<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="crim-per-capita-crime-rate-by-town">
+<section class="tex2jax_ignore mathjax_ignore" id="crim-per-capita-crime-rate-by-town">
 <h1>| CRIM | per capita crime rate by town<a class="headerlink" href="#crim-per-capita-crime-rate-by-town" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft">
+<section class="tex2jax_ignore mathjax_ignore" id="zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft">
 <h1>| ZN | proportion of residential land zoned for lots over 25,000 sq.ft.<a class="headerlink" href="#zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="indus-proportion-of-non-retail-business-acres-per-town">
+<section class="tex2jax_ignore mathjax_ignore" id="indus-proportion-of-non-retail-business-acres-per-town">
 <h1>| INDUS | proportion of non-retail business acres per town.<a class="headerlink" href="#indus-proportion-of-non-retail-business-acres-per-town" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise">
+<section class="tex2jax_ignore mathjax_ignore" id="chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise">
 <h1>| CHAS | Charles River dummy variable (1 if tract bounds river; 0 otherwise)<a class="headerlink" href="#chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="nox-nitric-oxides-concentration-parts-per-10-million">
+<section class="tex2jax_ignore mathjax_ignore" id="nox-nitric-oxides-concentration-parts-per-10-million">
 <h1>| NOX | nitric oxides concentration (parts per 10 million)<a class="headerlink" href="#nox-nitric-oxides-concentration-parts-per-10-million" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="rm-average-number-of-rooms-per-dwelling">
+<section class="tex2jax_ignore mathjax_ignore" id="rm-average-number-of-rooms-per-dwelling">
 <h1>| RM | average number of rooms per dwelling<a class="headerlink" href="#rm-average-number-of-rooms-per-dwelling" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="age-proportion-of-owner-occupied-units-built-prior-to-1940">
+<section class="tex2jax_ignore mathjax_ignore" id="age-proportion-of-owner-occupied-units-built-prior-to-1940">
 <h1>| AGE | proportion of owner-occupied units built prior to 1940<a class="headerlink" href="#age-proportion-of-owner-occupied-units-built-prior-to-1940" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="dis-weighted-distances-to-five-boston-employment-centres">
+<section class="tex2jax_ignore mathjax_ignore" id="dis-weighted-distances-to-five-boston-employment-centres">
 <h1>| DIS | weighted distances to five Boston employment centres<a class="headerlink" href="#dis-weighted-distances-to-five-boston-employment-centres" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="rad-index-of-accessibility-to-radial-highways">
+<section class="tex2jax_ignore mathjax_ignore" id="rad-index-of-accessibility-to-radial-highways">
 <h1>| RAD | index of accessibility to radial highways<a class="headerlink" href="#rad-index-of-accessibility-to-radial-highways" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="tax-full-value-property-tax-rate-per-10-000">
+<section class="tex2jax_ignore mathjax_ignore" id="tax-full-value-property-tax-rate-per-10-000">
 <h1>| TAX | full-value property-tax rate per $10,000<a class="headerlink" href="#tax-full-value-property-tax-rate-per-10-000" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="ptratio-pupil-teacher-ratio-by-town">
+<section class="tex2jax_ignore mathjax_ignore" id="ptratio-pupil-teacher-ratio-by-town">
 <h1>| PTRATIO | pupil-teacher ratio by town<a class="headerlink" href="#ptratio-pupil-teacher-ratio-by-town" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">
-<h1>| B | $1000(B_k - 0.63)^2$ where $B_k$ is the proportion of black population by town<a class="headerlink" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">
+<h1>| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town<a class="headerlink" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="lstat-lower-status-of-the-population">
+<section class="tex2jax_ignore mathjax_ignore" id="lstat-lower-status-of-the-population">
 <h1>| LSTAT | % lower status of the population<a class="headerlink" href="#lstat-lower-status-of-the-population" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="medv-median-value-of-owner-occupied-homes-in-1000-s">
+<section class="tex2jax_ignore mathjax_ignore" id="medv-median-value-of-owner-occupied-homes-in-1000-s">
 <h1>| MEDV | Median value of owner-occupied homes in $1000’s<a class="headerlink" href="#medv-median-value-of-owner-occupied-homes-in-1000-s" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="pima-indians-diabetes-database">
+<section class="tex2jax_ignore mathjax_ignore" id="pima-indians-diabetes-database">
 <h1>“”” Pima Indians Diabetes Database “””<a class="headerlink" href="#pima-indians-diabetes-database" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="data-pd-read-csv-data-pima-indians-diabetes-csv">
+<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-pima-indians-diabetes-csv">
 <h1># data = pd.read_csv(‘../data/pima-indians-diabetes.csv’)<a class="headerlink" href="#data-pd-read-csv-data-pima-indians-diabetes-csv" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id6">
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
 <h1><a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="boston-housing-dataset">
+<section class="tex2jax_ignore mathjax_ignore" id="boston-housing-dataset">
 <h1># “”” Boston Housing Dataset “””<a class="headerlink" href="#boston-housing-dataset" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv">
+<section class="tex2jax_ignore mathjax_ignore" id="column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv">
 <h1>column_names = [‘CRIM’, ‘ZN’, ‘INDUS’, ‘CHAS’, ‘NOX’, ‘RM’, ‘AGE’, ‘DIS’, ‘RAD’, ‘TAX’, ‘PTRATIO’, ‘B’, ‘LSTAT’, ‘MEDV’]<a class="headerlink" href="#column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names">
+<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names">
 <h1>data = pd.read_csv(‘../data/housing.csv.xls’, header=None, delimiter=r”\s+”, names=column_names)<a class="headerlink" href="#data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50">
 <h1>fig, axs = plt.subplots(ncols=1, nrows=len(column_names), figsize=(5, 50))<a class="headerlink" href="#fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="for-i-col-in-enumerate-column-names">
+<section class="tex2jax_ignore mathjax_ignore" id="for-i-col-in-enumerate-column-names">
 <h1>for i, col in enumerate(column_names):<a class="headerlink" href="#for-i-col-in-enumerate-column-names" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-data-col-ax-axs-i">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-data-col-ax-axs-i">
 <h1>sns.histplot(data=data[col], ax=axs[i])<a class="headerlink" href="#sns-histplot-data-data-col-ax-axs-i" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="data-pd-read-csv-data-adult-data-header-none">
+<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-adult-data-header-none">
 <h1>data = pd.read_csv(‘../data/adult.data’, header=None)<a class="headerlink" href="#data-pd-read-csv-data-adult-data-header-none" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation">
+<section class="tex2jax_ignore mathjax_ignore" id="data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation">
 <h1>data.columns = [‘age’, ‘workclass’, ‘fnlwgt’, ‘education’, ‘education_num’, ‘marital_status’, ‘occupation’, \<a class="headerlink" href="#data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income">
+<section class="tex2jax_ignore mathjax_ignore" id="relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income">
 <h1>‘relationship’, ‘race’, ‘sex’, ‘capital_gain’, ‘capital_loss’, ‘hours_per_week’, ‘native_country’, ‘income’]<a class="headerlink" href="#relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50">
 <h1>fig, axs = plt.subplots(ncols=1, nrows=len(data.columns), figsize=(5, 50))<a class="headerlink" href="#fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="for-i-col-in-enumerate-data-columns">
+<section class="tex2jax_ignore mathjax_ignore" id="for-i-col-in-enumerate-data-columns">
 <h1>for i, col in enumerate(data.columns):<a class="headerlink" href="#for-i-col-in-enumerate-data-columns" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id7">
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
 <h1>sns.histplot(data=data[col], ax=axs[i])<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions">
+<section class="tex2jax_ignore mathjax_ignore" id="by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions">
 <h1>By default, <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code> will try to infer the bin edges from the data. However, it is possible to set the bin edges explicitly. This can be useful when comparing multiple distributions.<a class="headerlink" href="#by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id8">
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
 <h1>```python<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-dataset-x-age-bins-range-0-100-5">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-dataset-x-age-bins-range-0-100-5">
 <h1>sns.histplot(data=dataset, x=”age”, bins=range(0, 100, 5))<a class="headerlink" href="#sns-histplot-data-dataset-x-age-bins-range-0-100-5" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id9">
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
 <h1>```<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="histogram-of-bmi">
+<section class="tex2jax_ignore mathjax_ignore" id="histogram-of-bmi">
 <h1># Histogram of BMI<a class="headerlink" href="#histogram-of-bmi" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-x-bmi-bins-10">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-x-bmi-bins-10">
 <h1>sns.histplot(data, x=”BMI”, bins=10);<a class="headerlink" href="#sns-histplot-data-x-bmi-bins-10" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-title-bmi-distribution">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-title-bmi-distribution">
 <h1>plt.title(‘BMI distribution’);<a class="headerlink" href="#plt-title-bmi-distribution" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-ylabel-count-of-rows">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-ylabel-count-of-rows">
 <h1>plt.ylabel(‘Count (of rows)’);<a class="headerlink" href="#plt-ylabel-count-of-rows" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-grid">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-grid">
 <h1>plt.grid();<a class="headerlink" href="#plt-grid" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plotting-the-data">
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-the-data">
 <h1># Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-pairplot-data-hue-outcome-diag-kind-kde">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-pairplot-data-hue-outcome-diag-kind-kde">
 <h1>sns.pairplot(data, hue=’Outcome’, diag_kind=’kde’);<a class="headerlink" href="#sns-pairplot-data-hue-outcome-diag-kind-kde" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id10">
+<section class="tex2jax_ignore mathjax_ignore" id="id10">
 <h1># Plotting the data<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-x-bmi-hue-outcome-multiple-stack">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-x-bmi-hue-outcome-multiple-stack">
 <h1>sns.histplot(data, x=”BMI”, hue=”Outcome”, multiple=”stack”);<a class="headerlink" href="#sns-histplot-data-x-bmi-hue-outcome-multiple-stack" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-title-bmi-distribution-by-outcome">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-title-bmi-distribution-by-outcome">
 <h1>plt.title(‘BMI distribution by Outcome’);<a class="headerlink" href="#plt-title-bmi-distribution-by-outcome" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id11">
+<section class="tex2jax_ignore mathjax_ignore" id="id11">
 <h1>from matplotlib import pyplot as plt<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id12">
+<section class="tex2jax_ignore mathjax_ignore" id="id12">
 <h1>import seaborn as sns<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-set-theme">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-set-theme">
 <h1>sns.set_theme()<a class="headerlink" href="#sns-set-theme" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-sns-histplot-data-imdb-rating">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-sns-histplot-data-imdb-rating">
 <h1>fig = sns.histplot(data[‘IMDB_Rating’]);<a class="headerlink" href="#fig-sns-histplot-data-imdb-rating" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-set-title">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-set-title">
 <h1>fig.set(title=’’);<a class="headerlink" href="#fig-set-title" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="histogram-nominal-variables">
+<section class="tex2jax_ignore mathjax_ignore" id="histogram-nominal-variables">
 <h1>## Histogram: Nominal Variables<a class="headerlink" href="#histogram-nominal-variables" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-sns-histplot-data-certificate">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-sns-histplot-data-certificate">
 <h1>fig = sns.histplot(data[‘Certificate’])<a class="headerlink" href="#fig-sns-histplot-data-certificate" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-xticks-rotation-90">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-xticks-rotation-90">
 <h1>plt.xticks(rotation=90);<a class="headerlink" href="#plt-xticks-rotation-90" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="title">
+<section class="tex2jax_ignore mathjax_ignore" id="title">
 <h1>## Title<a class="headerlink" href="#title" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id13">
+<section class="tex2jax_ignore mathjax_ignore" id="id13">
 <h1>fig = sns.histplot(data[‘Certificate’])<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id14">
+<section class="tex2jax_ignore mathjax_ignore" id="id14">
 <h1>plt.xticks(rotation=90);<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-title-count-of-each-certificate-in-top-1000-imdb-movies">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-title-count-of-each-certificate-in-top-1000-imdb-movies">
 <h1>plt.title(“Count of each Certificate in top 1000 IMDb movies”);<a class="headerlink" href="#plt-title-count-of-each-certificate-in-top-1000-imdb-movies" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="legend">
+<section class="tex2jax_ignore mathjax_ignore" id="legend">
 <h1>## Legend<a class="headerlink" href="#legend" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id15">
+<section class="tex2jax_ignore mathjax_ignore" id="id15">
 <h1><a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="top-data-500">
+<section class="tex2jax_ignore mathjax_ignore" id="top-data-500">
 <h1># top    = data[:500]<a class="headerlink" href="#top-data-500" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="bottom-data-500">
+<section class="tex2jax_ignore mathjax_ignore" id="bottom-data-500">
 <h1>bottom = data[500:]<a class="headerlink" href="#bottom-data-500" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-top-certificate-label-top-500-alpha-0-5">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-top-certificate-label-top-500-alpha-0-5">
 <h1>sns.histplot(top[‘Certificate’], label=’Top 500’, alpha=0.5)<a class="headerlink" href="#sns-histplot-top-certificate-label-top-500-alpha-0-5" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5">
 <h1>sns.histplot(bottom[‘Certificate’], label=’Bottom 500’, color=’purple’, alpha=0.5)<a class="headerlink" href="#sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id16">
+<section class="tex2jax_ignore mathjax_ignore" id="id16">
 <h1>plt.xticks(rotation=90);<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id17">
+<section class="tex2jax_ignore mathjax_ignore" id="id17">
 <h1>plt.title(“Count of each Certificate in top 1000 IMDb movies”)<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-legend">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-legend">
 <h1>plt.legend();<a class="headerlink" href="#plt-legend" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="boxplot">
+<section class="tex2jax_ignore mathjax_ignore" id="boxplot">
 <h1>## Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id18">
+<section class="tex2jax_ignore mathjax_ignore" id="id18">
 <h1><a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-boxplot-x-data-meta-score">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-meta-score">
 <h1># sns.boxplot(x=data[“Meta_score”]);<a class="headerlink" href="#sns-boxplot-x-data-meta-score" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="plt-title-ratings-on-metacritic-for-top-1000-imdb-movies">
+<section class="tex2jax_ignore mathjax_ignore" id="plt-title-ratings-on-metacritic-for-top-1000-imdb-movies">
 <h1>plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);<a class="headerlink" href="#plt-title-ratings-on-metacritic-for-top-1000-imdb-movies" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="violin-plot">
+<section class="tex2jax_ignore mathjax_ignore" id="violin-plot">
 <h1>## Violin Plot<a class="headerlink" href="#violin-plot" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id19">
+<section class="tex2jax_ignore mathjax_ignore" id="id19">
 <h1><a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-violinplot-x-data-meta-score">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-violinplot-x-data-meta-score">
 <h1># sns.violinplot(x=data[“Meta_score”]);<a class="headerlink" href="#sns-violinplot-x-data-meta-score" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="id20">
+<section class="tex2jax_ignore mathjax_ignore" id="id20">
 <h1>plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="subplots">
+<section class="tex2jax_ignore mathjax_ignore" id="subplots">
 <h1>## Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="fig-axes-plt-subplots-2-2-figsize-10-10">
+<section class="tex2jax_ignore mathjax_ignore" id="fig-axes-plt-subplots-2-2-figsize-10-10">
 <h1>fig, axes = plt.subplots(2, 2, figsize=(10, 10))<a class="headerlink" href="#fig-axes-plt-subplots-2-2-figsize-10-10" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-imdb-rating-ax-axes-0-0">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-imdb-rating-ax-axes-0-0">
 <h1>sns.histplot(data[‘IMDB_Rating’], ax=axes[0][0]);<a class="headerlink" href="#sns-histplot-data-imdb-rating-ax-axes-0-0" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-histplot-data-meta-score-ax-axes-0-1">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-meta-score-ax-axes-0-1">
 <h1>sns.histplot(data[‘Meta_score’], ax=axes[0][1]);<a class="headerlink" href="#sns-histplot-data-meta-score-ax-axes-0-1" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-boxplot-x-data-imdb-rating-ax-axes-1-0">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-imdb-rating-ax-axes-1-0">
 <h1>sns.boxplot(x=data[‘IMDB_Rating’], ax=axes[1][0]);<a class="headerlink" href="#sns-boxplot-x-data-imdb-rating-ax-axes-1-0" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="sns-boxplot-x-data-meta-score-ax-axes-1-1">
+<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-meta-score-ax-axes-1-1">
 <h1>sns.boxplot(x=data[‘Meta_score’], ax=axes[1][1]);<a class="headerlink" href="#sns-boxplot-x-data-meta-score-ax-axes-1-1" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="axes-0-0-set-title-imdb-rating-fontsize-20">
+<section class="tex2jax_ignore mathjax_ignore" id="axes-0-0-set-title-imdb-rating-fontsize-20">
 <h1>axes[0][0].set_title(‘IMDb Rating’, fontsize=20);<a class="headerlink" href="#axes-0-0-set-title-imdb-rating-fontsize-20" title="Permalink to this headline">#</a></h1>
 </section>
-<section id="axes-0-1-set-title-meta-score-fontsize-20">
+<section class="tex2jax_ignore mathjax_ignore" id="axes-0-1-set-title-meta-score-fontsize-20">
 <h1>axes[0][1].set_title(‘Meta score’, fontsize=20);<a class="headerlink" href="#axes-0-1-set-title-meta-score-fontsize-20" title="Permalink to this headline">#</a></h1>
 </section>
 
@@ -1030,7 +1032,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-index-of-accessibility-to-radial-highways">| RAD | index of accessibility to radial highways</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tax-full-value-property-tax-rate-per-10-000">| TAX | full-value property-tax rate per $10,000</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ptratio-pupil-teacher-ratio-by-town">| PTRATIO | pupil-teacher ratio by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | $1000(B_k - 0.63)^2$ where $B_k$ is the proportion of black population by town</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstat-lower-status-of-the-population">| LSTAT | % lower status of the population</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#medv-median-value-of-owner-occupied-homes-in-1000-s">| MEDV | Median value of owner-occupied homes in $1000’s</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pima-indians-diabetes-database">“”” Pima Indians Diabetes Database “””</a></li>

@@ -11,6 +11,8 @@ align: center
 Textbook for the course
 ``` 
 
+https://wesmckinney.com/book/images/cover.png
+
 * [Python for Data Analysis by Wes McKinney](https://wesmckinney.com/book/)
 
 ## Other Recommended (but advanced) Textbooks
@@ -27,8 +29,6 @@ Textbook for the course
 ## Other Resources
 
 * [Jupyter Notebook User Guide](https://jupyter-notebook.readthedocs.io/en/stable/)
-
-* [Python for Data Analysis](https://wesmckinney.com/book/pandas-basics.html)
 
 * [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/)
 

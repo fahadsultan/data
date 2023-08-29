@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/pandas1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.2. Pandas II: Selecting and Filtering Data" href="pandas2.html" />
+    <link rel="next" title="1.2. Pandas II: Selection, Filtering and Dropping" href="pandas2.html" />
     <link rel="prev" title="1. Vectorized Operations on Data" href="10_dataops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -186,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Pandas I: Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selecting and Filtering Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: GroupBy, Aggregation and Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">2. Collecting Data</a></li>
@@ -406,15 +406,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
@@ -436,7 +428,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="pandas-i-data-structures">
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-i-data-structures">
 <h1><span class="section-number">1.1. </span>Pandas I: Data Structures<a class="headerlink" href="#pandas-i-data-structures" title="Permalink to this headline">#</a></h1>
 <p>Lets dive right into things by having you explore and manipulate real-world data. To do so, we’ll introduce <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, a popular Python library for interacting with tabular data.</p>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> is generally accepted in the data science community as the industry- and academia-standard tool for manipulating tabular data.</p>
@@ -445,13 +437,25 @@ document.write(`
 <p>Data scientists work with data stored in a variety of formats. The primary focus of this class is in understanding <em>tabular data</em> –– data that is stored in a table.</p>
 <p>Tabular data is one of the most common systems that data scientists use to organize data. This is in large part due to the simplicity and flexibility of tables. Tables allow us to represent each <strong>observation</strong>, or instance of collecting data from an individual, as its own row. We can record distinct characteristics, or <strong>features</strong>, of each observation in separate columns.</p>
 <p>To see this in action, we’ll explore the <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset, which stores information about political candidates who ran for president of the United States in various years.</p>
+<p>This dataset is stored in <strong>Comma Separated Values</strong> (CSV) format. CSV files due to their simplicity and readability are one of the most common ways to store tabular data. Each line in a CSV file (file extension: <code class="docutils literal notranslate"><span class="pre">.csv</span></code>) represents a row in the table. In other words, each row is separated by a newline character <code class="docutils literal notranslate"><span class="pre">\n</span></code>. Within each row, each column is separated by a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>, hence the name Comma Separated Values.</p>
+<p>The first few rows of <code class="docutils literal notranslate"><span class="pre">elections</span></code> dataset in CSV format are as follows:</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Year,Candidate,Party,Popular vote,Result,%
+1824,Andrew Jackson,Democratic-Republican,151271,loss,57.21012204
+1824,John Quincy Adams,Democratic-Republican,113142,win,42.78987796
+1828,Andrew Jackson,Democratic,642806,win,56.20392707
+1828,John Quincy Adams,National Republican,500897,loss,43.79607293
+1832,Andrew Jackson,Democratic,702735,win,54.57478905
+</pre></div>
+</div>
 <p>To begin our studies in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, we must first import the library into our Python environment. This will allow us to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> data structures and methods in our code.</p>
+<p>CSV files can be in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> using <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>. The following code cell imports <code class="docutils literal notranslate"><span class="pre">pandas</span></code> as <code class="docutils literal notranslate"><span class="pre">pd</span></code>, the conventional alias for Pandas and then reads the <code class="docutils literal notranslate"><span class="pre">elections.csv</span></code> file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas, as `np` is for NumPy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `pd` is the conventional alias for Pandas</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&quot;</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -684,101 +688,6 @@ dtype: int64
 </div>
 </div>
 </div>
-<section id="selection-in-series">
-<h3><span class="section-number">1.1.3.1. </span>Selection in Series<a class="headerlink" href="#selection-in-series" title="Permalink to this headline">#</a></h3>
-<p>We can select a single value or a set of values from a Series. There are 3 primary methods of selecting data.</p>
-<ol class="arabic simple">
-<li><p>A single index label</p></li>
-<li><p>A list of index labels</p></li>
-<li><p>A filtering condition</p></li>
-</ol>
-<p>To demonstrate this, let’s define the Series ser</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">])</span>
-<span class="n">ser</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
-b   -2
-c    0
-d    6
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<section id="a-single-index-label">
-<h4><span class="section-number">1.1.3.1.1. </span>A Single Index Label<a class="headerlink" href="#a-single-index-label" title="Permalink to this headline">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-list-of-index-labels">
-<h4><span class="section-number">1.1.3.1.2. </span>A List of Index Labels<a class="headerlink" href="#a-list-of-index-labels" title="Permalink to this headline">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
-c    0
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-filtering-condition">
-<h4><span class="section-number">1.1.3.1.3. </span>A Filtering Condition<a class="headerlink" href="#a-filtering-condition" title="Permalink to this headline">#</a></h4>
-<p>Perhaps the most interesting (and useful) method of selecting data from a Series is with a filtering condition.</p>
-<p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a     True
-b    False
-c    False
-d     True
-dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<p>We then use this boolean condition to index into our original Series. pandas will select only the entries in the original Series that satisfy the condition.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
-d    6
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
 </section>
 <section id="dataframe">
 <h2><span class="section-number">1.1.4. </span>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
@@ -1236,7 +1145,7 @@ dtype: int64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Pandas II: Selecting and Filtering Data</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Pandas II: Selection, Filtering and Dropping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1260,15 +1169,7 @@ dtype: int64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-data">1.1.1. Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-series-and-indices">1.1.2. DataFrames, Series and Indices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-in-series">1.1.3.1. Selection in Series</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-index-label">1.1.3.1.1. A Single Index Label</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-index-labels">1.1.3.1.2. A List of Index Labels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-filtering-condition">1.1.3.1.3. A Filtering Condition</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">1.1.3. Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">1.1.4. DataFrame</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe">1.1.4.1. Creating a DataFrame</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-list-and-column-names">1.1.4.1.1. Using a List and Column Names</a></li>
