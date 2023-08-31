@@ -3,17 +3,21 @@
 
 * [The Data Science Design Manual by Steven S. Skiena](https://furman.bncollege.com/c/Data-Science-Design-Manual/p/MBS_2121948_used)
 
-```{figure} ../assets/datascience_manual.jpg
----
-width: 40%
-align: center
----
-Textbook for the course
+* [Python for Data Analysis by Wes McKinney](https://wesmckinney.com/book/) (Free, Open Access)
+
+```{image} ../assets/datascience_manual.jpg
+:width: 37%
+:align: right
 ``` 
 
-https://wesmckinney.com/book/images/cover.png
 
-* [Python for Data Analysis by Wes McKinney](https://wesmckinney.com/book/)
+```{image} https://wesmckinney.com/book/images/cover.png
+:width: 40%
+:align: center
+``` 
+
+
+
 
 ## Other Recommended (but advanced) Textbooks
 
