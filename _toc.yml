@@ -38,12 +38,12 @@ parts:
       #   - file: 1_programming/12_pandas
         # - file: 1_programming/13_notes
         # - file: 1_programming/14_exercises
+    - file: 1_programming/40_modalities
     - file: 1_programming/30_collecting
       # sections: 
       #   - file: 1_programming/31_apis
       #   - file: 1_programming/32_scraping
       #   - file: 1_programming/33_notes
-    - file: 1_programming/40_modalities
       # sections: 
       #   - file: 1_programming/41_text
       #   - file: 1_programming/42_graphs
