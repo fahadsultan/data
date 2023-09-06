@@ -192,7 +192,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
@@ -559,10 +577,12 @@ dtype: int64
 <p>Now that we’ve learned how to create DataFrames, let’s dive more deeply into their capabilities.</p>
 <p>The API (application programming interface) for the DataFrame class is enormous. In this section, we’ll discuss several methods of the DataFrame API that allow us to extract subsets of data.</p>
 <p>The simplest way to manipulate a DataFrame is to extract a subset of rows and columns, known as <strong>slicing</strong>. We will do so with four primary methods of the DataFrame class:</p>
-<p><code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.loc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+</ul>
 <section id="filtering-rows-with-head-and-tail">
 <h3><span class="section-number">1.2.2.1. </span>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code><a class="headerlink" href="#filtering-rows-with-head-and-tail" title="Permalink to this headline">#</a></h3>
 <p>The simplest scenario in which we want to extract data is when we simply want to select the first or last few rows of the DataFrame.</p>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Images &#8212; CSC-272 Data Mining</title>
+    <title>2.5. Images &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -70,6 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/43_imgs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.15. Audio" href="44_audio.html" />
+    <link rel="prev" title="2.4. Graphs" href="42_graphs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -181,14 +183,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41_text.html">2.3. Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_graphs.html">2.4. Graphs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.5. Images</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="44_audio.html">2.15. Audio</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
@@ -379,7 +396,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -395,6 +414,34 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.5. Images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-an-image">2.6. Read an image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-grayscale">2.7. Convert to grayscale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invert-the-image">2.8. Invert the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-the-image">2.9. Threshold the image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">2.9.1. Crop the image</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-the-image">2.10. Resize the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotate-the-image">2.11. Rotate the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flip-the-image">2.12. Flip the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-image">2.13. Save the image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.13.1. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">2.13.2. Image datasets</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">2.14. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">2.14.1. Reading in the data</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -405,80 +452,85 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="images">
-<h1>Images<a class="headerlink" href="#images" title="Permalink to this headline">#</a></h1>
-<!-- An image is a 2D array of pixels. Each pixel is a 3D vector of red, green, and blue (RGB) values. The RGB values are usually represented as integers between 0 and 255. The RGB values are used to represent the color of the pixel. For example, a pixel with RGB values of (255, 0, 0) is red, (0, 255, 0) is green, and (0, 0, 255) is blue. A pixel with RGB values of (0, 0, 0) is black and (255, 255, 255) is white.
-
-In this notebook, we will learn how to read and write images, and how to manipulate them. --><!-- import numpy as np
+<h1><span class="section-number">2.5. </span>Images<a class="headerlink" href="#images" title="Permalink to this headline">#</a></h1>
+<p>An image is a 2D array of pixels. Each pixel is a 3D vector of red, green, and blue (RGB) values. The RGB values are usually represented as integers between 0 and 255. The RGB values are used to represent the color of the pixel. For example, a pixel with RGB values of (255, 0, 0) is red, (0, 255, 0) is green, and (0, 0, 255) is blue. A pixel with RGB values of (0, 0, 0) is black and (255, 255, 255) is white.</p>
+<p>In this notebook, we will learn how to read and write images, and how to manipulate them.</p>
+<p>import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-
-
-# Read an image
-img = plt.imread('../data/belltower.jpg');
-plt.imshow(img); --><!-- img.shape # (height, width, channels) --><!-- img[0,0,:] # RGB values of the first pixel --><!-- # Convert to grayscale
-img_gray = img.mean(axis=2)
-plt.imshow(img_gray, cmap='gray'); --><!-- # Invert the image
-
-img_inv = 255 - img_gray
-
-plt.imshow(img_inv, cmap='gray'); --><!-- # Threshold the image
-
-img_thresh = img_gray > 100 
-
-plt.imshow(img_thresh, cmap='gray'); --><!-- img.shape --><!-- ## Crop the image --><!-- img_crop = img_gray[:700, :700]
-
-plt.imshow(img_crop, cmap='gray');
-
-# Resize the image
-
-img_resize = img_gray[::2, ::2] # every other pixel
-
-print("Image resized from {} to {}".format(img_gray.shape, img_resize.shape))
-
-plt.imshow(img_resize, cmap='gray');
-plt.colorbar();
-
-# Rotate the image
-
-img_rot = img_gray.T
-
-plt.imshow(img_rot, cmap='gray');
-
-# Flip the image
-
-img_flip = img_gray[::-1, ::-1] # reverse the rows and columns
-
-plt.imshow(img_flip, cmap='gray');
-
-# Save the image
-
-plt.imsave('../data/belltower_gray.jpg', img_gray, cmap='gray'); --><!-- 
-## Exercises
-
-**1**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, invert the image and save it as `../data/belltower_inv.jpg`.
-
-**2**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, crop the image to the top-left 700x700 pixels and save it as `../data/belltower_crop.jpg`.
-
-**3**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, resize the image to half its size and save it as `../data/belltower_resize.jpg`.
-
-**4**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, rotate the image 90 degrees and save it as `../data/belltower_rot.jpg`.
-
-**5**. Read in the image `../data/belltower.jpg` and convert it to grayscale. Then, flip the image vertically and save it as `../data/belltower_flip.jpg`. -->
-<!-- ## Image datasets --><!-- # Reading in handwritten digits
-
-In this notebook, we will read in the handwritten digits dataset from the UCI Machine Learning Repository. The dataset consists of 1797 images of handwritten digits. Each image is a 2D array of pixels, where each pixel is an integer between 0 and 255. The images are 8x8 pixels, so there are 64 pixels in total. Each image is labeled with the digit it represents.
-
-You can find the dataset [here](https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits).
-
-## Reading in the data
-
-The data is stored in a CSV file. We can read it in using `pandas`.
-
-```python
-import pandas as pd
-df = pd.read_csv('../data/digits.csv')
-``` -->
+import seaborn as sns</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="read-an-image">
+<h1><span class="section-number">2.6. </span>Read an image<a class="headerlink" href="#read-an-image" title="Permalink to this headline">#</a></h1>
+<p>img = plt.imread(‘../data/belltower.jpg’);
+plt.imshow(img);</p>
+<p>img.shape # (height, width, channels)</p>
+<p>img[0,0,:] # RGB values of the first pixel</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="convert-to-grayscale">
+<h1><span class="section-number">2.7. </span>Convert to grayscale<a class="headerlink" href="#convert-to-grayscale" title="Permalink to this headline">#</a></h1>
+<p>img_gray = img.mean(axis=2)
+plt.imshow(img_gray, cmap=’gray’);</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="invert-the-image">
+<h1><span class="section-number">2.8. </span>Invert the image<a class="headerlink" href="#invert-the-image" title="Permalink to this headline">#</a></h1>
+<p>img_inv = 255 - img_gray</p>
+<p>plt.imshow(img_inv, cmap=’gray’);</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="threshold-the-image">
+<h1><span class="section-number">2.9. </span>Threshold the image<a class="headerlink" href="#threshold-the-image" title="Permalink to this headline">#</a></h1>
+<p>img_thresh = img_gray &gt; 100</p>
+<p>plt.imshow(img_thresh, cmap=’gray’);</p>
+<p>img.shape</p>
+<section id="crop-the-image">
+<h2><span class="section-number">2.9.1. </span>Crop the image<a class="headerlink" href="#crop-the-image" title="Permalink to this headline">#</a></h2>
+<p>img_crop = img_gray[:700, :700]</p>
+<p>plt.imshow(img_crop, cmap=’gray’);</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="resize-the-image">
+<h1><span class="section-number">2.10. </span>Resize the image<a class="headerlink" href="#resize-the-image" title="Permalink to this headline">#</a></h1>
+<p>img_resize = img_gray[::2, ::2] # every other pixel</p>
+<p>print(“Image resized from {} to {}”.format(img_gray.shape, img_resize.shape))</p>
+<p>plt.imshow(img_resize, cmap=’gray’);
+plt.colorbar();</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rotate-the-image">
+<h1><span class="section-number">2.11. </span>Rotate the image<a class="headerlink" href="#rotate-the-image" title="Permalink to this headline">#</a></h1>
+<p>img_rot = img_gray.T</p>
+<p>plt.imshow(img_rot, cmap=’gray’);</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="flip-the-image">
+<h1><span class="section-number">2.12. </span>Flip the image<a class="headerlink" href="#flip-the-image" title="Permalink to this headline">#</a></h1>
+<p>img_flip = img_gray[::-1, ::-1] # reverse the rows and columns</p>
+<p>plt.imshow(img_flip, cmap=’gray’);</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="save-the-image">
+<h1><span class="section-number">2.13. </span>Save the image<a class="headerlink" href="#save-the-image" title="Permalink to this headline">#</a></h1>
+<p>plt.imsave(‘../data/belltower_gray.jpg’, img_gray, cmap=’gray’);</p>
+<section id="exercises">
+<h2><span class="section-number">2.13.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p><strong>1</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, invert the image and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_inv.jpg</span></code>.</p>
+<p><strong>2</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, crop the image to the top-left 700x700 pixels and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_crop.jpg</span></code>.</p>
+<p><strong>3</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, resize the image to half its size and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_resize.jpg</span></code>.</p>
+<p><strong>4</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, rotate the image 90 degrees and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_rot.jpg</span></code>.</p>
+<p><strong>5</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, flip the image vertically and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_flip.jpg</span></code>.</p>
+</section>
+<section id="image-datasets">
+<h2><span class="section-number">2.13.2. </span>Image datasets<a class="headerlink" href="#image-datasets" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reading-in-handwritten-digits">
+<h1><span class="section-number">2.14. </span>Reading in handwritten digits<a class="headerlink" href="#reading-in-handwritten-digits" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we will read in the handwritten digits dataset from the UCI Machine Learning Repository. The dataset consists of 1797 images of handwritten digits. Each image is a 2D array of pixels, where each pixel is an integer between 0 and 255. The images are 8x8 pixels, so there are 64 pixels in total. Each image is labeled with the digit it represents.</p>
+<p>You can find the dataset <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits">here</a>.</p>
+<section id="reading-in-the-data">
+<h2><span class="section-number">2.14.1. </span>Reading in the data<a class="headerlink" href="#reading-in-the-data" title="Permalink to this headline">#</a></h2>
+<p>The data is stored in a CSV file. We can read it in using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/digits.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -512,6 +564,24 @@ df = pd.read_csv('../data/digits.csv')
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="42_graphs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.4. </span>Graphs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="44_audio.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.15. </span>Audio</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -521,6 +591,40 @@ df = pd.read_csv('../data/digits.csv')
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.5. Images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-an-image">2.6. Read an image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-grayscale">2.7. Convert to grayscale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invert-the-image">2.8. Invert the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-the-image">2.9. Threshold the image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">2.9.1. Crop the image</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-the-image">2.10. Resize the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotate-the-image">2.11. Rotate the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flip-the-image">2.12. Flip the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-image">2.13. Save the image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.13.1. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">2.13.2. Image datasets</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">2.14. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">2.14.1. Reading in the data</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

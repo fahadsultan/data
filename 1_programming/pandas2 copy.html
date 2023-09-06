@@ -190,7 +190,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
@@ -520,22 +538,6 @@ dtype: int64
 <p>First, we apply a boolean condition to the Series. This create <strong>a new Series of boolean values</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
-b   -2
-c    0
-d    6
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -550,32 +552,18 @@ dtype: bool
 </div>
 </div>
 </div>
-<a class="reference internal image-reference" href="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/filter.png"><img alt="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/filter.png" class="align-center" src="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/filter.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="https://fahadsultan.com/datascience_ml/_images/filter.png"><img alt="https://fahadsultan.com/datascience_ml/_images/filter.png" class="align-center" src="https://fahadsultan.com/datascience_ml/_images/filter.png" style="width: 50%;" /></a>
 <p>We then use this boolean condition to index into our original Series. pandas will select only the entries in the original Series that satisfy the condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    4
-b   -2
-c    0
 d    6
 dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="p">[</span><span class="n">ser</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 6])
 </pre></div>
 </div>
 </div>
@@ -587,10 +575,12 @@ dtype: int64
 <p>Now that we’ve learned how to create DataFrames, let’s dive more deeply into their capabilities.</p>
 <p>The API (application programming interface) for the DataFrame class is enormous. In this section, we’ll discuss several methods of the DataFrame API that allow us to extract subsets of data.</p>
 <p>The simplest way to manipulate a DataFrame is to extract a subset of rows and columns, known as <strong>slicing</strong>. We will do so with four primary methods of the DataFrame class:</p>
-<p><code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.loc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+</ul>
 <section id="filtering-rows-with-head-and-tail">
 <h3>Filtering rows with <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code><a class="headerlink" href="#filtering-rows-with-head-and-tail" title="Permalink to this headline">#</a></h3>
 <p>The simplest scenario in which we want to extract data is when we simply want to select the first or last few rows of the DataFrame.</p>
@@ -602,7 +592,7 @@ dtype: int64
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&quot;</span>
 <span class="n">elections</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="c1"># Extract the first 5 rows of the DataFrame</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -679,51 +669,6 @@ dtype: int64
       <td>win</td>
       <td>54.574789</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>1832</td>
-      <td>Henry Clay</td>
-      <td>National Republican</td>
-      <td>484205</td>
-      <td>loss</td>
-      <td>37.603628</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1832</td>
-      <td>William Wirt</td>
-      <td>Anti-Masonic</td>
-      <td>100715</td>
-      <td>loss</td>
-      <td>7.821583</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1836</td>
-      <td>Hugh Lawson White</td>
-      <td>Whig</td>
-      <td>146109</td>
-      <td>loss</td>
-      <td>10.005985</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1836</td>
-      <td>Martin Van Buren</td>
-      <td>Democratic</td>
-      <td>763291</td>
-      <td>win</td>
-      <td>52.272472</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1836</td>
-      <td>William Henry Harrison</td>
-      <td>Whig</td>
-      <td>550816</td>
-      <td>loss</td>
-      <td>37.721543</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -732,7 +677,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the last 5 rows of the DataFrame</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -764,51 +709,6 @@ dtype: int64
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>172</th>
-      <td>2016</td>
-      <td>Darrell Castle</td>
-      <td>Constitution</td>
-      <td>203091</td>
-      <td>loss</td>
-      <td>0.149640</td>
-    </tr>
-    <tr>
-      <th>173</th>
-      <td>2016</td>
-      <td>Donald Trump</td>
-      <td>Republican</td>
-      <td>62984828</td>
-      <td>win</td>
-      <td>46.407862</td>
-    </tr>
-    <tr>
-      <th>174</th>
-      <td>2016</td>
-      <td>Evan McMullin</td>
-      <td>Independent</td>
-      <td>732273</td>
-      <td>loss</td>
-      <td>0.539546</td>
-    </tr>
-    <tr>
-      <th>175</th>
-      <td>2016</td>
-      <td>Gary Johnson</td>
-      <td>Libertarian</td>
-      <td>4489235</td>
-      <td>loss</td>
-      <td>3.307714</td>
-    </tr>
-    <tr>
-      <th>176</th>
-      <td>2016</td>
-      <td>Hillary Clinton</td>
-      <td>Democratic</td>
-      <td>65853514</td>
-      <td>loss</td>
-      <td>48.521539</td>
-    </tr>
     <tr>
       <th>177</th>
       <td>2016</td>
@@ -869,20 +769,237 @@ dtype: int64
 <p>Let’s begin reproducing our results from above. We’ll begin by selecting for the first presidential candidate in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>
-<span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0, &quot;Candidate&quot;] - Previous approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;a&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Andrew Jackson&#39;
 </pre></div>
 </div>
 </div>
 </div>
+<p>Notice how the first argument to both <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are the same. This is because the row with a label of 0 is conveniently in the 0th index (equivalently, the first position) of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. Generally, this is true of any DataFrame where the row labels are incremented in ascending order from 0.</p>
+<p>However, when we select the first four rows and columns using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, we notice something.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0:3, &#39;Year&#39;:&#39;Popular vote&#39;] - Previous approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Slicing is no longer inclusive in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> -– it’s exclusive. In other words, the right-end of a slice is not included when using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. This is one of the subtleties of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax; you will get used to it with practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#elections.loc[[0, 1, 2, 3], [&#39;Year&#39;, &#39;Candidate&#39;, &#39;Party&#39;, &#39;Popular vote&#39;]] - Previous Approach</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This discussion begs the question: when should we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>? In most cases, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is generally safer to use. You can imagine <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> may return incorrect values when applied to a dataset where the ordering of data can change.</p>
+</section>
+<section id="extracting-with-loc">
+<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#extracting-with-loc" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator selects rows and columns in a DataFrame by their row and column label(s), respectively. The <strong>row labels</strong> (commonly referred to as the <strong>indices</strong>) are the bold text on the far <em>left</em> of a DataFrame, while the <strong>column labels</strong> are the column names found at the <em>top</em> of a DataFrame.</p>
+<p>To grab data with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we must specify the row and column label(s) where the data exists. The row labels are the first argument to the .loc function; the column labels are the second. For example, we can select the the row labeled <code class="docutils literal notranslate"><span class="pre">0</span></code> and the column labeled <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> from the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Andrew Jackson&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To select <em>multiple</em> rows and columns, we can use Python slice notation. Here, we select the rows from labels <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">3</span></code> and the columns from labels <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Popular</span> <span class="pre">vote&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">:</span><span class="s1">&#39;Popular vote&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Suppose that instead, we wanted <em>every</em> column value for the first four rows in the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. The shorthand <code class="docutils literal notranslate"><span class="pre">:</span></code> is useful for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -914,6 +1031,1004 @@ dtype: int64
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are a couple of things we should note. Firstly, unlike conventional Python, Pandas allows us to slice string values (in our example, the column labels). Secondly, slicing with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is <em>inclusive</em>. Notice how our resulting DataFrame includes every row and column between and including the slice labels we specified.</p>
+<p>Equivalently, we can use a list to obtain multiple rows and columns in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">,</span> <span class="s1">&#39;Party&#39;</span><span class="p">,</span> <span class="s1">&#39;Popular vote&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Lastly, we can interchange list and slicing notation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="extracting-with">
+<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#extracting-with" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator is the most baffling of all, yet the most commonly used. It only takes a single argument, which may be one of the following:</p>
+<ol class="arabic simple">
+<li><p>A slice of row numbers</p></li>
+<li><p>A list of column labels</p></li>
+<li><p>A single column label</p></li>
+</ol>
+<p>That is, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is <em>context dependent</em>. Let’s see some examples.</p>
+<section id="a-slice-of-row-numbers">
+<h4>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
+<p>Say we wanted the first four rows of our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="a-list-of-column-labels">
+<h4>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
+<p>Suppose we now want the first four columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Candidate&quot;</span><span class="p">,</span> <span class="s2">&quot;Party&quot;</span><span class="p">,</span> <span class="s2">&quot;Popular vote&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="a-single-column-label">
+<h4>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
+<p>Lastly, <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> allows us to extract only the <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         Andrew Jackson
+1      John Quincy Adams
+2         Andrew Jackson
+3      John Quincy Adams
+4         Andrew Jackson
+             ...        
+177           Jill Stein
+178         Joseph Biden
+179         Donald Trump
+180         Jo Jorgensen
+181       Howard Hawkins
+Name: Candidate, Length: 182, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output is a Series! In this course, we’ll become very comfortable with <code class="docutils literal notranslate"><span class="pre">[]</span></code>, especially for selecting columns. In practice, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is much more common than <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="conditional-extraction">
+<h2>Conditional Extraction<a class="headerlink" href="#conditional-extraction" title="Permalink to this headline">#</a></h2>
+<p>Conditional selection allows us to select a subset of rows in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> if they follow some specified condition.</p>
+<p>To understand how to use conditional selection, we must look at another possible input of the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">[]</span></code> methods – a boolean array, which is simply an array or <code class="docutils literal notranslate"><span class="pre">Series</span></code> where each element is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. This boolean array must have a length equal to the number of rows in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. It will return all rows that correspond to a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> in the array. We used a very similar technique when performing conditional extraction from a <code class="docutils literal notranslate"><span class="pre">Series</span></code> in the last lecture.</p>
+<p>To see this in action, let’s select all even-indexed rows in the first 10 rows of our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask yourself: why is :9 is the correct slice to select the first 10 rows?</span>
+<span class="n">elections_first_10_rows</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">9</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="c1"># Notice how we have exactly 10 elements in our boolean array argument</span>
+<span class="n">elections_first_10_rows</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1832</td>
+      <td>William Wirt</td>
+      <td>Anti-Masonic</td>
+      <td>100715</td>
+      <td>loss</td>
+      <td>7.821583</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections_first_10_rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1832</td>
+      <td>William Wirt</td>
+      <td>Anti-Masonic</td>
+      <td>100715</td>
+      <td>loss</td>
+      <td>7.821583</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>These techniques worked well in this example, but you can imagine how tedious it might be to list out <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s for every row in a larger <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To make things easier, we can instead provide a logical condition as an input to <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">[]</span></code> that returns a boolean array with the necessary length.</p>
+<p>For example, to return all names associated with <code class="docutils literal notranslate"><span class="pre">F</span></code> sex:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, use a logical condition to generate a boolean array</span>
+<span class="n">logical_operator</span> <span class="o">=</span> <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">)</span>
+
+<span class="c1"># Then, use this boolean array to filter the DataFrame</span>
+<span class="n">elections</span><span class="p">[</span><span class="n">logical_operator</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1840</td>
+      <td>William Henry Harrison</td>
+      <td>Whig</td>
+      <td>1275583</td>
+      <td>win</td>
+      <td>53.051213</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Recall from the previous lecture that <code class="docutils literal notranslate"><span class="pre">.head()</span></code> will return only the first few rows in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. In reality, <code class="docutils literal notranslate"><span class="pre">elections[logical</span> <span class="pre">operator]</span></code> contains as many rows as there are entries in the original <code class="docutils literal notranslate"><span class="pre">elections</span></code> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">==</span> <span class="pre">&quot;win&quot;</span></code>.</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">logical_operator</span></code> evaluates to a <code class="docutils literal notranslate"><span class="pre">Series</span></code> of boolean values with length 400762</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">logical_operator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>182
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rows starting at row 0 and ending at row 235790 evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> and are thus returned in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Rows from 235791 onwards evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code> and are omitted from the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 0th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 100-th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 181-th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">181</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The 0th item in this &#39;logical_operator&#39; is: False
+The 100-th item in this &#39;logical_operator&#39; is: True
+The 181-th item in this &#39;logical_operator&#39; is: False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Passing a <code class="docutils literal notranslate"><span class="pre">Series</span></code> as an argument to <code class="docutils literal notranslate"><span class="pre">elections[]</span></code> has the same affect as using a boolean array. In fact, the <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator can take a boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, array, and list as arguments. These three are used interchangeably thoughout the course.</p>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to achieve similar results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1840</td>
+      <td>William Henry Harrison</td>
+      <td>Whig</td>
+      <td>1275583</td>
+      <td>win</td>
+      <td>53.051213</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Boolean conditions can be combined using various bitwise operators that allow us to filter results by multiple conditions.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Usage</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~p</span></code></p></td>
+<td><p>Returns negation of p</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code></p></td>
+<td><p>p OR q</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&amp;</span> <span class="pre">q</span></code></p></td>
+<td><p>p AND q</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">^</span> <span class="pre">q</span></code></p></td>
+<td><p>p XOR q (exclusive or)</p></td>
+</tr>
+</tbody>
+</table>
+<p>When combining multiple conditions with logical operators, we surround each individual condition with a set of parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>. This imposes an order of operations on <code class="docutils literal notranslate"><span class="pre">pandas</span></code> evaluating your logic, and can avoid code erroring.</p>
+<p>For example, if we want to return data on all names with sex <code class="docutils literal notranslate"><span class="pre">&quot;F&quot;</span></code> born before the 21st century, we can write:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>157</th>
+      <td>2004</td>
+      <td>George W. Bush</td>
+      <td>Republican</td>
+      <td>62040610</td>
+      <td>win</td>
+      <td>50.771824</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>2008</td>
+      <td>Barack Obama</td>
+      <td>Democratic</td>
+      <td>69498516</td>
+      <td>win</td>
+      <td>53.023510</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>2012</td>
+      <td>Barack Obama</td>
+      <td>Democratic</td>
+      <td>65915795</td>
+      <td>win</td>
+      <td>51.258484</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>2016</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>62984828</td>
+      <td>win</td>
+      <td>46.407862</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Boolean array selection is a useful tool, but can lead to overly verbose code for complex conditions. In the example below, our boolean condition is long enough to extend for several lines of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
     <tr>
       <th>177</th>
       <td>2016</td>
@@ -961,11 +2076,939 @@ dtype: int64
     </tr>
   </tbody>
 </table>
+<p>182 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: The parentheses surrounding the code make it possible to break the code on to multiple lines for readability</span>
+<span class="p">(</span>
+    <span class="n">elections</span><span class="p">[(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Green&quot;</span><span class="p">)</span> <span class="o">|</span> 
+              <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Libertarian&quot;</span><span class="p">)]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>125</th>
+      <td>1976</td>
+      <td>Roger MacBride</td>
+      <td>Libertarian</td>
+      <td>172557</td>
+      <td>loss</td>
+      <td>0.212451</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>1980</td>
+      <td>Ed Clark</td>
+      <td>Libertarian</td>
+      <td>921128</td>
+      <td>loss</td>
+      <td>1.067883</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>1984</td>
+      <td>David Bergland</td>
+      <td>Libertarian</td>
+      <td>228111</td>
+      <td>loss</td>
+      <td>0.247245</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>1988</td>
+      <td>Ron Paul</td>
+      <td>Libertarian</td>
+      <td>431750</td>
+      <td>loss</td>
+      <td>0.472660</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>1992</td>
+      <td>Andre Marrou</td>
+      <td>Libertarian</td>
+      <td>290087</td>
+      <td>loss</td>
+      <td>0.278516</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>1996</td>
+      <td>Harry Browne</td>
+      <td>Libertarian</td>
+      <td>485759</td>
+      <td>loss</td>
+      <td>0.505198</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>1996</td>
+      <td>Ralph Nader</td>
+      <td>Green</td>
+      <td>685297</td>
+      <td>loss</td>
+      <td>0.712721</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>2000</td>
+      <td>Harry Browne</td>
+      <td>Libertarian</td>
+      <td>384431</td>
+      <td>loss</td>
+      <td>0.365525</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>2000</td>
+      <td>Ralph Nader</td>
+      <td>Green</td>
+      <td>2882955</td>
+      <td>loss</td>
+      <td>2.741176</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>2004</td>
+      <td>David Cobb</td>
+      <td>Green</td>
+      <td>119859</td>
+      <td>loss</td>
+      <td>0.098088</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>2004</td>
+      <td>Michael Badnarik</td>
+      <td>Libertarian</td>
+      <td>397265</td>
+      <td>loss</td>
+      <td>0.325108</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>2008</td>
+      <td>Bob Barr</td>
+      <td>Libertarian</td>
+      <td>523715</td>
+      <td>loss</td>
+      <td>0.399565</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>2008</td>
+      <td>Cynthia McKinney</td>
+      <td>Green</td>
+      <td>161797</td>
+      <td>loss</td>
+      <td>0.123442</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>2012</td>
+      <td>Gary Johnson</td>
+      <td>Libertarian</td>
+      <td>1275971</td>
+      <td>loss</td>
+      <td>0.992241</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>2012</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>469627</td>
+      <td>loss</td>
+      <td>0.365199</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>2016</td>
+      <td>Gary Johnson</td>
+      <td>Libertarian</td>
+      <td>4489235</td>
+      <td>loss</td>
+      <td>3.307714</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Fortunately, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> provides many alternative methods for constructing boolean filters.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.isin</span></code> function is one such example. This method evaluates if the values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> are contained in a different sequence (list, array, or <code class="docutils literal notranslate"><span class="pre">Series</span></code>) of values. In the cell below, we achieve equivalent result to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> above with far more concise code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Democratic&quot;</span><span class="p">,</span> <span class="s2">&quot;Republican&quot;</span><span class="p">]</span>
+<span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">names</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1840</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>1128854</td>
+      <td>loss</td>
+      <td>46.948787</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1844</td>
+      <td>James Polk</td>
+      <td>Democratic</td>
+      <td>1339570</td>
+      <td>win</td>
+      <td>50.749477</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>2012</td>
+      <td>Mitt Romney</td>
+      <td>Republican</td>
+      <td>60933504</td>
+      <td>loss</td>
+      <td>47.384076</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>2016</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>62984828</td>
+      <td>win</td>
+      <td>46.407862</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>2016</td>
+      <td>Hillary Clinton</td>
+      <td>Democratic</td>
+      <td>65853514</td>
+      <td>loss</td>
+      <td>48.521539</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+    </tr>
+  </tbody>
+</table>
+<p>88 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">str.startswith</span></code> can be used to define a filter based on string values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> object. It checks to see if string values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> start with a particular character.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the names that begin with the letter &quot;N&quot;</span>
+<span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1840</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>1128854</td>
+      <td>loss</td>
+      <td>46.948787</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1848</td>
+      <td>Martin Van Buren</td>
+      <td>Free Soil</td>
+      <td>291501</td>
+      <td>loss</td>
+      <td>10.138474</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1856</td>
+      <td>Millard Fillmore</td>
+      <td>American</td>
+      <td>873053</td>
+      <td>loss</td>
+      <td>21.554001</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>1988</td>
+      <td>Michael Dukakis</td>
+      <td>Democratic</td>
+      <td>41809074</td>
+      <td>loss</td>
+      <td>45.770691</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>2004</td>
+      <td>Michael Badnarik</td>
+      <td>Libertarian</td>
+      <td>397265</td>
+      <td>loss</td>
+      <td>0.325108</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>2004</td>
+      <td>Michael Peroutka</td>
+      <td>Constitution</td>
+      <td>143630</td>
+      <td>loss</td>
+      <td>0.117542</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>2012</td>
+      <td>Mitt Romney</td>
+      <td>Republican</td>
+      <td>60933504</td>
+      <td>loss</td>
+      <td>47.384076</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="adding-removing-and-modifying-columns">
+<h2>Adding, Removing, and Modifying Columns<a class="headerlink" href="#adding-removing-and-modifying-columns" title="Permalink to this headline">#</a></h2>
+<p>In many data science tasks, we may need to change the columns contained in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in some way. Fortunately, the syntax to do so is fairly straightforward.</p>
+<p>To add a new column to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we use a syntax similar to that used when accessing an existing column. Specify the name of the new column by writing <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code>, then assign this to a <code class="docutils literal notranslate"><span class="pre">Series</span></code> or array containing the values that will populate this column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Series of the length of each name. We&#39;ll discuss `str` methods next week.</span>
+<span class="n">candidate_name_lengths</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+
+<span class="c1"># Add a column named &quot;name_lengths&quot; that includes the length of each name</span>
+<span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_name_lengths</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>name_lengths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we need to later modify an existing column, we can do so by referencing this column again with the syntax <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code>, then re-assigning it to a new <code class="docutils literal notranslate"><span class="pre">Series</span></code> or array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify the “name_lengths” column to be one less than its original value</span>
+<span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>name_lengths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can rename a column using the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> method. <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> takes in a dictionary that maps old column names to their new ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rename “name_lengths” to “Length”</span>
+<span class="n">elections</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">:</span><span class="s2">&quot;Length&quot;</span><span class="p">})</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>Length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we want to remove a column or row of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we can call the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html"><code class="docutils literal notranslate"><span class="pre">.drop</span></code></a> method. Use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter to specify whether a column or row should be dropped. Unless otherwise specified, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> will assume that we are dropping a row by default.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant</th>
+      <th>half of Popular vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>10</td>
+      <td>75635.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+      <td>10</td>
+      <td>56571.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+      <td>10</td>
+      <td>321403.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+      <td>10</td>
+      <td>250448.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>10</td>
+      <td>351367.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+      <td>10</td>
+      <td>728613.0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+      <td>10</td>
+      <td>40634462.0</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+      <td>10</td>
+      <td>37108077.0</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+      <td>10</td>
+      <td>932862.0</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+      <td>10</td>
+      <td>202517.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>182 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">elections</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop our new &quot;Length&quot; column from the DataFrame</span>
+<span class="n">elections</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1046,801 +3089,6 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Get values at last column of the first row in `elections`</span>
-
-<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.21012204
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0, &quot;Candidate&quot;] - Previous approach</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice how the first argument to both <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are the same. This is because the row with a label of 0 is conveniently in the 0th index (equivalently, the first position) of the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. Generally, this is true of any DataFrame where the row labels are incremented in ascending order from 0.</p>
-<p>However, when we select the first four rows and columns using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, we notice something.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections.loc[0:3, &#39;Year&#39;:&#39;Popular vote&#39;] - Previous approach</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Slicing is no longer inclusive in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> -– it’s exclusive. In other words, the right-end of a slice is not included when using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. This is one of the subtleties of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax; you will get used to it with practice.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#elections.loc[[0, 1, 2, 3], [&#39;Year&#39;, &#39;Candidate&#39;, &#39;Party&#39;, &#39;Popular vote&#39;]] - Previous Approach</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This discussion begs the question: when should we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>? In most cases, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is generally safer to use. You can imagine <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> may return incorrect values when applied to a dataset where the ordering of data can change.</p>
-</section>
-<section id="extracting-with-loc">
-<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#extracting-with-loc" title="Permalink to this headline">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator selects rows and columns in a DataFrame by their row and column label(s), respectively. The <strong>row labels</strong> (commonly referred to as the <strong>indices</strong>) are the bold text on the far <em>left</em> of a DataFrame, while the <strong>column labels</strong> are the column names found at the <em>top</em> of a DataFrame.</p>
-<p>To grab data with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we must specify the row and column label(s) where the data exists. The row labels are the first argument to the .loc function; the column labels are the second. For example, we can select the the row labeled <code class="docutils literal notranslate"><span class="pre">0</span></code> and the column labeled <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> from the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1824</span><span class="p">,</span> <span class="mi">2020</span><span class="p">],</span> <span class="s2">&quot;Candidate&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year
-1824       Andrew Jackson
-1824    John Quincy Adams
-2020         Joseph Biden
-2020         Donald Trump
-2020         Jo Jorgensen
-2020       Howard Hawkins
-Name: Candidate, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>To select <em>multiple</em> rows and columns, we can use Python slice notation. Here, we select the rows from labels <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">3</span></code> and the columns from labels <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Popular</span> <span class="pre">vote&quot;</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">:</span><span class="s1">&#39;Popular vote&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Suppose that instead, we wanted <em>every</em> column value for the first four rows in the <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame. The shorthand <code class="docutils literal notranslate"><span class="pre">:</span></code> is useful for this.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>There are a couple of things we should note. Firstly, unlike conventional Python, Pandas allows us to slice string values (in our example, the column labels). Secondly, slicing with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is <em>inclusive</em>. Notice how our resulting DataFrame includes every row and column between and including the slice labels we specified.</p>
-<p>Equivalently, we can use a list to obtain multiple rows and columns in our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Candidate&#39;</span><span class="p">,</span> <span class="s1">&#39;Party&#39;</span><span class="p">,</span> <span class="s1">&#39;Popular vote&#39;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Lastly, we can interchange list and slicing notation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="extracting-with">
-<h3>Extracting with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#extracting-with" title="Permalink to this headline">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator is the most baffling of all, yet the most commonly used. It only takes a single argument, which may be one of the following:</p>
-<ol class="arabic simple">
-<li><p>A slice of row numbers</p></li>
-<li><p>A list of column labels</p></li>
-<li><p>A single column label</p></li>
-</ol>
-<p>That is, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is <em>context dependent</em>. Let’s see some examples.</p>
-<section id="a-slice-of-row-numbers">
-<h4>A slice of row numbers<a class="headerlink" href="#a-slice-of-row-numbers" title="Permalink to this headline">#</a></h4>
-<p>Say we wanted the first four rows of our <code class="docutils literal notranslate"><span class="pre">elections</span></code> DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-list-of-column-labels">
-<h4>A list of column labels<a class="headerlink" href="#a-list-of-column-labels" title="Permalink to this headline">#</a></h4>
-<p>Suppose we now want the first four columns.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Candidate&quot;</span><span class="p">,</span> <span class="s2">&quot;Party&quot;</span><span class="p">,</span> <span class="s2">&quot;Popular vote&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-single-column-label">
-<h4>A single column label<a class="headerlink" href="#a-single-column-label" title="Permalink to this headline">#</a></h4>
-<p>Lastly, <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> allows us to extract only the <code class="docutils literal notranslate"><span class="pre">Candidate</span></code> column.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The output is a Series! In this course, we’ll become very comfortable with <code class="docutils literal notranslate"><span class="pre">[]</span></code>, especially for selecting columns. In practice, <code class="docutils literal notranslate"><span class="pre">[]</span></code> is much more common than <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
-</section>
-</section>
-</section>
-<section id="conditional-extraction">
-<h2>Conditional Extraction<a class="headerlink" href="#conditional-extraction" title="Permalink to this headline">#</a></h2>
-<p>Conditional selection allows us to select a subset of rows in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> if they follow some specified condition.</p>
-<p>To understand how to use conditional selection, we must look at another possible input of the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">[]</span></code> methods – a boolean array, which is simply an array or <code class="docutils literal notranslate"><span class="pre">Series</span></code> where each element is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. This boolean array must have a length equal to the number of rows in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. It will return all rows that correspond to a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> in the array. We used a very similar technique when performing conditional extraction from a <code class="docutils literal notranslate"><span class="pre">Series</span></code> in the last lecture.</p>
-<p>To see this in action, let’s select all even-indexed rows in the first 10 rows of our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Candidate</th>
-      <th>Party</th>
-      <th>Popular vote</th>
-      <th>Result</th>
-      <th>%</th>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1824</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic-Republican</td>
-      <td>151271</td>
-      <td>loss</td>
-      <td>57.210122</td>
-    </tr>
-    <tr>
-      <th>1824</th>
-      <td>John Quincy Adams</td>
-      <td>Democratic-Republican</td>
-      <td>113142</td>
-      <td>win</td>
-      <td>42.789878</td>
-    </tr>
-    <tr>
-      <th>1828</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic</td>
-      <td>642806</td>
-      <td>win</td>
-      <td>56.203927</td>
-    </tr>
-    <tr>
-      <th>1828</th>
-      <td>John Quincy Adams</td>
-      <td>National Republican</td>
-      <td>500897</td>
-      <td>loss</td>
-      <td>43.796073</td>
-    </tr>
-    <tr>
-      <th>1832</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic</td>
-      <td>702735</td>
-      <td>win</td>
-      <td>54.574789</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Jill Stein</td>
-      <td>Green</td>
-      <td>1457226</td>
-      <td>loss</td>
-      <td>1.073699</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Joseph Biden</td>
-      <td>Democratic</td>
-      <td>81268924</td>
-      <td>win</td>
-      <td>51.311515</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Donald Trump</td>
-      <td>Republican</td>
-      <td>74216154</td>
-      <td>loss</td>
-      <td>46.858542</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Jo Jorgensen</td>
-      <td>Libertarian</td>
-      <td>1865724</td>
-      <td>loss</td>
-      <td>1.177979</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Howard Hawkins</td>
-      <td>Green</td>
-      <td>405035</td>
-      <td>loss</td>
-      <td>0.255731</td>
-    </tr>
-  </tbody>
-</table>
-<p>182 rows × 5 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract rows where </span>
-<span class="c1">#Party == &quot;Green&quot; OR Party == &quot;National Republican&quot;</span>
-
-<span class="n">elections</span><span class="p">[(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span><span class="s2">&quot;Green&quot;</span><span class="p">)</span> <span class="o">|</span> \
-          <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;National Republican&quot;</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Candidate</th>
-      <th>Party</th>
-      <th>Popular vote</th>
-      <th>Result</th>
-      <th>%</th>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1828</th>
-      <td>John Quincy Adams</td>
-      <td>National Republican</td>
-      <td>500897</td>
-      <td>loss</td>
-      <td>43.796073</td>
-    </tr>
-    <tr>
-      <th>1832</th>
-      <td>Henry Clay</td>
-      <td>National Republican</td>
-      <td>484205</td>
-      <td>loss</td>
-      <td>37.603628</td>
-    </tr>
-    <tr>
-      <th>1996</th>
-      <td>Ralph Nader</td>
-      <td>Green</td>
-      <td>685297</td>
-      <td>loss</td>
-      <td>0.712721</td>
-    </tr>
-    <tr>
-      <th>2000</th>
-      <td>Ralph Nader</td>
-      <td>Green</td>
-      <td>2882955</td>
-      <td>loss</td>
-      <td>2.741176</td>
-    </tr>
-    <tr>
-      <th>2004</th>
-      <td>David Cobb</td>
-      <td>Green</td>
-      <td>119859</td>
-      <td>loss</td>
-      <td>0.098088</td>
-    </tr>
-    <tr>
-      <th>2008</th>
-      <td>Cynthia McKinney</td>
-      <td>Green</td>
-      <td>161797</td>
-      <td>loss</td>
-      <td>0.123442</td>
-    </tr>
-    <tr>
-      <th>2012</th>
-      <td>Jill Stein</td>
-      <td>Green</td>
-      <td>469627</td>
-      <td>loss</td>
-      <td>0.365199</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Jill Stein</td>
-      <td>Green</td>
-      <td>1457226</td>
-      <td>loss</td>
-      <td>1.073699</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Howard Hawkins</td>
-      <td>Green</td>
-      <td>405035</td>
-      <td>loss</td>
-      <td>0.255731</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask yourself: why is :9 is the correct slice to select the first 10 rows?</span>
-<span class="n">elections_first_10_rows</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">9</span><span class="p">,</span> <span class="p">:]</span>
-
-<span class="c1"># Notice how we have exactly 10 elements in our boolean array argument</span>
-<span class="n">elections_first_10_rows</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections_first_10_rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>These techniques worked well in this example, but you can imagine how tedious it might be to list out <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s for every row in a larger <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To make things easier, we can instead provide a logical condition as an input to <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">[]</span></code> that returns a boolean array with the necessary length.</p>
-<p>For example, to return all names associated with <code class="docutils literal notranslate"><span class="pre">F</span></code> sex:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, use a logical condition to generate a boolean array</span>
-<span class="n">logical_operator</span> <span class="o">=</span> <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">)</span>
-
-<span class="c1"># Then, use this boolean array to filter the DataFrame</span>
-<span class="n">elections</span><span class="p">[</span><span class="n">logical_operator</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Recall from the previous lecture that <code class="docutils literal notranslate"><span class="pre">.head()</span></code> will return only the first few rows in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. In reality, <code class="docutils literal notranslate"><span class="pre">elections[logical</span> <span class="pre">operator]</span></code> contains as many rows as there are entries in the original <code class="docutils literal notranslate"><span class="pre">elections</span></code> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">Result</span> <span class="pre">==</span> <span class="pre">&quot;win&quot;</span></code>.</p>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">logical_operator</span></code> evaluates to a <code class="docutils literal notranslate"><span class="pre">Series</span></code> of boolean values with length 400762</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">logical_operator</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Rows starting at row 0 and ending at row 235790 evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> and are thus returned in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Rows from 235791 onwards evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code> and are omitted from the output.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 0th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 100-th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The 181-th item in this &#39;logical_operator&#39; is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">logical_operator</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">181</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Passing a <code class="docutils literal notranslate"><span class="pre">Series</span></code> as an argument to <code class="docutils literal notranslate"><span class="pre">elections[]</span></code> has the same affect as using a boolean array. In fact, the <code class="docutils literal notranslate"><span class="pre">[]</span></code> selection operator can take a boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, array, and list as arguments. These three are used interchangeably thoughout the course.</p>
-<p>We can also use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to achieve similar results.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Boolean conditions can be combined using various bitwise operators that allow us to filter results by multiple conditions.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Symbol</p></th>
-<th class="head"><p>Usage</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
-<td><p>~p</p></td>
-<td><p>Returns negation of p</p></td>
-</tr>
-<tr class="row-odd"><td><p>`</p></td>
-<td><p>`</p></td>
-<td><p>p | q</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
-<td><p>p &amp; q</p></td>
-<td><p>p AND q</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
-<td><p>p ^ q</p></td>
-<td><p>p XOR q (exclusive or)</p></td>
-</tr>
-</tbody>
-</table>
-<p>When combining multiple conditions with logical operators, we surround each individual condition with a set of parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>. This imposes an order of operations on <code class="docutils literal notranslate"><span class="pre">pandas</span></code> evaluating your logic, and can avoid code erroring.</p>
-<p>For example, if we want to return data on all names with sex <code class="docutils literal notranslate"><span class="pre">&quot;F&quot;</span></code> born before the 21st century, we can write:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;win&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Boolean array selection is a useful tool, but can lead to overly verbose code for complex conditions. In the example below, our boolean condition is long enough to extend for several lines of code.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: The parentheses surrounding the code make it possible to break the code on to multiple lines for readability</span>
-<span class="p">(</span>
-    <span class="n">elections</span><span class="p">[(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Green&quot;</span><span class="p">)</span> <span class="o">|</span> 
-              <span class="p">(</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Libertarian&quot;</span><span class="p">)]</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Fortunately, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> provides many alternative methods for constructing boolean filters.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.isin</span></code> function is one such example. This method evaluates if the values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> are contained in a different sequence (list, array, or <code class="docutils literal notranslate"><span class="pre">Series</span></code>) of values. In the cell below, we achieve equivalent result to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> above with far more concise code.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Democratic&quot;</span><span class="p">,</span> <span class="s2">&quot;Republican&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year
-1824    False
-1824    False
-1828     True
-1828    False
-1832     True
-        ...  
-2016    False
-2020     True
-2020     True
-2020    False
-2020    False
-Name: Party, Length: 182, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Democratic&quot;</span><span class="p">,</span> <span class="s2">&quot;Republican&quot;</span><span class="p">]</span>
-<span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">names</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The function <code class="docutils literal notranslate"><span class="pre">str.startswith</span></code> can be used to define a filter based on string values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> object. It checks to see if string values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> start with a particular character.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the names that begin with the letter &quot;N&quot;</span>
-<span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
-5
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections2020</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="o">.</span><span class="n">index</span><span class="o">==</span> <span class="mi">2020</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Candidate</th>
-      <th>Party</th>
-      <th>Popular vote</th>
-      <th>Result</th>
-      <th>%</th>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1824</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic-Republican</td>
-      <td>151271</td>
-      <td>loss</td>
-      <td>57.210122</td>
-    </tr>
-    <tr>
-      <th>1824</th>
-      <td>John Quincy Adams</td>
-      <td>Democratic-Republican</td>
-      <td>113142</td>
-      <td>win</td>
-      <td>42.789878</td>
-    </tr>
-    <tr>
-      <th>1828</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic</td>
-      <td>642806</td>
-      <td>win</td>
-      <td>56.203927</td>
-    </tr>
-    <tr>
-      <th>1828</th>
-      <td>John Quincy Adams</td>
-      <td>National Republican</td>
-      <td>500897</td>
-      <td>loss</td>
-      <td>43.796073</td>
-    </tr>
-    <tr>
-      <th>1832</th>
-      <td>Andrew Jackson</td>
-      <td>Democratic</td>
-      <td>702735</td>
-      <td>win</td>
-      <td>54.574789</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>Jill Stein</td>
-      <td>Green</td>
-      <td>1457226</td>
-      <td>loss</td>
-      <td>1.073699</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Joseph Biden</td>
-      <td>Democratic</td>
-      <td>81268924</td>
-      <td>win</td>
-      <td>51.311515</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Donald Trump</td>
-      <td>Republican</td>
-      <td>74216154</td>
-      <td>loss</td>
-      <td>46.858542</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Jo Jorgensen</td>
-      <td>Libertarian</td>
-      <td>1865724</td>
-      <td>loss</td>
-      <td>1.177979</td>
-    </tr>
-    <tr>
-      <th>2020</th>
-      <td>Howard Hawkins</td>
-      <td>Green</td>
-      <td>405035</td>
-      <td>loss</td>
-      <td>0.255731</td>
-    </tr>
-  </tbody>
-</table>
-<p>182 rows × 5 columns</p>
-</div></div></div>
-</div>
-</section>
-<section id="adding-removing-and-modifying-columns">
-<h2>Adding, Removing, and Modifying Columns<a class="headerlink" href="#adding-removing-and-modifying-columns" title="Permalink to this headline">#</a></h2>
-<p>In many data science tasks, we may need to change the columns contained in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in some way. Fortunately, the syntax to do so is fairly straightforward.</p>
-<p>To add a new column to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we use a syntax similar to that used when accessing an existing column. Specify the name of the new column by writing <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code>, then assign this to a <code class="docutils literal notranslate"><span class="pre">Series</span></code> or array containing the values that will populate this column.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Series of the length of each name. We&#39;ll discuss `str` methods next week.</span>
-<span class="n">candidate_name_lengths</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
-
-<span class="c1"># Add a column named &quot;name_lengths&quot; that includes the length of each name</span>
-<span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_name_lengths</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we need to later modify an existing column, we can do so by referencing this column again with the syntax <code class="docutils literal notranslate"><span class="pre">df[&quot;column&quot;]</span></code>, then re-assigning it to a new <code class="docutils literal notranslate"><span class="pre">Series</span></code> or array.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify the “name_lengths” column to be one less than its original value</span>
-<span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can rename a column using the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> method. <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> takes in a dictionary that maps old column names to their new ones.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rename “name_lengths” to “Length”</span>
-<span class="n">elections</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name_lengths&quot;</span><span class="p">:</span><span class="s2">&quot;Length&quot;</span><span class="p">})</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we want to remove a column or row of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we can call the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html"><code class="docutils literal notranslate"><span class="pre">.drop</span></code></a> method. Use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter to specify whether a column or row should be dropped. Unless otherwise specified, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> will assume that we are dropping a row by default.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop our new &quot;Length&quot; column from the DataFrame</span>
-<span class="n">elections</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Notice that we reassigned <code class="docutils literal notranslate"><span class="pre">elections</span></code> to the result of <code class="docutils literal notranslate"><span class="pre">elections.drop(...)</span></code>. This is a subtle, but important point: <code class="docutils literal notranslate"><span class="pre">pandas</span></code> table operations <strong>do not occur in-place</strong>. Calling <code class="docutils literal notranslate"><span class="pre">df.drop(...)</span></code> will output a <em>copy</em> of <code class="docutils literal notranslate"><span class="pre">df</span></code> with the row/column of interest removed, without modifying the original <code class="docutils literal notranslate"><span class="pre">df</span></code> table.</p>
 <p>In other words, if we simply call:</p>
 <div class="cell docutils container">
@@ -1854,6 +3102,82 @@ Name: Party, Length: 182, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="handy-utility-functions">
@@ -1863,6 +3187,8 @@ Name: Party, Length: 182, dtype: bool
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.shape</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.size</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dtypes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.astype()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.describe()</span> </code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.sample()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></p></li>
@@ -1882,11 +3208,21 @@ Name: Party, Length: 182, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(180, 8)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return the size of the DataFrame, equal to num_rows * num_columns</span>
 <span class="n">elections</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1440
 </pre></div>
 </div>
 </div>
@@ -1902,6 +3238,19 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year              int64
+Candidate        object
+Party            object
+Popular vote      int64
+Result           object
+%               float64
+constant1         int64
+constant2         int64
+dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="astype">
@@ -1909,7 +3258,198 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>Cast a pandas object to a specified dtype</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;%2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">elections</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant1</th>
+      <th>constant2</th>
+      <th>%2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>10</td>
+      <td>20</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+      <td>10</td>
+      <td>20</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1832</td>
+      <td>Henry Clay</td>
+      <td>National Republican</td>
+      <td>484205</td>
+      <td>loss</td>
+      <td>37.603628</td>
+      <td>10</td>
+      <td>20</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>William Wirt</td>
+      <td>Anti-Masonic</td>
+      <td>100715</td>
+      <td>loss</td>
+      <td>7.821583</td>
+      <td>10</td>
+      <td>20</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+      <td>10</td>
+      <td>20</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+      <td>10</td>
+      <td>20</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2020</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>74216154</td>
+      <td>loss</td>
+      <td>46.858542</td>
+      <td>10</td>
+      <td>20</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2020</td>
+      <td>Jo Jorgensen</td>
+      <td>Libertarian</td>
+      <td>1865724</td>
+      <td>loss</td>
+      <td>1.177979</td>
+      <td>10</td>
+      <td>20</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2020</td>
+      <td>Howard Hawkins</td>
+      <td>Green</td>
+      <td>405035</td>
+      <td>loss</td>
+      <td>0.255731</td>
+      <td>10</td>
+      <td>20</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>180 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      57
+1      42
+2      56
+3      43
+4      54
+       ..
+177     1
+178    51
+179    46
+180     1
+181     0
+Name: %, Length: 182, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1920,7 +3460,23 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>If many statistics are required from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> (minimum value, maximum value, mean value, etc.), then <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html"><code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a> can be used to compute all of them at once.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What is the average percent of votes a winning candidate gets in the US? </span>
+
+<span class="n">winning_candidates</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;win&#39;</span><span class="p">]</span>
+<span class="n">winning_candidates</span><span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    48.000000
+mean     51.803768
+std       5.042490
+min      39.699408
+25%      48.781606
+50%      51.285000
+75%      54.891280
+max      61.344703
+Name: %, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1932,10 +3488,32 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count            182
+unique            36
+top       Democratic
+freq              47
+Name: Party, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Popular vote&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count         182
+mean     12353635
+std      19077149
+min        100715
+25%        387639
+50%       1709375
+75%      18977751
+max      81268924
+Name: Popular vote, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1948,10 +3526,164 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample a single row</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">elections</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant1</th>
+      <th>constant2</th>
+      <th>%2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>143</th>
+      <td>1996</td>
+      <td>Bob Dole</td>
+      <td>Republican</td>
+      <td>39197469</td>
+      <td>loss</td>
+      <td>40.766036</td>
+      <td>10</td>
+      <td>20</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>2000</td>
+      <td>Harry Browne</td>
+      <td>Libertarian</td>
+      <td>384431</td>
+      <td>loss</td>
+      <td>0.365525</td>
+      <td>10</td>
+      <td>20</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>1980</td>
+      <td>Jimmy Carter</td>
+      <td>Democratic</td>
+      <td>35480115</td>
+      <td>loss</td>
+      <td>41.132848</td>
+      <td>10</td>
+      <td>20</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>2008</td>
+      <td>Bob Barr</td>
+      <td>Libertarian</td>
+      <td>523715</td>
+      <td>loss</td>
+      <td>0.399565</td>
+      <td>10</td>
+      <td>20</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>1936</td>
+      <td>Franklin Roosevelt</td>
+      <td>Democratic</td>
+      <td>27752648</td>
+      <td>win</td>
+      <td>60.978107</td>
+      <td>10</td>
+      <td>20</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>1904</td>
+      <td>Eugene V. Debs</td>
+      <td>Socialist</td>
+      <td>402810</td>
+      <td>loss</td>
+      <td>2.985897</td>
+      <td>10</td>
+      <td>20</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>2012</td>
+      <td>Mitt Romney</td>
+      <td>Republican</td>
+      <td>60933504</td>
+      <td>loss</td>
+      <td>47.384076</td>
+      <td>10</td>
+      <td>20</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>1932</td>
+      <td>Herbert Hoover</td>
+      <td>Republican</td>
+      <td>15761254</td>
+      <td>loss</td>
+      <td>39.830594</td>
+      <td>10</td>
+      <td>20</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>1912</td>
+      <td>Theodore Roosevelt</td>
+      <td>Progressive</td>
+      <td>4122721</td>
+      <td>loss</td>
+      <td>27.457433</td>
+      <td>10</td>
+      <td>20</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>1920</td>
+      <td>Eugene V. Debs</td>
+      <td>Socialist</td>
+      <td>913693</td>
+      <td>loss</td>
+      <td>3.428282</td>
+      <td>10</td>
+      <td>20</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1960,6 +3692,82 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>155</th>
+      <td>2000</td>
+      <td>Ralph Nader</td>
+      <td>Green</td>
+      <td>2882955</td>
+      <td>loss</td>
+      <td>2.741176</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>1984</td>
+      <td>Walter Mondale</td>
+      <td>Democratic</td>
+      <td>37577352</td>
+      <td>loss</td>
+      <td>40.729429</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>1884</td>
+      <td>Grover Cleveland</td>
+      <td>Democratic</td>
+      <td>4914482</td>
+      <td>win</td>
+      <td>48.884933</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1928</td>
+      <td>Herbert Hoover</td>
+      <td>Republican</td>
+      <td>21427123</td>
+      <td>win</td>
+      <td>58.368524</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2016</td>
+      <td>Jill Stein</td>
+      <td>Green</td>
+      <td>1457226</td>
+      <td>loss</td>
+      <td>1.073699</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1968,6 +3776,73 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>53</th>
+      <td>1896</td>
+      <td>William McKinley</td>
+      <td>Republican</td>
+      <td>7112138</td>
+      <td>win</td>
+      <td>51.213817</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>1980</td>
+      <td>Ronald Reagan</td>
+      <td>Republican</td>
+      <td>43903230</td>
+      <td>win</td>
+      <td>50.897944</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>2012</td>
+      <td>Barack Obama</td>
+      <td>Democratic</td>
+      <td>65915795</td>
+      <td>win</td>
+      <td>51.258484</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="value-counts">
@@ -1976,7 +3851,65 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>In the example below, we can determine the name with the most years in which at least one person has taken that name by counting the number of times each name appears in the <code class="docutils literal notranslate"><span class="pre">&quot;Name&quot;</span></code> column of <code class="docutils literal notranslate"><span class="pre">elections</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Party&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Democratic               46
+Republican               41
+Libertarian              12
+Prohibition              11
+Socialist                10
+Green                     7
+Whig                      6
+Independent               6
+Progressive               4
+Constitution              3
+Populist                  3
+American Independent      3
+National Republican       2
+American                  2
+Free Soil                 2
+Reform                    2
+States&#39; Rights            1
+New Alliance              1
+Citizens                  1
+Union                     1
+Taxpayers                 1
+Natural Law               1
+Dixiecrat                 1
+Democratic-Republican     1
+Communist                 1
+Farmer–Labor              1
+Union Labor               1
+Anti-Monopoly             1
+Greenback                 1
+Liberal Republican        1
+National Union            1
+Northern Democratic       1
+Southern Democratic       1
+Constitutional Union      1
+Anti-Masonic              1
+National Democratic       1
+Name: Party, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Democratic     47
+Republican     41
+Libertarian    12
+Prohibition    11
+Socialist      10
+Name: Party, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1987,7 +3920,21 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>If we have a Series with many repeated values, then <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.unique.html"><code class="docutils literal notranslate"><span class="pre">.unique()</span></code></a> can be used to identify only the <em>unique</em> values. Here we return an array of all the names in <code class="docutils literal notranslate"><span class="pre">elections</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Party&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Democratic-Republican&#39;, &#39;National Republican&#39;, &#39;Democratic&#39;,
+       &#39;Anti-Masonic&#39;, &#39;Whig&#39;, &#39;Free Soil&#39;, &#39;Republican&#39;, &#39;American&#39;,
+       &#39;Constitutional Union&#39;, &#39;Southern Democratic&#39;,
+       &#39;Northern Democratic&#39;, &#39;National Union&#39;, &#39;Liberal Republican&#39;,
+       &#39;Greenback&#39;, &#39;Anti-Monopoly&#39;, &#39;Prohibition&#39;, &#39;Union Labor&#39;,
+       &#39;Populist&#39;, &#39;National Democratic&#39;, &#39;Socialist&#39;, &#39;Progressive&#39;,
+       &#39;Farmer–Labor&#39;, &#39;Communist&#39;, &#39;Union&#39;, &#39;Dixiecrat&#39;,
+       &quot;States&#39; Rights&quot;, &#39;American Independent&#39;, &#39;Independent&#39;,
+       &#39;Libertarian&#39;, &#39;Citizens&#39;, &#39;New Alliance&#39;, &#39;Taxpayers&#39;,
+       &#39;Natural Law&#39;, &#39;Green&#39;, &#39;Reform&#39;, &#39;Constitution&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -1998,17 +3945,727 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>Ordering a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be useful for isolating extreme values. For example, the first 5 entries of a row sorted in descending order (that is, from highest to lowest) are the largest 5 values. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html"><code class="docutils literal notranslate"><span class="pre">.sort_values</span></code></a> allows us to order a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">Series</span></code> by a specified column. We can choose to either receive the rows in <code class="docutils literal notranslate"><span class="pre">ascending</span></code> order (default) or <code class="docutils literal notranslate"><span class="pre">descending</span></code> order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the &quot;Count&quot; column from highest to lowest</span>
-<span class="n">elections</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1860</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant1</th>
+      <th>constant2</th>
+      <th>%2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22</th>
+      <td>1860</td>
+      <td>John Bell</td>
+      <td>Constitutional Union</td>
+      <td>590901</td>
+      <td>loss</td>
+      <td>12.639283</td>
+      <td>10</td>
+      <td>20</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1860</td>
+      <td>John C. Breckinridge</td>
+      <td>Southern Democratic</td>
+      <td>848019</td>
+      <td>loss</td>
+      <td>18.138998</td>
+      <td>10</td>
+      <td>20</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1860</td>
+      <td>Stephen A. Douglas</td>
+      <td>Northern Democratic</td>
+      <td>1380202</td>
+      <td>loss</td>
+      <td>29.522311</td>
+      <td>10</td>
+      <td>20</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1860</td>
+      <td>Abraham Lincoln</td>
+      <td>Republican</td>
+      <td>1855993</td>
+      <td>win</td>
+      <td>39.699408</td>
+      <td>10</td>
+      <td>20</td>
+      <td>39</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which president (winning candidate) received fewest votes in a presidential election? </span>
+<span class="n">winning_candidates</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;win&#39;</span><span class="p">]</span>
+<span class="n">winning_candidates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant1</th>
+      <th>constant2</th>
+      <th>%2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>21</th>
+      <td>1860</td>
+      <td>Abraham Lincoln</td>
+      <td>Republican</td>
+      <td>1855993</td>
+      <td>win</td>
+      <td>39.699408</td>
+      <td>10</td>
+      <td>20</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>1912</td>
+      <td>Woodrow Wilson</td>
+      <td>Democratic</td>
+      <td>6296284</td>
+      <td>win</td>
+      <td>41.933422</td>
+      <td>10</td>
+      <td>20</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>1992</td>
+      <td>Bill Clinton</td>
+      <td>Democratic</td>
+      <td>44909806</td>
+      <td>win</td>
+      <td>43.118485</td>
+      <td>10</td>
+      <td>20</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>1968</td>
+      <td>Richard Nixon</td>
+      <td>Republican</td>
+      <td>31783783</td>
+      <td>win</td>
+      <td>43.565246</td>
+      <td>10</td>
+      <td>20</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1856</td>
+      <td>James Buchanan</td>
+      <td>Democratic</td>
+      <td>1835140</td>
+      <td>win</td>
+      <td>45.306080</td>
+      <td>10</td>
+      <td>20</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1892</td>
+      <td>Grover Cleveland</td>
+      <td>Democratic</td>
+      <td>5553898</td>
+      <td>win</td>
+      <td>46.121393</td>
+      <td>10</td>
+      <td>20</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>2016</td>
+      <td>Donald Trump</td>
+      <td>Republican</td>
+      <td>62984828</td>
+      <td>win</td>
+      <td>46.407862</td>
+      <td>10</td>
+      <td>20</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1848</td>
+      <td>Zachary Taylor</td>
+      <td>Whig</td>
+      <td>1360235</td>
+      <td>win</td>
+      <td>47.309296</td>
+      <td>10</td>
+      <td>20</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1888</td>
+      <td>Benjamin Harrison</td>
+      <td>Republican</td>
+      <td>5443633</td>
+      <td>win</td>
+      <td>47.858041</td>
+      <td>10</td>
+      <td>20</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>2000</td>
+      <td>George W. Bush</td>
+      <td>Republican</td>
+      <td>50456002</td>
+      <td>win</td>
+      <td>47.974666</td>
+      <td>10</td>
+      <td>20</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1880</td>
+      <td>James Garfield</td>
+      <td>Republican</td>
+      <td>4453337</td>
+      <td>win</td>
+      <td>48.369234</td>
+      <td>10</td>
+      <td>20</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1876</td>
+      <td>Rutherford Hayes</td>
+      <td>Republican</td>
+      <td>4034142</td>
+      <td>win</td>
+      <td>48.471624</td>
+      <td>10</td>
+      <td>20</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1884</td>
+      <td>Grover Cleveland</td>
+      <td>Democratic</td>
+      <td>4914482</td>
+      <td>win</td>
+      <td>48.884933</td>
+      <td>10</td>
+      <td>20</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>1996</td>
+      <td>Bill Clinton</td>
+      <td>Democratic</td>
+      <td>47400125</td>
+      <td>win</td>
+      <td>49.296938</td>
+      <td>10</td>
+      <td>20</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>1916</td>
+      <td>Woodrow Wilson</td>
+      <td>Democratic</td>
+      <td>9126868</td>
+      <td>win</td>
+      <td>49.367987</td>
+      <td>10</td>
+      <td>20</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>1948</td>
+      <td>Harry Truman</td>
+      <td>Democratic</td>
+      <td>24179347</td>
+      <td>win</td>
+      <td>49.601536</td>
+      <td>10</td>
+      <td>20</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>1960</td>
+      <td>John Kennedy</td>
+      <td>Democratic</td>
+      <td>34220984</td>
+      <td>win</td>
+      <td>50.082561</td>
+      <td>10</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>1976</td>
+      <td>Jimmy Carter</td>
+      <td>Democratic</td>
+      <td>40831881</td>
+      <td>win</td>
+      <td>50.271900</td>
+      <td>10</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1844</td>
+      <td>James Polk</td>
+      <td>Democratic</td>
+      <td>1339570</td>
+      <td>win</td>
+      <td>50.749477</td>
+      <td>10</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>2004</td>
+      <td>George W. Bush</td>
+      <td>Republican</td>
+      <td>62040610</td>
+      <td>win</td>
+      <td>50.771824</td>
+      <td>10</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>1980</td>
+      <td>Ronald Reagan</td>
+      <td>Republican</td>
+      <td>43903230</td>
+      <td>win</td>
+      <td>50.897944</td>
+      <td>10</td>
+      <td>20</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1852</td>
+      <td>Franklin Pierce</td>
+      <td>Democratic</td>
+      <td>1605943</td>
+      <td>win</td>
+      <td>51.013168</td>
+      <td>10</td>
+      <td>20</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>1896</td>
+      <td>William McKinley</td>
+      <td>Republican</td>
+      <td>7112138</td>
+      <td>win</td>
+      <td>51.213817</td>
+      <td>10</td>
+      <td>20</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>2012</td>
+      <td>Barack Obama</td>
+      <td>Democratic</td>
+      <td>65915795</td>
+      <td>win</td>
+      <td>51.258484</td>
+      <td>10</td>
+      <td>20</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>2020</td>
+      <td>Joseph Biden</td>
+      <td>Democratic</td>
+      <td>81268924</td>
+      <td>win</td>
+      <td>51.311515</td>
+      <td>10</td>
+      <td>20</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1908</td>
+      <td>William Taft</td>
+      <td>Republican</td>
+      <td>7678335</td>
+      <td>win</td>
+      <td>52.013300</td>
+      <td>10</td>
+      <td>20</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1836</td>
+      <td>Martin Van Buren</td>
+      <td>Democratic</td>
+      <td>763291</td>
+      <td>win</td>
+      <td>52.272472</td>
+      <td>10</td>
+      <td>20</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>1900</td>
+      <td>William McKinley</td>
+      <td>Republican</td>
+      <td>7228864</td>
+      <td>win</td>
+      <td>52.342640</td>
+      <td>10</td>
+      <td>20</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1868</td>
+      <td>Ulysses Grant</td>
+      <td>Republican</td>
+      <td>3013790</td>
+      <td>win</td>
+      <td>52.665305</td>
+      <td>10</td>
+      <td>20</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>2008</td>
+      <td>Barack Obama</td>
+      <td>Democratic</td>
+      <td>69498516</td>
+      <td>win</td>
+      <td>53.023510</td>
+      <td>10</td>
+      <td>20</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1840</td>
+      <td>William Henry Harrison</td>
+      <td>Whig</td>
+      <td>1275583</td>
+      <td>win</td>
+      <td>53.051213</td>
+      <td>10</td>
+      <td>20</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>1988</td>
+      <td>George H. W. Bush</td>
+      <td>Republican</td>
+      <td>48886597</td>
+      <td>win</td>
+      <td>53.518845</td>
+      <td>10</td>
+      <td>20</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1944</td>
+      <td>Franklin Roosevelt</td>
+      <td>Democratic</td>
+      <td>25612916</td>
+      <td>win</td>
+      <td>53.773801</td>
+      <td>10</td>
+      <td>20</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>1924</td>
+      <td>Calvin Coolidge</td>
+      <td>Republican</td>
+      <td>15723789</td>
+      <td>win</td>
+      <td>54.329113</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>1940</td>
+      <td>Franklin Roosevelt</td>
+      <td>Democratic</td>
+      <td>27313945</td>
+      <td>win</td>
+      <td>54.871202</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1864</td>
+      <td>Abraham Lincoln</td>
+      <td>National Union</td>
+      <td>2211317</td>
+      <td>win</td>
+      <td>54.951512</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>1952</td>
+      <td>Dwight Eisenhower</td>
+      <td>Republican</td>
+      <td>34075529</td>
+      <td>win</td>
+      <td>55.325173</td>
+      <td>10</td>
+      <td>20</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1872</td>
+      <td>Ulysses Grant</td>
+      <td>Republican</td>
+      <td>3597439</td>
+      <td>win</td>
+      <td>55.928594</td>
+      <td>10</td>
+      <td>20</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1904</td>
+      <td>Theodore Roosevelt</td>
+      <td>Republican</td>
+      <td>7630557</td>
+      <td>win</td>
+      <td>56.562787</td>
+      <td>10</td>
+      <td>20</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>1956</td>
+      <td>Dwight Eisenhower</td>
+      <td>Republican</td>
+      <td>35579180</td>
+      <td>win</td>
+      <td>57.650654</td>
+      <td>10</td>
+      <td>20</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1932</td>
+      <td>Franklin Roosevelt</td>
+      <td>Democratic</td>
+      <td>22821277</td>
+      <td>win</td>
+      <td>57.672125</td>
+      <td>10</td>
+      <td>20</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1928</td>
+      <td>Herbert Hoover</td>
+      <td>Republican</td>
+      <td>21427123</td>
+      <td>win</td>
+      <td>58.368524</td>
+      <td>10</td>
+      <td>20</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>1984</td>
+      <td>Ronald Reagan</td>
+      <td>Republican</td>
+      <td>54455472</td>
+      <td>win</td>
+      <td>59.023326</td>
+      <td>10</td>
+      <td>20</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>1920</td>
+      <td>Warren Harding</td>
+      <td>Republican</td>
+      <td>16144093</td>
+      <td>win</td>
+      <td>60.574501</td>
+      <td>10</td>
+      <td>20</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>1972</td>
+      <td>Richard Nixon</td>
+      <td>Republican</td>
+      <td>47168710</td>
+      <td>win</td>
+      <td>60.907806</td>
+      <td>10</td>
+      <td>20</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>1936</td>
+      <td>Franklin Roosevelt</td>
+      <td>Democratic</td>
+      <td>27752648</td>
+      <td>win</td>
+      <td>60.978107</td>
+      <td>10</td>
+      <td>20</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>1964</td>
+      <td>Lyndon Johnson</td>
+      <td>Democratic</td>
+      <td>43127041</td>
+      <td>win</td>
+      <td>61.344703</td>
+      <td>10</td>
+      <td>20</td>
+      <td>61</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We do not need to explicitly specify the column used for sorting when calling <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> on a <code class="docutils literal notranslate"><span class="pre">Series</span></code>. We can still specify the ordering paradigm – that is, whether values are sorted in ascending or descending order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the &quot;Name&quot; Series alphabetically</span>
 <span class="n">elections</span><span class="p">[</span><span class="s2">&quot;Candidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75     Aaron S. Watkins
+27      Abraham Lincoln
+23      Abraham Lincoln
+108     Adlai Stevenson
+105     Adlai Stevenson
+Name: Candidate, dtype: object
 </pre></div>
 </div>
 </div>
@@ -2022,10 +4679,559 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 <p>Let’s say we wanted to count the number of unique values that each column takes on. We can use <code class="docutils literal notranslate"><span class="pre">.apply</span></code> to answer that question:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .apply to filter out rows where candidate name starts with &#39;A&#39; </span>
+
+<span class="k">def</span> <span class="nf">names_starting_with_a</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Candidate&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span>
+
+<span class="n">elections</span><span class="p">[</span><span class="n">elections</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">names_starting_with_a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+      <th>constant1</th>
+      <th>constant2</th>
+      <th>%2</th>
+      <th>Total votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+      <td>10</td>
+      <td>20</td>
+      <td>57</td>
+      <td>2.644130e+05</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+      <td>1.287655e+06</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1860</td>
+      <td>Abraham Lincoln</td>
+      <td>Republican</td>
+      <td>1855993</td>
+      <td>win</td>
+      <td>39.699408</td>
+      <td>10</td>
+      <td>20</td>
+      <td>39</td>
+      <td>4.675115e+06</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1864</td>
+      <td>Abraham Lincoln</td>
+      <td>National Union</td>
+      <td>2211317</td>
+      <td>win</td>
+      <td>54.951512</td>
+      <td>10</td>
+      <td>20</td>
+      <td>54</td>
+      <td>4.024124e+06</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1888</td>
+      <td>Alson Streeter</td>
+      <td>Union Labor</td>
+      <td>146602</td>
+      <td>loss</td>
+      <td>1.288861</td>
+      <td>10</td>
+      <td>20</td>
+      <td>1</td>
+      <td>1.137454e+07</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1904</td>
+      <td>Alton B. Parker</td>
+      <td>Democratic</td>
+      <td>5083880</td>
+      <td>loss</td>
+      <td>37.685116</td>
+      <td>10</td>
+      <td>20</td>
+      <td>37</td>
+      <td>1.349042e+07</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>1916</td>
+      <td>Allan L. Benson</td>
+      <td>Socialist</td>
+      <td>590524</td>
+      <td>loss</td>
+      <td>3.194193</td>
+      <td>10</td>
+      <td>20</td>
+      <td>3</td>
+      <td>1.848742e+07</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>1920</td>
+      <td>Aaron S. Watkins</td>
+      <td>Prohibition</td>
+      <td>188787</td>
+      <td>loss</td>
+      <td>0.708351</td>
+      <td>10</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2.665163e+07</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1928</td>
+      <td>Al Smith</td>
+      <td>Democratic</td>
+      <td>15015464</td>
+      <td>loss</td>
+      <td>40.902853</td>
+      <td>10</td>
+      <td>20</td>
+      <td>40</td>
+      <td>3.671006e+07</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>1936</td>
+      <td>Alf Landon</td>
+      <td>Republican</td>
+      <td>16679543</td>
+      <td>loss</td>
+      <td>36.648285</td>
+      <td>10</td>
+      <td>20</td>
+      <td>36</td>
+      <td>4.551248e+07</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>1952</td>
+      <td>Adlai Stevenson</td>
+      <td>Democratic</td>
+      <td>27375090</td>
+      <td>loss</td>
+      <td>44.446312</td>
+      <td>10</td>
+      <td>20</td>
+      <td>44</td>
+      <td>6.159136e+07</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>1956</td>
+      <td>Adlai Stevenson</td>
+      <td>Democratic</td>
+      <td>26028028</td>
+      <td>loss</td>
+      <td>42.174464</td>
+      <td>10</td>
+      <td>20</td>
+      <td>42</td>
+      <td>6.171514e+07</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>1992</td>
+      <td>Andre Marrou</td>
+      <td>Libertarian</td>
+      <td>290087</td>
+      <td>loss</td>
+      <td>0.278516</td>
+      <td>10</td>
+      <td>20</td>
+      <td>0</td>
+      <td>1.041544e+08</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>2000</td>
+      <td>Al Gore</td>
+      <td>Democratic</td>
+      <td>50999897</td>
+      <td>loss</td>
+      <td>48.491813</td>
+      <td>10</td>
+      <td>20</td>
+      <td>48</td>
+      <td>1.051722e+08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_total</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Popular vote&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">]</span>
+    
+
+<span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Total votes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Popular vote&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span> <span class="o">/</span> <span class="n">elections</span><span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">]</span> <span class="c1">#Without apply</span>
+
+<span class="n">elections</span><span class="p">[</span><span class="s1">&#39;Total votes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elections</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">compute_total</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#With apply </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elections2 = elections.drop_duplicates(&#39;Year&#39;)</span>
+<span class="c1"># year_totals = elections2[[&#39;Year&#39;, &#39;Total votes&#39;]]</span>
+
+<span class="c1"># year_totals[&#39;Total votes&#39;] = year_totals[&#39;Total votes&#39;].astype(int)</span>
+<span class="c1"># year_totals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l9/y8y3rmys2sl93tzzph3dl7jw0000gr/T/ipykernel_9096/1173237804.py:4: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  year_totals[&#39;Total votes&#39;] = year_totals[&#39;Total votes&#39;].astype(int)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>264413</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1828</td>
+      <td>1143703</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1832</td>
+      <td>1287655</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1836</td>
+      <td>1460215</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1840</td>
+      <td>2404437</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1844</td>
+      <td>2639574</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1848</td>
+      <td>2875196</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1852</td>
+      <td>3148095</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1856</td>
+      <td>4050537</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1860</td>
+      <td>4675115</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1864</td>
+      <td>4024123</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1868</td>
+      <td>5722534</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1872</td>
+      <td>6432200</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1876</td>
+      <td>8322688</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1880</td>
+      <td>9206962</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1884</td>
+      <td>10053162</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1888</td>
+      <td>11374541</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>1892</td>
+      <td>12041912</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>1896</td>
+      <td>13887147</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1900</td>
+      <td>13810660</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1904</td>
+      <td>13490418</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1908</td>
+      <td>14762253</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>1912</td>
+      <td>15014954</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>1916</td>
+      <td>18487421</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>1920</td>
+      <td>26651632</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>1924</td>
+      <td>28941737</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1928</td>
+      <td>36710064</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1932</td>
+      <td>39570723</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>1936</td>
+      <td>45512478</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>1940</td>
+      <td>49778287</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1944</td>
+      <td>47630844</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>1948</td>
+      <td>48747173</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>1952</td>
+      <td>61591364</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>1956</td>
+      <td>61715136</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>1960</td>
+      <td>68329140</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>1964</td>
+      <td>70302794</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1968</td>
+      <td>72956740</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>1972</td>
+      <td>77442800</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>1976</td>
+      <td>81222076</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>1980</td>
+      <td>86257374</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>1984</td>
+      <td>92260935</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>1988</td>
+      <td>91344641</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>1992</td>
+      <td>104154416</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>1996</td>
+      <td>96152269</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>2000</td>
+      <td>105172179</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>2004</td>
+      <td>122194959</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>2008</td>
+      <td>131071135</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>2012</td>
+      <td>128594897</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>2016</td>
+      <td>135720167</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>2020</td>
+      <td>158383403</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_unique</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">col</span><span class="p">))</span>
 
 <span class="n">elections</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">count_unique</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span> <span class="c1"># function is passed an individual column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year             50
+Candidate       132
+Party            36
+Popular vote    182
+Result            2
+%               182
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2049,6 +5255,173 @@ The result’s index is the original DataFrame’s columns. Columns with mixed t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         264413
+1         264412
+2        1143702
+3        1143703
+4        1287655
+         ...    
+177    135720167
+178    158383403
+179    158383403
+180    158383401
+181    158383402
+Length: 182, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+      <th>sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>46.8</td>
+      <td>14.3</td>
+      <td>215.0</td>
+      <td>4850.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>50.4</td>
+      <td>15.7</td>
+      <td>222.0</td>
+      <td>5750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>342</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>45.2</td>
+      <td>14.8</td>
+      <td>212.0</td>
+      <td>5200.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>343</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>49.9</td>
+      <td>16.1</td>
+      <td>213.0</td>
+      <td>5400.0</td>
+      <td>Male</td>
+    </tr>
+  </tbody>
+</table>
+<p>344 rows × 7 columns</p>
+</div></div></div>
 </div>
 </section>
 </section>

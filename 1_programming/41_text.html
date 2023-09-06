@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Text data &#8212; CSC-272 Data Mining</title>
+    <title>2.3. Text data &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -70,6 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/41_text';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.4. Graphs" href="42_graphs.html" />
+    <link rel="prev" title="2. Modalities of Data" href="40_modalities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -181,14 +183,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Modalities of Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_graphs.html">2.4. Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_imgs.html">2.5. Images</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="44_audio.html">2.15. Audio</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
@@ -379,7 +396,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -395,6 +414,24 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">2.3.1. Bag of Words</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">2.3.1.1. Bag of Words Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">2.3.1.2. Bag of Words Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">2.3.1.2.1. Collect Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">2.3.1.2.2. Tokenize Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">2.3.1.2.3. Count Tokens</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">2.3.1.2.4. Create Vocab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -405,64 +442,76 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="text-data">
-<h1>Text data<a class="headerlink" href="#text-data" title="Permalink to this headline">#</a></h1>
-<!-- ## Bag of Words --><!-- Bag of Words is a method to represent text data when modeling text with machine learning algorithms. It is a way of extracting features from the text for use in machine learning algorithms.
-
-### Bag of Words Process
-
-1. Collect Data
-2. Tokenize Data
-3. Count Tokens
-4. Create Vocab
-5. Create Vectors
-
-### Bag of Words Example
-
-#### Collect Data
-
-```python
-# define documents
-docs = ['Well done!',
-        'Good work',
-        'Great effort',
-        'nice work',
-        'Excellent!']
+<h1><span class="section-number">2.3. </span>Text data<a class="headerlink" href="#text-data" title="Permalink to this headline">#</a></h1>
+<section id="bag-of-words">
+<h2><span class="section-number">2.3.1. </span>Bag of Words<a class="headerlink" href="#bag-of-words" title="Permalink to this headline">#</a></h2>
+<p>Bag of Words is a method to represent text data when modeling text with machine learning algorithms. It is a way of extracting features from the text for use in machine learning algorithms.</p>
+<section id="bag-of-words-process">
+<h3><span class="section-number">2.3.1.1. </span>Bag of Words Process<a class="headerlink" href="#bag-of-words-process" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>Collect Data</p></li>
+<li><p>Tokenize Data</p></li>
+<li><p>Count Tokens</p></li>
+<li><p>Create Vocab</p></li>
+<li><p>Create Vectors</p></li>
+</ol>
+</section>
+<section id="bag-of-words-example">
+<h3><span class="section-number">2.3.1.2. </span>Bag of Words Example<a class="headerlink" href="#bag-of-words-example" title="Permalink to this headline">#</a></h3>
+<section id="collect-data">
+<h4><span class="section-number">2.3.1.2.1. </span>Collect Data<a class="headerlink" href="#collect-data" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define documents</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Good work&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Great effort&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;nice work&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Excellent!&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="tokenize-data">
+<h4><span class="section-number">2.3.1.2.2. </span>Tokenize Data<a class="headerlink" href="#tokenize-data" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># split into tokens by white space</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[&#39;Well&#39;, &#39;done!&#39;], [&#39;Good&#39;, &#39;work&#39;], [&#39;Great&#39;, &#39;effort&#39;], [&#39;nice&#39;, &#39;work&#39;], [&#39;Excellent!&#39;]]
+</pre></div>
+</div>
+</section>
+<section id="count-tokens">
+<h4><span class="section-number">2.3.1.2.3. </span>Count Tokens<a class="headerlink" href="#count-tokens" title="Permalink to this headline">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```python
+# count the tokens
+from collections import Counter
+counts = Counter()
+for d in tokens:
+    counts.update(d)
+print(counts)
 ```
 
-#### Tokenize Data
-
-```python
-# split into tokens by white space
-tokens = [d.split() for d in docs]
-print(tokens)
+Counter({&#39;work&#39;: 2, &#39;Well&#39;: 1, &#39;done!&#39;: 1, &#39;Good&#39;: 1, &#39;Great&#39;: 1, &#39;effort&#39;: 1, &#39;nice&#39;: 1, &#39;Excellent!&#39;: 1})
+</pre></div>
+</div>
+</section>
+<section id="create-vocab">
+<h4><span class="section-number">2.3.1.2.4. </span>Create Vocab<a class="headerlink" href="#create-vocab" title="Permalink to this headline">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```python
+# create a vocabulary of unique words
+vocabulary = set()
+for d in tokens:
+    vocabulary.update(d)
+print(vocabulary)
 ```
 
-    [['Well', 'done!'], ['Good', 'work'], ['Great', 'effort'], ['nice', 'work'], ['Excellent!']]
-
-#### Count Tokens
-    
-    ```python
-    # count the tokens
-    from collections import Counter
-    counts = Counter()
-    for d in tokens:
-        counts.update(d)
-    print(counts)
-    ```
-
-    Counter({'work': 2, 'Well': 1, 'done!': 1, 'Good': 1, 'Great': 1, 'effort': 1, 'nice': 1, 'Excellent!': 1})
-
-#### Create Vocab
-    
-    ```python
-    # create a vocabulary of unique words
-    vocabulary = set()
-    for d in tokens:
-        vocabulary.update(d)
-    print(vocabulary)
-    ```
-
-    {'effort', 'done!', 'Excellent!', 'Good', 'Great', 'work', 'Well', 'nice'} --><!-- ## TFIDF --></section>
+{&#39;effort&#39;, &#39;done!&#39;, &#39;Excellent!&#39;, &#39;Good&#39;, &#39;Great&#39;, &#39;work&#39;, &#39;Well&#39;, &#39;nice&#39;}
+</pre></div>
+</div>
+<!-- ## TFIDF --></section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -495,6 +544,24 @@ print(tokens)
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="40_modalities.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Modalities of Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="42_graphs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.4. </span>Graphs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -504,6 +571,30 @@ print(tokens)
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">2.3.1. Bag of Words</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">2.3.1.1. Bag of Words Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">2.3.1.2. Bag of Words Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">2.3.1.2.1. Collect Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">2.3.1.2.2. Tokenize Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">2.3.1.2.3. Count Tokens</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">2.3.1.2.4. Create Vocab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

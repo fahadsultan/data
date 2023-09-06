@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2. Modalities of Data &#8212; CSC-272 Data Mining</title>
+    <title>2. Encoding and Representation &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/40_modalities';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Collecting Data" href="30_collecting.html" />
+    <link rel="next" title="2.1. Feature Types" href="41_types.html" />
     <link rel="prev" title="1.3. Pandas III: Aggregation, Merging and Concatenation" href="pandas3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -190,7 +190,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Modalities of Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. Encoding and Representation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">4. Visualizing Data</a></li>
 </ul>
@@ -392,7 +410,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modalities of Data</h1>
+    <h1>Encoding and Representation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,37 +424,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modalities-of-data">
-<h1><span class="section-number">2. </span>Modalities of Data<a class="headerlink" href="#modalities-of-data" title="Permalink to this headline">#</a></h1>
-<!-- 
-Modality is a term used to describe the way data is represented. For example, a single image is a 2D array of pixels. A video is a sequence of images. A sound is a 1D array of samples. A text is a sequence of characters.
-
-There are too many modalities to list them all. Each modality has its own characteristics and requires different methods to process and analyze. Each data modality has its own area of research and expertise. For example, computer vision is the area of research that deals with images and videos. Speech processing is the area of research that deals with sounds. Natural language processing is the area of research that deals with text.
-
-In this section, we will discuss the most common modalities of data and how to work with them in Python.
-
-The image below shows a 2D array of pixels. Each pixel is a 3D vector of RGB values. The image is 3 pixels wide and 2 pixels high. The first row of pixels is red, green, and blue. The second row of pixels is black, white, and black.
-
-
-
-Some common modalities are:
-
-
-
-There are many different ways to represent data. In this section, we will discuss the most common modalities of data and how to work with them in Python.
- -->
-<!-- There are too many data modalities to enumerate here. 
-
-We are going to focus on just tabular data. Mathematically, there would be matrix representations.
-
-Here are a few covered: 
-
-1. **Text**: Natural Language Processing, Computational Linguistics
-2. **Images**: Computer Vision, Digital Image Processing
-3. **Sounds**: Digital Signal Processing (DSP)
-4. **Graphs**: Graph Theory, Network Theory
-5. **Time Series**: Time Series Analysis
-6. **Geographic**: Geographic Information Systems (GIS), Spatial Computing. --></section>
+  <section class="tex2jax_ignore mathjax_ignore" id="encoding-and-representation">
+<h1><span class="section-number">2. </span>Encoding and Representation<a class="headerlink" href="#encoding-and-representation" title="Permalink to this headline">#</a></h1>
+<p>Data exists in many forms, formats and modalities. Even missing data is a form of data.</p>
+<p>Regardless of its form, format or modality, all data ultimately needs to be transformed into a matrix (or matrices) of numbers for it to be used for any machine learning or data mining algorithm.</p>
+<p>The process of transforming raw data into numeric matrices is often referred to as <strong>Encoding</strong> and the resulting numeric matrices are referred to as <strong>Representations</strong>. These representations may focus on certain aspects (structure, content, semantics etc.) of the data more than others and may be more or less suitable for certain tasks.</p>
+<figure class="align-default" id="directive-fig">
+<a class="reference internal image-reference" href="../_images/modalities.png"><img alt="../_images/modalities.png" src="../_images/modalities.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">All data is ultimately transformed into a matrix of numbers.</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="toctree-wrapper compound">
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -479,11 +480,11 @@ Here are a few covered:
       </div>
     </a>
     <a class="right-next"
-       href="30_collecting.html"
+       href="41_types.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Collecting Data</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Feature Types</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
