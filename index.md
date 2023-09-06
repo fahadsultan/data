@@ -18,11 +18,11 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-**[Written Assignment 1](https://docs.google.com/document/d/1-V69jP6oYPr6TiiSsxq93TnL8xLxElhHIrCkQyicbzc/edit?usp=sharing)** is due on **September 1st** at 11:59 PM
+**[Written Assignment 2](https://docs.google.com/document/d/1-V69jP6oYPr6TiiSsxq93TnL8xLxElhHIrCkQyicbzc/edit?usp=sharing)** is due on **September 12th** at 11:59 PM
 ```
 
 ```{important}
-**[Programming Assignment 2](https://colab.research.google.com/drive/1AggKtYvrTMVJKoSkAmn6-QGnxsmJZvdZ?usp=sharing)** is due on **September 6th** at 11:59 PM
+**[Programming Assignment 3](https://colab.research.google.com/drive/1Ck1omeVRoXFPiUSSoRU3xuZZc_l6XmzH?usp=sharing)** is due on **September 12th** at 11:59 PM
 ```
 
 ```{tip}
