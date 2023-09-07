@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.3. Modalities of Data &#8212; CSC-272 Data Mining</title>
+    <title>Modalities of Data &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -72,8 +72,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/43_modalities';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Collecting Data" href="30_collecting.html" />
-    <link rel="prev" title="2.2. Common Data Formats" href="42_formats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -185,30 +183,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. Modalities of Data</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
@@ -424,65 +407,54 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.3. Modalities of Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-data">2.4. Text data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">2.4.1. Bag of Words</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">2.4.1.1. Bag of Words Process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">2.4.1.2. Bag of Words Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">2.4.1.2.1. Collect Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">2.4.1.2.2. Tokenize Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">2.4.1.2.3. Count Tokens</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">2.4.1.2.4. Create Vocab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modalities of Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-data">Text data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">Bag of Words</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">Bag of Words Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">Bag of Words Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">Collect Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">Tokenize Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">Count Tokens</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">Create Vocab</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.5. Graphs</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representations">2.5.1. Matrix Representations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-list">2.5.1.1. Edge List</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">2.5.1.2. Adjacency Matrix</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representations">Matrix Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-list">Edge List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">Adjacency Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx">2.5.2. <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-graphs">2.5.2.1. Creating Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes-and-edges">2.5.2.2. Adding Nodes and Edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traversing-graphs">2.5.2.3. Traversing Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-properties-of-graphs">2.5.2.4. Computing Properties of Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx"><code class="docutils literal notranslate"><span class="pre">networkx</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-graphs">Creating Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes-and-edges">Adding Nodes and Edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traversing-graphs">Traversing Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-properties-of-graphs">Computing Properties of Graphs</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">2.6. Images</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-an-image">2.7. Read an image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-grayscale">2.8. Convert to grayscale</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invert-the-image">2.9. Invert the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-the-image">2.10. Threshold the image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">2.10.1. Crop the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">Image datasets</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-the-image">2.11. Resize the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotate-the-image">2.12. Rotate the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flip-the-image">2.13. Flip the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-image">2.14. Save the image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.14.1. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">2.14.2. Image datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">Reading in the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">2.15. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">2.15.1. Reading in the data</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio">2.16. Audio</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-data">2.16.1. Audio data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram">2.16.2. Spectrogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mel-spectrogram">2.16.3. Mel spectrogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfcc">2.16.4. MFCC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chromagram">2.16.5. Chromagram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-vector">2.16.6. Chroma vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-deviation">2.16.7. Chroma deviation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-distance">2.16.8. Chroma distance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio">Audio</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-data">Audio data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram">Spectrogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mel-spectrogram">Mel spectrogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfcc">MFCC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chromagram">Chromagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-vector">Chroma vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-deviation">Chroma deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-distance">Chroma distance</a></li>
 </ul>
 </li>
 </ul>
@@ -498,7 +470,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modalities-of-data">
-<h1><span class="section-number">2.3. </span>Modalities of Data<a class="headerlink" href="#modalities-of-data" title="Permalink to this headline">#</a></h1>
+<h1>Modalities of Data<a class="headerlink" href="#modalities-of-data" title="Permalink to this headline">#</a></h1>
 <p>Modality is a term used to describe the way data is represented. For example, a single image is a 2D array of pixels. A video is a sequence of images. A sound is a 1D array of samples. A text is a sequence of characters.</p>
 <p>There are too many modalities to list them all. Each modality has its own characteristics and requires different methods to process and analyze. Each data modality has its own area of research and expertise. For example, computer vision is the area of research that deals with images and videos. Speech processing is the area of research that deals with sounds. Natural language processing is the area of research that deals with text.</p>
 <p>In this section, we will discuss the most common modalities of data and how to work with them in Python.</p>
@@ -518,12 +490,12 @@ document.write(`
 <p>There are many different ways to represent data. In this section, we will discuss the most common modalities of data and how to work with them in Python.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="text-data">
-<h1><span class="section-number">2.4. </span>Text data<a class="headerlink" href="#text-data" title="Permalink to this headline">#</a></h1>
+<h1>Text data<a class="headerlink" href="#text-data" title="Permalink to this headline">#</a></h1>
 <section id="bag-of-words">
-<h2><span class="section-number">2.4.1. </span>Bag of Words<a class="headerlink" href="#bag-of-words" title="Permalink to this headline">#</a></h2>
+<h2>Bag of Words<a class="headerlink" href="#bag-of-words" title="Permalink to this headline">#</a></h2>
 <p>Bag of Words is a method to represent text data when modeling text with machine learning algorithms. It is a way of extracting features from the text for use in machine learning algorithms.</p>
 <section id="bag-of-words-process">
-<h3><span class="section-number">2.4.1.1. </span>Bag of Words Process<a class="headerlink" href="#bag-of-words-process" title="Permalink to this headline">#</a></h3>
+<h3>Bag of Words Process<a class="headerlink" href="#bag-of-words-process" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>Collect Data</p></li>
 <li><p>Tokenize Data</p></li>
@@ -533,9 +505,9 @@ document.write(`
 </ol>
 </section>
 <section id="bag-of-words-example">
-<h3><span class="section-number">2.4.1.2. </span>Bag of Words Example<a class="headerlink" href="#bag-of-words-example" title="Permalink to this headline">#</a></h3>
+<h3>Bag of Words Example<a class="headerlink" href="#bag-of-words-example" title="Permalink to this headline">#</a></h3>
 <section id="collect-data">
-<h4><span class="section-number">2.4.1.2.1. </span>Collect Data<a class="headerlink" href="#collect-data" title="Permalink to this headline">#</a></h4>
+<h4>Collect Data<a class="headerlink" href="#collect-data" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define documents</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span>
         <span class="s1">&#39;Good work&#39;</span><span class="p">,</span>
@@ -546,7 +518,7 @@ document.write(`
 </div>
 </section>
 <section id="tokenize-data">
-<h4><span class="section-number">2.4.1.2.2. </span>Tokenize Data<a class="headerlink" href="#tokenize-data" title="Permalink to this headline">#</a></h4>
+<h4>Tokenize Data<a class="headerlink" href="#tokenize-data" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># split into tokens by white space</span>
 <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
@@ -557,7 +529,7 @@ document.write(`
 </div>
 </section>
 <section id="count-tokens">
-<h4><span class="section-number">2.4.1.2.3. </span>Count Tokens<a class="headerlink" href="#count-tokens" title="Permalink to this headline">#</a></h4>
+<h4>Count Tokens<a class="headerlink" href="#count-tokens" title="Permalink to this headline">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```python
 # count the tokens
 from collections import Counter
@@ -572,7 +544,7 @@ Counter({&#39;work&#39;: 2, &#39;Well&#39;: 1, &#39;done!&#39;: 1, &#39;Good&#39
 </div>
 </section>
 <section id="create-vocab">
-<h4><span class="section-number">2.4.1.2.4. </span>Create Vocab<a class="headerlink" href="#create-vocab" title="Permalink to this headline">#</a></h4>
+<h4>Create Vocab<a class="headerlink" href="#create-vocab" title="Permalink to this headline">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```python
 # create a vocabulary of unique words
 vocabulary = set()
@@ -589,11 +561,11 @@ print(vocabulary)
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="graphs">
-<h1><span class="section-number">2.5. </span>Graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">#</a></h1>
+<h1>Graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">#</a></h1>
 <p>Graphs are a data structure that consists of a set of nodes (vertices) and a set of edges that relate the nodes to each other. The set of edges describes relationships among the vertices. Graphs are used to model many real-world systems, including computer networks, social networks, and transportation systems.</p>
 <p>Graphs are a very general structure, so they can be used to model many different kinds of systems. The nodes and edges can have any kind of data associated with them. For example, a graph could be used to represent a social network, where the nodes are people and the edges are friendships. The nodes could have additional data associated with them, such as the person’s name, age, and hometown. The edges could have additional data associated with them, such as the date the friendship began.</p>
 <section id="matrix-representations">
-<h2><span class="section-number">2.5.1. </span>Matrix Representations<a class="headerlink" href="#matrix-representations" title="Permalink to this headline">#</a></h2>
+<h2>Matrix Representations<a class="headerlink" href="#matrix-representations" title="Permalink to this headline">#</a></h2>
 <p>There are two common ways to represent a graph as a matrix. The first way is to use an adjacency matrix, which is a matrix where each row and column represents a vertex. If there is an edge from vertex <span class="math notranslate nohighlight">\(i\)</span> to vertex <span class="math notranslate nohighlight">\(j\)</span>, then the entry in row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> is 1. Otherwise, the entry is 0. For example, the following matrix represents a graph with 4 vertices and 4 edges:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -605,7 +577,7 @@ print(vocabulary)
 \end{bmatrix}
 \end{split}\]</div>
 <section id="edge-list">
-<h3><span class="section-number">2.5.1.1. </span>Edge List<a class="headerlink" href="#edge-list" title="Permalink to this headline">#</a></h3>
+<h3>Edge List<a class="headerlink" href="#edge-list" title="Permalink to this headline">#</a></h3>
 <p>The second way to represent a graph as a matrix is to use an edge list. An edge list is a list of pairs of vertices that are connected by an edge. For example, the following edge list represents the same graph as the adjacency matrix above:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -618,88 +590,139 @@ print(vocabulary)
 \end{split}\]</div>
 </section>
 <section id="adjacency-matrix">
-<h3><span class="section-number">2.5.1.2. </span>Adjacency Matrix<a class="headerlink" href="#adjacency-matrix" title="Permalink to this headline">#</a></h3>
+<h3>Adjacency Matrix<a class="headerlink" href="#adjacency-matrix" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 <section id="networkx">
-<h2><span class="section-number">2.5.2. </span><code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#networkx" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#networkx" title="Permalink to this headline">#</a></h2>
 <p>networkx is a Python library for working with graphs. It provides functions for creating graphs, adding nodes and edges to graphs, and traversing graphs. It also provides functions for computing various properties of graphs, such as the shortest path between two nodes.</p>
 <section id="creating-graphs">
-<h3><span class="section-number">2.5.2.1. </span>Creating Graphs<a class="headerlink" href="#creating-graphs" title="Permalink to this headline">#</a></h3>
+<h3>Creating Graphs<a class="headerlink" href="#creating-graphs" title="Permalink to this headline">#</a></h3>
 <p>To create a graph, use the <code class="docutils literal notranslate"><span class="pre">Graph()</span></code> function. This function returns a graph object that can be used to add nodes and edges to the graph.</p>
 </section>
 <section id="adding-nodes-and-edges">
-<h3><span class="section-number">2.5.2.2. </span>Adding Nodes and Edges<a class="headerlink" href="#adding-nodes-and-edges" title="Permalink to this headline">#</a></h3>
+<h3>Adding Nodes and Edges<a class="headerlink" href="#adding-nodes-and-edges" title="Permalink to this headline">#</a></h3>
 <p>To add a node to a graph, use the <code class="docutils literal notranslate"><span class="pre">add_node()</span></code> function. This function takes a single argument, which is the name of the node. To add an edge to a graph, use the <code class="docutils literal notranslate"><span class="pre">add_edge()</span></code> function. This function takes two arguments, which are the names of the nodes that are connected by the edge.</p>
 </section>
 <section id="traversing-graphs">
-<h3><span class="section-number">2.5.2.3. </span>Traversing Graphs<a class="headerlink" href="#traversing-graphs" title="Permalink to this headline">#</a></h3>
+<h3>Traversing Graphs<a class="headerlink" href="#traversing-graphs" title="Permalink to this headline">#</a></h3>
 <p>To traverse a graph, use the <code class="docutils literal notranslate"><span class="pre">nodes()</span></code> function. This function returns a list of all the nodes in the graph. To traverse a graph, use the <code class="docutils literal notranslate"><span class="pre">edges()</span></code> function. This function returns a list of all the edges in the graph.</p>
 </section>
 <section id="computing-properties-of-graphs">
-<h3><span class="section-number">2.5.2.4. </span>Computing Properties of Graphs<a class="headerlink" href="#computing-properties-of-graphs" title="Permalink to this headline">#</a></h3>
+<h3>Computing Properties of Graphs<a class="headerlink" href="#computing-properties-of-graphs" title="Permalink to this headline">#</a></h3>
 <p>To compute the shortest path between two nodes in a graph, use the <code class="docutils literal notranslate"><span class="pre">shortest_path()</span></code> function. This function takes two arguments, which are the names of the nodes. It returns a list of the nodes that are on the shortest path between the two nodes.</p>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="images">
-<h1><span class="section-number">2.6. </span>Images<a class="headerlink" href="#images" title="Permalink to this headline">#</a></h1>
+<h1>Images<a class="headerlink" href="#images" title="Permalink to this headline">#</a></h1>
 <p>An image is a 2D array of pixels. Each pixel is a 3D vector of red, green, and blue (RGB) values. The RGB values are usually represented as integers between 0 and 255. The RGB values are used to represent the color of the pixel. For example, a pixel with RGB values of (255, 0, 0) is red, (0, 255, 0) is green, and (0, 0, 255) is blue. A pixel with RGB values of (0, 0, 0) is black and (255, 255, 255) is white.</p>
 <p>In this notebook, we will learn how to read and write images, and how to manipulate them.</p>
-<p>import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="read-an-image">
-<h1><span class="section-number">2.7. </span>Read an image<a class="headerlink" href="#read-an-image" title="Permalink to this headline">#</a></h1>
-<p>img = plt.imread(‘../data/belltower.jpg’);
-plt.imshow(img);</p>
-<p>img.shape # (height, width, channels)</p>
-<p>img[0,0,:] # RGB values of the first pixel</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="convert-to-grayscale">
-<h1><span class="section-number">2.8. </span>Convert to grayscale<a class="headerlink" href="#convert-to-grayscale" title="Permalink to this headline">#</a></h1>
-<p>img_gray = img.mean(axis=2)
-plt.imshow(img_gray, cmap=’gray’);</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="invert-the-image">
-<h1><span class="section-number">2.9. </span>Invert the image<a class="headerlink" href="#invert-the-image" title="Permalink to this headline">#</a></h1>
-<p>img_inv = 255 - img_gray</p>
-<p>plt.imshow(img_inv, cmap=’gray’);</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="threshold-the-image">
-<h1><span class="section-number">2.10. </span>Threshold the image<a class="headerlink" href="#threshold-the-image" title="Permalink to this headline">#</a></h1>
-<p>img_thresh = img_gray &gt; 100</p>
-<p>plt.imshow(img_thresh, cmap=’gray’);</p>
-<p>img.shape</p>
-<section id="crop-the-image">
-<h2><span class="section-number">2.10.1. </span>Crop the image<a class="headerlink" href="#crop-the-image" title="Permalink to this headline">#</a></h2>
-<p>img_crop = img_gray[:700, :700]</p>
-<p>plt.imshow(img_crop, cmap=’gray’);</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="resize-the-image">
-<h1><span class="section-number">2.11. </span>Resize the image<a class="headerlink" href="#resize-the-image" title="Permalink to this headline">#</a></h1>
-<p>img_resize = img_gray[::2, ::2] # every other pixel</p>
-<p>print(“Image resized from {} to {}”.format(img_gray.shape, img_resize.shape))</p>
-<p>plt.imshow(img_resize, cmap=’gray’);
-plt.colorbar();</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="rotate-the-image">
-<h1><span class="section-number">2.12. </span>Rotate the image<a class="headerlink" href="#rotate-the-image" title="Permalink to this headline">#</a></h1>
-<p>img_rot = img_gray.T</p>
-<p>plt.imshow(img_rot, cmap=’gray’);</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="flip-the-image">
-<h1><span class="section-number">2.13. </span>Flip the image<a class="headerlink" href="#flip-the-image" title="Permalink to this headline">#</a></h1>
-<p>img_flip = img_gray[::-1, ::-1] # reverse the rows and columns</p>
-<p>plt.imshow(img_flip, cmap=’gray’);</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="save-the-image">
-<h1><span class="section-number">2.14. </span>Save the image<a class="headerlink" href="#save-the-image" title="Permalink to this headline">#</a></h1>
-<p>plt.imsave(‘../data/belltower_gray.jpg’, img_gray, cmap=’gray’);</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+
+<span class="c1"># Read an image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../data/belltower.jpg&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># (height, width, channels)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]</span> <span class="c1"># RGB values of the first pixel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to grayscale</span>
+
+<span class="n">img_gray</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Invert the image</span>
+
+<span class="n">img_inv</span> <span class="o">=</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">img_gray</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_inv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Threshold the image</span>
+
+<span class="n">img_thresh</span> <span class="o">=</span> <span class="n">img_gray</span> <span class="o">&gt;</span> <span class="mi">100</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_thresh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Crop the image</span>
+<span class="n">img_crop</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[:</span><span class="mi">700</span><span class="p">,</span> <span class="p">:</span><span class="mi">700</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_crop</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+
+<span class="c1"># Resize the image</span>
+
+<span class="n">img_resize</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># every other pixel</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image resized from </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_gray</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">img_resize</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_resize</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+
+<span class="c1"># Rotate the image</span>
+
+<span class="n">img_rot</span> <span class="o">=</span> <span class="n">img_gray</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+
+<span class="c1"># Flip the image</span>
+
+<span class="n">img_flip</span> <span class="o">=</span> <span class="n">img_gray</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># reverse the rows and columns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+
+<span class="c1"># Save the image</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;../data/belltower_gray.jpg&#39;</span><span class="p">,</span> <span class="n">img_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="exercises">
-<h2><span class="section-number">2.14.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
 <p><strong>1</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, invert the image and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_inv.jpg</span></code>.</p>
 <p><strong>2</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, crop the image to the top-left 700x700 pixels and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_crop.jpg</span></code>.</p>
 <p><strong>3</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, resize the image to half its size and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_resize.jpg</span></code>.</p>
@@ -707,15 +730,15 @@ plt.colorbar();</p>
 <p><strong>5</strong>. Read in the image <code class="docutils literal notranslate"><span class="pre">../data/belltower.jpg</span></code> and convert it to grayscale. Then, flip the image vertically and save it as <code class="docutils literal notranslate"><span class="pre">../data/belltower_flip.jpg</span></code>.</p>
 </section>
 <section id="image-datasets">
-<h2><span class="section-number">2.14.2. </span>Image datasets<a class="headerlink" href="#image-datasets" title="Permalink to this headline">#</a></h2>
+<h2>Image datasets<a class="headerlink" href="#image-datasets" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reading-in-handwritten-digits">
-<h1><span class="section-number">2.15. </span>Reading in handwritten digits<a class="headerlink" href="#reading-in-handwritten-digits" title="Permalink to this headline">#</a></h1>
+<h1>Reading in handwritten digits<a class="headerlink" href="#reading-in-handwritten-digits" title="Permalink to this headline">#</a></h1>
 <p>In this notebook, we will read in the handwritten digits dataset from the UCI Machine Learning Repository. The dataset consists of 1797 images of handwritten digits. Each image is a 2D array of pixels, where each pixel is an integer between 0 and 255. The images are 8x8 pixels, so there are 64 pixels in total. Each image is labeled with the digit it represents.</p>
 <p>You can find the dataset <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits">here</a>.</p>
 <section id="reading-in-the-data">
-<h2><span class="section-number">2.15.1. </span>Reading in the data<a class="headerlink" href="#reading-in-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Reading in the data<a class="headerlink" href="#reading-in-the-data" title="Permalink to this headline">#</a></h2>
 <p>The data is stored in a CSV file. We can read it in using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/digits.csv&#39;</span><span class="p">)</span>
@@ -724,10 +747,10 @@ plt.colorbar();</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="audio">
-<h1><span class="section-number">2.16. </span>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">#</a></h1>
+<h1>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">#</a></h1>
 <p>In this section, we will learn how to use representations of audio data in machine learning.</p>
 <section id="audio-data">
-<h2><span class="section-number">2.16.1. </span>Audio data<a class="headerlink" href="#audio-data" title="Permalink to this headline">#</a></h2>
+<h2>Audio data<a class="headerlink" href="#audio-data" title="Permalink to this headline">#</a></h2>
 <p>Audio files can be represented in a variety of ways. The most common is the waveform, which is a time series of the amplitude of the sound wave at each time point. The waveform is a one-dimensional array of numbers. The sampling rate is the number of samples per second.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -762,37 +785,37 @@ plt.colorbar();</p>
 <p>A dataset of audio files is available at https://www.kaggle.com/c/tensorflow-speech-recognition-challenge/data.</p>
 </section>
 <section id="spectrogram">
-<h2><span class="section-number">2.16.2. </span>Spectrogram<a class="headerlink" href="#spectrogram" title="Permalink to this headline">#</a></h2>
+<h2>Spectrogram<a class="headerlink" href="#spectrogram" title="Permalink to this headline">#</a></h2>
 <p>The spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time. It is a two-dimensional array of numbers. The x-axis represents time, the y-axis represents frequency, and the color represents the amplitude of the frequency at that time.</p>
 <p>The spectrogram can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.stft</span></code> function. The <code class="docutils literal notranslate"><span class="pre">librosa.amplitude_to_db</span></code> function converts the amplitude to decibels.</p>
 </section>
 <section id="mel-spectrogram">
-<h2><span class="section-number">2.16.3. </span>Mel spectrogram<a class="headerlink" href="#mel-spectrogram" title="Permalink to this headline">#</a></h2>
+<h2>Mel spectrogram<a class="headerlink" href="#mel-spectrogram" title="Permalink to this headline">#</a></h2>
 <p>The mel spectrogram is a spectrogram where the frequencies are converted to the mel scale. The mel scale is a scale of pitches judged by listeners to be equal in distance from one another. The mel spectrogram is a two-dimensional array of numbers. The x-axis represents time, the y-axis represents mel frequency, and the color represents the amplitude of the frequency at that time.</p>
 <p>The mel spectrogram can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.melspectrogram</span></code> function.</p>
 </section>
 <section id="mfcc">
-<h2><span class="section-number">2.16.4. </span>MFCC<a class="headerlink" href="#mfcc" title="Permalink to this headline">#</a></h2>
+<h2>MFCC<a class="headerlink" href="#mfcc" title="Permalink to this headline">#</a></h2>
 <p>The mel-frequency cepstrum (MFC) is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency. The MFCC is a one-dimensional array of numbers.</p>
 <p>The MFCC can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.mfcc</span></code> function.</p>
 </section>
 <section id="chromagram">
-<h2><span class="section-number">2.16.5. </span>Chromagram<a class="headerlink" href="#chromagram" title="Permalink to this headline">#</a></h2>
+<h2>Chromagram<a class="headerlink" href="#chromagram" title="Permalink to this headline">#</a></h2>
 <p>The chromagram is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency. The chromagram is a two-dimensional array of numbers. The x-axis represents time, the y-axis represents pitch class, and the color represents the amplitude of the pitch class at that time.</p>
 <p>The chromagram can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.chroma_stft</span></code> function.</p>
 </section>
 <section id="chroma-vector">
-<h2><span class="section-number">2.16.6. </span>Chroma vector<a class="headerlink" href="#chroma-vector" title="Permalink to this headline">#</a></h2>
+<h2>Chroma vector<a class="headerlink" href="#chroma-vector" title="Permalink to this headline">#</a></h2>
 <p>The chroma vector is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency. The chroma vector is a one-dimensional array of numbers.</p>
 <p>The chroma vector can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.chroma_stft</span></code> function.</p>
 </section>
 <section id="chroma-deviation">
-<h2><span class="section-number">2.16.7. </span>Chroma deviation<a class="headerlink" href="#chroma-deviation" title="Permalink to this headline">#</a></h2>
+<h2>Chroma deviation<a class="headerlink" href="#chroma-deviation" title="Permalink to this headline">#</a></h2>
 <p>The chroma deviation is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency. The chroma deviation is a one-dimensional array of numbers.</p>
 <p>The chroma deviation can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.chroma_stft</span></code> function.</p>
 </section>
 <section id="chroma-distance">
-<h2><span class="section-number">2.16.8. </span>Chroma distance<a class="headerlink" href="#chroma-distance" title="Permalink to this headline">#</a></h2>
+<h2>Chroma distance<a class="headerlink" href="#chroma-distance" title="Permalink to this headline">#</a></h2>
 <p>The chroma distance is a representation of the short-term power spectrum of a sound, based on a linear cosine transform of a log power spectrum on a nonlinear mel scale of frequency. The chroma distance is a one-dimensional array of numbers.</p>
 <p>The chroma distance can be computed using the <code class="docutils literal notranslate"><span class="pre">librosa.feature.chroma_stft</span></code> function.</p>
 <p>import librosa</p>
@@ -832,24 +855,6 @@ plt.colorbar();</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="42_formats.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Common Data Formats</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="30_collecting.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Collecting Data</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -868,65 +873,54 @@ plt.colorbar();</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.3. Modalities of Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-data">2.4. Text data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">2.4.1. Bag of Words</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">2.4.1.1. Bag of Words Process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">2.4.1.2. Bag of Words Example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">2.4.1.2.1. Collect Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">2.4.1.2.2. Tokenize Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">2.4.1.2.3. Count Tokens</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">2.4.1.2.4. Create Vocab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modalities of Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-data">Text data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">Bag of Words</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-process">Bag of Words Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words-example">Bag of Words Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-data">Collect Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize-data">Tokenize Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-tokens">Count Tokens</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-vocab">Create Vocab</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.5. Graphs</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representations">2.5.1. Matrix Representations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-list">2.5.1.1. Edge List</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">2.5.1.2. Adjacency Matrix</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representations">Matrix Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-list">Edge List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">Adjacency Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx">2.5.2. <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-graphs">2.5.2.1. Creating Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes-and-edges">2.5.2.2. Adding Nodes and Edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traversing-graphs">2.5.2.3. Traversing Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-properties-of-graphs">2.5.2.4. Computing Properties of Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx"><code class="docutils literal notranslate"><span class="pre">networkx</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-graphs">Creating Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes-and-edges">Adding Nodes and Edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traversing-graphs">Traversing Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-properties-of-graphs">Computing Properties of Graphs</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">2.6. Images</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-an-image">2.7. Read an image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-grayscale">2.8. Convert to grayscale</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invert-the-image">2.9. Invert the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-the-image">2.10. Threshold the image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-image">2.10.1. Crop the image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">Image datasets</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-the-image">2.11. Resize the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotate-the-image">2.12. Rotate the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flip-the-image">2.13. Flip the image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-image">2.14. Save the image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.14.1. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-datasets">2.14.2. Image datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">Reading in the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-handwritten-digits">2.15. Reading in handwritten digits</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-the-data">2.15.1. Reading in the data</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio">2.16. Audio</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-data">2.16.1. Audio data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram">2.16.2. Spectrogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mel-spectrogram">2.16.3. Mel spectrogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfcc">2.16.4. MFCC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chromagram">2.16.5. Chromagram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-vector">2.16.6. Chroma vector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-deviation">2.16.7. Chroma deviation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-distance">2.16.8. Chroma distance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio">Audio</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-data">Audio data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram">Spectrogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mel-spectrogram">Mel spectrogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfcc">MFCC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chromagram">Chromagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-vector">Chroma vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-deviation">Chroma deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chroma-distance">Chroma distance</a></li>
 </ul>
 </li>
 </ul>

@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/41_types';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Common Data Formats" href="42_formats.html" />
+    <link rel="next" title="3. Collecting Data" href="30_collecting.html" />
     <link rel="prev" title="2. Encoding and Representation" href="40_modalities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -192,21 +192,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Feature Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
@@ -422,23 +407,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.1. Numerical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.1.1. Discrete Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.1.2. Continuous Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.1. Missing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.2. Numerical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.2.1. Discrete Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.2.2. Continuous Features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.2. Categorical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.2.1. Nominal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features-using-one-hot-encoding">2.1.2.1.1. Encoding Nominal Features, using One Hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.3. Categorical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.3.1. Ordinal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.3.1.1. Encoding Ordinal Features</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.2.2. Ordinal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.2.2.1. Encoding Ordinal Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.3.2. Nominal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">2.1.3.2.1. Encoding Nominal Features</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.3. Missing Data</a></li>
 </ul>
             </nav>
         </div>
@@ -453,37 +438,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="feature-types">
 <h1><span class="section-number">2.1. </span>Feature Types<a class="headerlink" href="#feature-types" title="Permalink to this headline">#</a></h1>
 <p>Tabular data (<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>), as discussed previously, is made up of observations (rows) and features (columns). Data type (<code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code>) of features fall into two primary categories: <strong>numeric</strong> and <strong>categorical</strong>.</p>
-<p>There also exists a third special category of data type called <strong>missing</strong>. Missing data is a special data type because it is not a data type at all. It is a placeholder for a value that is not known or not applicable. Missing data is represented by <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (not a number) in pandas. More on missing data later.</p>
+<p>There also exists a third special category of data type called <strong>missing</strong>. Missing data is a special data type because it is not a data type at all. It is a placeholder for a value that is not known or not applicable. Missing data is represented by <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (not a number) in pandas. More on missing data in a bit.</p>
 <figure class="align-default" id="directive-fig">
-<a class="reference internal image-reference" href="../_images/datatypes.png"><img alt="../_images/datatypes.png" src="../_images/datatypes.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/featuretypes.png"><img alt="../_images/featuretypes.png" src="../_images/featuretypes.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Classification of feature types</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>To study these feature types, we will use the dataset of food safety scores for restaurants in San Francisco. The scores and violation information have been made available by the San Francisco Department of Public Health.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<p>To study these feature types, we will use the <strong>dataset of food safety scores</strong> for restaurants in San Francisco. The scores and violation information have been made available by the San Francisco Department of Public Health.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/restaurants.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[[</span><span class="s1">&#39;business_id&#39;</span><span class="p">,</span> <span class="s1">&#39;business_postal_code&#39;</span><span class="p">,</span> <span class="s1">&#39;business_phone_number&#39;</span><span class="p">,</span> <span class="s1">&#39;business_latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;business_longitude&#39;</span><span class="p">,</span>\
-                 <span class="s1">&#39;inspection_type&#39;</span><span class="p">,</span> <span class="s1">&#39;inspection_score&#39;</span><span class="p">,</span> <span class="s1">&#39;risk_category&#39;</span><span class="p">,</span> <span class="s1">&#39;violation_description&#39;</span><span class="p">]]</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;risk&#39;</span><span class="p">,</span> <span class="s1">&#39;violation&#39;</span><span class="p">]</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/restaurants_truncated.csv&#39;</span><span class="p">)</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/restaurants_truncated.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -517,71 +488,121 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>64454</td>
-      <td>94105</td>
+      <td>70064</td>
+      <td>94103.0</td>
+      <td>1.415565e+10</td>
       <td>NaN</td>
-      <td>37.787925</td>
-      <td>-122.400953</td>
+      <td>NaN</td>
       <td>Routine - Unscheduled</td>
-      <td>82.0</td>
+      <td>75.0</td>
+      <td>High Risk</td>
+      <td>Improper reheating of food</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90039</td>
+      <td>94103.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>81.0</td>
       <td>High Risk</td>
       <td>High risk food holding temperature</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>33014</td>
-      <td>94109</td>
+      <th>2</th>
+      <td>89059</td>
+      <td>94115.0</td>
+      <td>1.415369e+10</td>
       <td>NaN</td>
-      <td>37.786108</td>
-      <td>-122.425764</td>
+      <td>NaN</td>
       <td>Complaint</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>1526</td>
-      <td>94115</td>
-      <td>NaN</td>
-      <td>37.791607</td>
-      <td>-122.434563</td>
-      <td>Routine - Unscheduled</td>
-      <td>82.0</td>
-      <td>Low Risk</td>
-      <td>Inadequate warewashing facilities or equipment</td>
-    </tr>
-    <tr>
       <th>3</th>
-      <td>73</td>
-      <td>94115</td>
+      <td>91044</td>
+      <td>94112.0</td>
       <td>NaN</td>
-      <td>37.788932</td>
-      <td>-122.433895</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>Routine - Unscheduled</td>
-      <td>78.0</td>
-      <td>Low Risk</td>
-      <td>Improper food storage</td>
+      <td>84.0</td>
+      <td>Moderate Risk</td>
+      <td>Inadequate and inaccessible handwashing facili...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>66402</td>
-      <td>94110</td>
+      <td>62768</td>
+      <td>94122.0</td>
       <td>NaN</td>
-      <td>37.739161</td>
-      <td>-122.416967</td>
+      <td>37.765421</td>
+      <td>-122.477256</td>
       <td>Routine - Unscheduled</td>
-      <td>94.0</td>
+      <td>90.0</td>
       <td>Low Risk</td>
-      <td>Unapproved or unmaintained equipment or utensils</td>
+      <td>Food safety certificate or food handler card n...</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Let’s first look at the simplest to work with data type: Numerical Data.</p>
+<section id="missing-data">
+<h2><span class="section-number">2.1.1. </span>Missing Data<a class="headerlink" href="#missing-data" title="Permalink to this headline">#</a></h2>
+<p>Missing data occurs commonly in many data analysis applications. One of the goals of pandas is to make working with missing data as painless as possible. For example, all of the descriptive statistics on pandas objects exclude missing data by default.</p>
+<p>The way that missing data is represented in pandas objects is somewhat imperfect, but it is sufficient for most real-world use. For data with <code class="docutils literal notranslate"><span class="pre">float64</span></code> dtype, pandas uses the floating-point value <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number) to represent missing data.</p>
+<p>We call this a <em>sentinel value</em>: when present, it indicates a missing (or null) value.</p>
+<p>The isna method gives us a Boolean Series with <code class="docutils literal notranslate"><span class="pre">True</span></code> where values are null:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id            0
+zip           1
+phone        27
+lat          30
+lng          30
+type          0
+score        15
+risk         17
+violation    17
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In pandas, missing data is also refered to as NA, which stands for <em>Not Available</em>. In statistics applications, NA data may either be data that does not exist or that exists but was not observed (through problems with data collection, for example). When cleaning up data for analysis, it is often important to do analysis on the missing data itself to identify data collection problems or potential biases in the data caused by missing data.</p>
+<p>The built-in Python <code class="docutils literal notranslate"><span class="pre">None</span></code> value is also treated as NA.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>Method</p></th>
+<th class="text-right head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">dropna</span></code></p></td>
+<td class="text-right"><p>Filter axis labels based on whether values for each label have missing data, with varying thresholds for how much missing data to tolerate.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">fillna</span></code></p></td>
+<td class="text-right"><p>Fill in missing data with some value</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">isna</span></code></p></td>
+<td class="text-right"><p>Return Boolean values indicating which values are missing/NA.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">notna</span></code></p></td>
+<td class="text-right"><p>Negation of <code class="docutils literal notranslate"><span class="pre">isna</span></code>, returns <code class="docutils literal notranslate"><span class="pre">True</span></code> for non-NA values and <code class="docutils literal notranslate"><span class="pre">False</span></code> for NA values.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="numerical-features">
-<h2><span class="section-number">2.1.1. </span>Numerical Features<a class="headerlink" href="#numerical-features" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.2. </span>Numerical Features<a class="headerlink" href="#numerical-features" title="Permalink to this headline">#</a></h2>
 <p>Numeric data is data that can be represented as numbers. These variables generally describe some numeric <em>quantity</em> or <em>amount</em> and are also sometimes referred to as “quantitative” variables.</p>
 <p>Since numerical features are already represented as numbers, they are already ready to be used in machine learning models and there is no need to encode them.</p>
 <p>In the example above, numerical features include <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">phone</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lng</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
@@ -669,7 +690,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="discrete-features">
-<h3><span class="section-number">2.1.1.1. </span>Discrete Features<a class="headerlink" href="#discrete-features" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.2.1. </span>Discrete Features<a class="headerlink" href="#discrete-features" title="Permalink to this headline">#</a></h3>
 <p>Discrete data is data that is counted. For example, the number of students in a class is discrete data. You can count the number of students in a class. You can not count the number of students in a class and get a fraction of a student. You can only count whole students.</p>
 <p>In the restaurants inspection data set, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">phone</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code> are discrete features.</p>
 <div class="cell tag_hide-input docutils container">
@@ -745,7 +766,7 @@ document.write(`
 </div>
 </section>
 <section id="continuous-features">
-<h3><span class="section-number">2.1.1.2. </span>Continuous Features<a class="headerlink" href="#continuous-features" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.2.2. </span>Continuous Features<a class="headerlink" href="#continuous-features" title="Permalink to this headline">#</a></h3>
 <p>Continuous data is data that is measured. For example, the height of a student is continuous data. You can measure the height of a student. You can measure the height of a student and get a fraction of a student. You can measure a student and get a height of 5 feet and 6.5 inches.</p>
 <p>In the restaurants inspection data set, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lng</span></code> are continuous features.</p>
 <div class="cell tag_hide-input docutils container">
@@ -816,7 +837,7 @@ document.write(`
 </section>
 </section>
 <section id="categorical-features">
-<h2><span class="section-number">2.1.2. </span>Categorical Features<a class="headerlink" href="#categorical-features" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.3. </span>Categorical Features<a class="headerlink" href="#categorical-features" title="Permalink to this headline">#</a></h2>
 <p>Categorical data is data that is not numeric. It is often represented as text or a set of text values. These variables generally describe some <em>characteristic</em> or <em>quality</em> of a data unit, and are also sometimes referred to as “qualitative” variables.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -889,243 +910,8 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<section id="nominal-features">
-<h3><span class="section-number">2.1.2.1. </span>Nominal Features<a class="headerlink" href="#nominal-features" title="Permalink to this headline">#</a></h3>
-<p>Nominal data is data that is not ordered in any way. For example, the color of a car is nominal data. There is no order to the colors. The colors are not more or less than each other. They are just different.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;violation&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>type</th>
-      <th>violation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Routine - Unscheduled</td>
-      <td>High risk food holding temperature</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Complaint</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Routine - Unscheduled</td>
-      <td>Inadequate warewashing facilities or equipment</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Routine - Unscheduled</td>
-      <td>Improper food storage</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Routine - Unscheduled</td>
-      <td>Unapproved or unmaintained equipment or utensils</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<section id="encoding-nominal-features-using-one-hot-encoding">
-<h4><span class="section-number">2.1.2.1.1. </span>Encoding Nominal Features, using One Hot Encoding<a class="headerlink" href="#encoding-nominal-features-using-one-hot-encoding" title="Permalink to this headline">#</a></h4>
-<p>Feature engineering opens up a whole new set of possibilities for designing better performing models. As you will see in lab and homework, feature engineering is one of the most important parts of the entire modeling process.</p>
-<figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/ohe.png"><img alt="../_images/ohe.png" src="../_images/ohe.png" style="width: 65%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">One-hot encoding</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>A particularly powerful use of feature engineering is to allow us to perform regression on non-numeric features. One hot encoding is a feature engineering technique that generates numeric features from categorical data, allowing us to use our usual methods to fit a regression model on the data.</p>
-<p>To illustrate how this works, we’ll refer back to the tips dataset from previous lectures. Consider the “day” column of the dataset:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
-<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
-<span class="n">tips</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>sex</th>
-      <th>smoker</th>
-      <th>day</th>
-      <th>time</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>16.99</td>
-      <td>1.01</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10.34</td>
-      <td>1.66</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21.01</td>
-      <td>3.50</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23.68</td>
-      <td>3.31</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24.59</td>
-      <td>3.61</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>29.03</td>
-      <td>5.92</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>27.18</td>
-      <td>2.00</td>
-      <td>Female</td>
-      <td>Yes</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>22.67</td>
-      <td>2.00</td>
-      <td>Male</td>
-      <td>Yes</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>17.82</td>
-      <td>1.75</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>18.78</td>
-      <td>3.00</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Thur</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-<p>244 rows × 7 columns</p>
-</div></div></div>
-</div>
-</section>
-</section>
 <section id="ordinal-features">
-<h3><span class="section-number">2.1.2.2. </span>Ordinal Features<a class="headerlink" href="#ordinal-features" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.3.1. </span>Ordinal Features<a class="headerlink" href="#ordinal-features" title="Permalink to this headline">#</a></h3>
 <p>Ordinal data is data that is ordered in some way. For example, the size of a t-shirt is ordinal data. The sizes are ordered from smallest to largest. The sizes are more or less than each other. They are different and ordered.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1187,7 +973,8 @@ document.write(`
 </div></div></div>
 </div>
 <section id="encoding-ordinal-features">
-<h4><span class="section-number">2.1.2.2.1. </span>Encoding Ordinal Features<a class="headerlink" href="#encoding-ordinal-features" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">2.1.3.1.1. </span>Encoding Ordinal Features<a class="headerlink" href="#encoding-ordinal-features" title="Permalink to this headline">#</a></h4>
+<p>Ordinal features can be encoded using a technique called <strong>label encoding</strong>. Label encoding is simply converting each value in a column to a number. For example, the sizes of t-shirts could be represented as 0 (XS), 1 (S), 2 (M), 3 (L), 4 (XL), 5 (XXL).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;risk_enc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;risk&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Low Risk&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Moderate Risk&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;High Risk&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
@@ -1298,51 +1085,158 @@ document.write(`
 </div>
 </section>
 </section>
+<section id="nominal-features">
+<h3><span class="section-number">2.1.3.2. </span>Nominal Features<a class="headerlink" href="#nominal-features" title="Permalink to this headline">#</a></h3>
+<p>Nominal data is data that is not ordered in any way. For example, the color of a car is nominal data. There is no order to the colors. The colors are not more or less than each other. They are just different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;violation&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>violation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Routine - Unscheduled</td>
+      <td>High risk food holding temperature</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Complaint</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Routine - Unscheduled</td>
+      <td>Inadequate warewashing facilities or equipment</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Routine - Unscheduled</td>
+      <td>Improper food storage</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Routine - Unscheduled</td>
+      <td>Unapproved or unmaintained equipment or utensils</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="encoding-nominal-features">
+<h4><span class="section-number">2.1.3.2.1. </span>Encoding Nominal Features<a class="headerlink" href="#encoding-nominal-features" title="Permalink to this headline">#</a></h4>
+<p>Since nominal features don’t have any order, encoding them requires some creativity. The most common way to encode nominal features is to use a technique called <strong>one-hot encoding</strong>. One-hot encoding creates a new column for each unique value in the nominal feature. Each new column is a binary feature that indicates whether or not the original observation had that value.</p>
+<p>The figure below illustrates how one-hot encoding for a “day” (of the week) column:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/ohe.png"><img alt="../_images/ohe.png" src="../_images/ohe.png" style="width: 65%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">One-hot encoding</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>pandas has a built-in <code class="docutils literal notranslate"><span class="pre">.get_dummies</span></code> function for doing this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Complaint</th>
+      <th>New Construction</th>
+      <th>New Ownership</th>
+      <th>Reinspection/Followup</th>
+      <th>Routine - Unscheduled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
-<section id="missing-data">
-<h2><span class="section-number">2.1.3. </span>Missing Data<a class="headerlink" href="#missing-data" title="Permalink to this headline">#</a></h2>
-<p>Missing data is data that is missing. It is often represented as a blank or a question mark. Missing data can be further divided into missing completely at random, missing at random, and missing not at random.</p>
-<p><em><code class="docutils literal notranslate"><span class="pre">.isnull()</span></code></em></p>
-<p><em><code class="docutils literal notranslate"><span class="pre">.dropna()</span></code></em></p>
-<p><em><code class="docutils literal notranslate"><span class="pre">.fillna()</span></code></em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id            0
-zip           0
-phone        37
-lat          23
-lng          23
-type          0
-score        11
-risk         11
-violation    11
-risk_enc     11
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Routine - Unscheduled    39
-Complaint                 5
-New Ownership             3
-Reinspection/Followup     3
-Name: type, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 </section>
 
@@ -1387,11 +1281,11 @@ Name: type, dtype: int64
       </div>
     </a>
     <a class="right-next"
-       href="42_formats.html"
+       href="30_collecting.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Common Data Formats</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Collecting Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1413,23 +1307,23 @@ Name: type, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.1. Numerical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.1.1. Discrete Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.1.2. Continuous Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.1. Missing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.2. Numerical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.2.1. Discrete Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.2.2. Continuous Features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.2. Categorical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.2.1. Nominal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features-using-one-hot-encoding">2.1.2.1.1. Encoding Nominal Features, using One Hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.3. Categorical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.3.1. Ordinal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.3.1.1. Encoding Ordinal Features</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.2.2. Ordinal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.2.2.1. Encoding Ordinal Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.3.2. Nominal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">2.1.3.2.1. Encoding Nominal Features</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.3. Missing Data</a></li>
 </ul>
   </nav></div>
 

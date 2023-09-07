@@ -194,21 +194,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30_collecting.html">3. Collecting Data</a></li>
@@ -2420,7 +2405,7 @@ Name: letter, dtype: int64
 </div>
 <p>Notice that both <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Sex&quot;</span></code> serve as the index of the DataFrame (they are both rendered in bold). We’ve created a <em>multi-index</em> DataFrame where two different index values, the year and sex, are used to uniquely identify each row.</p>
 <p>This isn’t the most intuitive way of representing this data – and, because multi-indexed DataFrames have multiple dimensions in their index, they can often be difficult to use.</p>
-<p>Another strategy to aggregate across two columns is to create a pivot table. You saw these back in <a class="reference external" href="https://inferentialthinking.com/chapters/08/3/Cross-Classifying_by_More_than_One_Variable.html#pivot-tables-rearranging-the-output-of-group">Data 8</a>. One set of values is used to create the index of the pivot table; another set is used to define the column names. The values contained in each cell of the table correspond to the aggregated data for each index-column pair.</p>
+<p>Another strategy to aggregate across two columns is to create a pivot table. One set of values is used to create the index of the pivot table; another set is used to define the column names. The values contained in each cell of the table correspond to the aggregated data for each index-column pair.</p>
 <p>The best way to understand pivot tables is to see one in action. Let’s return to our original goal of summing the total number of names associated with each combination of year and sex. We’ll call the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot_table.html"><code class="docutils literal notranslate"><span class="pre">.pivot_table</span></code></a> method to create a new table.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
