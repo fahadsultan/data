@@ -18,6 +18,10 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
+**Exam 1** is on **Thursday, September 21st** during class time **8:30-9:45 AM**. <br/><br/>The exam is going to be **on computer**, similar to lab, so please bring your laptops.
+```
+
+```{important}
 **[Written Assignment 2](https://docs.google.com/document/d/1-V69jP6oYPr6TiiSsxq93TnL8xLxElhHIrCkQyicbzc/edit?usp=sharing)** is due on **September 12th** at 11:59 PM
 ```
 
