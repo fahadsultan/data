@@ -43,7 +43,7 @@ parts:
         - file: 1_programming/41_types
         # - file: 1_programming/42_formats
         # - file: 1_programming/43_modalities
-    - file: 1_programming/30_collecting
+    # - file: 1_programming/30_collecting
       # sections: 
       #   - file: 1_programming/31_apis
       #   - file: 1_programming/32_scraping

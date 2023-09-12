@@ -3,6 +3,7 @@
 
 title: CSC-272 Data Mining
 author: Syed Fahad Sultan
+copyright: "2023"
 logo: logo.png
 
 # Force re-execution of notebooks on each build.

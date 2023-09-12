@@ -179,7 +179,7 @@ Please answer questions and participate in discussions during class
 
 <i><u>**Everything is tentative and subject to change**</u></i>
 
-```{figure} assets/complaints.jpeg
+```{figure} https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/complaints.jpeg
 ---
 width: 50%
 align: right
