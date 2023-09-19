@@ -63,7 +63,7 @@ parts:
       #   - file: 2_maths/13_variability
       #   - file: 2_maths/14_distributions
       #   - file: 2_maths/15_prob_notes
-    - file: 2_maths/20_logarithms.ipynb
+    # - file: 2_maths/20_logarithms.ipynb
       # sections: 
       #   - file: 2_maths/21_normalization
       #   - file: 2_maths/22_simplification
@@ -81,7 +81,7 @@ parts:
   - caption: Problems in Data Science
     numbered: true
     chapters:
-    - file: 3_problems_in/10_ranking_assoc
+    # - file: 3_problems_in/10_ranking_assoc
       # sections: 
       #   - file: 3_problems_in/11_pagerank
       #   - file: 3_problems_in/12_apriori
