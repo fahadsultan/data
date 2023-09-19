@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.1. Feature Types &#8212; CSC-272 Data Mining</title>
+    <title>Feature Types &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -67,11 +67,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/41_types';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/41_types-Copy1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Common Data Formats" href="42_formats.html" />
-    <link rel="prev" title="2. Encoding and Representation" href="40_modalities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -183,15 +181,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Feature Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="42_formats.html">2.2. Common Data Formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
@@ -285,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/41_types.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/1_programming/41_types-Copy1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -316,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/1_programming/41_types.ipynb" target="_blank"
+      <li><a href="../_sources/1_programming/41_types-Copy1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,19 +406,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.1. Missing Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.2. Numerical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.2.1. Discrete Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.2.2. Continuous Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">Missing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">Numerical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">Discrete Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">Continuous Features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.3. Categorical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.3.1. Ordinal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.3.1.1. Encoding Ordinal Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">Categorical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">Ordinal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">Encoding Ordinal Features</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.3.2. Nominal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">2.1.3.2.1. Encoding Nominal Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">Nominal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">Encoding Nominal Features</a></li>
 </ul>
 </li>
 </ul>
@@ -437,16 +435,1030 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="feature-types">
-<h1><span class="section-number">2.1. </span>Feature Types<a class="headerlink" href="#feature-types" title="Permalink to this headline">#</a></h1>
+<h1>Feature Types<a class="headerlink" href="#feature-types" title="Permalink to this headline">#</a></h1>
 <p>Tabular data (<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>), as discussed previously, is made up of observations (rows) and features (columns). Data type (<code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code>) of features fall into two primary categories: <strong>numeric</strong> and <strong>categorical</strong>.</p>
 <p>There also exists a third special category of data type called <strong>missing</strong>. Missing data is a special data type because it is not a data type at all. It is a placeholder for a value that is not known or not applicable. Missing data is represented by <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (not a number) in pandas. More on missing data in a bit.</p>
-<figure class="align-default" id="directive-fig">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/featuretypes.png"><img alt="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/featuretypes.png" src="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/featuretypes.png" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Classification of feature types</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<img alt="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/featuretypes.png" src="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/featuretypes.png" />
 <p>To study these feature types, we will use the <strong>dataset of food safety scores</strong> for restaurants in San Francisco. The scores and violation information have been made available by the San Francisco Department of Public Health.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How to inspect values that a feature/column takes on? </span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;risk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;risk&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;High Risk&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Moderate Risk&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">type_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+<span class="n">type_encoded</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Dataframe with a single row that </span>
+<span class="c1"># would sum up each type (Complaints etc.)</span>
+
+<span class="c1"># Julian: would sum each row </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type_encoded</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>zip</th>
+      <th>phone</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>type</th>
+      <th>score</th>
+      <th>risk</th>
+      <th>violation</th>
+      <th>Complaint</th>
+      <th>New Construction</th>
+      <th>New Ownership</th>
+      <th>Reinspection/Followup</th>
+      <th>Routine - Unscheduled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>70064</td>
+      <td>94103.0</td>
+      <td>1.415565e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>75.0</td>
+      <td>3.0</td>
+      <td>Improper reheating of food</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90039</td>
+      <td>94103.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>81.0</td>
+      <td>3.0</td>
+      <td>High risk food holding temperature</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>89059</td>
+      <td>94115.0</td>
+      <td>1.415369e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Complaint</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>91044</td>
+      <td>94112.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>84.0</td>
+      <td>2.0</td>
+      <td>Inadequate and inaccessible handwashing facili...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>62768</td>
+      <td>94122.0</td>
+      <td>NaN</td>
+      <td>37.765421</td>
+      <td>-122.477256</td>
+      <td>Routine - Unscheduled</td>
+      <td>90.0</td>
+      <td>1.0</td>
+      <td>Food safety certificate or food handler card n...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3972</td>
+      <td>94103.0</td>
+      <td>NaN</td>
+      <td>37.786476</td>
+      <td>-122.404852</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>95188</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Construction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>94103</td>
+      <td>94102.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Ownership</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>94542</td>
+      <td>94132.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>92.0</td>
+      <td>2.0</td>
+      <td>Inadequate and inaccessible handwashing facili...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>93615</td>
+      <td>94107.0</td>
+      <td>1.415574e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1296</td>
+      <td>94112.0</td>
+      <td>1.415559e+10</td>
+      <td>37.761743</td>
+      <td>-122.421492</td>
+      <td>Routine - Unscheduled</td>
+      <td>83.0</td>
+      <td>1.0</td>
+      <td>Unclean or degraded floors walls or ceilings</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>35221</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>37.796026</td>
+      <td>-122.406202</td>
+      <td>Routine - Unscheduled</td>
+      <td>90.0</td>
+      <td>2.0</td>
+      <td>Foods not protected from contamination</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>38808</td>
+      <td>94122.0</td>
+      <td>NaN</td>
+      <td>37.763603</td>
+      <td>-122.477497</td>
+      <td>Routine - Unscheduled</td>
+      <td>69.0</td>
+      <td>1.0</td>
+      <td>Unclean nonfood contact surfaces</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>85947</td>
+      <td>94103.0</td>
+      <td>1.415022e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>84.0</td>
+      <td>2.0</td>
+      <td>Foods not protected from contamination</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>96936</td>
+      <td>94103.0</td>
+      <td>1.415528e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Ownership</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>Unclean or unsanitary food contact surfaces</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>76914</td>
+      <td>94111.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>83.0</td>
+      <td>2.0</td>
+      <td>Insufficient hot water or running water</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1830</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>37.801616</td>
+      <td>-122.412137</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6619</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>37.795788</td>
+      <td>-122.408834</td>
+      <td>Routine - Unscheduled</td>
+      <td>86.0</td>
+      <td>2.0</td>
+      <td>Moderate risk vermin infestation</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>83524</td>
+      <td>94109.0</td>
+      <td>1.415550e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>21583</td>
+      <td>94109.0</td>
+      <td>1.415944e+10</td>
+      <td>37.787448</td>
+      <td>-122.415243</td>
+      <td>Routine - Unscheduled</td>
+      <td>96.0</td>
+      <td>2.0</td>
+      <td>Inadequately cleaned or sanitized food contact...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>80451</td>
+      <td>94114.0</td>
+      <td>1.415530e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>88340</td>
+      <td>94127.0</td>
+      <td>1.415533e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>75.0</td>
+      <td>1.0</td>
+      <td>Inadequate or unsanitary refuse containers or ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>90008</td>
+      <td>94110.0</td>
+      <td>1.415541e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>91.0</td>
+      <td>3.0</td>
+      <td>Unclean or unsanitary food contact surfaces</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>87517</td>
+      <td>94110.0</td>
+      <td>1.415583e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>81.0</td>
+      <td>1.0</td>
+      <td>Permit license or inspection report not posted</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>80495</td>
+      <td>94118.0</td>
+      <td>1.415539e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>79.0</td>
+      <td>1.0</td>
+      <td>No person in charge of food facility</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>89196</td>
+      <td>94134.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Complaint</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>Inadequately cleaned or sanitized food contact...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>65350</td>
+      <td>94112.0</td>
+      <td>NaN</td>
+      <td>37.713426</td>
+      <td>-122.436347</td>
+      <td>Routine - Unscheduled</td>
+      <td>86.0</td>
+      <td>2.0</td>
+      <td>Moderate risk vermin infestation</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>89981</td>
+      <td>94122.0</td>
+      <td>1.415567e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Ownership</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>100603</td>
+      <td>94123.0</td>
+      <td>1.415599e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>96.0</td>
+      <td>1.0</td>
+      <td>Improper food storage</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3621</td>
+      <td>94110.0</td>
+      <td>1.415529e+10</td>
+      <td>37.758271</td>
+      <td>-122.419081</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>80081</td>
+      <td>94108.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>67565</td>
+      <td>94116.0</td>
+      <td>NaN</td>
+      <td>37.742703</td>
+      <td>-122.482819</td>
+      <td>Routine - Unscheduled</td>
+      <td>88.0</td>
+      <td>1.0</td>
+      <td>Improper food storage</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>3623</td>
+      <td>94110.0</td>
+      <td>1.415528e+10</td>
+      <td>37.751554</td>
+      <td>-122.418376</td>
+      <td>Routine - Unscheduled</td>
+      <td>85.0</td>
+      <td>3.0</td>
+      <td>Improper cooling methods</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>78779</td>
+      <td>94102.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>88.0</td>
+      <td>1.0</td>
+      <td>Wiping cloths not clean or properly stored or ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>71530</td>
+      <td>94117.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>96.0</td>
+      <td>1.0</td>
+      <td>Wiping cloths not clean or properly stored or ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1598</td>
+      <td>94109.0</td>
+      <td>NaN</td>
+      <td>37.788587</td>
+      <td>-122.413795</td>
+      <td>Routine - Unscheduled</td>
+      <td>92.0</td>
+      <td>1.0</td>
+      <td>Improper food storage</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>101670</td>
+      <td>94110.0</td>
+      <td>1.415555e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Ownership</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>Moderate risk vermin infestation</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>34352</td>
+      <td>94102.0</td>
+      <td>NaN</td>
+      <td>37.787978</td>
+      <td>-122.410904</td>
+      <td>Routine - Unscheduled</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>100993</td>
+      <td>94122.0</td>
+      <td>1.415267e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>New Construction</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>473</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>37.798860</td>
+      <td>-122.408204</td>
+      <td>Routine - Unscheduled</td>
+      <td>90.0</td>
+      <td>1.0</td>
+      <td>Unapproved or unmaintained equipment or utensils</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4894</td>
+      <td>94117.0</td>
+      <td>NaN</td>
+      <td>37.771748</td>
+      <td>-122.433493</td>
+      <td>Routine - Unscheduled</td>
+      <td>85.0</td>
+      <td>1.0</td>
+      <td>Unclean unmaintained or improperly constructed...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>3392</td>
+      <td>94118.0</td>
+      <td>NaN</td>
+      <td>37.782103</td>
+      <td>-122.449132</td>
+      <td>Routine - Unscheduled</td>
+      <td>85.0</td>
+      <td>2.0</td>
+      <td>Insufficient hot water or running water</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2749</td>
+      <td>94110.0</td>
+      <td>1.415555e+10</td>
+      <td>37.745433</td>
+      <td>-122.419945</td>
+      <td>Routine - Unscheduled</td>
+      <td>92.0</td>
+      <td>1.0</td>
+      <td>Unapproved or unmaintained equipment or utensils</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>90213</td>
+      <td>NaN</td>
+      <td>1.415561e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>96.0</td>
+      <td>1.0</td>
+      <td>Other low risk violation</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>70521</td>
+      <td>94104.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>81522</td>
+      <td>94102.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Reinspection/Followup</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>5849</td>
+      <td>94117.0</td>
+      <td>1.415576e+10</td>
+      <td>37.774333</td>
+      <td>-122.450327</td>
+      <td>Routine - Unscheduled</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>88942</td>
+      <td>94111.0</td>
+      <td>1.415599e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>96.0</td>
+      <td>2.0</td>
+      <td>Inadequate and inaccessible handwashing facili...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>82407</td>
+      <td>94102.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>6734</td>
+      <td>94133.0</td>
+      <td>NaN</td>
+      <td>37.797178</td>
+      <td>-122.408477</td>
+      <td>Routine - Unscheduled</td>
+      <td>84.0</td>
+      <td>1.0</td>
+      <td>Unclean or degraded floors walls or ceilings</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>zip</th>
+      <th>phone</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>type</th>
+      <th>score</th>
+      <th>risk</th>
+      <th>violation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>70064</td>
+      <td>94103.0</td>
+      <td>1.415565e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>75.0</td>
+      <td>3.0</td>
+      <td>Improper reheating of food</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90039</td>
+      <td>94103.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>81.0</td>
+      <td>3.0</td>
+      <td>High risk food holding temperature</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>89059</td>
+      <td>94115.0</td>
+      <td>1.415369e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Complaint</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>91044</td>
+      <td>94112.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Routine - Unscheduled</td>
+      <td>84.0</td>
+      <td>2.0</td>
+      <td>Inadequate and inaccessible handwashing facili...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>62768</td>
+      <td>94122.0</td>
+      <td>NaN</td>
+      <td>37.765421</td>
+      <td>-122.477256</td>
+      <td>Routine - Unscheduled</td>
+      <td>90.0</td>
+      <td>1.0</td>
+      <td>Food safety certificate or food handler card n...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -552,28 +1564,69 @@ document.write(`
 </div></div></div>
 </div>
 <section id="missing-data">
-<h2><span class="section-number">2.1.1. </span>Missing Data<a class="headerlink" href="#missing-data" title="Permalink to this headline">#</a></h2>
+<h2>Missing Data<a class="headerlink" href="#missing-data" title="Permalink to this headline">#</a></h2>
 <p>Missing data occurs commonly in many data analysis applications. One of the goals of pandas is to make working with missing data as painless as possible. For example, all of the descriptive statistics on pandas objects exclude missing data by default.</p>
 <p>The way that missing data is represented in pandas objects is somewhat imperfect, but it is sufficient for most real-world use. For data with <code class="docutils literal notranslate"><span class="pre">float64</span></code> dtype, pandas uses the floating-point value <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number) to represent missing data.</p>
 <p>We call this a <em>sentinel value</em>: when present, it indicates a missing (or null) value.</p>
 <p>The isna method gives us a Boolean Series with <code class="docutils literal notranslate"><span class="pre">True</span></code> where values are null:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;violation&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id            0
-zip           1
-phone        27
-lat          30
-lng          30
-type          0
-score        15
-risk         17
-violation    17
-dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                            Improper reheating of food
+1                    High risk food holding temperature
+2                                                   NaN
+3     Inadequate and inaccessible handwashing facili...
+4     Food safety certificate or food handler card n...
+5                                                   NaN
+6                                                   NaN
+7                                                   NaN
+8     Inadequate and inaccessible handwashing facili...
+9                                                   NaN
+10         Unclean or degraded floors walls or ceilings
+11               Foods not protected from contamination
+12                     Unclean nonfood contact surfaces
+13               Foods not protected from contamination
+14          Unclean or unsanitary food contact surfaces
+15              Insufficient hot water or running water
+16                                                  NaN
+17                     Moderate risk vermin infestation
+18                                                  NaN
+19    Inadequately cleaned or sanitized food contact...
+20                                                  NaN
+21    Inadequate or unsanitary refuse containers or ...
+22          Unclean or unsanitary food contact surfaces
+23       Permit license or inspection report not posted
+24                 No person in charge of food facility
+25    Inadequately cleaned or sanitized food contact...
+26                     Moderate risk vermin infestation
+27                                                  NaN
+28                                Improper food storage
+29                                                  NaN
+30                                                  NaN
+31                                Improper food storage
+32                             Improper cooling methods
+33    Wiping cloths not clean or properly stored or ...
+34    Wiping cloths not clean or properly stored or ...
+35                                Improper food storage
+36                     Moderate risk vermin infestation
+37                                                  NaN
+38                                                  NaN
+39     Unapproved or unmaintained equipment or utensils
+40    Unclean unmaintained or improperly constructed...
+41              Insufficient hot water or running water
+42     Unapproved or unmaintained equipment or utensils
+43                             Other low risk violation
+44                                                  NaN
+45                                                  NaN
+46                                                  NaN
+47    Inadequate and inaccessible handwashing facili...
+48                                                  NaN
+49         Unclean or degraded floors walls or ceilings
+Name: violation, dtype: object
 </pre></div>
 </div>
 </div>
@@ -603,7 +1656,7 @@ dtype: int64
 </table>
 </section>
 <section id="numerical-features">
-<h2><span class="section-number">2.1.2. </span>Numerical Features<a class="headerlink" href="#numerical-features" title="Permalink to this headline">#</a></h2>
+<h2>Numerical Features<a class="headerlink" href="#numerical-features" title="Permalink to this headline">#</a></h2>
 <p>Numeric data is data that can be represented as numbers. These variables generally describe some numeric <em>quantity</em> or <em>amount</em> and are also sometimes referred to as “quantitative” variables.</p>
 <p>Since numerical features are already represented as numbers, they are already ready to be used in machine learning models and there is no need to encode them.</p>
 <p>In the example above, numerical features include <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">phone</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lng</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
@@ -691,7 +1744,7 @@ dtype: int64
 </div></div></div>
 </div>
 <section id="discrete-features">
-<h3><span class="section-number">2.1.2.1. </span>Discrete Features<a class="headerlink" href="#discrete-features" title="Permalink to this headline">#</a></h3>
+<h3>Discrete Features<a class="headerlink" href="#discrete-features" title="Permalink to this headline">#</a></h3>
 <p>Discrete data is data that is counted. For example, the number of students in a class is discrete data. You can count the number of students in a class. You can not count the number of students in a class and get a fraction of a student. You can only count whole students.</p>
 <p>In the restaurants inspection data set, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">phone</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code> are discrete features.</p>
 <div class="cell tag_hide-input docutils container">
@@ -767,7 +1820,7 @@ dtype: int64
 </div>
 </section>
 <section id="continuous-features">
-<h3><span class="section-number">2.1.2.2. </span>Continuous Features<a class="headerlink" href="#continuous-features" title="Permalink to this headline">#</a></h3>
+<h3>Continuous Features<a class="headerlink" href="#continuous-features" title="Permalink to this headline">#</a></h3>
 <p>Continuous data is data that is measured. For example, the height of a student is continuous data. You can measure the height of a student. You can measure the height of a student and get a fraction of a student. You can measure a student and get a height of 5 feet and 6.5 inches.</p>
 <p>In the restaurants inspection data set, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lng</span></code> are continuous features.</p>
 <div class="cell tag_hide-input docutils container">
@@ -838,7 +1891,7 @@ dtype: int64
 </section>
 </section>
 <section id="categorical-features">
-<h2><span class="section-number">2.1.3. </span>Categorical Features<a class="headerlink" href="#categorical-features" title="Permalink to this headline">#</a></h2>
+<h2>Categorical Features<a class="headerlink" href="#categorical-features" title="Permalink to this headline">#</a></h2>
 <p>Categorical data is data that is not numeric. It is often represented as text or a set of text values. These variables generally describe some <em>characteristic</em> or <em>quality</em> of a data unit, and are also sometimes referred to as “qualitative” variables.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -912,7 +1965,7 @@ dtype: int64
 </div></div></div>
 </div>
 <section id="ordinal-features">
-<h3><span class="section-number">2.1.3.1. </span>Ordinal Features<a class="headerlink" href="#ordinal-features" title="Permalink to this headline">#</a></h3>
+<h3>Ordinal Features<a class="headerlink" href="#ordinal-features" title="Permalink to this headline">#</a></h3>
 <p>Ordinal data is data that is ordered in some way. For example, the size of a t-shirt is ordinal data. The sizes are ordered from smallest to largest. The sizes are more or less than each other. They are different and ordered.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -974,7 +2027,7 @@ dtype: int64
 </div></div></div>
 </div>
 <section id="encoding-ordinal-features">
-<h4><span class="section-number">2.1.3.1.1. </span>Encoding Ordinal Features<a class="headerlink" href="#encoding-ordinal-features" title="Permalink to this headline">#</a></h4>
+<h4>Encoding Ordinal Features<a class="headerlink" href="#encoding-ordinal-features" title="Permalink to this headline">#</a></h4>
 <p>Ordinal features can be encoded using a technique called <strong>label encoding</strong>. Label encoding is simply converting each value in a column to a number. For example, the sizes of t-shirts could be represented as 0 (XS), 1 (S), 2 (M), 3 (L), 4 (XL), 5 (XXL).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1087,7 +2140,7 @@ dtype: int64
 </section>
 </section>
 <section id="nominal-features">
-<h3><span class="section-number">2.1.3.2. </span>Nominal Features<a class="headerlink" href="#nominal-features" title="Permalink to this headline">#</a></h3>
+<h3>Nominal Features<a class="headerlink" href="#nominal-features" title="Permalink to this headline">#</a></h3>
 <p>Nominal data is data that is not ordered in any way. For example, the color of a car is nominal data. There is no order to the colors. The colors are not more or less than each other. They are just different.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1149,13 +2202,13 @@ dtype: int64
 </div></div></div>
 </div>
 <section id="encoding-nominal-features">
-<h4><span class="section-number">2.1.3.2.1. </span>Encoding Nominal Features<a class="headerlink" href="#encoding-nominal-features" title="Permalink to this headline">#</a></h4>
+<h4>Encoding Nominal Features<a class="headerlink" href="#encoding-nominal-features" title="Permalink to this headline">#</a></h4>
 <p>Since nominal features don’t have any order, encoding them requires some creativity. The most common way to encode nominal features is to use a technique called <strong>one-hot encoding</strong>. One-hot encoding creates a new column for each unique value in the nominal feature. Each new column is a binary feature that indicates whether or not the original observation had that value.</p>
 <p>The figure below illustrates how one-hot encoding for a “day” (of the week) column:</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="directive-fig">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/ohe.png"><img alt="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/ohe.png" src="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/ohe.png" style="width: 65%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">One-hot encoding</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">One-hot encoding</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>pandas has a built-in <code class="docutils literal notranslate"><span class="pre">.get_dummies</span></code> function for doing this:</p>
@@ -1272,24 +2325,6 @@ dtype: int64
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="40_modalities.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Encoding and Representation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="42_formats.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Common Data Formats</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1308,19 +2343,19 @@ dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">2.1.1. Missing Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">2.1.2. Numerical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">2.1.2.1. Discrete Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">2.1.2.2. Continuous Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data">Missing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-features">Numerical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-features">Discrete Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-features">Continuous Features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">2.1.3. Categorical Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">2.1.3.1. Ordinal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">2.1.3.1.1. Encoding Ordinal Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-features">Categorical Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-features">Ordinal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-ordinal-features">Encoding Ordinal Features</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">2.1.3.2. Nominal Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">2.1.3.2.1. Encoding Nominal Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-features">Nominal Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-nominal-features">Encoding Nominal Features</a></li>
 </ul>
 </li>
 </ul>

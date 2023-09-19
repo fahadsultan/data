@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Common Data Formats &#8212; CSC-272 Data Mining</title>
+    <title>2.2. Common Data Formats &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -70,6 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/42_formats';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. Modalities of Data" href="43_modalities.html" />
+    <link rel="prev" title="2.1. Feature Types" href="41_types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -181,16 +183,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_modalities.html">2. Encoding and Representation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="41_types.html">2.1. Feature Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.2. Modalities of Data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a></li>
@@ -405,8 +408,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-formats-high-duplication">Flat Formats [HIGH DUPLICATION?]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-nested-formats-low-duplication">Hierarchical (Nested) Formats [LOW DUPLICATION]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-formats">2.2.1. Flat Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comma-separated-values-csv">2.2.1.1. Comma Separated Values (CSV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel-spreadsheet-xlsx">2.2.1.2. Excel Spreadsheet (XLSX)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-nested-formats">2.2.2. Hierarchical (Nested) Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensible-markup-language-xml">2.2.2.1. Extensible Markup Language (XML)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation-json">2.2.2.2. JavaScript Object Notation (JSON)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -419,23 +430,788 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="common-data-formats">
-<h1>Common Data Formats<a class="headerlink" href="#common-data-formats" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.2. </span>Common Data Formats<a class="headerlink" href="#common-data-formats" title="Permalink to this headline">#</a></h1>
 <p>Format is a term used to describe the way data is stored. For example, a single image is stored as a 2D array of pixels. A video is stored as a sequence of images. A sound is stored as a 1D array of samples. A text is stored as a sequence of characters.</p>
-<section id="flat-formats-high-duplication">
-<h2>Flat Formats [HIGH DUPLICATION?]<a class="headerlink" href="#flat-formats-high-duplication" title="Permalink to this headline">#</a></h2>
-<p><strong>Comma Separated Values (CSV)</strong></p>
-<p>CSV is a format used to store tabular data. It is a text file where each line is a row of data. Each row is separated by a comma. Each column is separated by a comma. The first row is the header row. The header row contains the names of the columns. The header row is separated from the data rows by a blank line.</p>
-<p><strong>Excel Spreadsheet (XLSX)</strong></p>
-<p>XLSX is a format used to store tabular data. It is a binary file where each line is a row of data. Each row is separated by a comma. Each column is separated by a comma. The first row is the header row. The header row contains the names of the columns. The header row is separated from the data rows by a blank line.</p>
+<section id="flat-formats">
+<h2><span class="section-number">2.2.1. </span>Flat Formats<a class="headerlink" href="#flat-formats" title="Permalink to this headline">#</a></h2>
+<p>Flat data formats are native to <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and are the simplest and the most ubiquitous file formats in general.</p>
+<p>To avoid data redundancy, data is often factored into multiple tables. For example, in a database of a school, there may be a table for students, a table for teachers, a table for classes, a table for grades, etc. Depending on the question of interest, these tables are then joined together to form a single table.</p>
+<section id="comma-separated-values-csv">
+<h3><span class="section-number">2.2.1.1. </span>Comma Separated Values (CSV)<a class="headerlink" href="#comma-separated-values-csv" title="Permalink to this headline">#</a></h3>
+<p>CSV is an open format used to store tabular data. It is a text file where <strong>each line is a row of data</strong>. In other words, <strong>each line is separated by newline character <code class="docutils literal notranslate"><span class="pre">\n</span></code></strong>. Within a row, <strong>each column is separated by a comma <code class="docutils literal notranslate"><span class="pre">,</span></code></strong>. The first row is optionally the header row containing the names of the columns.</p>
+<p>Example of a CSV file is the <a class="reference external" href="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv">elections.csv</a> file.</p>
+<p>In pandas you can <strong>read a CSV</strong> file as a pandas DataFrame using the <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function.</p>
+<p>The first input to <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> is the filename or filepath that you want to read. The other three most important parameters of the <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function are:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sep</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">sep=','</span></code>) specifies the separator used to separate columns. Default is <code class="docutils literal notranslate"><span class="pre">,</span></code> which means the columns are separated by a comma.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code>:  (default: <code class="docutils literal notranslate"><span class="pre">header=0</span></code>) specifies the row number to be used as the header. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code> which means the first row is assumed to contain column names. If the file does not contain a header row, then <code class="docutils literal notranslate"><span class="pre">header=None</span></code> should be used.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">names=None</span></code>) specifies the column names as a list of strings. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the column names are read from the header row.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index_col</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">index_col=None</span></code>) specifies the column number or column name to be used as the index. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the index is automatically generated as integers starting from 0. If the file does not contain a header row, then <code class="docutils literal notranslate"><span class="pre">index_col=0</span></code> should be used.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+
+<span class="n">url</span>  <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Candidate</th>
+      <th>Party</th>
+      <th>Popular vote</th>
+      <th>Result</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1824</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic-Republican</td>
+      <td>151271</td>
+      <td>loss</td>
+      <td>57.210122</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1824</td>
+      <td>John Quincy Adams</td>
+      <td>Democratic-Republican</td>
+      <td>113142</td>
+      <td>win</td>
+      <td>42.789878</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1828</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>642806</td>
+      <td>win</td>
+      <td>56.203927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1828</td>
+      <td>John Quincy Adams</td>
+      <td>National Republican</td>
+      <td>500897</td>
+      <td>loss</td>
+      <td>43.796073</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1832</td>
+      <td>Andrew Jackson</td>
+      <td>Democratic</td>
+      <td>702735</td>
+      <td>win</td>
+      <td>54.574789</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To write a DataFrame to a CSV file, use the <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> function. The first input to <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> is the filename or filepath that you want to write to. Other important parameters of the <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> function are:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sep</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">sep=','</span></code>) specifies the separator used to separate columns. Default is <code class="docutils literal notranslate"><span class="pre">,</span></code> which means the columns are separated by a comma.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code>:  (default: <code class="docutils literal notranslate"><span class="pre">header=True</span></code>) specifies whether to write the header row. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code> which means the header row is written. If you don’t want to write the header row, then <code class="docutils literal notranslate"><span class="pre">header=False</span></code> should be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">index=True</span></code>) specifies whether to write the index column. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code> which means the index column is written. If you don’t want to write the index column, then <code class="docutils literal notranslate"><span class="pre">index=False</span></code> should be used.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;elections.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The CSV format has many variations, each different in regard of the separator used. For instance, a particularly popular variant called <strong>TSV (Tab Separated Values)</strong> uses tab character <code class="docutils literal notranslate"><span class="pre">\t</span></code> to separate columns instead of a comma. In other variants the column separator can also be a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code> or a pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
+<p>Example of a TSV file is <a class="reference external" href="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/restaurants.tsv">restaurants.tsv</a> file.</p>
+<p>Note the use of <strong><code class="docutils literal notranslate"><span class="pre">sep='\t'</span></code></strong> parameter in <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> in the code below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">url</span>  <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/restaurants.tsv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>business_id</th>
+      <th>business_name</th>
+      <th>business_address</th>
+      <th>business_city</th>
+      <th>business_state</th>
+      <th>business_postal_code</th>
+      <th>business_latitude</th>
+      <th>business_longitude</th>
+      <th>business_location</th>
+      <th>business_phone_number</th>
+      <th>...</th>
+      <th>inspection_score</th>
+      <th>inspection_type</th>
+      <th>violation_id</th>
+      <th>violation_description</th>
+      <th>risk_category</th>
+      <th>Neighborhoods</th>
+      <th>SF Find Neighborhoods</th>
+      <th>Current Police Districts</th>
+      <th>Current Supervisor Districts</th>
+      <th>Analysis Neighborhoods</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>835</td>
+      <td>Kam Po Kitchen</td>
+      <td>801 Broadway St</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>94133</td>
+      <td>37.797223</td>
+      <td>-122.410513</td>
+      <td>POINT (-122.410513 37.797223)</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>88.0</td>
+      <td>Routine - Unscheduled</td>
+      <td>835_20180917_103139</td>
+      <td>Improper food storage</td>
+      <td>Low Risk</td>
+      <td>107.0</td>
+      <td>107.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>905</td>
+      <td>Working Girls' Cafe'</td>
+      <td>0259 Kearny St</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>94108</td>
+      <td>37.790477</td>
+      <td>-122.404033</td>
+      <td>POINT (-122.404033 37.790477)</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>87.0</td>
+      <td>Routine - Unscheduled</td>
+      <td>905_20190415_103114</td>
+      <td>High risk vermin infestation</td>
+      <td>High Risk</td>
+      <td>19.0</td>
+      <td>19.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1203</td>
+      <td>TAWAN'S THAI FOOD</td>
+      <td>4403 GEARY Blvd</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>94118</td>
+      <td>37.780834</td>
+      <td>-122.466590</td>
+      <td>POINT (-122.46659 37.780834)</td>
+      <td>1.415576e+10</td>
+      <td>...</td>
+      <td>77.0</td>
+      <td>Routine - Unscheduled</td>
+      <td>1203_20170803_103120</td>
+      <td>Moderate risk food holding temperature</td>
+      <td>Moderate Risk</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1345</td>
+      <td>Cordon Bleu</td>
+      <td>1574 California St</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>94109</td>
+      <td>37.790683</td>
+      <td>-122.420264</td>
+      <td>POINT (-122.420264 37.790683)</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>81.0</td>
+      <td>Routine - Unscheduled</td>
+      <td>1345_20170928_103105</td>
+      <td>Improper cooling methods</td>
+      <td>High Risk</td>
+      <td>105.0</td>
+      <td>105.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1352</td>
+      <td>LA TORTILLA</td>
+      <td>495 Castro St B</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>94114</td>
+      <td>37.760954</td>
+      <td>-122.434935</td>
+      <td>POINT (-122.434935 37.760954)</td>
+      <td>1.415586e+10</td>
+      <td>...</td>
+      <td>74.0</td>
+      <td>Routine - Unscheduled</td>
+      <td>1352_20180620_103177</td>
+      <td>Non service animal</td>
+      <td>Low Risk</td>
+      <td>38.0</td>
+      <td>38.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div></div>
+</div>
 </section>
-<section id="hierarchical-nested-formats-low-duplication">
-<h2>Hierarchical (Nested) Formats [LOW DUPLICATION]<a class="headerlink" href="#hierarchical-nested-formats-low-duplication" title="Permalink to this headline">#</a></h2>
-<p><strong>Extensible Markup Language (XML)</strong></p>
-<p>XML is a format used to store hierarchical data. It is a text file where each line is a node of data. Each node is separated by a blank line. Each node has a name and a value. The name is separated from the value by a colon. The value is separated from the name by a colon. The first node is the root node. The root node contains the names of the nodes. The root node is separated from the data nodes by a blank line.</p>
-<a class="reference internal image-reference" href="https://www.websydian.com/olddoc/v61/source/images/horsexml_structure.jpg"><img alt="https://www.websydian.com/olddoc/v61/source/images/horsexml_structure.jpg" class="align-center" src="https://www.websydian.com/olddoc/v61/source/images/horsexml_structure.jpg" style="width: 100%;" /></a>
-<p><strong>JavaScript Object Notation (JSON)</strong></p>
-<p>JSON is a format used to store hierarchical data. It is a text file where each line is a node of data. Each node is separated by a blank line. Each node has a name and a value. The name is separated from the value by a colon. The value is separated from the name by a colon. The first node is the root node. The root node contains the names of the nodes. The root node is separated from the data nodes by a blank line.</p>
-<a class="reference internal image-reference" href="https://assets.shapediver.com/uploads/2019/02/JSONSample.jpg"><img alt="https://assets.shapediver.com/uploads/2019/02/JSONSample.jpg" class="align-center" src="https://assets.shapediver.com/uploads/2019/02/JSONSample.jpg" style="width: 100%;" /></a>
+<section id="excel-spreadsheet-xlsx">
+<h3><span class="section-number">2.2.1.2. </span>Excel Spreadsheet (XLSX)<a class="headerlink" href="#excel-spreadsheet-xlsx" title="Permalink to this headline">#</a></h3>
+<p>XLSX is a proprietary format also used to store tabular data. Unlike a CSV, an XLSX is not a plain text file that you can simply read in any text editor. In contrast, an XLSX is a binary file which can be read only in specific software such as Microsft Excel or OpenOffice Calc. An excel spreedsheet does a lot more than just store(tabular) data such as storing formulas, charts and images, etc.</p>
+<p>However, for our purposes here, the only distinction between a CSV file and an XLSX file is that a) an XLSX file can contain multiple sheets where each sheet is a table and b) you can read an XLSX file in pandas using the <strong><code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code></strong> function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code> is very similar to <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> where the first input is the filename or filepath that you want to read. Other inputs such as <code class="docutils literal notranslate"><span class="pre">header</span></code>, <code class="docutils literal notranslate"><span class="pre">names</span></code>, <code class="docutils literal notranslate"><span class="pre">index_col</span></code> are the same as <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>. The only additional input is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sheet_name</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">sheet_name=0</span></code>) specifies the sheet number or sheet name to be read. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code> which means the first sheet is read. If the file contains multiple sheets, then <code class="docutils literal notranslate"><span class="pre">sheet_name=None</span></code> should be used.</p></li>
+</ul>
+<p>You can download a sample excel spreadsheet from <a class="reference download internal" download="" href="../_downloads/8335f29f550063f2328ec22d927426f7/Financial%20Sample.xlsx"><span class="xref download myst">here</span></a></p>
+<p>Note that the file contains two sheets: <em>“All Data”</em> and <em>“Just US”</em></p>
+<p>The line of code below reads in just the sheet labeled <em>“Just US”</em> from the spreadsheet, using the <code class="docutils literal notranslate"><span class="pre">sheet_name</span></code> parameter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/Financial Sample.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Just US&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Segment</th>
+      <th>Country</th>
+      <th>Product</th>
+      <th>Discount Band</th>
+      <th>Units Sold</th>
+      <th>Manufacturing Price</th>
+      <th>Sale Price</th>
+      <th>Gross Sales</th>
+      <th>Discounts</th>
+      <th>Sales</th>
+      <th>COGS</th>
+      <th>Profit</th>
+      <th>Date</th>
+      <th>Month Number</th>
+      <th>Month Name</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Government</td>
+      <td>Canada</td>
+      <td>Carretera</td>
+      <td>None</td>
+      <td>1618.5</td>
+      <td>3</td>
+      <td>20</td>
+      <td>32370.0</td>
+      <td>0.0</td>
+      <td>32370.0</td>
+      <td>16185.0</td>
+      <td>16185.0</td>
+      <td>2014-01-01</td>
+      <td>1</td>
+      <td>January</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Government</td>
+      <td>Germany</td>
+      <td>Carretera</td>
+      <td>None</td>
+      <td>1321.0</td>
+      <td>3</td>
+      <td>20</td>
+      <td>26420.0</td>
+      <td>0.0</td>
+      <td>26420.0</td>
+      <td>13210.0</td>
+      <td>13210.0</td>
+      <td>2014-01-01</td>
+      <td>1</td>
+      <td>January</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Midmarket</td>
+      <td>France</td>
+      <td>Carretera</td>
+      <td>None</td>
+      <td>2178.0</td>
+      <td>3</td>
+      <td>15</td>
+      <td>32670.0</td>
+      <td>0.0</td>
+      <td>32670.0</td>
+      <td>21780.0</td>
+      <td>10890.0</td>
+      <td>2014-06-01</td>
+      <td>6</td>
+      <td>June</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Midmarket</td>
+      <td>Germany</td>
+      <td>Carretera</td>
+      <td>None</td>
+      <td>888.0</td>
+      <td>3</td>
+      <td>15</td>
+      <td>13320.0</td>
+      <td>0.0</td>
+      <td>13320.0</td>
+      <td>8880.0</td>
+      <td>4440.0</td>
+      <td>2014-06-01</td>
+      <td>6</td>
+      <td>June</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Midmarket</td>
+      <td>Mexico</td>
+      <td>Carretera</td>
+      <td>None</td>
+      <td>2470.0</td>
+      <td>3</td>
+      <td>15</td>
+      <td>37050.0</td>
+      <td>0.0</td>
+      <td>37050.0</td>
+      <td>24700.0</td>
+      <td>12350.0</td>
+      <td>2014-06-01</td>
+      <td>6</td>
+      <td>June</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Just as you can write any pandas DataFrame to CSV file using <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code>, you can write any DataFrame to XLSX file using the <code class="docutils literal notranslate"><span class="pre">df.to_excel()</span></code> function.</p>
+</section>
+</section>
+<section id="hierarchical-nested-formats">
+<h2><span class="section-number">2.2.2. </span>Hierarchical (Nested) Formats<a class="headerlink" href="#hierarchical-nested-formats" title="Permalink to this headline">#</a></h2>
+<p>Hierarchical data formats are used to store data that is inherently hierarchical. These formats are particularly popular on the internet for exchange of information with web services using APIs (Application Programming Interfaces).</p>
+<section id="extensible-markup-language-xml">
+<h3><span class="section-number">2.2.2.1. </span>Extensible Markup Language (XML)<a class="headerlink" href="#extensible-markup-language-xml" title="Permalink to this headline">#</a></h3>
+<p>XML is a format used to store hierarchical data. Data in XML is stored as a tree structure. This tree is constituent of <strong>nodes</strong>. Each node has a start tag and an end tag. The start tag is enclosed in angle brackets <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>. The end tag is also enclosed in angle brackets but it also has a forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> after the opening angle bracket e.g. <code class="docutils literal notranslate"><span class="pre">&lt;/name&gt;</span></code>.</p>
+<p>The start tag and the end tag  together are called an <strong>element</strong>.</p>
+<p>The start tag can optionally contain <strong>attributes</strong>. Attributes are name-value pairs. The value is enclosed in double quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. The start tag can optionally contain <strong>child elements</strong>. Child elements are enclosed between the start tag and the end tag. The end tag can optionally contain <strong>text</strong>. Text is the value of the node. The text is enclosed between the start tag and the end tag.</p>
+<p>The first node in an XML file is called the <strong>root node</strong>.</p>
+<p>Example of an XML file is</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;note&gt;</span>
+<span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
+<span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+<span class="nt">&lt;heading&gt;</span>Reminder<span class="nt">&lt;/heading&gt;</span>
+<span class="nt">&lt;body&gt;</span>Don&#39;t forget me this weekend!<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;breakfast_menu&gt;</span>
+    <span class="nt">&lt;food&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Belgian Waffles<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;price&gt;</span>$5.95<span class="nt">&lt;/price&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Two of our famous Belgian Waffles with plenty of real maple syrup<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;calories&gt;</span>650<span class="nt">&lt;/calories&gt;</span>
+    <span class="nt">&lt;/food&gt;</span>
+    <span class="nt">&lt;food&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Strawberry Belgian Waffles<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;price&gt;</span>$7.95<span class="nt">&lt;/price&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Light Belgian waffles covered with strawberries and whipped cream<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;calories&gt;</span>900<span class="nt">&lt;/calories&gt;</span>
+    <span class="nt">&lt;/food&gt;</span>
+    <span class="nt">&lt;food&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Berry-Berry Belgian Waffles<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;price&gt;</span>$8.95<span class="nt">&lt;/price&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Light Belgian waffles covered with an assortment of fresh berries and whipped cream<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;calories&gt;</span>900<span class="nt">&lt;/calories&gt;</span>
+    <span class="nt">&lt;/food&gt;</span>
+    <span class="nt">&lt;food&gt;</span>
+        <span class="nt">&lt;name&gt;</span>French Toast<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;price&gt;</span>$4.50<span class="nt">&lt;/price&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Thick slices made from our homemade sourdough bread<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;calories&gt;</span>600<span class="nt">&lt;/calories&gt;</span>
+    <span class="nt">&lt;/food&gt;</span>
+    <span class="nt">&lt;food&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Homestyle Breakfast<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;price&gt;</span>$6.95<span class="nt">&lt;/price&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Two eggs, bacon or sausage, toast, and our ever-popular hash browns<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;calories&gt;</span>950<span class="nt">&lt;/calories&gt;</span>
+    <span class="nt">&lt;/food&gt;</span>
+<span class="nt">&lt;/breakfast_menu&gt;</span>
+</pre></div>
+</div>
+<p>Other XML files are: <a class="reference external" href="https://www.w3schools.com/xml/simple.xml">Breakfast Menu</a>, <a class="reference external" href="https://www.w3schools.com/xml/plant_catalog.xml">Plant Catalog</a> and <a class="reference external" href="https://www.w3schools.com/xml/cd_catalog.xml">CD catalog</a>.</p>
+<p>It is a text file where each line is a <strong>node</strong> of data.  <strong>Each node has a name and a value</strong>. The name is separated from the value by a colon. The value is separated from the name by a colon. The first node is the root node. The root node contains the names of the nodes. The root node is separated from the data nodes by a blank line.</p>
+<p>In pandas, you can read an XML file using the <code class="docutils literal notranslate"><span class="pre">pd.read_xml()</span></code> function. The first input to <code class="docutils literal notranslate"><span class="pre">pd.read_xml()</span></code> is the filename or filepath that you want to read. Other important parameters of the <code class="docutils literal notranslate"><span class="pre">pd.read_xml()</span></code> function are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xpath</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">xpath=None</span></code>) specifies the path to the node(s) to be read. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the entire XML file is read. If you want to read a specific node, then <code class="docutils literal notranslate"><span class="pre">xpath</span></code> should be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">namespaces</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">namespaces=None</span></code>) specifies the namespaces used in the XML file. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means no namespaces are used. If the XML file uses namespaces, then <code class="docutils literal notranslate"><span class="pre">namespaces</span></code> should be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">encoding</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">encoding=None</span></code>) specifies the encoding of the XML file. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the encoding is automatically detected. If the XML file uses a specific encoding, then <code class="docutils literal notranslate"><span class="pre">encoding</span></code> should be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errors</span></code>: (default: <code class="docutils literal notranslate"><span class="pre">errors=None</span></code>) specifies how to handle errors. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the errors are ignored. If the XML file contains errors, then <code class="docutils literal notranslate"><span class="pre">errors</span></code> should be used.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_xml</span><span class="p">(</span><span class="s1">&#39;https://www.w3schools.com/xml/simple.xml&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>price</th>
+      <th>description</th>
+      <th>calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Belgian Waffles</td>
+      <td>$5.95</td>
+      <td>Two of our famous Belgian Waffles with plenty ...</td>
+      <td>650</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Strawberry Belgian Waffles</td>
+      <td>$7.95</td>
+      <td>Light Belgian waffles covered with strawberrie...</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Berry-Berry Belgian Waffles</td>
+      <td>$8.95</td>
+      <td>Light Belgian waffles covered with an assortme...</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>French Toast</td>
+      <td>$4.50</td>
+      <td>Thick slices made from our homemade sourdough ...</td>
+      <td>600</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Homestyle Breakfast</td>
+      <td>$6.95</td>
+      <td>Two eggs, bacon or sausage, toast, and our eve...</td>
+      <td>950</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="javascript-object-notation-json">
+<h3><span class="section-number">2.2.2.2. </span>JavaScript Object Notation (JSON)<a class="headerlink" href="#javascript-object-notation-json" title="Permalink to this headline">#</a></h3>
+<p>JSON is an open data format used to store hierarchical data. JSON data resembles a Python dictionary. It is a text file where each line is a <strong>key-value pair</strong>. The key is separated from the value by a colon. Similar to a Python dictionary, the value can be a string, a number, a dictionary, a boolean or a list.</p>
+<p>JSON data can be oriented in two ways: <strong>records</strong> and <strong>columns</strong>.</p>
+<p>In the <strong>records</strong> orientation, each line is a record.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$5.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Two of our famous Belgian Waffles with plenty of real maple syrup&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">650</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Strawberry Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$7.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Light Belgian waffles covered with strawberries and whipped cream&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Berry-Berry Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$8.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;French Toast&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$4.50&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Thick slices made from our homemade sourdough bread&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Homestyle Breakfast&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$6.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">950</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the <strong>columns</strong> orientation, each line is a column. The same JSON data can be represented as a table as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Strawberry Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Berry-Berry Belgian Waffles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;French Toast&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Homestyle Breakfast&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$5.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$7.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$8.95&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$4.50&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$6.95&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Two of our famous Belgian Waffles with plenty of real maple syrup&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Light Belgian waffles covered with strawberries and whipped cream&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Thick slices made from our homemade sourdough bread&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;calories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">650</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;3&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;4&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">950</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.read_xml</span></code>, you can read a JSON file using the <code class="docutils literal notranslate"><span class="pre">pd.read_json()</span></code> function.</p>
+<p>The first input is <code class="docutils literal notranslate"><span class="pre">filepath</span></code>. There is no <code class="docutils literal notranslate"><span class="pre">sep</span></code>, <code class="docutils literal notranslate"><span class="pre">header</span></code> or <code class="docutils literal notranslate"><span class="pre">index_col</span></code> parameter because the JSON files don’t have flat structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;../data/sample.json&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>price</th>
+      <th>description</th>
+      <th>calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Belgian Waffles</td>
+      <td>$5.95</td>
+      <td>Two of our famous Belgian Waffles with plenty ...</td>
+      <td>650</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Strawberry Belgian Waffles</td>
+      <td>$7.95</td>
+      <td>Light Belgian waffles covered with strawberrie...</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Berry-Berry Belgian Waffles</td>
+      <td>$8.95</td>
+      <td>Light Belgian waffles covered with an assortme...</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>French Toast</td>
+      <td>$4.50</td>
+      <td>Thick slices made from our homemade sourdough ...</td>
+      <td>600</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Homestyle Breakfast</td>
+      <td>$6.95</td>
+      <td>Two eggs, bacon or sausage, toast, and our eve...</td>
+      <td>950</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similarly, pandas has a <code class="docutils literal notranslate"><span class="pre">df.to_json()</span></code> function to write a DataFrame to a JSON file. The parameter <code class="docutils literal notranslate"><span class="pre">orient</span></code> specifies the orientation of the JSON file. The default is <code class="docutils literal notranslate"><span class="pre">orient='records'</span></code> which means the JSON file is written in the records orientation. If you want to write the JSON file in the columns orientation, then <code class="docutils literal notranslate"><span class="pre">orient='columns'</span></code> should be used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;name&quot;:&quot;Belgian Waffles&quot;,&quot;price&quot;:&quot;$5.95&quot;,&quot;description&quot;:&quot;Two of our famous Belgian Waffles with plenty of real maple syrup&quot;,&quot;calories&quot;:650}
+{&quot;name&quot;:&quot;Strawberry Belgian Waffles&quot;,&quot;price&quot;:&quot;$7.95&quot;,&quot;description&quot;:&quot;Light Belgian waffles covered with strawberries and whipped cream&quot;,&quot;calories&quot;:900}
+{&quot;name&quot;:&quot;Berry-Berry Belgian Waffles&quot;,&quot;price&quot;:&quot;$8.95&quot;,&quot;description&quot;:&quot;Light Belgian waffles covered with an assortment of fresh berries and whipped cream&quot;,&quot;calories&quot;:900}
+{&quot;name&quot;:&quot;French Toast&quot;,&quot;price&quot;:&quot;$4.50&quot;,&quot;description&quot;:&quot;Thick slices made from our homemade sourdough bread&quot;,&quot;calories&quot;:600}
+{&quot;name&quot;:&quot;Homestyle Breakfast&quot;,&quot;price&quot;:&quot;$6.95&quot;,&quot;description&quot;:&quot;Two eggs, bacon or sausage, toast, and our ever-popular hash browns&quot;,&quot;calories&quot;:950}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pprint</span> 
+
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;{&quot;name&quot;:{&quot;0&quot;:&quot;Belgian Waffles&quot;,&quot;1&quot;:&quot;Strawberry Belgian &#39;
+ &#39;Waffles&quot;,&quot;2&quot;:&quot;Berry-Berry Belgian Waffles&quot;,&quot;3&quot;:&quot;French Toast&quot;,&quot;4&quot;:&quot;Homestyle &#39;
+ &#39;Breakfast&quot;},&quot;price&quot;:{&quot;0&quot;:&quot;$5.95&quot;,&quot;1&quot;:&quot;$7.95&quot;,&quot;2&quot;:&quot;$8.95&quot;,&quot;3&quot;:&quot;$4.50&quot;,&quot;4&quot;:&quot;$6.95&quot;},&quot;description&quot;:{&quot;0&quot;:&quot;Two &#39;
+ &#39;of our famous Belgian Waffles with plenty of real maple syrup&quot;,&quot;1&quot;:&quot;Light &#39;
+ &#39;Belgian waffles covered with strawberries and whipped cream&quot;,&quot;2&quot;:&quot;Light &#39;
+ &#39;Belgian waffles covered with an assortment of fresh berries and whipped &#39;
+ &#39;cream&quot;,&quot;3&quot;:&quot;Thick slices made from our homemade sourdough bread&quot;,&quot;4&quot;:&quot;Two &#39;
+ &#39;eggs, bacon or sausage, toast, and our ever-popular hash &#39;
+ &#39;browns&quot;},&quot;calories&quot;:{&quot;0&quot;:650,&quot;1&quot;:900,&quot;2&quot;:900,&quot;3&quot;:600,&quot;4&quot;:950}}&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -470,6 +1246,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="41_types.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Feature Types</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="43_modalities.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Modalities of Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -488,8 +1282,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-formats-high-duplication">Flat Formats [HIGH DUPLICATION?]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-nested-formats-low-duplication">Hierarchical (Nested) Formats [LOW DUPLICATION]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-formats">2.2.1. Flat Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comma-separated-values-csv">2.2.1.1. Comma Separated Values (CSV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel-spreadsheet-xlsx">2.2.1.2. Excel Spreadsheet (XLSX)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-nested-formats">2.2.2. Hierarchical (Nested) Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensible-markup-language-xml">2.2.2.1. Extensible Markup Language (XML)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-object-notation-json">2.2.2.2. JavaScript Object Notation (JSON)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
