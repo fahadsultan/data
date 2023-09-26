@@ -12,7 +12,6 @@
 | Written Assignments | 10% |
 | Programming Assignments | 10% |
 | Class Participation | 10% |
-| Data Fest | 10% (bonus) |
 
 ## Grading Scale 
 (+/- at instructor's discretion)
