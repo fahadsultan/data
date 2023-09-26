@@ -196,7 +196,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="21_univariate.html">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_multipanel.html">3.3. Multi-panel Visualizations</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="nav bd-sidenav">
@@ -743,7 +748,15 @@ document.write(`
 <p>The line of code below reads in just the sheet labeled <em>“Just US”</em> from the spreadsheet, using the <code class="docutils literal notranslate"><span class="pre">sheet_name</span></code> parameter:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/Financial Sample.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Just US&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_excel<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/Financial Sample.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;US Only&#39;</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -788,97 +801,97 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Government</td>
-      <td>Canada</td>
-      <td>Carretera</td>
+      <td>Midmarket</td>
+      <td>United States of America</td>
+      <td>Montana</td>
       <td>None</td>
-      <td>1618.5</td>
-      <td>3</td>
-      <td>20</td>
-      <td>32370.0</td>
+      <td>615.0</td>
+      <td>5</td>
+      <td>15</td>
+      <td>9225.0</td>
       <td>0.0</td>
-      <td>32370.0</td>
-      <td>16185.0</td>
-      <td>16185.0</td>
-      <td>2014-01-01</td>
-      <td>1</td>
-      <td>January</td>
+      <td>9225.0</td>
+      <td>6150.0</td>
+      <td>3075.0</td>
+      <td>41974</td>
+      <td>12</td>
+      <td>December</td>
       <td>2014</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Government</td>
-      <td>Germany</td>
-      <td>Carretera</td>
+      <td>United States of America</td>
+      <td>Paseo</td>
       <td>None</td>
-      <td>1321.0</td>
-      <td>3</td>
-      <td>20</td>
-      <td>26420.0</td>
+      <td>1143.0</td>
+      <td>10</td>
+      <td>7</td>
+      <td>8001.0</td>
       <td>0.0</td>
-      <td>26420.0</td>
-      <td>13210.0</td>
-      <td>13210.0</td>
-      <td>2014-01-01</td>
-      <td>1</td>
-      <td>January</td>
+      <td>8001.0</td>
+      <td>5715.0</td>
+      <td>2286.0</td>
+      <td>41913</td>
+      <td>10</td>
+      <td>October</td>
       <td>2014</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Midmarket</td>
-      <td>France</td>
-      <td>Carretera</td>
+      <td>Channel Partners</td>
+      <td>United States of America</td>
+      <td>Paseo</td>
       <td>None</td>
-      <td>2178.0</td>
-      <td>3</td>
-      <td>15</td>
-      <td>32670.0</td>
+      <td>912.0</td>
+      <td>10</td>
+      <td>12</td>
+      <td>10944.0</td>
       <td>0.0</td>
-      <td>32670.0</td>
-      <td>21780.0</td>
-      <td>10890.0</td>
-      <td>2014-06-01</td>
-      <td>6</td>
-      <td>June</td>
-      <td>2014</td>
+      <td>10944.0</td>
+      <td>2736.0</td>
+      <td>8208.0</td>
+      <td>41579</td>
+      <td>11</td>
+      <td>November</td>
+      <td>2013</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Midmarket</td>
-      <td>Germany</td>
-      <td>Carretera</td>
+      <td>Enterprise</td>
+      <td>United States of America</td>
+      <td>Velo</td>
       <td>None</td>
-      <td>888.0</td>
-      <td>3</td>
-      <td>15</td>
-      <td>13320.0</td>
+      <td>2821.0</td>
+      <td>120</td>
+      <td>125</td>
+      <td>352625.0</td>
       <td>0.0</td>
-      <td>13320.0</td>
-      <td>8880.0</td>
-      <td>4440.0</td>
-      <td>2014-06-01</td>
-      <td>6</td>
-      <td>June</td>
+      <td>352625.0</td>
+      <td>338520.0</td>
+      <td>14105.0</td>
+      <td>41852</td>
+      <td>8</td>
+      <td>August</td>
       <td>2014</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Midmarket</td>
-      <td>Mexico</td>
-      <td>Carretera</td>
+      <td>Channel Partners</td>
+      <td>United States of America</td>
+      <td>Amarilla</td>
       <td>None</td>
-      <td>2470.0</td>
-      <td>3</td>
-      <td>15</td>
-      <td>37050.0</td>
+      <td>1953.0</td>
+      <td>260</td>
+      <td>12</td>
+      <td>23436.0</td>
       <td>0.0</td>
-      <td>37050.0</td>
-      <td>24700.0</td>
-      <td>12350.0</td>
-      <td>2014-06-01</td>
-      <td>6</td>
-      <td>June</td>
+      <td>23436.0</td>
+      <td>5859.0</td>
+      <td>17577.0</td>
+      <td>41730</td>
+      <td>4</td>
+      <td>April</td>
       <td>2014</td>
     </tr>
   </tbody>

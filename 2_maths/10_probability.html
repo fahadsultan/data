@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. Linear Algebra and Geometry" href="40_linearalgebra.html" />
-    <link rel="prev" title="3. Visualizing Data" href="../1_programming/20_visualization.html" />
+    <link rel="prev" title="3.3. Multi-panel Visualizations" href="../1_programming/23_multipanel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -196,7 +196,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../1_programming/20_visualization.html">3. Visualizing Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/23_multipanel.html">3.3. Multi-panel Visualizations</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="current nav bd-sidenav">
@@ -410,7 +415,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability-stats-and-logarithms">
 <h1><span class="section-number">4. </span>Probability, Stats and Logarithms<a class="headerlink" href="#probability-stats-and-logarithms" title="Permalink to this headline">#</a></h1>
-</section>
+<!-- 
+Distributions often take on one of the following shapes:
+
+- Bell
+- Long tail
+- Skewed
+- Twin peaked
+- Flat
+
+``` {image} https://leanscape.io/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg
+:alt: Different Type of Data Distributions
+:width: 100%
+:align: center
+```
+
+The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling. --></section>
 
     <script type="text/x-thebe-config">
     {
@@ -444,12 +464,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../1_programming/20_visualization.html"
+       href="../1_programming/23_multipanel.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Visualizing Data</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Multi-panel Visualizations</p>
       </div>
     </a>
     <a class="right-next"

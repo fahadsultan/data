@@ -196,7 +196,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="21_univariate.html">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_multipanel.html">3.3. Multi-panel Visualizations</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="nav bd-sidenav">
@@ -525,7 +530,7 @@ $$ -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l9/y8y3rmys2sl93tzzph3dl7jw0000gr/T/ipykernel_15810/3162821737.py:6: MatplotlibDeprecationWarning: Directly reading images from URLs is deprecated since 3.4 and will no longer be supported two minor releases later. Please open the URL for reading and pass the result to Pillow, e.g. with ``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l9/y8y3rmys2sl93tzzph3dl7jw0000gr/T/ipykernel_21412/3162821737.py:6: MatplotlibDeprecationWarning: Directly reading images from URLs is deprecated since 3.4 and will no longer be supported two minor releases later. Please open the URL for reading and pass the result to Pillow, e.g. with ``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.
   img = plt.imread(&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/belltower.png&#39;);
 </pre></div>
 </div>
@@ -539,7 +544,7 @@ $$ -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1600, 1267, 3)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1600, 1267, 4)
 </pre></div>
 </div>
 </div>
@@ -551,7 +556,7 @@ $$ -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([240, 241, 243], dtype=uint8)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9411765 , 0.94509804, 0.9529412 , 1.        ], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -568,7 +573,21 @@ $$ -->
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5458d554b463a6513dc2e3c29a87f2218f4fbb480f2faa42036246231da844e.png" src="../_images/b5458d554b463a6513dc2e3c29a87f2218f4fbb480f2faa42036246231da844e.png" />
+<img alt="../_images/435c81014e9a675550b6c87664bf3b1d47d8d2959e163424e3fb885814fa2ff2.png" src="../_images/435c81014e9a675550b6c87664bf3b1d47d8d2959e163424e3fb885814fa2ff2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inverted</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">img_df</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">inverted</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f9003f24eb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/0704c5f36a65979910023828245389f7fd4c0d0f676f6d033612f74e32c51b1e.png" src="../_images/0704c5f36a65979910023828245389f7fd4c0d0f676f6d033612f74e32c51b1e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -585,13 +604,13 @@ $$ -->
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Threshold the image</span>
-<span class="n">img_thresh</span> <span class="o">=</span> <span class="n">img_gray</span> <span class="o">&gt;</span> <span class="mi">100</span> 
+<span class="n">img_thresh</span> <span class="o">=</span> <span class="n">img_gray</span> <span class="o">&gt;</span> <span class="mf">0.7</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_thresh</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/52e059e89ba99b30b3550352b88c767473bc5b7d9373655a3d69a6c4242fc649.png" src="../_images/52e059e89ba99b30b3550352b88c767473bc5b7d9373655a3d69a6c4242fc649.png" />
+<img alt="../_images/899a6c8759b30725af29a1afc0405648f37cab2e163d09b49b1668316939537a.png" src="../_images/899a6c8759b30725af29a1afc0405648f37cab2e163d09b49b1668316939537a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -618,6 +637,26 @@ $$ -->
 <img alt="../_images/d71cf121400a62fc4700bcd04664c8756058f3de939c5c2bc13c1fe1a8adac71.png" src="../_images/d71cf121400a62fc4700bcd04664c8756058f3de939c5c2bc13c1fe1a8adac71.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled</span> <span class="o">=</span> <span class="n">img_df</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_df</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f8fd42b8e80&gt;
+</pre></div>
+</div>
+<img alt="../_images/1275ee9860dd1b904332dde2317cd6e401612cd369517992b40926328083705c.png" src="../_images/1275ee9860dd1b904332dde2317cd6e401612cd369517992b40926328083705c.png" />
+</div>
+</div>
 <section id="videos">
 <h3>Videos<a class="headerlink" href="#videos" title="Permalink to this headline">#</a></h3>
 <p>Videos are a sequence of images. Within the context of videos, each image is called a <strong>frame</strong>. Most videos are a sequence of 24-30 frames per second.</p>
@@ -635,6 +674,36 @@ $$ -->
 <p class="admonition-title">Note</p>
 <p>You may have to install the <code class="docutils literal notranslate"><span class="pre">librosa</span></code> library using <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">librosa</span></code> in a new code cell for the code below to work.</p>
 <p>The audio file can be downloaded from <a class="reference external" href="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav">this link</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amplitude</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        0.000000
+1        0.000000
+2        0.000000
+3        0.000000
+4        0.000000
+           ...   
+66145   -0.023743
+66146   -0.064514
+66147   -0.045837
+66148    0.000793
+66149    0.012634
+Length: 66150, dtype: float32
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,6 +760,18 @@ $$ -->
 <img alt="../_images/639452abcecf4df570bed528aa99e3e92b78f1cea0ac75e687483084eb481858.png" src="../_images/639452abcecf4df570bed528aa99e3e92b78f1cea0ac75e687483084eb481858.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f90045747f0&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="geographic">
@@ -698,8 +779,285 @@ $$ -->
 <p>Geographic data is data that is associated with a location on the Earth. Geographic data is often represented as a <strong>latitude</strong> and <strong>longitude</strong>. The latitude is the distance north or south of the equator. The longitude is the distance east or west of the prime meridian .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city_ascii</th>
+      <th>state_id</th>
+      <th>state_name</th>
+      <th>county_fips</th>
+      <th>county_name</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>population</th>
+      <th>density</th>
+      <th>source</th>
+      <th>military</th>
+      <th>incorporated</th>
+      <th>timezone</th>
+      <th>ranking</th>
+      <th>zips</th>
+      <th>id</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1073</td>
+      <td>Jefferson</td>
+      <td>33.5277</td>
+      <td>-86.7987</td>
+      <td>739573</td>
+      <td>553</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Chicago</td>
+      <td>2</td>
+      <td>35218 35214 35215 35217 35210 35211 35212 3521...</td>
+      <td>1840006507</td>
+    </tr>
+    <tr>
+      <th>Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1089</td>
+      <td>Madison</td>
+      <td>34.6988</td>
+      <td>-86.6412</td>
+      <td>319249</td>
+      <td>361</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Chicago</td>
+      <td>2</td>
+      <td>35801 35803 35802 35805 35806 35741 35824 3576...</td>
+      <td>1840005061</td>
+    </tr>
+    <tr>
+      <th>Mobile</th>
+      <td>Mobile</td>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1097</td>
+      <td>Mobile</td>
+      <td>30.6783</td>
+      <td>-88.1162</td>
+      <td>315502</td>
+      <td>522</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Chicago</td>
+      <td>2</td>
+      <td>36606 36607 36604 36605 36602 36603 36608 3660...</td>
+      <td>1840006009</td>
+    </tr>
+    <tr>
+      <th>Montgomery</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1101</td>
+      <td>Montgomery</td>
+      <td>32.3473</td>
+      <td>-86.2666</td>
+      <td>254634</td>
+      <td>479</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Chicago</td>
+      <td>2</td>
+      <td>36064 36112 36113 36110 36111 36117 36115 3611...</td>
+      <td>1840008353</td>
+    </tr>
+    <tr>
+      <th>Tuscaloosa</th>
+      <td>Tuscaloosa</td>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1125</td>
+      <td>Tuscaloosa</td>
+      <td>33.2348</td>
+      <td>-87.5267</td>
+      <td>155499</td>
+      <td>631</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Chicago</td>
+      <td>2</td>
+      <td>35475 35476 35405 35404 35406 35401 35403 3540...</td>
+      <td>1840005563</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Arvada</th>
+      <td>Arvada</td>
+      <td>WY</td>
+      <td>Wyoming</td>
+      <td>56033</td>
+      <td>Sheridan</td>
+      <td>44.6621</td>
+      <td>-106.1419</td>
+      <td>22</td>
+      <td>4</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>False</td>
+      <td>America/Denver</td>
+      <td>3</td>
+      <td>82831</td>
+      <td>1840017427</td>
+    </tr>
+    <tr>
+      <th>Van Tassell</th>
+      <td>Van Tassell</td>
+      <td>WY</td>
+      <td>Wyoming</td>
+      <td>56027</td>
+      <td>Niobrara</td>
+      <td>42.6643</td>
+      <td>-104.0913</td>
+      <td>18</td>
+      <td>3</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Denver</td>
+      <td>3</td>
+      <td>82242</td>
+      <td>1840022357</td>
+    </tr>
+    <tr>
+      <th>Fox Park</th>
+      <td>Fox Park</td>
+      <td>WY</td>
+      <td>Wyoming</td>
+      <td>56001</td>
+      <td>Albany</td>
+      <td>41.0801</td>
+      <td>-106.1534</td>
+      <td>8</td>
+      <td>3</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>False</td>
+      <td>America/Denver</td>
+      <td>3</td>
+      <td>82070</td>
+      <td>1840038401</td>
+    </tr>
+    <tr>
+      <th>Hawk Springs</th>
+      <td>Hawk Springs</td>
+      <td>WY</td>
+      <td>Wyoming</td>
+      <td>56015</td>
+      <td>Goshen</td>
+      <td>41.7852</td>
+      <td>-104.2650</td>
+      <td>7</td>
+      <td>1</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>False</td>
+      <td>America/Denver</td>
+      <td>3</td>
+      <td>82244 82217</td>
+      <td>1840017459</td>
+    </tr>
+    <tr>
+      <th>Lost Springs</th>
+      <td>Lost Springs</td>
+      <td>WY</td>
+      <td>Wyoming</td>
+      <td>56009</td>
+      <td>Converse</td>
+      <td>42.7652</td>
+      <td>-104.9255</td>
+      <td>4</td>
+      <td>17</td>
+      <td>polygon</td>
+      <td>False</td>
+      <td>True</td>
+      <td>America/Denver</td>
+      <td>3</td>
+      <td>82229</td>
+      <td>1840021288</td>
+    </tr>
+  </tbody>
+</table>
+<p>28338 rows × 16 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span>  <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/csc343/main/data/uscities.csv&#39;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lng&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;county_fips&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">65</span><span class="p">);</span>

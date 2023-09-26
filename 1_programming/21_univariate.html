@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Univariate Visualizations &#8212; CSC-272 Data Mining</title>
+    <title>3.1. Univariate Visualizations &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -72,6 +72,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_programming/21_univariate';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.2. Multivariate Visualizations" href="22_multivariate.html" />
+    <link rel="prev" title="3. Visualizing Data" href="20_visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -183,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">1.1. Pandas I: Data Structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
@@ -196,7 +198,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="43_modalities.html">2.3. Modalities of Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_multipanel.html">3.3. Multi-panel Visualizations</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
 <ul class="nav bd-sidenav">
@@ -406,135 +413,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Univariate Visualizations</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute">Uni-variate visualizations are used to understand each attribute in the dataset. In this section, we will look at techniques to understand the “distribution” of each attribute.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value">Distribution of a variable is the frequency of each value of the variable. For example, if we have a variable “age”, then the distribution of age is the frequency of each age value.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes">We will discuss Distributions in much greater detail when we look at Probability and Statistics in a future chapter. For now, we will look at techniques that you can use to understand the distribution of your attributes.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values">We will use the Pima Indians Diabetes dataset to demonstrate the uni-variate visualizations. This is a binary classification problem where all of the attributes are numeric and have different scales. It is a great dataset for practicing on with neural networks because all of the inputs are small numeric values.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-look-at-the-following-techniques-in-this-section">We will look at the following techniques in this section:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">- Histograms.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#density-plots">- Density Plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-whisker-plots">- Box and Whisker Plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-ordinal-variables">## Histogram: Ordinal Variables</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers">Histograms group data into bins and provide you a count of the number of observations in each bin. From the shape of the bins you can quickly get a feeling for whether an attribute is Gaussian, skewed or even has an exponential distribution. It can also help you see possible outliers.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value">For a nominal or categorical variable, you can create a bar chart showing the count of each class value.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-often-take-on-one-of-the-following-shapes">Distributions often take on one of the following shapes:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bell">- Bell</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#long-tail">- Long tail</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skewed">- Skewed</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#twin-peaked">- Twin peaked</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flat">- Flat</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shapes"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling">The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables">The example below creates a histogram plot of the diabetes dataset input variables.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6">Running the example creates a histogram plot for each numeric input variable in the dataset. We can see that some attributes may have an exponential distribution, such as attributes 3 and 6.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7">We can also see that other attributes may have a skewed distribution such as attributes 1, 5 and 7.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8">Finally, perhaps we can see a few attributes that have a Gaussian distribution such as attributes 0, 4 and 8.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">## Imports</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-following-libraries">We will use the following libraries:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-to-load-the-data">- Pandas: to load the data.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-to-create-the-plots">- Matplotlib: to create the plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-to-create-the-plots">- Seaborn: to create the plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-order-to-use-pandas-we-need-to-import-it">In order to use pandas we need to import it:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-pandas-as-pd">import pandas as pd</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials">It is common to import pandas as pd. This is not required, but it is a convention that you will see used in other code and documentation, and in these tutorials.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object">We will use the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function to load the data. This is a function in pandas that will load data from a CSV file into a DataFrame object.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-pd-read-csv-pima-indians-diabetes-csv">dataset = pd.read_csv(‘pima-indians-diabetes.csv’)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">import pandas as pd</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-matplotlib-import-pyplot-as-plt">from matplotlib import pyplot as plt</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-seaborn-as-sns">import seaborn as sns</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-inline">%matplotlib inline</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-style-to-whitegrid"># Set the style to “whitegrid”</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-set-theme-style-ticks-color-codes-true">sns.set_theme(style=”ticks”, color_codes=True)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns">The Boston Housing Dataset is a derived from information collected by the U.S. Census Service concerning housing in the area of Boston MA. The following describes the dataset columns:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#column-description">| Column | Description |</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">| — | — |</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#crim-per-capita-crime-rate-by-town">| CRIM | per capita crime rate by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft">| ZN | proportion of residential land zoned for lots over 25,000 sq.ft.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indus-proportion-of-non-retail-business-acres-per-town">| INDUS | proportion of non-retail business acres per town.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise">| CHAS | Charles River dummy variable (1 if tract bounds river; 0 otherwise)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nox-nitric-oxides-concentration-parts-per-10-million">| NOX | nitric oxides concentration (parts per 10 million)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rm-average-number-of-rooms-per-dwelling">| RM | average number of rooms per dwelling</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#age-proportion-of-owner-occupied-units-built-prior-to-1940">| AGE | proportion of owner-occupied units built prior to 1940</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dis-weighted-distances-to-five-boston-employment-centres">| DIS | weighted distances to five Boston employment centres</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-index-of-accessibility-to-radial-highways">| RAD | index of accessibility to radial highways</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tax-full-value-property-tax-rate-per-10-000">| TAX | full-value property-tax rate per $10,000</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ptratio-pupil-teacher-ratio-by-town">| PTRATIO | pupil-teacher ratio by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstat-lower-status-of-the-population">| LSTAT | % lower status of the population</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#medv-median-value-of-owner-occupied-homes-in-1000-s">| MEDV | Median value of owner-occupied homes in $1000’s</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pima-indians-diabetes-database">“”” Pima Indians Diabetes Database “””</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-pima-indians-diabetes-csv"># data = pd.read_csv(‘../data/pima-indians-diabetes.csv’)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-housing-dataset"># “”” Boston Housing Dataset “””</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv">column_names = [‘CRIM’, ‘ZN’, ‘INDUS’, ‘CHAS’, ‘NOX’, ‘RM’, ‘AGE’, ‘DIS’, ‘RAD’, ‘TAX’, ‘PTRATIO’, ‘B’, ‘LSTAT’, ‘MEDV’]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names">data = pd.read_csv(‘../data/housing.csv.xls’, header=None, delimiter=r”\s+”, names=column_names)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50">fig, axs = plt.subplots(ncols=1, nrows=len(column_names), figsize=(5, 50))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-i-col-in-enumerate-column-names">for i, col in enumerate(column_names):</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-data-col-ax-axs-i">sns.histplot(data=data[col], ax=axs[i])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-adult-data-header-none">data = pd.read_csv(‘../data/adult.data’, header=None)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation">data.columns = [‘age’, ‘workclass’, ‘fnlwgt’, ‘education’, ‘education_num’, ‘marital_status’, ‘occupation’, \</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income">‘relationship’, ‘race’, ‘sex’, ‘capital_gain’, ‘capital_loss’, ‘hours_per_week’, ‘native_country’, ‘income’]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50">fig, axs = plt.subplots(ncols=1, nrows=len(data.columns), figsize=(5, 50))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-i-col-in-enumerate-data-columns">for i, col in enumerate(data.columns):</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">sns.histplot(data=data[col], ax=axs[i])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions">By default, <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code> will try to infer the bin edges from the data. However, it is possible to set the bin edges explicitly. This can be useful when comparing multiple distributions.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-dataset-x-age-bins-range-0-100-5">sns.histplot(data=dataset, x=”age”, bins=range(0, 100, 5))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-bmi"># Histogram of BMI</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-x-bmi-bins-10">sns.histplot(data, x=”BMI”, bins=10);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-bmi-distribution">plt.title(‘BMI distribution’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-ylabel-count-of-rows">plt.ylabel(‘Count (of rows)’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-grid">plt.grid();</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data"># Plotting the data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-pairplot-data-hue-outcome-diag-kind-kde">sns.pairplot(data, hue=’Outcome’, diag_kind=’kde’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"># Plotting the data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-x-bmi-hue-outcome-multiple-stack">sns.histplot(data, x=”BMI”, hue=”Outcome”, multiple=”stack”);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-bmi-distribution-by-outcome">plt.title(‘BMI distribution by Outcome’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">from matplotlib import pyplot as plt</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">import seaborn as sns</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-set-theme">sns.set_theme()</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-sns-histplot-data-imdb-rating">fig = sns.histplot(data[‘IMDB_Rating’]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-set-title">fig.set(title=’’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-nominal-variables">## Histogram: Nominal Variables</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-sns-histplot-data-certificate">fig = sns.histplot(data[‘Certificate’])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-xticks-rotation-90">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#title">## Title</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">fig = sns.histplot(data[‘Certificate’])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-count-of-each-certificate-in-top-1000-imdb-movies">plt.title(“Count of each Certificate in top 1000 IMDb movies”);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#legend">## Legend</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#top-data-500"># top    = data[:500]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-data-500">bottom = data[500:]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-top-certificate-label-top-500-alpha-0-5">sns.histplot(top[‘Certificate’], label=’Top 500’, alpha=0.5)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5">sns.histplot(bottom[‘Certificate’], label=’Bottom 500’, color=’purple’, alpha=0.5)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">plt.title(“Count of each Certificate in top 1000 IMDb movies”)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-legend">plt.legend();</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot">## Boxplot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-meta-score"># sns.boxplot(x=data[“Meta_score”]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-ratings-on-metacritic-for-top-1000-imdb-movies">plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#violin-plot">## Violin Plot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-violinplot-x-data-meta-score"># sns.violinplot(x=data[“Meta_score”]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">## Subplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axes-plt-subplots-2-2-figsize-10-10">fig, axes = plt.subplots(2, 2, figsize=(10, 10))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-imdb-rating-ax-axes-0-0">sns.histplot(data[‘IMDB_Rating’], ax=axes[0][0]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-meta-score-ax-axes-0-1">sns.histplot(data[‘Meta_score’], ax=axes[0][1]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-imdb-rating-ax-axes-1-0">sns.boxplot(x=data[‘IMDB_Rating’], ax=axes[1][0]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-meta-score-ax-axes-1-1">sns.boxplot(x=data[‘Meta_score’], ax=axes[1][1]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-0-0-set-title-imdb-rating-fontsize-20">axes[0][0].set_title(‘IMDb Rating’, fontsize=20);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-0-1-set-title-meta-score-fontsize-20">axes[0][1].set_title(‘Meta score’, fontsize=20);</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">3.1.1. Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-labels-and-title">3.1.2. Axis labels and Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">3.1.3. Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">3.1.4. Box Plots</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -546,385 +429,363 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="univariate-visualizations">
-<h1>Univariate Visualizations<a class="headerlink" href="#univariate-visualizations" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Univariate Visualizations<a class="headerlink" href="#univariate-visualizations" title="Permalink to this headline">#</a></h1>
+<p>Uni-variate (single variable) visualizations are used to better understand one-dimensional data (think <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">Series</span></code>) in the dataset.</p>
+<p>In this section, we will look at techniques to understand the <strong>distribution</strong> of each <strong>feature</strong>. Distribution of a feature, <em>simply put</em>, is the frequency of each value of the variable.</p>
+<p>We know from previous discussion that <strong><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></strong> method on a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">Series</span></code> gives us the <strong>frequency distribution</strong> of each value in the <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
+<p>We will use the <strong>World Bank dataset</strong>, which contains information about countries and social statistics.</p>
+<!-- 
+````{card} 
+
+**Boston Housing Dataset**
+
+^^^
+
+The Boston Housing Dataset is a derived from information collected by the U.S. Census Service concerning housing in the area of Boston MA. The following describes the dataset columns: 
+
+| Column | Description |
+| --- | --- |
+| CRIM | per capita crime rate by town |
+| ZN | proportion of residential land zoned for lots over 25,000 sq.ft. |
+| INDUS | proportion of non-retail business acres per town.
+| CHAS | Charles River dummy variable (1 if tract bounds river; 0 otherwise)
+| NOX | nitric oxides concentration (parts per 10 million)
+| RM | average number of rooms per dwelling
+| AGE | proportion of owner-occupied units built prior to 1940
+| DIS | weighted distances to five Boston employment centres
+| RAD | index of accessibility to radial highways
+| TAX | full-value property-tax rate per $10,000
+| PTRATIO | pupil-teacher ratio by town
+| B | $1000 \ times (B_k - 0.63)^2$ where $B_k$ is the proportion of blacks by town
+| LSTAT | % lower status of the population
+| MEDV | Median value of owner-occupied homes in $1000's
+
++++
+Source:  The Boston house-price data of Harrison, D. and Rubinfeld, D.L. 'Hedonic
+ prices and the demand for clean air', J. Environ. Economics & Management,
+ vol.5, 81-102, 1978. 
+```` --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/world_bank.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Continent</th>
+      <th>Country</th>
+      <th>Primary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Primary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Youth literacy rate: Male: % of ages 15-24: 2005-14</th>
+      <th>Youth literacy rate: Female: % of ages 15-24: 2005-14</th>
+      <th>Adult literacy rate: Male: % ages 15 and older: 2005-14</th>
+      <th>Adult literacy rate: Female: % ages 15 and older: 2005-14</th>
+      <th>...</th>
+      <th>Access to improved sanitation facilities: % of population: 1990</th>
+      <th>Access to improved sanitation facilities: % of population: 2015</th>
+      <th>Child immunization rate: Measles: % of children ages 12-23 months: 2015</th>
+      <th>Child immunization rate: DTP3: % of children ages 12-23 months: 2015</th>
+      <th>Children with acute respiratory infection taken to health provider: % of children under age 5 with ARI: 2009-2016</th>
+      <th>Children with diarrhea who received oral rehydration and continuous feeding: % of children under age 5 with diarrhea: 2009-2016</th>
+      <th>Children sleeping under treated bed nets: % of children under age 5: 2009-2016</th>
+      <th>Children with fever receiving antimalarial drugs: % of children under age 5 with fever: 2009-2016</th>
+      <th>Tuberculosis: Treatment success rate: % of new cases: 2014</th>
+      <th>Tuberculosis: Cases detection rate: % of new estimated cases: 2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Africa</td>
+      <td>Algeria</td>
+      <td>106.0</td>
+      <td>105.0</td>
+      <td>68.0</td>
+      <td>85.0</td>
+      <td>96.0</td>
+      <td>92.0</td>
+      <td>83.0</td>
+      <td>68.0</td>
+      <td>...</td>
+      <td>80.0</td>
+      <td>88.0</td>
+      <td>95.0</td>
+      <td>95.0</td>
+      <td>66.0</td>
+      <td>42.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Africa</td>
+      <td>Angola</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.0</td>
+      <td>67.0</td>
+      <td>82.0</td>
+      <td>60.0</td>
+      <td>...</td>
+      <td>22.0</td>
+      <td>52.0</td>
+      <td>55.0</td>
+      <td>64.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.9</td>
+      <td>28.3</td>
+      <td>34.0</td>
+      <td>64.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Africa</td>
+      <td>Benin</td>
+      <td>83.0</td>
+      <td>73.0</td>
+      <td>50.0</td>
+      <td>37.0</td>
+      <td>55.0</td>
+      <td>31.0</td>
+      <td>41.0</td>
+      <td>18.0</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>20.0</td>
+      <td>75.0</td>
+      <td>79.0</td>
+      <td>23.0</td>
+      <td>33.0</td>
+      <td>72.7</td>
+      <td>25.9</td>
+      <td>89.0</td>
+      <td>61.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Africa</td>
+      <td>Botswana</td>
+      <td>98.0</td>
+      <td>101.0</td>
+      <td>86.0</td>
+      <td>87.0</td>
+      <td>96.0</td>
+      <td>99.0</td>
+      <td>87.0</td>
+      <td>89.0</td>
+      <td>...</td>
+      <td>39.0</td>
+      <td>63.0</td>
+      <td>97.0</td>
+      <td>95.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>77.0</td>
+      <td>62.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Africa</td>
+      <td>Burundi</td>
+      <td>58.0</td>
+      <td>66.0</td>
+      <td>35.0</td>
+      <td>30.0</td>
+      <td>90.0</td>
+      <td>88.0</td>
+      <td>89.0</td>
+      <td>85.0</td>
+      <td>...</td>
+      <td>42.0</td>
+      <td>48.0</td>
+      <td>93.0</td>
+      <td>94.0</td>
+      <td>55.0</td>
+      <td>43.0</td>
+      <td>53.8</td>
+      <td>25.4</td>
+      <td>91.0</td>
+      <td>51.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 47 columns</p>
+</div></div></div>
+</div>
+<section id="bar-plots">
+<h2><span class="section-number">3.1.1. </span>Bar Plots<a class="headerlink" href="#bar-plots" title="Permalink to this headline">#</a></h2>
+<p><strong>Bar plots</strong> are used to visualize the frequency distribution of <i><u><strong>features that take on a small set of unique values</strong></u></i>. Such features are more often categorical features as opposed to numerical features.</p>
+<p>Visualizing categorical features is easy. We can use <strong><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code></strong> method to get the frequency distribution of each value in the feature. This frequency distribution can be plotted using a <strong>bar chart</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_counts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Continent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Africa        47
+Europe        43
+Asia          34
+N. America    18
+Oceania       13
+S. America    11
+Name: Continent, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> the method to make a bar chart is <strong><code class="docutils literal notranslate"><span class="pre">barplot()</span></code></strong>. The method takes in two arguments: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cc6c306c0d770205683e6ab3a1f5bcfe613e3b9dc0e96de1ddf84def6f05877f.png" src="../_images/cc6c306c0d770205683e6ab3a1f5bcfe613e3b9dc0e96de1ddf84def6f05877f.png" />
+</div>
+</div>
+<p>Note that the plots above are <strong>incomplete</strong>. If you show this plot to someone, they will not be able to understand what the plot is about.</p>
+<p>To <em>complete</em> the plot, so it is understandable, we need to add atleast a title, axis labels and, depending on context, a legend.</p>
+</section>
+<section id="axis-labels-and-title">
+<h2><span class="section-number">3.1.2. </span>Axis labels and Title<a class="headerlink" href="#axis-labels-and-title" title="Permalink to this headline">#</a></h2>
+<p>To add axis labels and title, we need to assign the plot object returned by <code class="docutils literal notranslate"><span class="pre">sns.barplot</span></code> to a variable and then use <strong><code class="docutils literal notranslate"><span class="pre">.set()</span></code></strong> method on the plot object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Continent&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count of countries (rows)&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Count of countries in each continent&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e7730370c461dc55870a55bba706cc8d30f8cc4a3bad136582f845feacde10d2.png" src="../_images/e7730370c461dc55870a55bba706cc8d30f8cc4a3bad136582f845feacde10d2.png" />
+</div>
+</div>
+<p>Note that we have used <strong><code class="docutils literal notranslate"><span class="pre">.set()</span></code></strong> method on the plot object, returned by <strong><code class="docutils literal notranslate"><span class="pre">sns.barplot()</span></code></strong> method, and passed the arguments <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code> to the method.</p>
+<p>Now, the plot is “complete” and can be understood by someone who has not seen the data.</p>
+<hr/>
+<p><strong>Bar plots don’t scale</strong>. If you try to plot a feature (categorical or numerical) with a lot of unique values, the plot will be unreadable. Yes, even with a title and axis labels!</p>
+<p>Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_counts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">();</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">val_counts</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Frequency of countries in the World Bank data&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6cd85f69d71fe59b558947ae9b20de221849ccb4c8d8b2850047463ca6e97e87.png" src="../_images/6cd85f69d71fe59b558947ae9b20de221849ccb4c8d8b2850047463ca6e97e87.png" />
+</div>
+</div>
+<p>The plot above is unreadable. We can’t make out the labels on the x-axis. This is because there are too many unique values in the <code class="docutils literal notranslate"><span class="pre">country</span></code> feature.</p>
+<p>There is no easy way to fix this for categorical features. For numerical features, however, there is a way.</p>
+<!--To make the plot readable, we need to **rotate** the x-axis labels.
+
+## Rotating x-axis labels
+
+To rotate the x-axis labels, we need to use the **`.set_xticklabels()`** method on the plot object. --></section>
+<section id="histograms">
+<h2><span class="section-number">3.1.3. </span>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h2>
+<p>Histograms <em>look</em> very similar to bar plots. However, they are different in a subtle but critical way.</p>
+<p>Histograms solve the problem of plotting a feature with a lot of unique values by <strong>binning</strong> the values.</p>
+<p>Binning is the process of dividing the range of values of a feature into <strong>bins</strong>. Each bin represents a range of values. The height of the bar in a histogram represents the number of values in the bin. In most cases, the bins are of equal width.</p>
+<p>For example, if we have a feature with values ranging from 0 to 100, we can divide the range into 10 bins of width 10 each. The first bin will contain values from 0 to 10, the second bin will contain values from 10 to 20 and so on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;Gross domestic product: </span><span class="si">% g</span><span class="s2">rowth : 2016&quot;</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">col</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of GDP growth in 2016&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/572c944a2ded406a4df13a394efe21bfdb9898fea294e4a289a02743013413a0.png" src="../_images/572c944a2ded406a4df13a394efe21bfdb9898fea294e4a289a02743013413a0.png" />
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code> will try to infer the bin edges from the data. However, it is possible to set the bin edges explicitly. This can be useful when comparing multiple distributions.</p>
+</section>
+<section id="box-plots">
+<h2><span class="section-number">3.1.4. </span>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="https://ds100.org/course-notes-su23/visualization_1/images/boxplot.png"><img alt="https://ds100.org/course-notes-su23/visualization_1/images/boxplot.png" class="align-right" src="https://ds100.org/course-notes-su23/visualization_1/images/boxplot.png" style="width: 60%;" /></a>
+<p><strong>Box plots</strong> display distributions using information about quartiles.</p>
+<p>A quartile represents a 25% portion of the data. We say that:</p>
+<ul class="simple">
+<li><p>The first quartile (Q1) repesents the 25th percentile – 25% of the data lies below the first quartile</p></li>
+<li><p>The second quartile (Q2) represents the 50th percentile, also known as the median – 50% of the data lies below the second quartile</p></li>
+<li><p>The third quartile (Q3) represents the 75th percentile – 75% of the data lies below the third quartile.</p></li>
+</ul>
+<p>In a box plot, the lower extent of the box lies at Q1, while the upper extent of the box lies at Q3. The horizontal line in the middle of the box corresponds to Q2 (equivalently, the median).</p>
+<p>The <strong>Inter-Quartile Range</strong> (IQR) measures the spread of the middle % of the distribution, calculated as the (<span class="math notranslate nohighlight">\(3^{rd}\)</span> Quartile <span class="math notranslate nohighlight">\(-\)</span> <span class="math notranslate nohighlight">\(1^{st}\)</span> Quartile).</p>
+<p>The <strong>whiskers</strong> of a box-plot are the two points that lie at the [<span class="math notranslate nohighlight">\(1^{st}\)</span> Quartile <span class="math notranslate nohighlight">\(-\)</span>(<span class="math notranslate nohighlight">\(1.5 \times\)</span> IQR)], and the [<span class="math notranslate nohighlight">\(3^{rd}\)</span> Quartile <span class="math notranslate nohighlight">\(+\)</span> (<span class="math notranslate nohighlight">\(1.5 \times\)</span> IQR)]. They are the lower and upper ranges of “normal” data (the points excluding outliers). Subsequently, the outliers are the data points that fall beyond the whiskers, or further than (
+<span class="math notranslate nohighlight">\(1.5 \times\)</span> IQR) from the extreme quartiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;Gross domestic product: </span><span class="si">% g</span><span class="s2">rowth : 2016&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    159.000000
+mean       2.780503
+std        3.106862
+min      -10.400000
+25%        1.450000
+50%        2.900000
+75%        4.500000
+max       11.000000
+Name: Gross domestic product: % growth : 2016, dtype: float64
+</pre></div>
+</div>
+<img alt="../_images/36e725769e758994c90f402e4895b1c9802529feaea6bac50324737d663955a7.png" src="../_images/36e725769e758994c90f402e4895b1c9802529feaea6bac50324737d663955a7.png" />
+</div>
+</div>
+<p>If it helps, you can think of the box plot as a birds-eye-view of histogram. Histogram as seeing a hill from the side, while box plot is seeing the hill from above through a drone or through a bird’s eye.</p>
+<p>Also note that boxplot is to <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> as barplot is to <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute">
-<h1>Uni-variate visualizations are used to understand each attribute in the dataset. In this section, we will look at techniques to understand the “distribution” of each attribute.<a class="headerlink" href="#uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value">
-<h1>Distribution of a variable is the frequency of each value of the variable. For example, if we have a variable “age”, then the distribution of age is the frequency of each age value.<a class="headerlink" href="#distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes">
-<h1>We will discuss Distributions in much greater detail when we look at Probability and Statistics in a future chapter. For now, we will look at techniques that you can use to understand the distribution of your attributes.<a class="headerlink" href="#we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values">
-<h1>We will use the Pima Indians Diabetes dataset to demonstrate the uni-variate visualizations. This is a binary classification problem where all of the attributes are numeric and have different scales. It is a great dataset for practicing on with neural networks because all of the inputs are small numeric values.<a class="headerlink" href="#we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-will-look-at-the-following-techniques-in-this-section">
-<h1>We will look at the following techniques in this section:<a class="headerlink" href="#we-will-look-at-the-following-techniques-in-this-section" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="histograms">
-<h1>- Histograms.<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="density-plots">
-<h1>- Density Plots.<a class="headerlink" href="#density-plots" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="box-and-whisker-plots">
-<h1>- Box and Whisker Plots.<a class="headerlink" href="#box-and-whisker-plots" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="histogram-ordinal-variables">
-<h1>## Histogram: Ordinal Variables<a class="headerlink" href="#histogram-ordinal-variables" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers">
-<h1>Histograms group data into bins and provide you a count of the number of observations in each bin. From the shape of the bins you can quickly get a feeling for whether an attribute is Gaussian, skewed or even has an exponential distribution. It can also help you see possible outliers.<a class="headerlink" href="#histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value">
-<h1>For a nominal or categorical variable, you can create a bar chart showing the count of each class value.<a class="headerlink" href="#for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="distributions-often-take-on-one-of-the-following-shapes">
-<h1>Distributions often take on one of the following shapes:<a class="headerlink" href="#distributions-often-take-on-one-of-the-following-shapes" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="bell">
-<h1>- Bell<a class="headerlink" href="#bell" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="long-tail">
-<h1>- Long tail<a class="headerlink" href="#long-tail" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="skewed">
-<h1>- Skewed<a class="headerlink" href="#skewed" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="twin-peaked">
-<h1>- Twin peaked<a class="headerlink" href="#twin-peaked" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="flat">
-<h1>- Flat<a class="headerlink" href="#flat" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="shapes">
-<h1><img alt="Shapes" src="https://cdn-comlp.nitrocdn.com/jHZYXVQcGrlgKuxnSthsdCgKBQAsIMJC/assets/images/optimized/rev-bfec2c5/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg" /><a class="headerlink" href="#shapes" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling">
-<h1>The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling.<a class="headerlink" href="#the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables">
-<h1>The example below creates a histogram plot of the diabetes dataset input variables.<a class="headerlink" href="#the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6">
-<h1>Running the example creates a histogram plot for each numeric input variable in the dataset. We can see that some attributes may have an exponential distribution, such as attributes 3 and 6.<a class="headerlink" href="#running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7">
-<h1>We can also see that other attributes may have a skewed distribution such as attributes 1, 5 and 7.<a class="headerlink" href="#we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8">
-<h1>Finally, perhaps we can see a few attributes that have a Gaussian distribution such as attributes 0, 4 and 8.<a class="headerlink" href="#finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="imports">
-<h1>## Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-following-libraries">
-<h1>We will use the following libraries:<a class="headerlink" href="#we-will-use-the-following-libraries" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-to-load-the-data">
-<h1>- Pandas: to load the data.<a class="headerlink" href="#pandas-to-load-the-data" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-to-create-the-plots">
-<h1>- Matplotlib: to create the plots.<a class="headerlink" href="#matplotlib-to-create-the-plots" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="seaborn-to-create-the-plots">
-<h1>- Seaborn: to create the plots.<a class="headerlink" href="#seaborn-to-create-the-plots" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="in-order-to-use-pandas-we-need-to-import-it">
-<h1>In order to use pandas we need to import it:<a class="headerlink" href="#in-order-to-use-pandas-we-need-to-import-it" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="python">
-<h1>```python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="import-pandas-as-pd">
-<h1>import pandas as pd<a class="headerlink" href="#import-pandas-as-pd" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>```<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials">
-<h1>It is common to import pandas as pd. This is not required, but it is a convention that you will see used in other code and documentation, and in these tutorials.<a class="headerlink" href="#it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object">
-<h1>We will use the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function to load the data. This is a function in pandas that will load data from a CSV file into a DataFrame object.<a class="headerlink" href="#we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>```python<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="dataset-pd-read-csv-pima-indians-diabetes-csv">
-<h1>dataset = pd.read_csv(‘pima-indians-diabetes.csv’)<a class="headerlink" href="#dataset-pd-read-csv-pima-indians-diabetes-csv" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id3">
-<h1>```<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id4">
-<h1>import pandas as pd<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="from-matplotlib-import-pyplot-as-plt">
-<h1>from matplotlib import pyplot as plt<a class="headerlink" href="#from-matplotlib-import-pyplot-as-plt" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="import-seaborn-as-sns">
-<h1>import seaborn as sns<a class="headerlink" href="#import-seaborn-as-sns" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-inline">
-<h1>%matplotlib inline<a class="headerlink" href="#matplotlib-inline" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="set-the-style-to-whitegrid">
-<h1># Set the style to “whitegrid”<a class="headerlink" href="#set-the-style-to-whitegrid" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-set-theme-style-ticks-color-codes-true">
-<h1>sns.set_theme(style=”ticks”, color_codes=True)<a class="headerlink" href="#sns-set-theme-style-ticks-color-codes-true" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns">
-<h1>The Boston Housing Dataset is a derived from information collected by the U.S. Census Service concerning housing in the area of Boston MA. The following describes the dataset columns:<a class="headerlink" href="#the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="column-description">
-<h1>| Column | Description |<a class="headerlink" href="#column-description" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id5">
-<h1>| — | — |<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="crim-per-capita-crime-rate-by-town">
-<h1>| CRIM | per capita crime rate by town<a class="headerlink" href="#crim-per-capita-crime-rate-by-town" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft">
-<h1>| ZN | proportion of residential land zoned for lots over 25,000 sq.ft.<a class="headerlink" href="#zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="indus-proportion-of-non-retail-business-acres-per-town">
-<h1>| INDUS | proportion of non-retail business acres per town.<a class="headerlink" href="#indus-proportion-of-non-retail-business-acres-per-town" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise">
-<h1>| CHAS | Charles River dummy variable (1 if tract bounds river; 0 otherwise)<a class="headerlink" href="#chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="nox-nitric-oxides-concentration-parts-per-10-million">
-<h1>| NOX | nitric oxides concentration (parts per 10 million)<a class="headerlink" href="#nox-nitric-oxides-concentration-parts-per-10-million" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="rm-average-number-of-rooms-per-dwelling">
-<h1>| RM | average number of rooms per dwelling<a class="headerlink" href="#rm-average-number-of-rooms-per-dwelling" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="age-proportion-of-owner-occupied-units-built-prior-to-1940">
-<h1>| AGE | proportion of owner-occupied units built prior to 1940<a class="headerlink" href="#age-proportion-of-owner-occupied-units-built-prior-to-1940" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="dis-weighted-distances-to-five-boston-employment-centres">
-<h1>| DIS | weighted distances to five Boston employment centres<a class="headerlink" href="#dis-weighted-distances-to-five-boston-employment-centres" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="rad-index-of-accessibility-to-radial-highways">
-<h1>| RAD | index of accessibility to radial highways<a class="headerlink" href="#rad-index-of-accessibility-to-radial-highways" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="tax-full-value-property-tax-rate-per-10-000">
-<h1>| TAX | full-value property-tax rate per $10,000<a class="headerlink" href="#tax-full-value-property-tax-rate-per-10-000" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ptratio-pupil-teacher-ratio-by-town">
-<h1>| PTRATIO | pupil-teacher ratio by town<a class="headerlink" href="#ptratio-pupil-teacher-ratio-by-town" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">
-<h1>| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town<a class="headerlink" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="lstat-lower-status-of-the-population">
-<h1>| LSTAT | % lower status of the population<a class="headerlink" href="#lstat-lower-status-of-the-population" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="medv-median-value-of-owner-occupied-homes-in-1000-s">
-<h1>| MEDV | Median value of owner-occupied homes in $1000’s<a class="headerlink" href="#medv-median-value-of-owner-occupied-homes-in-1000-s" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pima-indians-diabetes-database">
-<h1>“”” Pima Indians Diabetes Database “””<a class="headerlink" href="#pima-indians-diabetes-database" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-pima-indians-diabetes-csv">
-<h1># data = pd.read_csv(‘../data/pima-indians-diabetes.csv’)<a class="headerlink" href="#data-pd-read-csv-data-pima-indians-diabetes-csv" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id6">
-<h1><a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="boston-housing-dataset">
-<h1># “”” Boston Housing Dataset “””<a class="headerlink" href="#boston-housing-dataset" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv">
-<h1>column_names = [‘CRIM’, ‘ZN’, ‘INDUS’, ‘CHAS’, ‘NOX’, ‘RM’, ‘AGE’, ‘DIS’, ‘RAD’, ‘TAX’, ‘PTRATIO’, ‘B’, ‘LSTAT’, ‘MEDV’]<a class="headerlink" href="#column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names">
-<h1>data = pd.read_csv(‘../data/housing.csv.xls’, header=None, delimiter=r”\s+”, names=column_names)<a class="headerlink" href="#data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50">
-<h1>fig, axs = plt.subplots(ncols=1, nrows=len(column_names), figsize=(5, 50))<a class="headerlink" href="#fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="for-i-col-in-enumerate-column-names">
-<h1>for i, col in enumerate(column_names):<a class="headerlink" href="#for-i-col-in-enumerate-column-names" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-data-col-ax-axs-i">
-<h1>sns.histplot(data=data[col], ax=axs[i])<a class="headerlink" href="#sns-histplot-data-data-col-ax-axs-i" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-pd-read-csv-data-adult-data-header-none">
-<h1>data = pd.read_csv(‘../data/adult.data’, header=None)<a class="headerlink" href="#data-pd-read-csv-data-adult-data-header-none" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation">
-<h1>data.columns = [‘age’, ‘workclass’, ‘fnlwgt’, ‘education’, ‘education_num’, ‘marital_status’, ‘occupation’, \<a class="headerlink" href="#data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income">
-<h1>‘relationship’, ‘race’, ‘sex’, ‘capital_gain’, ‘capital_loss’, ‘hours_per_week’, ‘native_country’, ‘income’]<a class="headerlink" href="#relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50">
-<h1>fig, axs = plt.subplots(ncols=1, nrows=len(data.columns), figsize=(5, 50))<a class="headerlink" href="#fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="for-i-col-in-enumerate-data-columns">
-<h1>for i, col in enumerate(data.columns):<a class="headerlink" href="#for-i-col-in-enumerate-data-columns" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id7">
-<h1>sns.histplot(data=data[col], ax=axs[i])<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions">
-<h1>By default, <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code> will try to infer the bin edges from the data. However, it is possible to set the bin edges explicitly. This can be useful when comparing multiple distributions.<a class="headerlink" href="#by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id8">
-<h1>```python<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-dataset-x-age-bins-range-0-100-5">
-<h1>sns.histplot(data=dataset, x=”age”, bins=range(0, 100, 5))<a class="headerlink" href="#sns-histplot-data-dataset-x-age-bins-range-0-100-5" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id9">
-<h1>```<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="histogram-of-bmi">
-<h1># Histogram of BMI<a class="headerlink" href="#histogram-of-bmi" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-x-bmi-bins-10">
-<h1>sns.histplot(data, x=”BMI”, bins=10);<a class="headerlink" href="#sns-histplot-data-x-bmi-bins-10" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-title-bmi-distribution">
-<h1>plt.title(‘BMI distribution’);<a class="headerlink" href="#plt-title-bmi-distribution" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-ylabel-count-of-rows">
-<h1>plt.ylabel(‘Count (of rows)’);<a class="headerlink" href="#plt-ylabel-count-of-rows" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-grid">
-<h1>plt.grid();<a class="headerlink" href="#plt-grid" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plotting-the-data">
-<h1># Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-pairplot-data-hue-outcome-diag-kind-kde">
-<h1>sns.pairplot(data, hue=’Outcome’, diag_kind=’kde’);<a class="headerlink" href="#sns-pairplot-data-hue-outcome-diag-kind-kde" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id10">
-<h1># Plotting the data<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-x-bmi-hue-outcome-multiple-stack">
-<h1>sns.histplot(data, x=”BMI”, hue=”Outcome”, multiple=”stack”);<a class="headerlink" href="#sns-histplot-data-x-bmi-hue-outcome-multiple-stack" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-title-bmi-distribution-by-outcome">
-<h1>plt.title(‘BMI distribution by Outcome’);<a class="headerlink" href="#plt-title-bmi-distribution-by-outcome" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id11">
-<h1>from matplotlib import pyplot as plt<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id12">
-<h1>import seaborn as sns<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-set-theme">
-<h1>sns.set_theme()<a class="headerlink" href="#sns-set-theme" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-sns-histplot-data-imdb-rating">
-<h1>fig = sns.histplot(data[‘IMDB_Rating’]);<a class="headerlink" href="#fig-sns-histplot-data-imdb-rating" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-set-title">
-<h1>fig.set(title=’’);<a class="headerlink" href="#fig-set-title" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="histogram-nominal-variables">
-<h1>## Histogram: Nominal Variables<a class="headerlink" href="#histogram-nominal-variables" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-sns-histplot-data-certificate">
-<h1>fig = sns.histplot(data[‘Certificate’])<a class="headerlink" href="#fig-sns-histplot-data-certificate" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-xticks-rotation-90">
-<h1>plt.xticks(rotation=90);<a class="headerlink" href="#plt-xticks-rotation-90" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="title">
-<h1>## Title<a class="headerlink" href="#title" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id13">
-<h1>fig = sns.histplot(data[‘Certificate’])<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id14">
-<h1>plt.xticks(rotation=90);<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-title-count-of-each-certificate-in-top-1000-imdb-movies">
-<h1>plt.title(“Count of each Certificate in top 1000 IMDb movies”);<a class="headerlink" href="#plt-title-count-of-each-certificate-in-top-1000-imdb-movies" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="legend">
-<h1>## Legend<a class="headerlink" href="#legend" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id15">
-<h1><a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="top-data-500">
-<h1># top    = data[:500]<a class="headerlink" href="#top-data-500" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="bottom-data-500">
-<h1>bottom = data[500:]<a class="headerlink" href="#bottom-data-500" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-top-certificate-label-top-500-alpha-0-5">
-<h1>sns.histplot(top[‘Certificate’], label=’Top 500’, alpha=0.5)<a class="headerlink" href="#sns-histplot-top-certificate-label-top-500-alpha-0-5" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5">
-<h1>sns.histplot(bottom[‘Certificate’], label=’Bottom 500’, color=’purple’, alpha=0.5)<a class="headerlink" href="#sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id16">
-<h1>plt.xticks(rotation=90);<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id17">
-<h1>plt.title(“Count of each Certificate in top 1000 IMDb movies”)<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-legend">
-<h1>plt.legend();<a class="headerlink" href="#plt-legend" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="boxplot">
-<h1>## Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id18">
-<h1><a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-meta-score">
-<h1># sns.boxplot(x=data[“Meta_score”]);<a class="headerlink" href="#sns-boxplot-x-data-meta-score" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="plt-title-ratings-on-metacritic-for-top-1000-imdb-movies">
-<h1>plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);<a class="headerlink" href="#plt-title-ratings-on-metacritic-for-top-1000-imdb-movies" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="violin-plot">
-<h1>## Violin Plot<a class="headerlink" href="#violin-plot" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id19">
-<h1><a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-violinplot-x-data-meta-score">
-<h1># sns.violinplot(x=data[“Meta_score”]);<a class="headerlink" href="#sns-violinplot-x-data-meta-score" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id20">
-<h1>plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="subplots">
-<h1>## Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fig-axes-plt-subplots-2-2-figsize-10-10">
-<h1>fig, axes = plt.subplots(2, 2, figsize=(10, 10))<a class="headerlink" href="#fig-axes-plt-subplots-2-2-figsize-10-10" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-imdb-rating-ax-axes-0-0">
-<h1>sns.histplot(data[‘IMDB_Rating’], ax=axes[0][0]);<a class="headerlink" href="#sns-histplot-data-imdb-rating-ax-axes-0-0" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-histplot-data-meta-score-ax-axes-0-1">
-<h1>sns.histplot(data[‘Meta_score’], ax=axes[0][1]);<a class="headerlink" href="#sns-histplot-data-meta-score-ax-axes-0-1" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-imdb-rating-ax-axes-1-0">
-<h1>sns.boxplot(x=data[‘IMDB_Rating’], ax=axes[1][0]);<a class="headerlink" href="#sns-boxplot-x-data-imdb-rating-ax-axes-1-0" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sns-boxplot-x-data-meta-score-ax-axes-1-1">
-<h1>sns.boxplot(x=data[‘Meta_score’], ax=axes[1][1]);<a class="headerlink" href="#sns-boxplot-x-data-meta-score-ax-axes-1-1" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="axes-0-0-set-title-imdb-rating-fontsize-20">
-<h1>axes[0][0].set_title(‘IMDb Rating’, fontsize=20);<a class="headerlink" href="#axes-0-0-set-title-imdb-rating-fontsize-20" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="axes-0-1-set-title-meta-score-fontsize-20">
-<h1>axes[0][1].set_title(‘Meta score’, fontsize=20);<a class="headerlink" href="#axes-0-1-set-title-meta-score-fontsize-20" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -958,6 +819,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="20_visualization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Visualizing Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="22_multivariate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Multivariate Visualizations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -976,135 +855,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Univariate Visualizations</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uni-variate-visualizations-are-used-to-understand-each-attribute-in-the-dataset-in-this-section-we-will-look-at-techniques-to-understand-the-distribution-of-each-attribute">Uni-variate visualizations are used to understand each attribute in the dataset. In this section, we will look at techniques to understand the “distribution” of each attribute.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-variable-is-the-frequency-of-each-value-of-the-variable-for-example-if-we-have-a-variable-age-then-the-distribution-of-age-is-the-frequency-of-each-age-value">Distribution of a variable is the frequency of each value of the variable. For example, if we have a variable “age”, then the distribution of age is the frequency of each age value.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-discuss-distributions-in-much-greater-detail-when-we-look-at-probability-and-statistics-in-a-future-chapter-for-now-we-will-look-at-techniques-that-you-can-use-to-understand-the-distribution-of-your-attributes">We will discuss Distributions in much greater detail when we look at Probability and Statistics in a future chapter. For now, we will look at techniques that you can use to understand the distribution of your attributes.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-pima-indians-diabetes-dataset-to-demonstrate-the-uni-variate-visualizations-this-is-a-binary-classification-problem-where-all-of-the-attributes-are-numeric-and-have-different-scales-it-is-a-great-dataset-for-practicing-on-with-neural-networks-because-all-of-the-inputs-are-small-numeric-values">We will use the Pima Indians Diabetes dataset to demonstrate the uni-variate visualizations. This is a binary classification problem where all of the attributes are numeric and have different scales. It is a great dataset for practicing on with neural networks because all of the inputs are small numeric values.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-look-at-the-following-techniques-in-this-section">We will look at the following techniques in this section:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">- Histograms.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#density-plots">- Density Plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-whisker-plots">- Box and Whisker Plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-ordinal-variables">## Histogram: Ordinal Variables</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-group-data-into-bins-and-provide-you-a-count-of-the-number-of-observations-in-each-bin-from-the-shape-of-the-bins-you-can-quickly-get-a-feeling-for-whether-an-attribute-is-gaussian-skewed-or-even-has-an-exponential-distribution-it-can-also-help-you-see-possible-outliers">Histograms group data into bins and provide you a count of the number of observations in each bin. From the shape of the bins you can quickly get a feeling for whether an attribute is Gaussian, skewed or even has an exponential distribution. It can also help you see possible outliers.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-nominal-or-categorical-variable-you-can-create-a-bar-chart-showing-the-count-of-each-class-value">For a nominal or categorical variable, you can create a bar chart showing the count of each class value.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-often-take-on-one-of-the-following-shapes">Distributions often take on one of the following shapes:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bell">- Bell</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#long-tail">- Long tail</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skewed">- Skewed</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#twin-peaked">- Twin peaked</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flat">- Flat</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shapes"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-different-shapes-can-help-you-to-select-the-best-plots-and-also-suggest-that-some-transforms-of-your-data-may-be-useful-prior-to-modeling">The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-example-below-creates-a-histogram-plot-of-the-diabetes-dataset-input-variables">The example below creates a histogram plot of the diabetes dataset input variables.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-example-creates-a-histogram-plot-for-each-numeric-input-variable-in-the-dataset-we-can-see-that-some-attributes-may-have-an-exponential-distribution-such-as-attributes-3-and-6">Running the example creates a histogram plot for each numeric input variable in the dataset. We can see that some attributes may have an exponential distribution, such as attributes 3 and 6.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-also-see-that-other-attributes-may-have-a-skewed-distribution-such-as-attributes-1-5-and-7">We can also see that other attributes may have a skewed distribution such as attributes 1, 5 and 7.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-perhaps-we-can-see-a-few-attributes-that-have-a-gaussian-distribution-such-as-attributes-0-4-and-8">Finally, perhaps we can see a few attributes that have a Gaussian distribution such as attributes 0, 4 and 8.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">## Imports</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-following-libraries">We will use the following libraries:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-to-load-the-data">- Pandas: to load the data.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-to-create-the-plots">- Matplotlib: to create the plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-to-create-the-plots">- Seaborn: to create the plots.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-order-to-use-pandas-we-need-to-import-it">In order to use pandas we need to import it:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-pandas-as-pd">import pandas as pd</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-common-to-import-pandas-as-pd-this-is-not-required-but-it-is-a-convention-that-you-will-see-used-in-other-code-and-documentation-and-in-these-tutorials">It is common to import pandas as pd. This is not required, but it is a convention that you will see used in other code and documentation, and in these tutorials.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-will-use-the-read-csv-function-to-load-the-data-this-is-a-function-in-pandas-that-will-load-data-from-a-csv-file-into-a-dataframe-object">We will use the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function to load the data. This is a function in pandas that will load data from a CSV file into a DataFrame object.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-pd-read-csv-pima-indians-diabetes-csv">dataset = pd.read_csv(‘pima-indians-diabetes.csv’)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">import pandas as pd</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-matplotlib-import-pyplot-as-plt">from matplotlib import pyplot as plt</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-seaborn-as-sns">import seaborn as sns</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-inline">%matplotlib inline</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-style-to-whitegrid"># Set the style to “whitegrid”</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-set-theme-style-ticks-color-codes-true">sns.set_theme(style=”ticks”, color_codes=True)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-boston-housing-dataset-is-a-derived-from-information-collected-by-the-u-s-census-service-concerning-housing-in-the-area-of-boston-ma-the-following-describes-the-dataset-columns">The Boston Housing Dataset is a derived from information collected by the U.S. Census Service concerning housing in the area of Boston MA. The following describes the dataset columns:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#column-description">| Column | Description |</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">| — | — |</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#crim-per-capita-crime-rate-by-town">| CRIM | per capita crime rate by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#zn-proportion-of-residential-land-zoned-for-lots-over-25-000-sq-ft">| ZN | proportion of residential land zoned for lots over 25,000 sq.ft.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indus-proportion-of-non-retail-business-acres-per-town">| INDUS | proportion of non-retail business acres per town.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#chas-charles-river-dummy-variable-1-if-tract-bounds-river-0-otherwise">| CHAS | Charles River dummy variable (1 if tract bounds river; 0 otherwise)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nox-nitric-oxides-concentration-parts-per-10-million">| NOX | nitric oxides concentration (parts per 10 million)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rm-average-number-of-rooms-per-dwelling">| RM | average number of rooms per dwelling</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#age-proportion-of-owner-occupied-units-built-prior-to-1940">| AGE | proportion of owner-occupied units built prior to 1940</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dis-weighted-distances-to-five-boston-employment-centres">| DIS | weighted distances to five Boston employment centres</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-index-of-accessibility-to-radial-highways">| RAD | index of accessibility to radial highways</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tax-full-value-property-tax-rate-per-10-000">| TAX | full-value property-tax rate per $10,000</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ptratio-pupil-teacher-ratio-by-town">| PTRATIO | pupil-teacher ratio by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1000-b-k-0-63-2-where-b-k-is-the-proportion-of-black-population-by-town">| B | <span class="math notranslate nohighlight">\(1000(B_k - 0.63)^2\)</span> where <span class="math notranslate nohighlight">\(B_k\)</span> is the proportion of black population by town</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstat-lower-status-of-the-population">| LSTAT | % lower status of the population</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#medv-median-value-of-owner-occupied-homes-in-1000-s">| MEDV | Median value of owner-occupied homes in $1000’s</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pima-indians-diabetes-database">“”” Pima Indians Diabetes Database “””</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-pima-indians-diabetes-csv"># data = pd.read_csv(‘../data/pima-indians-diabetes.csv’)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-housing-dataset"># “”” Boston Housing Dataset “””</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#column-names-crim-zn-indus-chas-nox-rm-age-dis-rad-tax-ptratio-b-lstat-medv">column_names = [‘CRIM’, ‘ZN’, ‘INDUS’, ‘CHAS’, ‘NOX’, ‘RM’, ‘AGE’, ‘DIS’, ‘RAD’, ‘TAX’, ‘PTRATIO’, ‘B’, ‘LSTAT’, ‘MEDV’]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-housing-csv-xls-header-none-delimiter-r-s-names-column-names">data = pd.read_csv(‘../data/housing.csv.xls’, header=None, delimiter=r”\s+”, names=column_names)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axs-plt-subplots-ncols-1-nrows-len-column-names-figsize-5-50">fig, axs = plt.subplots(ncols=1, nrows=len(column_names), figsize=(5, 50))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-i-col-in-enumerate-column-names">for i, col in enumerate(column_names):</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-data-col-ax-axs-i">sns.histplot(data=data[col], ax=axs[i])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pd-read-csv-data-adult-data-header-none">data = pd.read_csv(‘../data/adult.data’, header=None)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-columns-age-workclass-fnlwgt-education-education-num-marital-status-occupation">data.columns = [‘age’, ‘workclass’, ‘fnlwgt’, ‘education’, ‘education_num’, ‘marital_status’, ‘occupation’, \</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-race-sex-capital-gain-capital-loss-hours-per-week-native-country-income">‘relationship’, ‘race’, ‘sex’, ‘capital_gain’, ‘capital_loss’, ‘hours_per_week’, ‘native_country’, ‘income’]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axs-plt-subplots-ncols-1-nrows-len-data-columns-figsize-5-50">fig, axs = plt.subplots(ncols=1, nrows=len(data.columns), figsize=(5, 50))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-i-col-in-enumerate-data-columns">for i, col in enumerate(data.columns):</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">sns.histplot(data=data[col], ax=axs[i])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#by-default-sns-histplot-will-try-to-infer-the-bin-edges-from-the-data-however-it-is-possible-to-set-the-bin-edges-explicitly-this-can-be-useful-when-comparing-multiple-distributions">By default, <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code> will try to infer the bin edges from the data. However, it is possible to set the bin edges explicitly. This can be useful when comparing multiple distributions.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">```python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-dataset-x-age-bins-range-0-100-5">sns.histplot(data=dataset, x=”age”, bins=range(0, 100, 5))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">```</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-bmi"># Histogram of BMI</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-x-bmi-bins-10">sns.histplot(data, x=”BMI”, bins=10);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-bmi-distribution">plt.title(‘BMI distribution’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-ylabel-count-of-rows">plt.ylabel(‘Count (of rows)’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-grid">plt.grid();</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data"># Plotting the data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-pairplot-data-hue-outcome-diag-kind-kde">sns.pairplot(data, hue=’Outcome’, diag_kind=’kde’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"># Plotting the data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-x-bmi-hue-outcome-multiple-stack">sns.histplot(data, x=”BMI”, hue=”Outcome”, multiple=”stack”);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-bmi-distribution-by-outcome">plt.title(‘BMI distribution by Outcome’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">from matplotlib import pyplot as plt</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">import seaborn as sns</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-set-theme">sns.set_theme()</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-sns-histplot-data-imdb-rating">fig = sns.histplot(data[‘IMDB_Rating’]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-set-title">fig.set(title=’’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-nominal-variables">## Histogram: Nominal Variables</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-sns-histplot-data-certificate">fig = sns.histplot(data[‘Certificate’])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-xticks-rotation-90">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#title">## Title</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">fig = sns.histplot(data[‘Certificate’])</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-count-of-each-certificate-in-top-1000-imdb-movies">plt.title(“Count of each Certificate in top 1000 IMDb movies”);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#legend">## Legend</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#top-data-500"># top    = data[:500]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-data-500">bottom = data[500:]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-top-certificate-label-top-500-alpha-0-5">sns.histplot(top[‘Certificate’], label=’Top 500’, alpha=0.5)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-bottom-certificate-label-bottom-500-color-purple-alpha-0-5">sns.histplot(bottom[‘Certificate’], label=’Bottom 500’, color=’purple’, alpha=0.5)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">plt.xticks(rotation=90);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">plt.title(“Count of each Certificate in top 1000 IMDb movies”)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-legend">plt.legend();</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot">## Boxplot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-meta-score"># sns.boxplot(x=data[“Meta_score”]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-title-ratings-on-metacritic-for-top-1000-imdb-movies">plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#violin-plot">## Violin Plot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-violinplot-x-data-meta-score"># sns.violinplot(x=data[“Meta_score”]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">plt.title(‘Ratings on Metacritic for top 1000 IMDb movies’);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">## Subplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-axes-plt-subplots-2-2-figsize-10-10">fig, axes = plt.subplots(2, 2, figsize=(10, 10))</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-imdb-rating-ax-axes-0-0">sns.histplot(data[‘IMDB_Rating’], ax=axes[0][0]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-histplot-data-meta-score-ax-axes-0-1">sns.histplot(data[‘Meta_score’], ax=axes[0][1]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-imdb-rating-ax-axes-1-0">sns.boxplot(x=data[‘IMDB_Rating’], ax=axes[1][0]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-boxplot-x-data-meta-score-ax-axes-1-1">sns.boxplot(x=data[‘Meta_score’], ax=axes[1][1]);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-0-0-set-title-imdb-rating-fontsize-20">axes[0][0].set_title(‘IMDb Rating’, fontsize=20);</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-0-1-set-title-meta-score-fontsize-20">axes[0][1].set_title(‘Meta score’, fontsize=20);</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">3.1.1. Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-labels-and-title">3.1.2. Axis labels and Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">3.1.3. Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">3.1.4. Box Plots</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
