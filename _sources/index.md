@@ -18,18 +18,7 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-**Exam 1** is on **Thursday, September 21st** during class time **8:30-9:45 AM**. <br/><br/>The exam is going to be **on computer**, similar to lab, so please bring your laptops.
-```
-
-<!-- 
-```{important}
-**[Written Assignment 2](https://docs.google.com/document/d/1-V69jP6oYPr6TiiSsxq93TnL8xLxElhHIrCkQyicbzc/edit?usp=sharing)** is due on **September 19th** at 11:59 PM
-```
- -->
-
-
-```{important}
-**[Programming Assignment 4](https://colab.research.google.com/drive/1hwgIdN5XKL9OV5BIrnJCId9sR8leDAT7?usp=sharing)** is due on **September 19th** at 11:59 PM
+**[Programming Assignment 5](https://colab.research.google.com/drive/1qEkV3NGn_3jYgipgaWYrMEXqkwoKw3kk#scrollTo=Iin18JZu_e61)** is due on **October 3rd** at 11:59 PM
 ```
 
 ```{tip}
