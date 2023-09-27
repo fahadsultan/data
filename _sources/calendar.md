@@ -24,7 +24,7 @@
 
 | #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 5     | Data Visualization         |         |                  |            |     |
+| 5     | Data Visualization         |   Skiena Ch.6      | **[Univariate](1_programming/21_univariate.ipynb)**                 |     **[Multivariate](1_programming/22_multivariate.ipynb)** <br/>  **+ [Multipanel](1_programming/23_multipanel.ipynb)**      |     |
 | 6     | Prob + Stats               |         |            |     |     |
 | 7     | Logarithms + Linear Algebra|         |         |      |     |
 | 8     | Rankings and Associations  |         |            |                  |     |
