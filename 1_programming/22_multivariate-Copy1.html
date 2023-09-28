@@ -197,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="21_univariate.html">3.1. Univariate Visualizations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="22_multivariate.html">3.2. Multivariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23_multipanel.html">3.3. Multi-panel Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_multipanel.html">3.3. Dos and Donts of Visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -409,18 +409,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-numeric-feature-across-categorical-features">Distribution of a numeric feature, across categorical features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaid-histograms">Overlaid Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-numeric-feature-w-r-t-a-categorical-features">Distribution of a numeric feature w.r.t a categorical features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaid-histograms-1-numeric-1-categorical">Overlaid Histograms (1 numeric, 1 categorical)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-box-plots">Side-by-side box plots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">Visualizing Relationships</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-plots">Joint Plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots-2-or-more-numeric-features">Scatter Plots (2 or more numeric features)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-plots-2-or-more-numeric-features">Joint Plots (2 or more numeric features)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hex-plots">Hex plots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-data-line-plot">Temporal Data: Line Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-panel-visualizations">Multi-panel Visualizations</a></li>
 </ul>
             </nav>
         </div>
@@ -617,27 +618,27 @@ document.write(`
 <p>5 rows × 47 columns</p>
 </div></div></div>
 </div>
-<section id="distribution-of-a-numeric-feature-across-categorical-features">
-<h2>Distribution of a numeric feature, across categorical features<a class="headerlink" href="#distribution-of-a-numeric-feature-across-categorical-features" title="Permalink to this headline">#</a></h2>
-<p>Let’s start by visualizing the distribution of a numeric feature, across the categories defined by a categorical feature.</p>
-<section id="overlaid-histograms">
-<h3>Overlaid Histograms<a class="headerlink" href="#overlaid-histograms" title="Permalink to this headline">#</a></h3>
+<section id="distribution-of-a-numeric-feature-w-r-t-a-categorical-features">
+<h2>Distribution of a numeric feature w.r.t a categorical features<a class="headerlink" href="#distribution-of-a-numeric-feature-w-r-t-a-categorical-features" title="Permalink to this headline">#</a></h2>
+<p>Let’s start by visualizing the distribution of a numeric feature, across the categories defined by a categorical feature. In other words, we want to visualize the distribution of a numeric feature, separately for each category of another categorical feature.</p>
+<section id="overlaid-histograms-1-numeric-1-categorical">
+<h3>Overlaid Histograms (1 numeric, 1 categorical)<a class="headerlink" href="#overlaid-histograms-1-numeric-1-categorical" title="Permalink to this headline">#</a></h3>
 <p>We can use a histogram to visualize the distribution of a numeric variable. To visualize how this distribution differs between the groups created by another categorical variable, we can create a histogram for each group separately.</p>
 <p>In order to create overlaid histograms, we will continue to use <code class="docutils literal notranslate"><span class="pre">sns.histplot</span></code>. The only addition we need to make is to use the <strong><code class="docutils literal notranslate"><span class="pre">hue</span></code> argument to specify the categorical feature</strong> that defines the groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">americas</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Continent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;America&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># americas = data[data[&#39;Continent&#39;].apply(lambda x: &quot;America&quot; in x)]</span>
 
 <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;Gross domestic product: </span><span class="si">% g</span><span class="s2">rowth : 2016&quot;</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">americas</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">col</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Continent&quot;</span><span class="p">,</span>  <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="p">);</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">col</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Continent&quot;</span><span class="p">);</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;GDP of North American vs. South American countries&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f5815bd6213dd1ef654fb2c08ec4e5f3d1ee69615ec2ae3de825be7c307833a5.png" src="../_images/f5815bd6213dd1ef654fb2c08ec4e5f3d1ee69615ec2ae3de825be7c307833a5.png" />
+<img alt="../_images/98b82d0b0d666e880e28bb4ea8694097cd205407f25bad15777348a716e469c4.png" src="../_images/98b82d0b0d666e880e28bb4ea8694097cd205407f25bad15777348a716e469c4.png" />
 </div>
 </div>
 <p>Note the use of the <strong><code class="docutils literal notranslate"><span class="pre">hue</span></code></strong> argument to <code class="docutils literal notranslate"><span class="pre">histplot</span></code>. It adds a new dimension to the plot, by coloring the bars according to the value of the categorical feature.</p>
@@ -649,24 +650,199 @@ document.write(`
 <h3>Side-by-side box plots<a class="headerlink" href="#side-by-side-box-plots" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;Gross domestic product: </span><span class="si">% g</span><span class="s2">rowth : 2016&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">col</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Continent&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Continent</th>
+      <th>Country</th>
+      <th>Primary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Primary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Male: % of relevant age group: 2015</th>
+      <th>Lower secondary completion rate: Female: % of relevant age group: 2015</th>
+      <th>Youth literacy rate: Male: % of ages 15-24: 2005-14</th>
+      <th>Youth literacy rate: Female: % of ages 15-24: 2005-14</th>
+      <th>Adult literacy rate: Male: % ages 15 and older: 2005-14</th>
+      <th>Adult literacy rate: Female: % ages 15 and older: 2005-14</th>
+      <th>...</th>
+      <th>Access to improved sanitation facilities: % of population: 1990</th>
+      <th>Access to improved sanitation facilities: % of population: 2015</th>
+      <th>Child immunization rate: Measles: % of children ages 12-23 months: 2015</th>
+      <th>Child immunization rate: DTP3: % of children ages 12-23 months: 2015</th>
+      <th>Children with acute respiratory infection taken to health provider: % of children under age 5 with ARI: 2009-2016</th>
+      <th>Children with diarrhea who received oral rehydration and continuous feeding: % of children under age 5 with diarrhea: 2009-2016</th>
+      <th>Children sleeping under treated bed nets: % of children under age 5: 2009-2016</th>
+      <th>Children with fever receiving antimalarial drugs: % of children under age 5 with fever: 2009-2016</th>
+      <th>Tuberculosis: Treatment success rate: % of new cases: 2014</th>
+      <th>Tuberculosis: Cases detection rate: % of new estimated cases: 2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Africa</td>
+      <td>Algeria</td>
+      <td>106.0</td>
+      <td>105.0</td>
+      <td>68.0</td>
+      <td>85.0</td>
+      <td>96.0</td>
+      <td>92.0</td>
+      <td>83.0</td>
+      <td>68.0</td>
+      <td>...</td>
+      <td>80.0</td>
+      <td>88.0</td>
+      <td>95.0</td>
+      <td>95.0</td>
+      <td>66.0</td>
+      <td>42.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Africa</td>
+      <td>Angola</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.0</td>
+      <td>67.0</td>
+      <td>82.0</td>
+      <td>60.0</td>
+      <td>...</td>
+      <td>22.0</td>
+      <td>52.0</td>
+      <td>55.0</td>
+      <td>64.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.9</td>
+      <td>28.3</td>
+      <td>34.0</td>
+      <td>64.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Africa</td>
+      <td>Benin</td>
+      <td>83.0</td>
+      <td>73.0</td>
+      <td>50.0</td>
+      <td>37.0</td>
+      <td>55.0</td>
+      <td>31.0</td>
+      <td>41.0</td>
+      <td>18.0</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>20.0</td>
+      <td>75.0</td>
+      <td>79.0</td>
+      <td>23.0</td>
+      <td>33.0</td>
+      <td>72.7</td>
+      <td>25.9</td>
+      <td>89.0</td>
+      <td>61.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Africa</td>
+      <td>Botswana</td>
+      <td>98.0</td>
+      <td>101.0</td>
+      <td>86.0</td>
+      <td>87.0</td>
+      <td>96.0</td>
+      <td>99.0</td>
+      <td>87.0</td>
+      <td>89.0</td>
+      <td>...</td>
+      <td>39.0</td>
+      <td>63.0</td>
+      <td>97.0</td>
+      <td>95.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>77.0</td>
+      <td>62.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Africa</td>
+      <td>Burundi</td>
+      <td>58.0</td>
+      <td>66.0</td>
+      <td>35.0</td>
+      <td>30.0</td>
+      <td>90.0</td>
+      <td>88.0</td>
+      <td>89.0</td>
+      <td>85.0</td>
+      <td>...</td>
+      <td>42.0</td>
+      <td>48.0</td>
+      <td>93.0</td>
+      <td>94.0</td>
+      <td>55.0</td>
+      <td>43.0</td>
+      <td>53.8</td>
+      <td>25.4</td>
+      <td>91.0</td>
+      <td>51.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 47 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Gross domestic product: </span><span class="si">% g</span><span class="s2">rowth : 2016&quot;</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Primary completion rate: Female: </span><span class="si">% o</span><span class="s2">f relevant age group: 2015&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">col2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">col1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;GDP distribution of countries by continent 2016&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/43b61e7267cfba869d7a3816fcd1490cd0275c230cc31a75d0ca7168763fdd3a.png" src="../_images/43b61e7267cfba869d7a3816fcd1490cd0275c230cc31a75d0ca7168763fdd3a.png" />
+<img alt="../_images/519a60e6853482c26b28ec08cb09a4d91fa2ece539e4f57d5551a25aca3bc7e6.png" src="../_images/519a60e6853482c26b28ec08cb09a4d91fa2ece539e4f57d5551a25aca3bc7e6.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="visualizing-relationships">
 <h2>Visualizing Relationships<a class="headerlink" href="#visualizing-relationships" title="Permalink to this headline">#</a></h2>
-<section id="scatter-plots">
-<h3>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">#</a></h3>
+<p>In addition to visualizing the distribution of features, we often want to understand how two features are related.</p>
+<section id="scatter-plots-2-or-more-numeric-features">
+<h3>Scatter Plots (2 or more numeric features)<a class="headerlink" href="#scatter-plots-2-or-more-numeric-features" title="Permalink to this headline">#</a></h3>
 <p>Scatter plots are one of the most useful tools in representing the relationship between two numerical features. They are particularly important in gauging the strength (correlation) of the relationship between features. Knowledge of these relationships can then motivate decisions in our modeling process.</p>
 <p>In Matplotlib, we use the function plt.scatter to generate a scatter plot. Notice that unlike our examples of plotting single-variable distributions, now we specify sequences of values to be plotted along the x axis and the y axis.</p>
 <div class="cell docutils container">
@@ -675,22 +851,24 @@ document.write(`
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> \
                      <span class="n">x</span> <span class="o">=</span><span class="s1">&#39;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s1">ges 15 and older: 2005-14&#39;</span><span class="p">,</span> \
-                     <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">)</span>
+                     <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
+                     <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Continent&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Female adult literacy against </span><span class="si">% g</span><span class="s2">rowth&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/20dc6d5d1ad95247a0098f1492c5630be8b0e5357e5a9420051703849cf596ab.png" src="../_images/20dc6d5d1ad95247a0098f1492c5630be8b0e5357e5a9420051703849cf596ab.png" />
+<img alt="../_images/72ae11426aba31c36d3dbf0ade350e268b2bc4ebf3b0f2742f1c7f4fb4fd77e5.png" src="../_images/72ae11426aba31c36d3dbf0ade350e268b2bc4ebf3b0f2742f1c7f4fb4fd77e5.png" />
 </div>
 </div>
 <p>In Seaborn, we call the function sns.scatterplot. We use the x and y parameters to indicate the values to be plotted along the x and y axes, respectively. By using the hue parameter, we can specify a third variable to be used for coloring each scatter point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
-               <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&quot;</span><span class="p">,</span> 
-               <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;Continent&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> \
+                <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
+                <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&quot;</span><span class="p">,</span> 
+                <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;Continent&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Female adult literacy against </span><span class="si">% g</span><span class="s2">rowth&quot;</span><span class="p">);</span>
 </pre></div>
@@ -715,17 +893,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/858f73a637472ecebd5e2c0e7bcd8b72c2385e72d0ae4226dcf05b8be44a9491.png" src="../_images/858f73a637472ecebd5e2c0e7bcd8b72c2385e72d0ae4226dcf05b8be44a9491.png" />
+<img alt="../_images/4d89fe1d80aadebc49cf988292ed160c5c8c74b43df40eef9105d4c4c773b12c.png" src="../_images/4d89fe1d80aadebc49cf988292ed160c5c8c74b43df40eef9105d4c4c773b12c.png" />
 </div>
 </div>
 </section>
-<section id="joint-plots">
-<h3>Joint Plots<a class="headerlink" href="#joint-plots" title="Permalink to this headline">#</a></h3>
+<section id="joint-plots-2-or-more-numeric-features">
+<h3>Joint Plots (2 or more numeric features)<a class="headerlink" href="#joint-plots-2-or-more-numeric-features" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">sns.jointplot</span></code> creates a visualization with three components: a scatter plot, a histogram of the distribution of x values, and a histogram of the distribution of y values.</p>
+<p>A joint plot visualizes both: relationship and distributions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
-           <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> 
+              <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
+              <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&quot;</span><span class="p">)</span>
 
 <span class="c1"># plt.suptitle allows us to shift the title up so it does not overlap with the histogram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Female adult literacy against </span><span class="si">% g</span><span class="s2">rowth&quot;</span><span class="p">)</span>
@@ -740,12 +920,12 @@ document.write(`
 </section>
 <section id="hex-plots">
 <h3>Hex plots<a class="headerlink" href="#hex-plots" title="Permalink to this headline">#</a></h3>
-<p>For datasets with a very large number of datapoints, jittering is unlikely to fully resolve the issue of overplotting. In these cases, we can attempt to visualize our data by its density, rather than displaying each individual datapoint.</p>
 <p><strong>Hex plots</strong> can be thought of as a two dimensional histograms that shows the joint distribution between two variables. This is particularly useful working with very dense data. In a hex plot, the x-y plane is binned into hexagons. Hexagons that are darker in color indicate a greater density of data – that is, there are more datapoints that lie in the region enclosed by the hexagon.</p>
 <p>We can generate a hex plot using <code class="docutils literal notranslate"><span class="pre">sns.jointplot</span></code> modified with the kind parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">wb</span><span class="p">,</span> \
+              <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;per capita: </span><span class="si">% g</span><span class="s2">rowth: 2016&quot;</span><span class="p">,</span> \
               <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Adult literacy rate: Female: </span><span class="si">% a</span><span class="s2">ges 15 and older: 2005-14&quot;</span><span class="p">,</span> \
               <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;hex&quot;</span><span class="p">)</span>
 
@@ -763,26 +943,83 @@ document.write(`
 </section>
 <section id="temporal-data-line-plot">
 <h2>Temporal Data: Line Plot<a class="headerlink" href="#temporal-data-line-plot" title="Permalink to this headline">#</a></h2>
+<p>If you are trying to visualize the relationship between two numeric variables, and one of those variables is time, then you should use a line plot.</p>
+<p>Line plots are useful for visualizing the relationship between two numeric variables when one of them is time.</p>
+<p>In seaborn, we can create a line plot using the function <strong><code class="docutils literal notranslate"><span class="pre">sns.lineplot</span></code></strong>. We use the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> parameters to specify the variable to be plotted along the x and y axes, respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/elections.csv&#39;</span><span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Popular vote&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Result&#39;</span><span class="p">);</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Popular vote&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Result&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/433012d7387818e1d599263f50131de8e8369b5b6bd5776d7491375d70e77486.png" src="../_images/433012d7387818e1d599263f50131de8e8369b5b6bd5776d7491375d70e77486.png" />
+<img alt="../_images/00f764ae23d01684342d1b4d1de808ff63080ba873f2a950672bf823b4f1afca.png" src="../_images/00f764ae23d01684342d1b4d1de808ff63080ba873f2a950672bf823b4f1afca.png" />
 </div>
 </div>
+<p>Note that seaborn automatically aggregates the data by taking the mean of each numeric variable at each time point. The shaded region around the line represents the 95% confidence interval for the mean. We’ll talk more about confidence intervals in a later lecture.</p>
+</section>
+<section id="multi-panel-visualizations">
+<h2>Multi-panel Visualizations<a class="headerlink" href="#multi-panel-visualizations" title="Permalink to this headline">#</a></h2>
+<p>To create a multi-panel visualization, we can use the <code class="docutils literal notranslate"><span class="pre">sns.FacetGrid</span></code>.</p>
+<p>This class takes in a dataframe, the <strong>names of the variables</strong> that will form the <strong>row, column, or hue dimensions</strong> of the grid, and the <strong>plot type</strong> to be produced for each subset of the data. The plot type is provided as a method of the FacetGrid object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Result&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>  <span class="n">row</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/69185deb89da726ee321e032bc923f5532388980e3d1db1bbb35fefdc5134f75.png" src="../_images/69185deb89da726ee321e032bc923f5532388980e3d1db1bbb35fefdc5134f75.png" />
+<img alt="../_images/ba84de1bf001b860e6a3da5cd52f9be6ceb1a7d49ec32e0ce17c50642cc3be14.png" src="../_images/ba84de1bf001b860e6a3da5cd52f9be6ceb1a7d49ec32e0ce17c50642cc3be14.png" />
+</div>
+</div>
+<p>The variable specification in <code class="docutils literal notranslate"><span class="pre">FacetGrid.map()</span></code> requires a positional argument <code class="docutils literal notranslate"><span class="pre">mapping</span></code>, but if the function has a <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter and accepts named variable assignments, you can also use <code class="docutils literal notranslate"><span class="pre">FacetGrid.map_dataframe()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>  <span class="n">row</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_dataframe</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9c6d7ec7ad61647593096ab2a4257ed8612ff66614b73d0ce263d3f07dd54ed7.png" src="../_images/9c6d7ec7ad61647593096ab2a4257ed8612ff66614b73d0ce263d3f07dd54ed7.png" />
+</div>
+</div>
+<p>The FacetGrid constructor accepts a hue parameter. Setting this will condition the data on another variable and make multiple plots in different colors. Where possible, label information is tracked so that a single legend can be drawn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_dataframe</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0406d1cf7c0c5e04c2cb0fa88557cfd91ba7cf9395739ec529d52aafdbc6c05d.png" src="../_images/0406d1cf7c0c5e04c2cb0fa88557cfd91ba7cf9395739ec529d52aafdbc6c05d.png" />
+</div>
+</div>
+<p>The FacetGrid object has some other useful parameters and methods for tweaking the plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">margin_titles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_dataframe</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s2">&quot;Total bill ($)&quot;</span><span class="p">,</span> <span class="s2">&quot;Tip ($)&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="n">col_template</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{col_name}</span><span class="s2"> patrons&quot;</span><span class="p">,</span> <span class="n">row_template</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{row_name}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;facet_plot.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/da56bce9c5a1881ea94df57bafbdd83b88ed7b336bb1ceeb71677d03f36b8989.png" src="../_images/da56bce9c5a1881ea94df57bafbdd83b88ed7b336bb1ceeb71677d03f36b8989.png" />
 </div>
 </div>
 </section>
@@ -837,18 +1074,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-numeric-feature-across-categorical-features">Distribution of a numeric feature, across categorical features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaid-histograms">Overlaid Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-a-numeric-feature-w-r-t-a-categorical-features">Distribution of a numeric feature w.r.t a categorical features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaid-histograms-1-numeric-1-categorical">Overlaid Histograms (1 numeric, 1 categorical)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-box-plots">Side-by-side box plots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">Visualizing Relationships</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-plots">Joint Plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots-2-or-more-numeric-features">Scatter Plots (2 or more numeric features)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-plots-2-or-more-numeric-features">Joint Plots (2 or more numeric features)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hex-plots">Hex plots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-data-line-plot">Temporal Data: Line Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-panel-visualizations">Multi-panel Visualizations</a></li>
 </ul>
   </nav></div>
 
