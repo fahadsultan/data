@@ -52,16 +52,16 @@ parts:
       sections: 
         - file: 1_programming/21_univariate
         - file: 1_programming/22_multivariate
-        - file: 1_programming/23_multipanel
+        - file: 1_programming/23_dosdonts
       #   - file: 1_programming/23_notes
   - caption: Mathematics for Data Science
     numbered: true
     chapters: 
-    - file: 2_maths/10_probability.ipynb
-      # sections: 
-      #   - file: 2_maths/11_randomvars
-      #   - file: 2_maths/12_centrality
-      #   - file: 2_maths/13_variability
+    - file: 2_maths/10_prob_stats_log.ipynb
+      sections: 
+        - file: 2_maths/11_probability
+        - file: 2_maths/12_stats
+        - file: 2_maths/13_log
       #   - file: 2_maths/14_distributions
       #   - file: 2_maths/15_prob_notes
     # - file: 2_maths/20_logarithms.ipynb
