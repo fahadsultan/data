@@ -199,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">3.1. Univariate Visualizations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">3.2. Multivariate Visualizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_programming/23_multipanel.html">3.3. Dos and Donts of Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/23_dosdonts.html">3.3. Dos and Donts of Visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -592,6 +592,16 @@ document.write(`
 <p>Correlation is a measure of how two random variables vary together. For example, if we are rolling two dice, the correlation is a measure of how the numbers that we roll on the two dice vary together. The correlation is usually denoted by <span class="math notranslate nohighlight">\(Corr(X, Y)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) \cdot Var(Y)}} \]</div>
+<p>Distributions often take on one of the following shapes:</p>
+<ul class="simple">
+<li><p>Bell</p></li>
+<li><p>Long tail</p></li>
+<li><p>Skewed</p></li>
+<li><p>Twin peaked</p></li>
+<li><p>Flat</p></li>
+</ul>
+<a class="reference internal image-reference" href="https://leanscape.io/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg"><img alt="Different Type of Data Distributions" class="align-center" src="https://leanscape.io/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg" style="width: 100%;" /></a>
+<p>The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling.</p>
 </section>
 </section>
 
