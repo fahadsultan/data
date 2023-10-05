@@ -420,8 +420,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statistics">
 <h1><span class="section-number">4.2. </span>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h1>
-<!-- 
-Distributions often take on one of the following shapes:
+<!--## Maximum Likelihood Estimation
+
+Maximum likelihood estimation (MLE) is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable. The point in the parameter space that maximizes the likelihood function is called the maximum likelihood estimate.
+
+Likelihood function is the probability of observing the data given the parameters.
+
+For instance, if we were interested in probability of observing a head in a coin toss, we would use the Bernoulli distribution. The Bernoulli distribution has a single parameter, the probability of success, which we will call $p$. The probability of observing a head is $p$ and the probability of observing a tail is $1-p$. The likelihood function for a single coin toss is:
+
+$$
+\begin{aligned}
+L(p) &= p^x(1-p)^{1-x} \\
+&= \begin{cases}
+p & \text{if } x = 1 \\
+1-p & \text{if } x = 0
+\end{cases}
+\end{aligned}
+$$
+
+where $x$ is the outcome of the coin toss. If we observe a head, then $x=1$ and the likelihood function is $L(p) = p$. If we observe a tail, then $x=0$ and the likelihood function is $L(p) = 1-p$.
+
+The 
+
+## Central Dogma of Statistics
+
+The central dogma of statistics is that all data are random samples from some population. The population is the set of all possible observations that could be made. A sample is a subset of observations drawn from the population.
+
+<img src="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/dogma.png">
+
+The central dogma of data science, simply put, is that general claims about a population can be made from a sample of data. This raises all sorts of questions and concerns about the sampling process such as the representativeness of the sample, the size of the sample, the sampling bias, etc. Which in turn raises concerns about potential negative effects of the claims made based on questionable data.
+
+
+## Law of Large Numbers
+
+The law of large numbers states that as the number of trials of a random experiment increases, the average of the observed outcomes approaches the expected value. -->
+<hr/>
+<!-- Distributions often take on one of the following shapes:
 
 - Bell
 - Long tail
@@ -435,7 +469,15 @@ Distributions often take on one of the following shapes:
 :align: center
 ```
 
-The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling. --><!-- ## Mean --><!-- ## Geometric Mean --><!-- ## Median --><!-- ## Mode --><!-- ## Maximum Likelihood Estimation
+The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling. --><!-- ## Mean
+
+## Geometric Mean
+
+## Median
+
+## Mode
+
+## Maximum Likelihood Estimation
 
 ## Central Dogma of Statistics --><div class="cell docutils container">
 <div class="cell_input docutils container">
