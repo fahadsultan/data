@@ -76,8 +76,8 @@ parts:
       #   - file: 2_maths/43_linearalgebra_notes
     - file: 2_maths/50_calculus.ipynb
       # sections: 
-      #   - file: 2_maths/51_errors
-      #   - file: 2_maths/52_optimization
+        # - file: 2_maths/51_integral
+        # - file: 2_maths/52_differential
       #   - file: 2_maths/53_calculus_notes
   - caption: Problems in Data Science
     numbered: true
@@ -86,20 +86,20 @@ parts:
       # sections: 
       #   - file: 3_problems_in/11_pagerank
       #   - file: 3_problems_in/12_apriori
+    - file: 3_problems_in/40_classification
     - file: 3_problems_in/20_clustering
     - file: 3_problems_in/30_regression
-    - file: 3_problems_in/40_classification
   - caption: Models in Data Science
     numbered: true
     chapters:
+      - file: 4_models/graphical
+        # sections: 
+        # - file: 3_problems_in/41_naivebayes
       - file: 3_problems_in/22_kmeans
       - file: 4_models/generalized
         # sections: 
         # - file: 3_problems_in/31_linear
         # - file: 3_problems_in/42_perceptron
-      - file: 4_models/graphical
-        # sections: 
-        # - file: 3_problems_in/41_naivebayes
       - file: 4_models/nn
   - caption: Algorithms in Data Science
     numbered: true
@@ -110,8 +110,8 @@ parts:
   - caption: Problems with Data Science
     numbered: true
     chapters:
-    - file: 6_problems_with/40_feedback
     - file: 6_problems_with/10_representation
+    - file: 6_problems_with/40_feedback
     - file: 6_problems_with/20_boundaries
     - file: 6_problems_with/30_incentives
   # - caption: Applications of Data Science
