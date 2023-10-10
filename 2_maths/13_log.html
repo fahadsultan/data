@@ -67,6 +67,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/13_log';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -216,15 +218,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">7. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">9. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">7. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">8. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">9. Regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10. Mixture Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">11. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">12. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -235,8 +237,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
 </ul>
@@ -393,7 +395,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -409,6 +413,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monotonically-increasing-function">4.3.1. Monotonically Increasing Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-probabilities">4.3.2. Multiplying Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratios-of-probabilities">4.3.3. Ratios of Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-skewed-distributions">4.3.4. Normalizing Skewed Distributions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -420,13 +435,246 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="logarithms">
 <h1><span class="section-number">4.3. </span>Logarithms<a class="headerlink" href="#logarithms" title="Permalink to this headline">#</a></h1>
-<!-- ## Standard Deviation  --><!-- ## Variance --><div class="cell docutils container">
+<p>The logarithm is the inverse exponential function of base b. That is,</p>
+<div class="math notranslate nohighlight">
+\[ \text{if  } y = e^x \]</div>
+<div class="math notranslate nohighlight">
+\[ \text{then  } x = log_e y \]</div>
+<p>From the two equations above, it follows that</p>
+<div class="math notranslate nohighlight">
+\[  log_e e^x = x \]</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;$Y = f(x) = e^{~x}$&quot;</span> <span class="o">+</span> <span class="s2">&quot; where &quot;</span> <span class="o">+</span> <span class="s2">&quot;$x \in [0, 1000)$&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/935293888906f78a33f48e106cc22ae7a2f6fb833ba4b12bd1813ac769a0bd52.png" src="../_images/935293888906f78a33f48e106cc22ae7a2f6fb833ba4b12bd1813ac769a0bd52.png" />
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;log(X)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;$Y = e^</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$log_e(Y)$&#39;</span><span class="p">,</span> <span class="s1">&#39;$log_e(X)$&#39;</span><span class="p">]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e93dd11b0184be3cee319fa6416888b449be243e203b7e3d47bd65ec5d271664.png" src="../_images/e93dd11b0184be3cee319fa6416888b449be243e203b7e3d47bd65ec5d271664.png" />
+</div>
+</div>
+<p>Exponential functions grow at a very fast rate. In contrast, logarithms grow a very slow rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>log(Y)</th>
+      <th>log(X)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>95</th>
+      <td>96</td>
+      <td>4.923458e+41</td>
+      <td>96.0</td>
+      <td>4.564348</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>97</td>
+      <td>1.338335e+42</td>
+      <td>97.0</td>
+      <td>4.574711</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>98</td>
+      <td>3.637971e+42</td>
+      <td>98.0</td>
+      <td>4.584967</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>99</td>
+      <td>9.889030e+42</td>
+      <td>99.0</td>
+      <td>4.595120</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>100</td>
+      <td>2.688117e+43</td>
+      <td>100.0</td>
+      <td>4.605170</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The natural logarithm is the logarithm to the base <span class="math notranslate nohighlight">\(e\)</span>, where <span class="math notranslate nohighlight">\(e\)</span> is an irrational constant called Euler’s number, approximately equal to 2.718281828459. The natural logarithm of a number <span class="math notranslate nohighlight">\(x\)</span> is generally written as <span class="math notranslate nohighlight">\(ln x\)</span> or <span class="math notranslate nohighlight">\(log_e x\)</span>.</p>
+<p>The relationship between the exponential function and the logarithm is preserved when considering logarithms to any other base. Therefore, more generally,</p>
+<div class="math notranslate nohighlight">
+\[ \text{if  } y = b^x \]</div>
+<div class="math notranslate nohighlight">
+\[ \text{then  } x = log_b y \]</div>
+<p>The logarithm of a number y to base b is the exponent to which we must raise b to get y.</p>
+<p>For example, <span class="math notranslate nohighlight">\(2^3 = 8\)</span>, so <span class="math notranslate nohighlight">\(log_2 8 = 3\)</span>.</p>
+<p>Logarithms are very useful things, and arise often in data analysis. Here I detail three important roles logarithms play in data science.</p>
+<section id="monotonically-increasing-function">
+<h2><span class="section-number">4.3.1. </span>Monotonically Increasing Function<a class="headerlink" href="#monotonically-increasing-function" title="Permalink to this headline">#</a></h2>
+<p>A function <span class="math notranslate nohighlight">\(f (x)\)</span> is monotonically increasing if <span class="math notranslate nohighlight">\(x1 &gt; x2\)</span> implies that <span class="math notranslate nohighlight">\(f (x1) &gt; f (x2)\)</span>.</p>
+<p>The logarithm is a monotonically increasing function. This means that if <span class="math notranslate nohighlight">\(x1 &gt; x2\)</span> then <span class="math notranslate nohighlight">\(log(x1) &gt; log(x2)\)</span>.</p>
+<p>This is a very useful property, because it means that we can apply a logarithmic transformation without changing the order of the data. Preserving the relative order of the data is important for many statistical techniques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>      <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">legend</span><span class="p">([],[],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Note that the order of the points is preserved between</span><span class="se">\n</span><span class="s2">top: $Y=e^X$, middle:$X$ and bottom:$log(X)$&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/48f6e26b28e2d45fba8b112f859049fbe6ff49dfb0ab60e3b8fc638f6a8055fd.png" src="../_images/48f6e26b28e2d45fba8b112f859049fbe6ff49dfb0ab60e3b8fc638f6a8055fd.png" />
+</div>
+</div>
+</section>
+<section id="multiplying-probabilities">
+<h2><span class="section-number">4.3.2. </span>Multiplying Probabilities<a class="headerlink" href="#multiplying-probabilities" title="Permalink to this headline">#</a></h2>
+<p>Logarithms were first invented as an aide to computation, by reducing the problem of multiplication to that of addition.</p>
+<p>In particular, to compute the product <span class="math notranslate nohighlight">\(p = x \cdot y\)</span>, we could compute the sum of the logarithms <span class="math notranslate nohighlight">\(s = log_b x+log_b y\)</span> and then take the inverse of the logarithm (i.e. raising <span class="math notranslate nohighlight">\(b\)</span> to the <span class="math notranslate nohighlight">\(sth\)</span> power) to get <span class="math notranslate nohighlight">\(p\)</span>, because:</p>
+<div class="math notranslate nohighlight">
+\[p = x \cdot y = b^{(log_b x+log_b y)}\]</div>
+<p>This is the trick that powered the mechanical slide rules that geeks used in the days before pocket calculators.</p>
+<p>However, this idea remains important today, particularly <strong>when multiplying long chains of probabilities</strong>.
+Probabilities are small numbers. Thus multiplying long chains of probability yield very small numbers that govern the chances of very rare events. There are serious <strong>numerical stability problems</strong> with floating point multiplication on real computers. Numerical errors will creep in, and will eventually overwhelm the true value of small-enough numbers.</p>
+<p><strong>Summing the logarithms of probabilities is much more numerically stable than multiplying them, but yields an equivalent result</strong> because:</p>
+<div class="math notranslate nohighlight">
+\[ \prod_{i=1}^{n} p_i = b^P , \text{where}~~P = \sum_{i=1}^{n} log_b(p_i) \]</div>
+<p>We can raise our sum to an exponential if we need the real probability, but usually this is not necessary.</p>
+<p>When we just need to compare two probabilities to decide which one is larger we can safely stay in log world, because bigger logarithms correspond to bigger probabilities.</p>
+<p><em>There is one quirk to be aware of. Recall that the log2(12) = −1. The logarithms of probabilities are all negative numbers except for log(1) = 0. This is the reason why equations with logs of probabilities often feature negative signs in strange places. Be on the lookout for them.</em></p>
+</section>
+<section id="ratios-of-probabilities">
+<h2><span class="section-number">4.3.3. </span>Ratios of Probabilities<a class="headerlink" href="#ratios-of-probabilities" title="Permalink to this headline">#</a></h2>
+<p>Ratios are quantities of the form <span class="math notranslate nohighlight">\(\frac{a}/{b}\)</span>. They occur often in data sets either as elementary features or values derived from feature pairs. Ratios naturally occur in normalizing data for conditions (i.e. weight after some treatment over the initial weight) or time (i.e. today’s price over yesterday’s price).</p>
+<p>But ratios behave differently when reflecting increases than decreases. The ratio <span class="math notranslate nohighlight">\(200/100\)</span> is <span class="math notranslate nohighlight">\(200%\)</span> above baseline, but <span class="math notranslate nohighlight">\(100/200\)</span> is only 50% below despite being a similar magnitude change. Thus doing things like averaging ratios is committing a statistical sin. Do you really want a doubling followed by a halving to average out as an increase, as opposed to a neutral change?</p>
+<p>One solution here would have been to use the geometric mean. But better is taking the logarithm of these ratios, so that they yield equal displacement, since log_2 2 = 1 and log_2(1/2) = −1. We get the extra bonus that a unit ratio maps to zero, so positive and negative numbers correspond to improper and proper ratios, respectively.</p>
+<figure class="align-default" id="log-ratio">
+<a class="reference internal image-reference" href="../_images/log_ratios.png"><img alt="../_images/log_ratios.png" src="../_images/log_ratios.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Plotting ratios on a scale cramps the space allocated to small ratios relative to large ratios (left). Plotting the logarithms of ratios better represents the underlying data (right).</span><a class="headerlink" href="#log-ratio" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A rookie mistake my students often make involves plotting the value of ratios instead of their logarithms. Figure above (left) is a graph from a student paper, showing the ratio of new score over old score on data over 24 hours (each red dot is the measurement for one hour) on four different data sets (each given a row). The solid black line shows the ratio of one, where both scores give the same result. Now try to read this graph: it isn’t easy because the points on the left side of the line are cramped together in a narrow strip. What jumps out at you are the outliers. Certainly the new algorithm does terrible on 7UM917 in the top row: that point all the way to the right is a real outlier.</p>
+<p>Except that it isn’t. Now look at the panel  on the right, where we plot the logarithms of the ratios. The space devoted to left and right of the black line can now be equal. And it shows that this point wasn’t really such an outlier at all. The magnitude of improvement of the leftmost points is much greater than that of the rightmost points. This plot reveals that new algorithm generally makes things better, only because we are showing logs of ratios instead of the ratios themselves.</p>
+<p>Similar to the case of multiplying probabilities, ratio of probabilities can be computed by subtracting the logarithms of the probabilities:</p>
+<div class="math notranslate nohighlight">
+\[ log_{~b} (\frac{a}{b} ) = log_{~b} ( a - b ) \]</div>
+</section>
+<section id="normalizing-skewed-distributions">
+<h2><span class="section-number">4.3.4. </span>Normalizing Skewed Distributions<a class="headerlink" href="#normalizing-skewed-distributions" title="Permalink to this headline">#</a></h2>
+<p>Variables which follow symmetric, bell-shaped distributions tend to be nice as features in models. They show substantial variation, so they can be used to discriminate between things, but not over such a wide range that outliers are overwhelming.</p>
+<p>But not every distribution is symmetric. Consider the one in Figure 2.13 (left). The tail on the right goes much further than the tail on the left. And we are destined to see far more lopsided distributions when we discuss power laws, in Section 5.1.5. Wealth is representative of such a distribution, where the poorest human has zero or perhaps negative wealth, the average person (optimistically) is in the thousands of dollars, and Bill Gates is pushing $100 billion as of this writing.</p>
+<figure class="align-default" id="log-skew">
+<a class="reference internal image-reference" href="../_images/log_skew.png"><img alt="../_images/log_skew.png" src="../_images/log_skew.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Hitting a skewed data distribution (left) with a log often yields a more bell-shaped distribution (right).</span><a class="headerlink" href="#log-skew" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We need a normalization to convert such distributions into something easier to deal with. To ring the bell of a power law distribution we need something non-linear, that reduces large values to a disproportionate degree compared to more modest values.</p>
+<p>The logarithm is the transformation of choice for power law variables. Hit your long-tailed distribution with a log and often good things happen. The distribution in Figure 2.13 happened to be the log normal distribution, so taking the logarithm yielded a perfect bell-curve on right. Taking the logarithm of variables with a power law distribution brings them more in line with traditional distributions. For example, as an upper-middle class professional, my wealth is roughly the same number of logs from my starving students as I am from Bill Gates!</p>
+<p>Sometimes taking the logarithm proves too drastic a hit, and a less dramatic non-linear transformation like the square root works better to normalize a dis- tribution. The acid test is to plot a frequency distribution of the transformed values and see if it looks bell-shaped: grossly-symmetric, with a bulge in the middle. That is when you know you have the right function.</p>
+<hr/>
+<p>In <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> you can specify the use of log scale for an axis with <strong><code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">plt.xscale('log')</span></code></strong>.</p>
+<p>Example code cell below. Note how the values on the y-axis are still evenly spaced but increase exponentially.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dbc40416b392ce43dbf95c785ab64d8aa4a1f1ab5fa99cd1130213caa9a6378f.png" src="../_images/dbc40416b392ce43dbf95c785ab64d8aa4a1f1ab5fa99cd1130213caa9a6378f.png" />
+</div>
+</div>
+<p>Similarly, you can specify the use of log scale for both axes with <strong><code class="docutils literal notranslate"><span class="pre">log_scale</span> <span class="pre">=</span> <span class="pre">[True,</span> <span class="pre">False]</span></code></strong> in most plotting functions in <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. The first value in the list is for the x-axis, the second for the y-axis. <code class="docutils literal notranslate"><span class="pre">True</span></code> means log scale, <code class="docutils literal notranslate"><span class="pre">False</span></code> means the default linear scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e3d80c85c7dd126277b5f0e87252ffc6775e249ec75b4884be310fd79e96dfe0.png" src="../_images/e3d80c85c7dd126277b5f0e87252ffc6775e249ec75b4884be310fd79e96dfe0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/db06ede166a5882e2847d7b723c364804bfcbf98c77515265b27112601f911b6.png" src="../_images/db06ede166a5882e2847d7b723c364804bfcbf98c77515265b27112601f911b6.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -487,6 +735,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monotonically-increasing-function">4.3.1. Monotonically Increasing Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-probabilities">4.3.2. Multiplying Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratios-of-probabilities">4.3.3. Ratios of Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-skewed-distributions">4.3.4. Normalizing Skewed Distributions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

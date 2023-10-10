@@ -67,6 +67,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/12_stats';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -216,15 +218,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">7. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">9. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">7. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">8. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">9. Regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10. Mixture Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">11. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">12. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -235,8 +237,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
 </ul>
@@ -393,7 +395,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -409,6 +413,24 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-statistical-distributions">4.2.1. Categorical Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli">4.2.1.1. Bernoulli 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical">4.2.1.2. Categorical 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial">4.2.1.3. Binomial 🪙 🪙 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">4.2.1.4. Multinomial 🎲 🎲 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.2.1.5. Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation">4.2.2. Maximum Likelihood Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">4.2.3. Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-dogma-of-statistics">4.2.4. Central Dogma of Statistics</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -420,72 +442,307 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statistics">
 <h1><span class="section-number">4.2. </span>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h1>
-<!--## Maximum Likelihood Estimation
-
-Maximum likelihood estimation (MLE) is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable. The point in the parameter space that maximizes the likelihood function is called the maximum likelihood estimate.
-
-Likelihood function is the probability of observing the data given the parameters.
-
-For instance, if we were interested in probability of observing a head in a coin toss, we would use the Bernoulli distribution. The Bernoulli distribution has a single parameter, the probability of success, which we will call $p$. The probability of observing a head is $p$ and the probability of observing a tail is $1-p$. The likelihood function for a single coin toss is:
-
-$$
+<p>Every variable we observe in the data has a particular frequency distribution and in turn a probability distribution. These exact distribtions are unique to the variable under consideration. However, the shapes of these distributions are not unique. There are a few common shapes that we see over and over again. In other words, <strong>the world’s rich variety of data appears only in a small number of classical shapes</strong>. Once abstracted from specific data observations, they become <em>probability distributions</em>, worthy of independent study.</p>
+<p>These classical distributions have two nice properties:</p>
+<ol class="arabic simple">
+<li><p>They describe the frequency distributions that often arise in practice.</p></li>
+<li><p>More importantly, they <strong>can be described as a mathematical function P(X) with very few parameters</strong> (unknowns).</p></li>
+</ol>
+<p>As indicated in the <span class="xref myst">previous section</span>, probability provides a way to express and reason about uncertainty. In other words, once you have probability distributions, you can use them to reason about the world. However, in the real world, we don’t know the probability distributions. We have to estimate them from data.</p>
+<p>This is where statistics comes in. Statistics allows us to look at data and intelligently guess what the underlying probability distributions might be in the following two steps:</p>
+<ol class="arabic simple">
+<li><p>Pick or assume an underlying probability distribution that we think might have generated the data.</p></li>
+<li><p>Estimate the parameters of the assumed probability distribution from the data.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/probstats2.png"><img alt="../_images/probstats2.png" class="align-center" src="../_images/probstats2.png" style="width: 90%;" /></a>
+<p>Below we will look at some of the most common distributions for categorical variables, focusing specifically on the parameters that define them. Once we have estimated parameters, we have a complete description of the probability distribution that can be used to reason about the world.</p>
+<section id="categorical-statistical-distributions">
+<h2><span class="section-number">4.2.1. </span>Categorical Statistical Distributions<a class="headerlink" href="#categorical-statistical-distributions" title="Permalink to this headline">#</a></h2>
+<section id="bernoulli">
+<h3><span class="section-number">4.2.1.1. </span>Bernoulli 🪙<a class="headerlink" href="#bernoulli" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k = 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n = 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>: Coin toss (Heads/Tails), yes/no, true/false, success/failure</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(1\)</span></p></li>
+<li><p><strong>Parameter</strong>: Probability of success <span class="math notranslate nohighlight">\(p\)</span></p></li>
+</ul>
+<p><strong>Bernoulli Distribution</strong> is a discrete probability distribution used to model a <strong>single trial <span class="math notranslate nohighlight">\(n=1\)</span> of a binary random that can have two possible outcomes <span class="math notranslate nohighlight">\(k=2\)</span></strong>.</p>
+<p>For instance, if we were interested in <strong>probability of observing a head in a single coin toss</strong>, we would use the Bernoulli distribution, where “1” is defined to mean “heads” and “0” is defined to mean “tails”.</p>
+<p>The Bernoulli distribution has a single parameter, the probability of success, which we will call <span class="math notranslate nohighlight">\(p\)</span>. The probability of observing a head is <span class="math notranslate nohighlight">\(p\)</span> and the probability of observing a tail is <span class="math notranslate nohighlight">\(q=1-p\)</span>. The probability function of the Bernoulli distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-L(p) &= p^x(1-p)^{1-x} \\
-&= \begin{cases}
-p & \text{if } x = 1 \\
-1-p & \text{if } x = 0
+P(x) &amp;= p^x(1-p)^{1-x} \\
+&amp;= \begin{cases}
+p &amp; \text{if } x = 1 \\
+1-p &amp; \text{if } x = 0
 \end{cases}
 \end{aligned}
-$$
-
-where $x$ is the outcome of the coin toss. If we observe a head, then $x=1$ and the likelihood function is $L(p) = p$. If we observe a tail, then $x=0$ and the likelihood function is $L(p) = 1-p$.
-
-The 
-
-## Central Dogma of Statistics
-
-The central dogma of statistics is that all data are random samples from some population. The population is the set of all possible observations that could be made. A sample is a subset of observations drawn from the population.
-
-<img src="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/dogma.png">
-
-The central dogma of data science, simply put, is that general claims about a population can be made from a sample of data. This raises all sorts of questions and concerns about the sampling process such as the representativeness of the sample, the size of the sample, the sampling bias, etc. Which in turn raises concerns about potential negative effects of the claims made based on questionable data.
-
-
-## Law of Large Numbers
-
-The law of large numbers states that as the number of trials of a random experiment increases, the average of the observed outcomes approaches the expected value. -->
-<hr/>
-<!-- Distributions often take on one of the following shapes:
-
-- Bell
-- Long tail
-- Skewed
-- Twin peaked
-- Flat
-
-``` {image} https://leanscape.io/wp-content/uploads/2022/10/Different-Type-of-Data-Distributions-1024x577.jpg
-:alt: Different Type of Data Distributions
-:width: 100%
-:align: center
-```
-
-The different shapes can help you to select the best plots and also suggest that some transforms of your data may be useful prior to modeling. --><!-- ## Mean
-
-## Geometric Mean
-
-## Median
-
-## Mode
-
-## Maximum Likelihood Estimation
-
-## Central Dogma of Statistics --><div class="cell docutils container">
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the outcome of the coin toss.</p>
+<p>If we observe a head, then <span class="math notranslate nohighlight">\(x=1\)</span> and the probability function is <span class="math notranslate nohighlight">\(P(1) = p\)</span>. If we observe a tail, then <span class="math notranslate nohighlight">\(x=0\)</span> and the likelihood function is <span class="math notranslate nohighlight">\(P(0) = 1-p\)</span>.</p>
+<p>If a variable <span class="math notranslate nohighlight">\(X\)</span> follows Bernoulli distribtion with <span class="math notranslate nohighlight">\(p=0.5\)</span>, it is denoted as <span class="math notranslate nohighlight">\(X \sim \text{Bernoulli}(p)\)</span>.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(&#39;Hello World&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Heads&quot;</span><span class="p">,</span> <span class="s2">&quot;Tails&quot;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;P(X)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(X)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bernoulli Distribution of a Fair Coin Flip </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Bernoulli(0.5)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a598c63d3d32fbbb18e7dc403ad694cc07bfacf4c14cad0ba51bf4fcc9d891d.png" src="../_images/9a598c63d3d32fbbb18e7dc403ad694cc07bfacf4c14cad0ba51bf4fcc9d891d.png" />
+</div>
+</div>
+<hr>
+</section>
+<section id="categorical">
+<h3><span class="section-number">4.2.1.2. </span>Categorical 🎲<a class="headerlink" href="#categorical" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k &gt; 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n = 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>: Rolling a die, choosing a color, choosing a letter</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p><strong>Parameter</strong>: Probability of each outcome <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span></p></li>
+</ul>
+<p>The categorical distribution is a generalization of the Bernoulli distribution. It models the <strong>probability of observing a particular outcome from a set of <span class="math notranslate nohighlight">\(k &gt; 2\)</span> outcomes in a single trials</strong>.</p>
+<p>For example, it models the <strong>probability of observing a particular face when rolling a k-sided die once</strong>.</p>
+<p>The probability mass function of the categorical distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x) = \begin{cases}
+p_1 &amp; \text{if } x = 1 \\
+p_2 &amp; \text{if } x = 2 \\
+\vdots \\
+p_k &amp; \text{if } x = k
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> are the probabilities of observing each of the <span class="math notranslate nohighlight">\(k\)</span> outcomes. The probabilities must sum to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">cat_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Categorical Distribution of a Fair Die Roll&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/034c7aec896b46b411dc28d3e2cec0445c8595c46d4c811c36e2865d971df529.png" src="../_images/034c7aec896b46b411dc28d3e2cec0445c8595c46d4c811c36e2865d971df529.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">categorical</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">binom_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">binom_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Binomial Distribution of 50 Flips of a Fair Coin </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Binomial(n=50, p=0.5)$&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
+<hr>
+</section>
+<section id="binomial">
+<h3><span class="section-number">4.2.1.3. </span>Binomial 🪙 🪙 🪙<a class="headerlink" href="#binomial" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k = 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n &gt; 1\)</span></strong></p></li>
+<li><p><strong>Example:</strong> <u>Count of Heads</u> in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(2\)</span></p></li>
+<li><p><strong>Parameters</strong>: Probability of success <span class="math notranslate nohighlight">\(p\)</span> and number of trials <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+<!-- * **Sample Space**: $\Omega = \{0, 1, 2, \ldots, N\}$ -->
+<p>The binomial distribution is the discrete probability distribution of the <strong>number of successes in a sequence of <span class="math notranslate nohighlight">\(n\)</span> independent trials, each asking a yes–no question, and each with its own boolean-valued outcome: success/yes/true/one (with probability <span class="math notranslate nohighlight">\(p\)</span>)</strong> or failure/no/false/zero (with probability <span class="math notranslate nohighlight">\(q = 1 − p\)</span>).</p>
+<p>For example, if we were interested in <strong>probability of observing a head in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</strong>, we would use the binomial distribution, where “1” is defined to mean “heads” and “0” is defined to mean “tails”.</p>
+<p>The probability function of the binomial distribution is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=x) = \binom{n}{x} p^x(1-p)^{n-x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of trials and <span class="math notranslate nohighlight">\(p\)</span> is the probability of success. The binomial coefficient <span class="math notranslate nohighlight">\(\binom{n}{x}\)</span> is the number of ways to choose <span class="math notranslate nohighlight">\(x\)</span> items from a set of <span class="math notranslate nohighlight">\(n\)</span> items. The binomial coefficient is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\binom{n}{x} = \frac{n!}{x!(n-x)!}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n!\)</span> is the factorial of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">binom_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">binom_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Binomial Distribution of 50 Flips of a Fair Coin </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Binomial(n=50, p=0.5)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b3d9e0b8c35a0010319a98de3f76a37975924f9bdb68b42f2daaa1aa0f6b4b42.png" src="../_images/b3d9e0b8c35a0010319a98de3f76a37975924f9bdb68b42f2daaa1aa0f6b4b42.png" />
+</div>
+</div>
+<hr/>
+</section>
+<section id="multinomial">
+<h3><span class="section-number">4.2.1.4. </span>Multinomial 🎲 🎲 🎲<a class="headerlink" href="#multinomial" title="Permalink to this headline">#</a></h3>
+<!-- # ⚀ = 2, # ⚁ = 1, # ⚂ = 3, # ⚃ = 0, # ⚄ = 0, # ⚅ = 0 -->
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k &gt; 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n &gt; 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>:  As a result of <span class="math notranslate nohighlight">\(n=9\)</span> rolls of a die, <br/>
+Count of 1-face ⚀ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 2-face ⚁ = 1 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 3-face ⚂ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 4-face ⚃ = 1 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 5-face ⚄ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 6-face ⚅ = 1</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(k + 2\)</span></p></li>
+<li><p><strong>Parameters</strong>: <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(k\)</span> and probability of each outcome <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> such that <span class="math notranslate nohighlight">\(\sum_{i=1}^k p_i = 1\)</span></p></li>
+</ul>
+<!-- * **Sample Space**: $\Omega = \{0, 1, 2, \ldots, N\}$ -->
+<p>Multinomial distribution is a multivariate generalization of the binomial distribution. It models the <strong>probability of observing a particular count for each of <span class="math notranslate nohighlight">\(k &gt; 2\)</span> outcomes in <span class="math notranslate nohighlight">\(n &gt; 1\)</span> trials</strong>.</p>
+<p>For example, it models the <strong>probability of counts for rolling a k-sided die n times</strong>.</p>
+<p>The probability function of the multinomial distribution is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=\{x_1, x_2, \ldots x_k \}) = \frac{n!}{x_1!x_2!\ldots x_k!} p_1^{x_1}p_2^{x_2}\ldots p_k^{x_k}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of trials, <span class="math notranslate nohighlight">\(k\)</span> is the number of outcomes, <span class="math notranslate nohighlight">\(n_1, n_2, \ldots, n_k\)</span> are the counts for each outcome, and <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> are the probabilities of each outcome. The probabilities must sum to 1 and the counts must sum to <span class="math notranslate nohighlight">\(n\)</span> i.e. <span class="math notranslate nohighlight">\(\sum_{i=1}^k p_i = 1\)</span> and <span class="math notranslate nohighlight">\(\sum_{i=1}^k x_i = n\)</span>.</p>
+<p>For instance, using Multinomial distribution, as a result of rolling a die 9 times, we can calculate the probability of observing each even-sided face 2 times and each odd-sided face 1 times as follows :</p>
+<div class="math notranslate nohighlight">
+\[P(\#⚀ = 1, \#⚁ = 2, \#⚂ = 1, \#⚃ = 2, \#⚄ = 1, \#⚅ = 2) = \frac{9!}{1!2!1!2!1!2!} \left(\frac{1}{6}\right)^9\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{362880}{8} \times \left(\frac{1}{6}\right)^9\]</div>
+<div class="math notranslate nohighlight">
+\[ = 0.0045 \]</div>
+<p>Visualizing the probability distribution of the Multinomial distribution is hard. The following figure shows the probability distribution of the Multinomial distribution for <span class="math notranslate nohighlight">\(n=5\)</span>, <span class="math notranslate nohighlight">\(k=3\)</span>, <span class="math notranslate nohighlight">\(p_1=0.5\)</span>, <span class="math notranslate nohighlight">\(p_2=0.3\)</span> and <span class="math notranslate nohighlight">\(p_3=0.2\)</span>.</p>
+<a class="reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png"><img alt="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" class="align-center" src="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" style="width: 80%;" /></a>
+<hr/>
+</section>
+<section id="summary">
+<h3><span class="section-number">4.2.1.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<p>The following table presents a summary and comparison of the categorical statistical distributions:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Distribution</p></th>
+<th class="text-center head"><p>Number of Trials <span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-center head"><p>Number of Outomes <span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="text-center head"><p>Number of parameters</p></th>
+<th class="text-center head"><p>Parameters</p></th>
+<th class="text-center head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Bernoulli</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td class="text-center"><p>A single coin toss</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Categorical</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span></p></td>
+<td class="text-center"><p>A single roll of a die</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Binomial</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(n, p\)</span></p></td>
+<td class="text-center"><p><u>Count of heads</u> in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Multinomial</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(k+2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(n, k, p_1, p_2, \ldots, p_k\)</span></p></td>
+<td class="text-center"><p><u>Count of each face</u> in <span class="math notranslate nohighlight">\(n\)</span> rolls of a die</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="maximum-likelihood-estimation">
+<h2><span class="section-number">4.2.2. </span>Maximum Likelihood Estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">#</a></h2>
+<p>Maximum likelihood estimation (MLE) is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable. The point in the parameter space that maximizes the likelihood function is called the maximum likelihood estimate.</p>
+<p>Likelihood function is the probability of observing the data given the parameters.</p>
+<p>Maximum likelihood estimate of Bernoulli distribution’s only parameter <span class="math notranslate nohighlight">\(p\)</span>, given data, is:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{\text{Number of successes}}{\text{Number of observations}} \]</div>
+<p>Similarly, Maximum likelihood estimate of <span class="math notranslate nohighlight">\(k\)</span> parameters of Categorical distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\hat{p}_i &amp;= \frac{\text{Number of observations of outcome i}}{\text{Number of observations}} \\
+\\
+\hat{n} &amp;= \text{Number of observations}
+\end{aligned}
+\end{split}\]</div>
+<p>Note that the maximum likelihood estimate of the parameters of the Binomial and Multinomial distributions are not as simple as the Bernoulli and Categorical distributions and require multiple samples. However, since there is a Bernoulli distribution for each trial of the Binomial distribution and a Categorical distribution for each trial of the Multinomial distribution, we can use the maximum likelihood estimates of the Bernoulli and Categorical distributions to estimate the parameters of the Binomial and Multinomial distributions.</p>
+</section>
+<section id="law-of-large-numbers">
+<h2><span class="section-number">4.2.3. </span>Law of Large Numbers<a class="headerlink" href="#law-of-large-numbers" title="Permalink to this headline">#</a></h2>
+<p>The law of large numbers states that as the number of trials of a random experiment increases, the average of the observed outcomes approaches the expected value.</p>
+<p>For example, if we toss a fair coin 10 times, we might expect to observe 5 heads but may or may not get 5. However,  if we toss a fair coin 1,000,000 times, we can confidently expect to observe nearabouts 500,000 heads, if the coin is indeed fair.</p>
+<p>The law of large numbers is the basis for the frequentist approach to statistics. The frequentist approach to statistics is based on the idea that the probability of an event is the long-run relative frequency of the event. In other words, the probability of an event is the proportion of times the event occurs in a large number of trials.</p>
+<p>In the context of MLE, the law of large numbers implies that as the number of observations increases, the maximum likelihood estimate of the parameters approaches the true parameters of the distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span> 
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;trials&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;p_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;trials&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;trials&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;p_hat&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated p&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;trials&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;true p&#39;</span><span class="p">);</span>
+
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Estimating the Probability of Heads $</span><span class="se">\\</span><span class="s2">hat</span><span class="si">{p}</span><span class="s2"> = </span><span class="se">\\</span><span class="s2">frac{Count(x=1)}</span><span class="si">{n}</span><span class="s2">$ </span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="o">+</span> \
+              <span class="s2">&quot;$X </span><span class="se">\\</span><span class="s2">sim Bernoulli(p)$ </span><span class="se">\n</span><span class="s2"> Note &quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Number of Trials&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Estimated Probability of Heads&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/11d0908d155e331da0fb8bc445149eeaae6ce2e189c01c205b5f67fa3416b6b9.png" src="../_images/11d0908d155e331da0fb8bc445149eeaae6ce2e189c01c205b5f67fa3416b6b9.png" />
+</div>
+</div>
+</section>
+<section id="central-dogma-of-statistics">
+<h2><span class="section-number">4.2.4. </span>Central Dogma of Statistics<a class="headerlink" href="#central-dogma-of-statistics" title="Permalink to this headline">#</a></h2>
+<p>The central dogma of data science, simply put, is that general claims about a population can be made from a sample of data.</p>
+<a class="reference internal image-reference" href="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/dogma.png"><img alt="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/dogma.png" class="align-center" src="file:///Users/fsultan/Downloads/datascience_ml/_build/html/_images/dogma.png" style="width: 80%;" /></a>
+<p>This raises concerns about the sampling process such as the representativeness of the sample, the size of the sample, the sampling bias, etc. Which in turn raises concerns about potential negative effects of the claims made based on questionable data.</p>
+<hr/>
+<a class="reference internal image-reference" href="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large"><img alt="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large" class="align-right" src="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large" style="width: 45%;" /></a>
+<p>Issues with sampling and underrepresentative data are not new. In 1936, the <strong>Literary Digest</strong> magazine conducted a poll to predict the outcome of the presidential election. The poll was based on a <strong>sample of 2.4 million people</strong>. The poll predicted that Alf Landon would win the election with 57% of the vote. However, the actual election results were the opposite. Franklin D. Roosevelt won the election with 62% of the vote.</p>
+<p>The reason for the failure of the poll was that the sample was not representative of the population. The sample was biased towards the wealthy and the educated. The poll was also conducted by sending out postcards to people who subscribed to the Literary Digest magazine. In 1936, only the wealthy and the educated subscribed to magazines.</p>
+<p>The Literary Digest magazine went bankrupt soon after the election. George Gallup, who correctly predicted the outcome of the election, went on to found the American Institute of Public Opinion, which later became the Gallup Poll.</p>
+<p>The big takeaway from this story is that <strong>size alone is not enough</strong>. In other words, <strong>large sample sizes is a necessary but not sufficient condition</strong> for making general claims about a population.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -546,6 +803,30 @@ The different shapes can help you to select the best plots and also suggest that
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-statistical-distributions">4.2.1. Categorical Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli">4.2.1.1. Bernoulli 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical">4.2.1.2. Categorical 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial">4.2.1.3. Binomial 🪙 🪙 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">4.2.1.4. Multinomial 🎲 🎲 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.2.1.5. Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation">4.2.2. Maximum Likelihood Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">4.2.3. Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-dogma-of-statistics">4.2.4. Central Dogma of Statistics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

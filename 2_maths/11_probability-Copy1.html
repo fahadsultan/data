@@ -216,15 +216,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">7. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">9. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">7. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">8. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">9. Regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">10. Mixture Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">11. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">12. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
@@ -235,8 +235,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">18. Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
 </ul>
@@ -514,108 +514,7 @@ The set of all possible values that a random variable can take on is called its 
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 5, 2, 3, 4, 6])
-</pre></div>
-</div>
-</div>
-</div>
 <p>The ranges of <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> are <span class="math notranslate nohighlight">\(\{H, T\}\)</span> and <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span> respectively. It is worth repeating for emphasis that the ranges of the two variables is independent of observed data, since the observed data is a limited sample.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>H</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>H</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>H</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>H</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>H</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>H</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>T</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>T</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>T</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>T</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>T</td>
-      <td>5</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 </section>
 <section id="experiment-outcome-omega-and-sample-space-omega">
 <h2>Experiment, Outcome <span class="math notranslate nohighlight">\(\omega\)</span> and Sample Space <span class="math notranslate nohighlight">\(\Omega\)</span><a class="headerlink" href="#experiment-outcome-omega-and-sample-space-omega" title="Permalink to this headline">#</a></h2>
@@ -765,96 +664,6 @@ The set of all possible values that a random variable can take on is called its 
 </div></div></div>
 </div>
 <p>This means that the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is not the set of all observed outcomes. This is despite the fact that many observed outcomes are observed more than once. The missing outcome, that is never observed, is <span class="math notranslate nohighlight">\(w_{12} = (T, 6)\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="c1">#Compute P(C) -- count the number of outcomes / total number observations</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>H</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>H</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>H</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>H</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>T</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>H</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>H</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>H</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>T</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>T</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-<p>100 rows × 2 columns</p>
-</div></div></div>
-</div>
 </section>
 <section id="probability-model-p-x">
 <h2>Probability Model <span class="math notranslate nohighlight">\(P(X)\)</span><a class="headerlink" href="#probability-model-p-x" title="Permalink to this headline">#</a></h2>
@@ -965,6 +774,20 @@ The set of all possible values that a random variable can take on is called its 
 </div></div></div>
 </div>
 <p>The code cell above shows the probability model for the random variable <span class="math notranslate nohighlight">\(D\)</span> for a fair die in our examples, where each number has a probability of <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fair_die</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(D)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Probability distribution of rolling a fair die&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4f5d3ba2ef2f279705b8ddb94abfc622ae172c5bb7d76e4c0b06cf9cdd35597e.png" src="../_images/4f5d3ba2ef2f279705b8ddb94abfc622ae172c5bb7d76e4c0b06cf9cdd35597e.png" />
+</div>
+</div>
 <div class="admonition-a-word-of-caution-on-u-mathematical-notation-u-and-u-dimensionality-u admonition">
 <p class="admonition-title">A word of caution on <u>mathematical notation</u> and <u>dimensionality</u>: </p>
 <p>Uppercase letters (<span class="math notranslate nohighlight">\(X, Y ...\)</span>) often refer to a random variable. Lowercase letters (<span class="math notranslate nohighlight">\(x, y ...\)</span>) often refer to a particular outcome of a random variable.</p>
@@ -991,71 +814,6 @@ The set of all possible values that a random variable can take on is called its 
 </li>
 <li><p><span class="math notranslate nohighlight">\(P(X = x, Y)\)</span></p></li>
 </ul>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fair_die</span> <span class="c1"># P(event such that outcome of the roll is an even number) ?</span>
-         <span class="c1"># P(D=2) + P(D = 4) + P(D = 6)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>D</th>
-      <th>P(D)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>0.166667</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="probability-of-an-event-p-phi">
@@ -1186,34 +944,18 @@ The set of all possible values that a random variable can take on is called its 
     <tr>
       <th>10</th>
       <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
       <td>6</td>
       <td>0.04</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C
-H    0.51
-T    0.49
-Name: P(C, D), dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1234,91 +976,116 @@ Name: P(C, D), dtype: float64
 <li><p><span class="math notranslate nohighlight">\(\sum_{C} P(C) = 1\)</span> where <span class="math notranslate nohighlight">\(P(C)\)</span> is a probability table with 2 rows (<span class="math notranslate nohighlight">\({H, T}\)</span>) and 2 columns: <span class="math notranslate nohighlight">\(C, P(C)\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sum_{D} P(D) = 1\)</span> where <span class="math notranslate nohighlight">\(P(D)\)</span> is a probability table with 6 rows (<span class="math notranslate nohighlight">\({1, 2, 3, 4, 5, 6}\)</span>) and 2 columns: <span class="math notranslate nohighlight">\(D, P(D)\)</span>.</p></li>
 </ol>
-</section>
-<section id="marginal-probability-p-a">
-<h2>Marginal Probability <span class="math notranslate nohighlight">\(P(A)\)</span><a class="headerlink" href="#marginal-probability-p-a" title="Permalink to this headline">#</a></h2>
-<p>Marginal probability is the probability of one event occurring. For example, if we are rolling two dice, the marginal probability is the probability of rolling a 1 on the first die. The marginal probability is usually denoted by <span class="math notranslate nohighlight">\(P(A)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[ P(A) = \sum_{b \in \Omega_B} P(A, B=b) \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
-<span class="n">P_C</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C
-H    0.51
-T    0.49
-Name: P(C, D), dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_D</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
-<span class="n">P_D</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D
-1    0.43
-2    0.22
-3    0.22
-4    0.05
-5    0.03
-6    0.05
-Name: P(C, D), dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span> <span class="c1"># Queston: P(C, D) == P(C) * P(D) ? </span>
-            <span class="c1"># In other words, are C and D independent</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">P_C</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
-<span class="n">P_D</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="n">P_C</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C
-H    0.51
-T    0.49
-Name: P(C, D), dtype: float64
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+      <th>P(C, D)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H</td>
+      <td>1</td>
+      <td>0.24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>2</td>
+      <td>0.13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H</td>
+      <td>3</td>
+      <td>0.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>H</td>
+      <td>4</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>H</td>
+      <td>5</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>H</td>
+      <td>6</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>T</td>
+      <td>1</td>
+      <td>0.19</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>T</td>
+      <td>2</td>
+      <td>0.09</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>T</td>
+      <td>3</td>
+      <td>0.13</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>T</td>
+      <td>4</td>
+      <td>0.04</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
+      <td>6</td>
+      <td>0.04</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_D</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D
-1    0.43
-2    0.22
-3    0.22
-4    0.05
-5    0.03
-6    0.05
-Name: P(C, D), dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span><span class="p">[</span><span class="s1">&#39;P(C)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_C</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span><span class="p">[</span><span class="s2">&quot;CD_vals&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;C=</span><span class="si">%s</span><span class="s2"> and D=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1351,7 +1118,7 @@ Name: P(C, D), dtype: float64
       <th>C</th>
       <th>D</th>
       <th>P(C, D)</th>
-      <th>P(C)</th>
+      <th>CD_vals</th>
     </tr>
   </thead>
   <tbody>
@@ -1360,77 +1127,84 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>1</td>
       <td>0.24</td>
-      <td>NaN</td>
+      <td>C=H and D=1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>H</td>
       <td>2</td>
       <td>0.13</td>
-      <td>NaN</td>
+      <td>C=H and D=2</td>
     </tr>
     <tr>
       <th>2</th>
       <td>H</td>
       <td>3</td>
       <td>0.09</td>
-      <td>NaN</td>
+      <td>C=H and D=3</td>
     </tr>
     <tr>
       <th>3</th>
       <td>H</td>
       <td>4</td>
       <td>0.01</td>
-      <td>NaN</td>
+      <td>C=H and D=4</td>
     </tr>
     <tr>
       <th>4</th>
       <td>H</td>
       <td>5</td>
       <td>0.03</td>
-      <td>NaN</td>
+      <td>C=H and D=5</td>
     </tr>
     <tr>
       <th>5</th>
       <td>H</td>
       <td>6</td>
       <td>0.01</td>
-      <td>NaN</td>
+      <td>C=H and D=6</td>
     </tr>
     <tr>
       <th>6</th>
       <td>T</td>
       <td>1</td>
       <td>0.19</td>
-      <td>NaN</td>
+      <td>C=T and D=1</td>
     </tr>
     <tr>
       <th>7</th>
       <td>T</td>
       <td>2</td>
       <td>0.09</td>
-      <td>NaN</td>
+      <td>C=T and D=2</td>
     </tr>
     <tr>
       <th>8</th>
       <td>T</td>
       <td>3</td>
       <td>0.13</td>
-      <td>NaN</td>
+      <td>C=T and D=3</td>
     </tr>
     <tr>
       <th>9</th>
       <td>T</td>
       <td>4</td>
       <td>0.04</td>
-      <td>NaN</td>
+      <td>C=T and D=4</td>
     </tr>
     <tr>
       <th>10</th>
       <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
       <td>6</td>
       <td>0.04</td>
-      <td>NaN</td>
+      <td>C=T and D=6</td>
     </tr>
   </tbody>
 </table>
@@ -1438,13 +1212,67 @@ Name: P(C, D), dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;P(C)&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">joint_probs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;CD_vals&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(C, D)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Joint probability distribution of C and D</span><span class="se">\n</span><span class="s2"> Note that the joint probabilities sum to 1&quot;</span><span class="p">,</span> \
+        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;C and D values&quot;</span><span class="p">,</span> \
+        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;P(C, D)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c484ac4cf55271f8f6bfdbc2de21adb4a6991fe3e4ffcfd93935ed57d1ff0ef0.png" src="../_images/c484ac4cf55271f8f6bfdbc2de21adb4a6991fe3e4ffcfd93935ed57d1ff0ef0.png" />
+</div>
+</div>
+</section>
+<section id="marginal-probability-p-a">
+<h2>Marginal Probability <span class="math notranslate nohighlight">\(P(A)\)</span><a class="headerlink" href="#marginal-probability-p-a" title="Permalink to this headline">#</a></h2>
+<p>Because most data sets are multi-dimensional i.e. involving multiple random variables, we can sometimes find ourselves in a situation where we want to know the joint probability <span class="math notranslate nohighlight">\(P(A, B)\)</span> of two random variables <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> but we don’t know <span class="math notranslate nohighlight">\(P(A)\)</span> or <span class="math notranslate nohighlight">\(P(B)\)</span>. In such cases, we compute the <strong>marginal probability</strong> of one variable from joint probability over multiple random variables.</p>
+<p>Marginalizing is the process of summing over one or more variables (say B) to get the probability of another variable (say A). This summing takes place over the joint probability table.</p>
+<div class="math notranslate nohighlight">
+\[ P(A) = \sum_{b \in \Omega_B} P(A, B=b) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
+<span class="n">P_C</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;P(C)&#39;</span>
+<span class="n">P_D</span> <span class="o">=</span> <span class="n">joint_probs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
 <span class="n">P_D</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;P(D)&#39;</span>
-<span class="n">merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">joint_probs</span><span class="p">,</span> <span class="n">P_C</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">merged</span><span class="p">,</span> <span class="n">P_D</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C)*P(D)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(D)&#39;</span><span class="p">]</span>
-
-<span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C)*P(D)&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span>
+<span class="n">P_C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C
+H    0.51
+T    0.49
+Name: P(C), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_D</span><span class="p">,</span> <span class="n">P_D</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(D
+ 1    0.43
+ 2    0.22
+ 3    0.22
+ 4    0.05
+ 5    0.03
+ 6    0.05
+ Name: P(D), dtype: float64,
+ 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span>
 </pre></div>
 </div>
 </div>
@@ -1470,9 +1298,7 @@ Name: P(C, D), dtype: float64
       <th>C</th>
       <th>D</th>
       <th>P(C, D)</th>
-      <th>P(C)_x</th>
-      <th>P(C)_y</th>
-      <th>P(D)</th>
+      <th>CD_vals</th>
     </tr>
   </thead>
   <tbody>
@@ -1481,103 +1307,245 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>1</td>
       <td>0.24</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.43</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>T</td>
-      <td>1</td>
-      <td>0.19</td>
-      <td>NaN</td>
-      <td>0.49</td>
-      <td>0.43</td>
+      <td>C=H and D=1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>H</td>
       <td>2</td>
       <td>0.13</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.22</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>T</td>
-      <td>2</td>
-      <td>0.09</td>
-      <td>NaN</td>
-      <td>0.49</td>
-      <td>0.22</td>
+      <td>C=H and D=2</td>
     </tr>
     <tr>
       <th>2</th>
       <td>H</td>
       <td>3</td>
       <td>0.09</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.22</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>T</td>
-      <td>3</td>
-      <td>0.13</td>
-      <td>NaN</td>
-      <td>0.49</td>
-      <td>0.22</td>
+      <td>C=H and D=3</td>
     </tr>
     <tr>
       <th>3</th>
       <td>H</td>
       <td>4</td>
       <td>0.01</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.05</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>T</td>
-      <td>4</td>
-      <td>0.04</td>
-      <td>NaN</td>
-      <td>0.49</td>
-      <td>0.05</td>
+      <td>C=H and D=4</td>
     </tr>
     <tr>
       <th>4</th>
       <td>H</td>
       <td>5</td>
       <td>0.03</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.03</td>
+      <td>C=H and D=5</td>
     </tr>
     <tr>
       <th>5</th>
       <td>H</td>
       <td>6</td>
       <td>0.01</td>
-      <td>NaN</td>
-      <td>0.51</td>
-      <td>0.05</td>
+      <td>C=H and D=6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>T</td>
+      <td>1</td>
+      <td>0.19</td>
+      <td>C=T and D=1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>T</td>
+      <td>2</td>
+      <td>0.09</td>
+      <td>C=T and D=2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>T</td>
+      <td>3</td>
+      <td>0.13</td>
+      <td>C=T and D=3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>T</td>
+      <td>4</td>
+      <td>0.04</td>
+      <td>C=T and D=4</td>
     </tr>
     <tr>
       <th>10</th>
       <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
       <td>6</td>
       <td>0.04</td>
-      <td>NaN</td>
-      <td>0.49</td>
-      <td>0.05</td>
+      <td>C=T and D=6</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+      <th>P(C, D)</th>
+      <th>CD_vals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>C=H and D=1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>2</td>
+      <td>0.13</td>
+      <td>C=H and D=2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H</td>
+      <td>3</td>
+      <td>0.09</td>
+      <td>C=H and D=3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>H</td>
+      <td>4</td>
+      <td>0.01</td>
+      <td>C=H and D=4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>H</td>
+      <td>5</td>
+      <td>0.03</td>
+      <td>C=H and D=5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>H</td>
+      <td>6</td>
+      <td>0.01</td>
+      <td>C=H and D=6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>T</td>
+      <td>1</td>
+      <td>0.19</td>
+      <td>C=T and D=1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>T</td>
+      <td>2</td>
+      <td>0.09</td>
+      <td>C=T and D=2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>T</td>
+      <td>3</td>
+      <td>0.13</td>
+      <td>C=T and D=3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>T</td>
+      <td>4</td>
+      <td>0.04</td>
+      <td>C=T and D=4</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
+      <td>6</td>
+      <td>0.04</td>
+      <td>C=T and D=6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">joint_probs</span><span class="p">[</span><span class="s2">&quot;CD_vals&quot;</span><span class="p">],</span> <span class="n">joint_probs</span><span class="p">[</span><span class="s2">&quot;P(C, D)&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">P_C</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">P_C</span><span class="p">);</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">P_D</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">P_D</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">);</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;P(C, D)&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;P(C)&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;P(D)&quot;</span><span class="p">);</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;P(C) and P(D) (center and right) marginalized from joint probability P(C, D) left&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b839d29de3c2a9fa3affe3f39fda3c71af9e7aedc899788bd7aeb95ff6bca643.png" src="../_images/b839d29de3c2a9fa3affe3f39fda3c71af9e7aedc899788bd7aeb95ff6bca643.png" />
+</div>
+</div>
+<p>As we look at new concepts in probability, it is important to stay mindful of i) what the probability sums to ii) what are the dimensions of the table that represents the probability.</p>
+<p>You can see from the cell below that the dimensions of marginal probability table is the length of the range of the variable.</p>
+<p>You can see from the code below that both the computed marginal probabilities in add up to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_C</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">P_D</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 1.0)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="independent-random-variables">
@@ -1617,6 +1585,7 @@ Name: P(C, D), dtype: float64
       <th>C</th>
       <th>D</th>
       <th>P(C, D)</th>
+      <th>CD_vals</th>
       <th>P(C)</th>
       <th>P(D)</th>
     </tr>
@@ -1627,6 +1596,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>1</td>
       <td>0.24</td>
+      <td>C=H and D=1</td>
       <td>0.51</td>
       <td>0.43</td>
     </tr>
@@ -1635,6 +1605,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>1</td>
       <td>0.19</td>
+      <td>C=T and D=1</td>
       <td>0.49</td>
       <td>0.43</td>
     </tr>
@@ -1643,6 +1614,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>2</td>
       <td>0.13</td>
+      <td>C=H and D=2</td>
       <td>0.51</td>
       <td>0.22</td>
     </tr>
@@ -1651,6 +1623,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>2</td>
       <td>0.09</td>
+      <td>C=T and D=2</td>
       <td>0.49</td>
       <td>0.22</td>
     </tr>
@@ -1659,6 +1632,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>3</td>
       <td>0.09</td>
+      <td>C=H and D=3</td>
       <td>0.51</td>
       <td>0.22</td>
     </tr>
@@ -1667,6 +1641,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>3</td>
       <td>0.13</td>
+      <td>C=T and D=3</td>
       <td>0.49</td>
       <td>0.22</td>
     </tr>
@@ -1675,6 +1650,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>4</td>
       <td>0.01</td>
+      <td>C=H and D=4</td>
       <td>0.51</td>
       <td>0.05</td>
     </tr>
@@ -1683,6 +1659,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>4</td>
       <td>0.04</td>
+      <td>C=T and D=4</td>
       <td>0.49</td>
       <td>0.05</td>
     </tr>
@@ -1691,22 +1668,34 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>5</td>
       <td>0.03</td>
+      <td>C=H and D=5</td>
       <td>0.51</td>
       <td>0.03</td>
     </tr>
     <tr>
       <th>9</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+      <td>0.49</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>10</th>
       <td>H</td>
       <td>6</td>
       <td>0.01</td>
+      <td>C=H and D=6</td>
       <td>0.51</td>
       <td>0.05</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>11</th>
       <td>T</td>
       <td>6</td>
       <td>0.04</td>
+      <td>C=T and D=6</td>
       <td>0.49</td>
       <td>0.05</td>
     </tr>
@@ -1743,6 +1732,7 @@ Name: P(C, D), dtype: float64
       <th>C</th>
       <th>D</th>
       <th>P(C, D)</th>
+      <th>CD_vals</th>
       <th>P(C)</th>
       <th>P(D)</th>
       <th>P(C) P(D)</th>
@@ -1754,6 +1744,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>1</td>
       <td>0.24</td>
+      <td>C=H and D=1</td>
       <td>0.51</td>
       <td>0.43</td>
       <td>0.2193</td>
@@ -1763,6 +1754,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>1</td>
       <td>0.19</td>
+      <td>C=T and D=1</td>
       <td>0.49</td>
       <td>0.43</td>
       <td>0.2107</td>
@@ -1772,6 +1764,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>2</td>
       <td>0.13</td>
+      <td>C=H and D=2</td>
       <td>0.51</td>
       <td>0.22</td>
       <td>0.1122</td>
@@ -1781,6 +1774,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>2</td>
       <td>0.09</td>
+      <td>C=T and D=2</td>
       <td>0.49</td>
       <td>0.22</td>
       <td>0.1078</td>
@@ -1790,6 +1784,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>3</td>
       <td>0.09</td>
+      <td>C=H and D=3</td>
       <td>0.51</td>
       <td>0.22</td>
       <td>0.1122</td>
@@ -1799,6 +1794,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>3</td>
       <td>0.13</td>
+      <td>C=T and D=3</td>
       <td>0.49</td>
       <td>0.22</td>
       <td>0.1078</td>
@@ -1808,6 +1804,7 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>4</td>
       <td>0.01</td>
+      <td>C=H and D=4</td>
       <td>0.51</td>
       <td>0.05</td>
       <td>0.0255</td>
@@ -1817,6 +1814,7 @@ Name: P(C, D), dtype: float64
       <td>T</td>
       <td>4</td>
       <td>0.04</td>
+      <td>C=T and D=4</td>
       <td>0.49</td>
       <td>0.05</td>
       <td>0.0245</td>
@@ -1826,24 +1824,37 @@ Name: P(C, D), dtype: float64
       <td>H</td>
       <td>5</td>
       <td>0.03</td>
+      <td>C=H and D=5</td>
       <td>0.51</td>
       <td>0.03</td>
       <td>0.0153</td>
     </tr>
     <tr>
       <th>9</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+      <td>0.49</td>
+      <td>0.03</td>
+      <td>0.0147</td>
+    </tr>
+    <tr>
+      <th>10</th>
       <td>H</td>
       <td>6</td>
       <td>0.01</td>
+      <td>C=H and D=6</td>
       <td>0.51</td>
       <td>0.05</td>
       <td>0.0255</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>11</th>
       <td>T</td>
       <td>6</td>
       <td>0.04</td>
+      <td>C=T and D=6</td>
       <td>0.49</td>
       <td>0.05</td>
       <td>0.0245</td>
@@ -1929,11 +1940,16 @@ Name: P(C, D), dtype: float64
     </tr>
     <tr>
       <th>9</th>
+      <td>0.00</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>10</th>
       <td>0.01</td>
       <td>0.03</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>11</th>
       <td>0.04</td>
       <td>0.02</td>
     </tr>
@@ -1942,6 +1958,199 @@ Name: P(C, D), dtype: float64
 </div></div></div>
 </div>
 <p>The two random variables <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> therefore are NOT independent because <span class="math notranslate nohighlight">\(P(C, D) \neq P(C) \cdot P(D)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">merged</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;CD_vals&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(C, D)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$P(C, D)$&quot;</span><span class="p">);</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">merged</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;CD_vals&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(C) P(D)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$P(C)\cdot P(D)$&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$C$ and $D$ are NOT independent since $P(C, D) </span><span class="se">\\</span><span class="s2">neq P(C) \cdot P(D)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f4674492e184d289733e9201485b1de5ba747b5a7f2db0f3d2b0db364a190215.png" src="../_images/f4674492e184d289733e9201485b1de5ba747b5a7f2db0f3d2b0db364a190215.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+      <th>P(C, D)</th>
+      <th>CD_vals</th>
+      <th>P(C)</th>
+      <th>P(D)</th>
+      <th>P(C) P(D)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>C=H and D=1</td>
+      <td>0.51</td>
+      <td>0.43</td>
+      <td>0.2193</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>T</td>
+      <td>1</td>
+      <td>0.19</td>
+      <td>C=T and D=1</td>
+      <td>0.49</td>
+      <td>0.43</td>
+      <td>0.2107</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H</td>
+      <td>2</td>
+      <td>0.13</td>
+      <td>C=H and D=2</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>0.1122</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>T</td>
+      <td>2</td>
+      <td>0.09</td>
+      <td>C=T and D=2</td>
+      <td>0.49</td>
+      <td>0.22</td>
+      <td>0.1078</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>H</td>
+      <td>3</td>
+      <td>0.09</td>
+      <td>C=H and D=3</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>0.1122</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>T</td>
+      <td>3</td>
+      <td>0.13</td>
+      <td>C=T and D=3</td>
+      <td>0.49</td>
+      <td>0.22</td>
+      <td>0.1078</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>H</td>
+      <td>4</td>
+      <td>0.01</td>
+      <td>C=H and D=4</td>
+      <td>0.51</td>
+      <td>0.05</td>
+      <td>0.0255</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>T</td>
+      <td>4</td>
+      <td>0.04</td>
+      <td>C=T and D=4</td>
+      <td>0.49</td>
+      <td>0.05</td>
+      <td>0.0245</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>H</td>
+      <td>5</td>
+      <td>0.03</td>
+      <td>C=H and D=5</td>
+      <td>0.51</td>
+      <td>0.03</td>
+      <td>0.0153</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+      <td>0.49</td>
+      <td>0.03</td>
+      <td>0.0147</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>H</td>
+      <td>6</td>
+      <td>0.01</td>
+      <td>C=H and D=6</td>
+      <td>0.51</td>
+      <td>0.05</td>
+      <td>0.0255</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
+      <td>6</td>
+      <td>0.04</td>
+      <td>C=T and D=6</td>
+      <td>0.49</td>
+      <td>0.05</td>
+      <td>0.0245</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C                                                 HTHTHTHTHTHT
+D                                                           42
+P(C, D)                                                    1.0
+CD_vals      C=H and D=1C=T and D=1C=H and D=2C=T and D=2C=...
+P(C)                                                       6.0
+P(D)                                                       2.0
+P(C) P(D)                                                  1.0
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="conditional-probability-p-a-b">
 <h2>Conditional Probability <span class="math notranslate nohighlight">\(P(A | B)\)</span><a class="headerlink" href="#conditional-probability-p-a-b" title="Permalink to this headline">#</a></h2>
@@ -1986,6 +2195,252 @@ Name: P(C, D), dtype: float64
 </table>
 <div class="math notranslate nohighlight">
 \[ P(\text{Coin}_2 = H | \text{Coin}_1 = T) = \frac{P(\text{Coin}_2 = H, \text{Coin}_1 = T)}{P(\text{Coin}_1 = T)} = \frac{0.25}{0.5} = 0.5 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span> <span class="c1"># P(D | C) = P(C, D) / P(C)</span>
+
+<span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(D|C)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C)&#39;</span><span class="p">]</span>
+<span class="n">merged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+      <th>P(C, D)</th>
+      <th>CD_vals</th>
+      <th>P(C)</th>
+      <th>P(D)</th>
+      <th>P(C) P(D)</th>
+      <th>P(D|C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>C=H and D=1</td>
+      <td>0.51</td>
+      <td>0.43</td>
+      <td>0.2193</td>
+      <td>0.470588</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>T</td>
+      <td>1</td>
+      <td>0.19</td>
+      <td>C=T and D=1</td>
+      <td>0.49</td>
+      <td>0.43</td>
+      <td>0.2107</td>
+      <td>0.387755</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H</td>
+      <td>2</td>
+      <td>0.13</td>
+      <td>C=H and D=2</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>0.1122</td>
+      <td>0.254902</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>T</td>
+      <td>2</td>
+      <td>0.09</td>
+      <td>C=T and D=2</td>
+      <td>0.49</td>
+      <td>0.22</td>
+      <td>0.1078</td>
+      <td>0.183673</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>H</td>
+      <td>3</td>
+      <td>0.09</td>
+      <td>C=H and D=3</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>0.1122</td>
+      <td>0.176471</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>T</td>
+      <td>3</td>
+      <td>0.13</td>
+      <td>C=T and D=3</td>
+      <td>0.49</td>
+      <td>0.22</td>
+      <td>0.1078</td>
+      <td>0.265306</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>H</td>
+      <td>4</td>
+      <td>0.01</td>
+      <td>C=H and D=4</td>
+      <td>0.51</td>
+      <td>0.05</td>
+      <td>0.0255</td>
+      <td>0.019608</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>T</td>
+      <td>4</td>
+      <td>0.04</td>
+      <td>C=T and D=4</td>
+      <td>0.49</td>
+      <td>0.05</td>
+      <td>0.0245</td>
+      <td>0.081633</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>H</td>
+      <td>5</td>
+      <td>0.03</td>
+      <td>C=H and D=5</td>
+      <td>0.51</td>
+      <td>0.03</td>
+      <td>0.0153</td>
+      <td>0.058824</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>T</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>C=T and D=5</td>
+      <td>0.49</td>
+      <td>0.03</td>
+      <td>0.0147</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>H</td>
+      <td>6</td>
+      <td>0.01</td>
+      <td>C=H and D=6</td>
+      <td>0.51</td>
+      <td>0.05</td>
+      <td>0.0255</td>
+      <td>0.019608</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>T</td>
+      <td>6</td>
+      <td>0.04</td>
+      <td>C=T and D=6</td>
+      <td>0.49</td>
+      <td>0.05</td>
+      <td>0.0245</td>
+      <td>0.081633</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(D | C)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C, D)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(C)&#39;</span><span class="p">]</span>
+<span class="n">merged</span><span class="p">[</span><span class="s1">&#39;P(D | C)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     0.470588
+1     0.387755
+2     0.254902
+3     0.183673
+4     0.176471
+5     0.265306
+6     0.019608
+7     0.081633
+8     0.058824
+9     0.000000
+10    0.019608
+11    0.081633
+Name: P(D | C), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span><span class="p">[[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;P(D | C)&#39;</span><span class="p">]]</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">merged</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(D | C)&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Conditional probability distribution of D given C</span><span class="se">\n</span><span class="s2">Note that the blue bars add up to 1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1420c5be2e9989958689d6c02f76147b5a4d426884956d67e742f8bfd5986db9.png" src="../_images/1420c5be2e9989958689d6c02f76147b5a4d426884956d67e742f8bfd5986db9.png" />
+</div>
+</div>
+<p>Note that the sum of conditional probabilites, unlike joint probability, is not 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged</span><span class="p">[</span><span class="s2">&quot;P(D | C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is because</p>
+<div class="math notranslate nohighlight">
+\[ \sum_C \sum_D P(D|C) = \sum_D P(D|C=\text{Heads}) + \sum_D P(D|C=\text{Tails}) \]</div>
+<p>And <span class="math notranslate nohighlight">\(\sum_D P(D|C=\text{Heads})\)</span> and <span class="math notranslate nohighlight">\(\sum_D P(D|C=\text{Tails})\)</span> are individually probability distributions that each sum to 1, over different values of <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<p>In other words, in the plot above, the blue bars add up to 1 and the orange bars add up to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heads</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">]</span>
+<span class="n">tails</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;T&quot;</span><span class="p">]</span>
+
+<span class="n">heads</span><span class="p">[</span><span class="s2">&quot;P(D | C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">tails</span><span class="p">[</span><span class="s2">&quot;P(D | C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="product-rule-p-a-b">
 <h2>Product Rule <span class="math notranslate nohighlight">\(P(A, B)\)</span><a class="headerlink" href="#product-rule-p-a-b" title="Permalink to this headline">#</a></h2>
@@ -1995,14 +2450,17 @@ Name: P(C, D), dtype: float64
 <p>Similarly, we can also write:</p>
 <div class="math notranslate nohighlight">
 \[ P(A, B) = P(B | A) \cdot P(A)\]</div>
+<p>In summary,</p>
+<div class="math notranslate nohighlight">
+\[ P(A, B) = P(A | B) \cdot P(B) = P(B | A) \cdot P(A)\]</div>
 </section>
 <section id="chain-rule-p-a-b-c">
 <h2>Chain Rule <span class="math notranslate nohighlight">\(P(A, B, C)\)</span><a class="headerlink" href="#chain-rule-p-a-b-c" title="Permalink to this headline">#</a></h2>
 <p>The chain rule is a generalization of the product rule to more than two events.</p>
-<div class="math notranslate nohighlight">
-\[ P(A, B, C) = P(A | B, C) \cdot P(B, C) \]</div>
-<div class="math notranslate nohighlight">
-\[ P(A, B, C) = P(A | B, C) \cdot P(B | C) \cdot P(C) \]</div>
+<p><span class="math notranslate nohighlight">\( P(A, B, C) = P(A | B, C) \cdot P(B, C) \)</span></p>
+<p><span class="math notranslate nohighlight">\(P(A, B, C) = P(A | B, C) \cdot P(B | C) \cdot P(C)\)</span></p>
+<p>since <span class="math notranslate nohighlight">\(P(B, C) = P(B | C) \cdot P(C)\)</span> as per the product rule.</p>
+<p><strong>Chain rule essentially allows expressing the joint probability of multiple random variables as a product of conditional probabilities.</strong> This is useful because conditional probabilities are often easier to estimate from data than joint probabilities.</p>
 </section>
 <section id="inclusion-exclusion-principle-p-a-vee-b">
 <h2>Inclusion-Exclusion Principle <span class="math notranslate nohighlight">\(P(A \vee B)\)</span><a class="headerlink" href="#inclusion-exclusion-principle-p-a-vee-b" title="Permalink to this headline">#</a></h2>
@@ -2052,6 +2510,13 @@ $$ Cov(X, Y) = E((X - E(X)) \cdot (Y - E(Y))) = E(X \cdot Y) - E(X) \cdot E(Y) $
 Correlation is a measure of how two random variables vary together. For example, if we are rolling two dice, the correlation is a measure of how the numbers that we roll on the two dice vary together. The correlation is usually denoted by $Corr(X, Y)$.
 
 $$ Corr(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X) \cdot Var(Y)}} $$ --><p>Bayes Theorem allows a formal method of updating prior beliefs with new evidence and is the foundation of Bayesian Statistics. We will talk more about this when we talk about Statistics.</p>
+<p>In machine learning, the task is often to find <span class="math notranslate nohighlight">\(P(Y | X_1 = x_1, X_2 = x_2, \ldots X_D = x_D)\)</span> i.e. the probability of an unknown Y, given some values for <span class="math notranslate nohighlight">\(D\)</span> features (<span class="math notranslate nohighlight">\(X_1, X_2 \ldots X_D\)</span>). Bayes theorem allows us to calculate this probability from the data.</p>
+<p>Let’s assume we are interested in predicting if a person is a football player (<span class="math notranslate nohighlight">\(Y_F=1\)</span>) or not (<span class="math notranslate nohighlight">\(Y_F=0\)</span>), given their height (<span class="math notranslate nohighlight">\(X_H\)</span>) and weight (<span class="math notranslate nohighlight">\(X_W\)</span>).</p>
+<p>Say, we observe a person who is 7 feet tall and weighs 200 pounds. We can use Bayes theorem to calculate the probability of this person being a football player using the following equation:</p>
+<p><span class="math notranslate nohighlight">\(P(Y | X_H = 7, X_W = 200) = \frac{P(X_H = 7, X_W = 200 | Y_F) \cdot P(Y_F)}{P(X_H = 7, X_W = 200)}\)</span></p>
+<p>Note that here <span class="math notranslate nohighlight">\(P(X_H = 7, X_W = 200 | Y_F)\)</span> is the <strong>Likelihood</strong> probability of observing someone who is 7 feet tall and weighs 200 pounds, knowing if they are a football player.</p>
+<p><span class="math notranslate nohighlight">\(P(Y_F)\)</span> is the <strong>Prior</strong> probability of a person being a football player out of the entire population.</p>
+<p><span class="math notranslate nohighlight">\(P(X_H = 7, X_W = 200)\)</span> is the probability of the <strong>Evidence</strong> i.e. probability  of observing <em>anyone</em> who is 7 feet tall and weighs 200 pounds in the entire population.</p>
 </section>
 </section>
 
