@@ -17,13 +17,19 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <img width="60%" src="https://images.squarespace-cdn.com/content/v1/55784beee4b06b39773765ab/1551633983260-R111JMHJ34G3YMDLGCNF/Processing_interface_1_detail_72.jpg">
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
+
 ```{important}
-**[Programming Assignment 6](https://colab.research.google.com/drive/1Rq13vOUQSQLnCJGLHgJdbqMgZzO28j3o?usp=sharing)** is due on **October 10th** at 11:59 PM
+**Exam 2** is on **October 19th** during class time, from **8:30 to 9:50 AM**
+
+Exam 2 is going to be the **same format as Exam 1** with one exception: 
+
+_**You are allowed to bring in a double-sided cheat sheet** of size **A4 or US-Letter**_.
 ```
 
 ```{important}
-**[Written Assignment 3](https://docs.google.com/document/d/1pIXSvG3Fm2lDblCuOBhHLPLGur9PvWPlE4aUF4Yqtog/edit?usp=sharing)** is due on **October 10th** at 11:59 PM
-```
+**[Programming Assignment 7](https://colab.research.google.com/drive/16VnL87TWiiBj2CTT2ntYAQSPIjyEV0ax?usp=sharing)** is due on **October 18th** at 11:59 PM
+``` 
+
 
 
 ```{tip}
