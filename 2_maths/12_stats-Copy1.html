@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Statistics &#8212; CSC-272 Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHTXXD4572"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHTXXD4572');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/12_stats-Copy1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    CSC-272 Data Mining (Fall 2023)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/integrity.html">Academic Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas1.html">1.1. Pandas I: Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/41_types.html">2.1. Feature Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/42_formats.html">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/43_modalities.html">2.3. Modalities of Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/23_dosdonts.html">3.3. Dos and Donts of Visualization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_prob_stats_log.html">4. Prob, Stats and Logs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="11_probability.html">4.1. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_stats.html">4.2. Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_log.html">4.3. Logarithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_calculus.html">6. Calculus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/40_classification.html">7. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_clustering.html">8. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_regression.html">9. Regression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/2_maths/12_stats-Copy1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/2_maths/12_stats-Copy1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-statistical-distributions">Categorical Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli">Bernoulli 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical">Categorical 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial">Binomial 🪙 🪙 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">Multinomial 🎲 🎲 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-dogma-of-statistics">Central Dogma of Statistics</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h1>
+<p>Every variable we observe in the data has a particular frequency distribution and in turn a probability distribution. These exact distribtions are unique to the variable under consideration. However, the shapes of these distributions are not unique. There are a few common shapes that we see over and over again. In other words, <strong>the world’s rich variety of data appears only in a small number of classical shapes</strong>. Once abstracted from specific data observations, they become <em>probability distributions</em>, worthy of independent study.</p>
+<p>These classical distributions have two nice properties:</p>
+<ol class="arabic simple">
+<li><p>They describe the frequency distributions that often arise in practice.</p></li>
+<li><p>More importantly, they <strong>can be described as a mathematical function P(X) with very few parameters</strong> (unknowns).</p></li>
+</ol>
+<p>As indicated in the <span class="xref myst">previous section</span>, probability provides a way to express and reason about uncertainty. In other words, once you have probability distributions, you can use them to reason about the world. However, in the real world, we don’t know the probability distributions. We have to estimate them from data.</p>
+<p>This is where statistics comes in. Statistics allows us to look at data and intelligently guess what the underlying probability distributions might be in the following two steps:</p>
+<ol class="arabic simple">
+<li><p>Pick or assume an underlying probability distribution that we think might have generated the data.</p></li>
+<li><p>Estimate the parameters of the assumed probability distribution from the data.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/probstats2.png"><img alt="../_images/probstats2.png" class="align-center" src="../_images/probstats2.png" style="width: 90%;" /></a>
+<p>Below we will look at some of the most common distributions for categorical variables, focusing specifically on the parameters that define them. Once we have estimated parameters, we have a complete description of the probability distribution that can be used to reason about the world.</p>
+<section id="categorical-statistical-distributions">
+<h2>Categorical Statistical Distributions<a class="headerlink" href="#categorical-statistical-distributions" title="Permalink to this headline">#</a></h2>
+<section id="bernoulli">
+<h3>Bernoulli 🪙<a class="headerlink" href="#bernoulli" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k = 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n = 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>: Coin toss (Heads/Tails), yes/no, true/false, success/failure</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(1\)</span></p></li>
+<li><p><strong>Parameter</strong>: Probability of success <span class="math notranslate nohighlight">\(p\)</span></p></li>
+</ul>
+<p><strong>Bernoulli Distribution</strong> is a discrete probability distribution used to model a <strong>single trial <span class="math notranslate nohighlight">\(n=1\)</span> of a binary random that can have two possible outcomes <span class="math notranslate nohighlight">\(k=2\)</span></strong>.</p>
+<p>For instance, if we were interested in <strong>probability of observing a head in a single coin toss</strong>, we would use the Bernoulli distribution, where “1” is defined to mean “heads” and “0” is defined to mean “tails”.</p>
+<p>The Bernoulli distribution has a single parameter, the probability of success, which we will call <span class="math notranslate nohighlight">\(p\)</span>. The probability of observing a head is <span class="math notranslate nohighlight">\(p\)</span> and the probability of observing a tail is <span class="math notranslate nohighlight">\(q=1-p\)</span>. The probability function of the Bernoulli distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P(x) &amp;= p^x(1-p)^{1-x} \\
+&amp;= \begin{cases}
+p &amp; \text{if } x = 1 \\
+1-p &amp; \text{if } x = 0
+\end{cases}
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the outcome of the coin toss.</p>
+<p>If we observe a head, then <span class="math notranslate nohighlight">\(x=1\)</span> and the probability function is <span class="math notranslate nohighlight">\(P(1) = p\)</span>. If we observe a tail, then <span class="math notranslate nohighlight">\(x=0\)</span> and the likelihood function is <span class="math notranslate nohighlight">\(P(0) = 1-p\)</span>.</p>
+<p>If a variable <span class="math notranslate nohighlight">\(X\)</span> follows Bernoulli distribtion with <span class="math notranslate nohighlight">\(p=0.5\)</span>, it is denoted as <span class="math notranslate nohighlight">\(X \sim \text{Bernoulli}(p)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Heads&quot;</span><span class="p">,</span> <span class="s2">&quot;Tails&quot;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;P(X)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;P(X)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bernoulli Distribution of a Fair Coin Flip </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Bernoulli(0.5)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a598c63d3d32fbbb18e7dc403ad694cc07bfacf4c14cad0ba51bf4fcc9d891d.png" src="../_images/9a598c63d3d32fbbb18e7dc403ad694cc07bfacf4c14cad0ba51bf4fcc9d891d.png" />
+</div>
+</div>
+<hr>
+</section>
+<section id="categorical">
+<h3>Categorical 🎲<a class="headerlink" href="#categorical" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k &gt; 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n = 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>: Rolling a die, choosing a color, choosing a letter</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p><strong>Parameter</strong>: Probability of each outcome <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span></p></li>
+</ul>
+<p>The categorical distribution is a generalization of the Bernoulli distribution. It models the <strong>probability of observing a particular outcome from a set of <span class="math notranslate nohighlight">\(k &gt; 2\)</span> outcomes in a single trials</strong>.</p>
+<p>For example, it models the <strong>probability of observing a particular face when rolling a k-sided die once</strong>.</p>
+<p>The probability mass function of the categorical distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x) = \begin{cases}
+p_1 &amp; \text{if } x = 1 \\
+p_2 &amp; \text{if } x = 2 \\
+\vdots \\
+p_k &amp; \text{if } x = k
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> are the probabilities of observing each of the <span class="math notranslate nohighlight">\(k\)</span> outcomes. The probabilities must sum to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">cat_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Categorical Distribution of a Fair Die Roll&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/034c7aec896b46b411dc28d3e2cec0445c8595c46d4c811c36e2865d971df529.png" src="../_images/034c7aec896b46b411dc28d3e2cec0445c8595c46d4c811c36e2865d971df529.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">categorical</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">binom_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">binom_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Binomial Distribution of 50 Flips of a Fair Coin </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Binomial(n=50, p=0.5)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="binomial">
+<h3>Binomial 🪙 🪙 🪙<a class="headerlink" href="#binomial" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k = 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n &gt; 1\)</span></strong></p></li>
+<li><p><strong>Example:</strong> <u>Count of Heads</u> in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(2\)</span></p></li>
+<li><p><strong>Parameters</strong>: Probability of success <span class="math notranslate nohighlight">\(p\)</span> and number of trials <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+<!-- * **Sample Space**: $\Omega = \{0, 1, 2, \ldots, N\}$ -->
+<p>The binomial distribution is the discrete probability distribution of the <strong>number of successes in a sequence of <span class="math notranslate nohighlight">\(n\)</span> independent trials, each asking a yes–no question, and each with its own boolean-valued outcome: success/yes/true/one (with probability <span class="math notranslate nohighlight">\(p\)</span>)</strong> or failure/no/false/zero (with probability <span class="math notranslate nohighlight">\(q = 1 − p\)</span>).</p>
+<p>For example, if we were interested in <strong>probability of observing a head in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</strong>, we would use the binomial distribution, where “1” is defined to mean “heads” and “0” is defined to mean “tails”.</p>
+<p>The probability function of the binomial distribution is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=x) = \binom{n}{x} p^x(1-p)^{n-x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of trials and <span class="math notranslate nohighlight">\(p\)</span> is the probability of success. The binomial coefficient <span class="math notranslate nohighlight">\(\binom{n}{x}\)</span> is the number of ways to choose <span class="math notranslate nohighlight">\(x\)</span> items from a set of <span class="math notranslate nohighlight">\(n\)</span> items. The binomial coefficient is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\binom{n}{x} = \frac{n!}{x!(n-x)!}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n!\)</span> is the factorial of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Bernoulli variable: P(Success) in a given election </span>
+<span class="c1">#Binomial variable: Count of Successes</span>
+<span class="c1">#                   in n &gt; 1 elections </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">binom_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">binom_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">binom_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Binomial Distribution of 50 Flips of a Fair Coin </span><span class="se">\n</span><span class="s2"> $X </span><span class="se">\\</span><span class="s2">sim Binomial(n=50, p=0.5)$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b3d9e0b8c35a0010319a98de3f76a37975924f9bdb68b42f2daaa1aa0f6b4b42.png" src="../_images/b3d9e0b8c35a0010319a98de3f76a37975924f9bdb68b42f2daaa1aa0f6b4b42.png" />
+</div>
+</div>
+<hr/>
+</section>
+<section id="multinomial">
+<h3>Multinomial 🎲 🎲 🎲<a class="headerlink" href="#multinomial" title="Permalink to this headline">#</a></h3>
+<!-- # ⚀ = 2, # ⚁ = 1, # ⚂ = 3, # ⚃ = 0, # ⚄ = 0, # ⚅ = 0 -->
+<ul class="simple">
+<li><p><strong>Number of possible outcomes <span class="math notranslate nohighlight">\(k &gt; 2\)</span></strong></p></li>
+<li><p><strong>Number of trials <span class="math notranslate nohighlight">\(n &gt; 1\)</span></strong></p></li>
+<li><p><strong>Example</strong>:  As a result of <span class="math notranslate nohighlight">\(n=9\)</span> rolls of a die, <br/>
+Count of 1-face ⚀ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 2-face ⚁ = 1 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 3-face ⚂ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 4-face ⚃ = 1 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 5-face ⚄ = 2 <span class="math notranslate nohighlight">\(\wedge\)</span> <br/>
+Count of 6-face ⚅ = 1</p></li>
+<li><p><strong>Number of parameters</strong>: <span class="math notranslate nohighlight">\(k + 2\)</span></p></li>
+<li><p><strong>Parameters</strong>: <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(k\)</span> and probability of each outcome <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> such that <span class="math notranslate nohighlight">\(\sum_{i=1}^k p_i = 1\)</span></p></li>
+</ul>
+<!-- * **Sample Space**: $\Omega = \{0, 1, 2, \ldots, N\}$ -->
+<p>Multinomial distribution is a multivariate generalization of the binomial distribution. It models the <strong>probability of observing a particular count for each of <span class="math notranslate nohighlight">\(k &gt; 2\)</span> outcomes in <span class="math notranslate nohighlight">\(n &gt; 1\)</span> trials</strong>.</p>
+<p>For example, it models the <strong>probability of counts for rolling a k-sided die n times</strong>.</p>
+<p>The probability function of the multinomial distribution is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=\{x_1, x_2, \ldots x_k \}) = \frac{n!}{x_1!x_2!\ldots x_k!} p_1^{x_1}p_2^{x_2}\ldots p_k^{x_k}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of trials, <span class="math notranslate nohighlight">\(k\)</span> is the number of outcomes, <span class="math notranslate nohighlight">\(n_1, n_2, \ldots, n_k\)</span> are the counts for each outcome, and <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span> are the probabilities of each outcome. The probabilities must sum to 1 and the counts must sum to <span class="math notranslate nohighlight">\(n\)</span> i.e. <span class="math notranslate nohighlight">\(\sum_{i=1}^k p_i = 1\)</span> and <span class="math notranslate nohighlight">\(\sum_{i=1}^k x_i = n\)</span>.</p>
+<p>For instance, using Multinomial distribution, as a result of rolling a die 9 times, we can calculate the probability of observing each even-sided face 2 times and each odd-sided face 1 times as follows :</p>
+<div class="math notranslate nohighlight">
+\[P(\#⚀ = 1, \#⚁ = 2, \#⚂ = 1, \#⚃ = 2, \#⚄ = 1, \#⚅ = 2) = \frac{9!}{1!2!1!2!1!2!} \left(\frac{1}{6}\right)^9\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{362880}{8} \times \left(\frac{1}{6}\right)^9\]</div>
+<div class="math notranslate nohighlight">
+\[ = 0.0045 \]</div>
+<p>Visualizing the probability distribution of the Multinomial distribution is hard. The following figure shows the probability distribution of the Multinomial distribution for <span class="math notranslate nohighlight">\(n=5\)</span>, <span class="math notranslate nohighlight">\(k=3\)</span>, <span class="math notranslate nohighlight">\(p_1=0.5\)</span>, <span class="math notranslate nohighlight">\(p_2=0.3\)</span> and <span class="math notranslate nohighlight">\(p_3=0.2\)</span>.</p>
+<a class="reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png"><img alt="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" class="align-center" src="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" style="width: 80%;" /></a>
+<hr/>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<p>The following table presents a summary and comparison of the categorical statistical distributions:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Distribution</p></th>
+<th class="text-center head"><p>Number of Trials <span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-center head"><p>Number of Outomes <span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="text-center head"><p>Number of parameters</p></th>
+<th class="text-center head"><p>Parameters</p></th>
+<th class="text-center head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Bernoulli</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td class="text-center"><p>A single coin toss</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Categorical</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_k\)</span></p></td>
+<td class="text-center"><p>A single roll of a die</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Binomial</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(n, p\)</span></p></td>
+<td class="text-center"><p><u>Count of heads</u> in <span class="math notranslate nohighlight">\(n\)</span> coin tosses</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Multinomial</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(&gt;2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(k+2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(n, k, p_1, p_2, \ldots, p_k\)</span></p></td>
+<td class="text-center"><p><u>Count of each face</u> in <span class="math notranslate nohighlight">\(n\)</span> rolls of a die</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="maximum-likelihood-estimation">
+<h2>Maximum Likelihood Estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">#</a></h2>
+<p>Maximum likelihood estimation (MLE) is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable. The point in the parameter space that maximizes the likelihood function is called the maximum likelihood estimate.</p>
+<p>Likelihood function is the probability of observing the data given the parameters.</p>
+<p>Maximum likelihood estimate of Bernoulli distribution’s only parameter <span class="math notranslate nohighlight">\(p\)</span>, given data, is:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p} = \frac{\text{Number of successes}}{\text{Number of observations}} \]</div>
+<p>Similarly, Maximum likelihood estimate of <span class="math notranslate nohighlight">\(k\)</span> parameters of Categorical distribution is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\hat{p}_i &amp;= \frac{\text{Number of observations of outcome i}}{\text{Number of observations}} \\
+\\
+\hat{n} &amp;= \text{Number of observations}
+\end{aligned}
+\end{split}\]</div>
+<p>Note that the maximum likelihood estimate of the parameters of the Binomial and Multinomial distributions are not as simple as the Bernoulli and Categorical distributions and require multiple samples. However, since there is a Bernoulli distribution for each trial of the Binomial distribution and a Categorical distribution for each trial of the Multinomial distribution, we can use the maximum likelihood estimates of the Bernoulli and Categorical distributions to estimate the parameters of the Binomial and Multinomial distributions.</p>
+</section>
+<section id="law-of-large-numbers">
+<h2>Law of Large Numbers<a class="headerlink" href="#law-of-large-numbers" title="Permalink to this headline">#</a></h2>
+<p>The law of large numbers states that as the number of trials of a random experiment increases, the average of the observed outcomes approaches the expected value.</p>
+<p>For example, if we toss a fair coin 10 times, we might expect to observe 5 heads but may or may not get 5. However,  if we toss a fair coin 1,000,000 times, we can confidently expect to observe nearabouts 500,000 heads, if the coin is indeed fair.</p>
+<p>The law of large numbers is the basis for the frequentist approach to statistics. The frequentist approach to statistics is based on the idea that the probability of an event is the long-run relative frequency of the event. In other words, the probability of an event is the proportion of times the event occurs in a large number of trials.</p>
+<p>In the context of MLE, the law of large numbers implies that as the number of observations increases, the maximum likelihood estimate of the parameters approaches the true parameters of the distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;trials&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;p_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;trials&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;trials&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;p_hat&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated p&#39;</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;trials&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;true p&#39;</span><span class="p">);</span>
+
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Estimating the Probability of Heads $</span><span class="se">\\</span><span class="s2">hat</span><span class="si">{p}</span><span class="s2"> = </span><span class="se">\\</span><span class="s2">frac{Count(x=1)}</span><span class="si">{n}</span><span class="s2">$ </span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="o">+</span> \
+              <span class="s2">&quot;$X </span><span class="se">\\</span><span class="s2">sim Bernoulli(p)$ </span><span class="se">\n</span><span class="s2"> Note &quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Number of Trials&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Estimated Probability of Heads&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/643ca13c8a75ac1f4b57c5e15e9c657078af71b4f0bfd5e6b9e9854e18859975.png" src="../_images/643ca13c8a75ac1f4b57c5e15e9c657078af71b4f0bfd5e6b9e9854e18859975.png" />
+</div>
+</div>
+</section>
+<section id="central-dogma-of-statistics">
+<h2>Central Dogma of Statistics<a class="headerlink" href="#central-dogma-of-statistics" title="Permalink to this headline">#</a></h2>
+<p>The central dogma of data science, simply put, is that general claims about a population can be made from a sample of data.</p>
+<a class="reference internal image-reference" href="https://fahadsultan.com/datascience_ml/_images/dogma.png"><img alt="https://fahadsultan.com/datascience_ml/_images/dogma.png" class="align-center" src="https://fahadsultan.com/datascience_ml/_images/dogma.png" style="width: 80%;" /></a>
+<p>This raises concerns about the sampling process such as the representativeness of the sample, the size of the sample, the sampling bias, etc. Which in turn raises concerns about potential negative effects of the claims made based on questionable data.</p>
+<hr/>
+<a class="reference internal image-reference" href="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large"><img alt="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large" class="align-right" src="https://pbs.twimg.com/media/Dv3SAKYU0AAgbJ3?format=jpg&amp;name=large" style="width: 45%;" /></a>
+<p>Issues with sampling and underrepresentative data are not new. In 1936, the <strong>Literary Digest</strong> magazine conducted a poll to predict the outcome of the presidential election. The poll was based on a <strong>sample of 2.4 million people</strong>. The poll predicted that Alf Landon would win the election with 57% of the vote. However, the actual election results were the opposite. Franklin D. Roosevelt won the election with 62% of the vote.</p>
+<p>The reason for the failure of the poll was that the sample was not representative of the population. The sample was biased towards the wealthy and the educated. The poll was also conducted by sending out postcards to people who subscribed to the Literary Digest magazine. In 1936, only the wealthy and the educated subscribed to magazines.</p>
+<p>The Literary Digest magazine went bankrupt soon after the election. George Gallup, who correctly predicted the outcome of the election, went on to found the American Institute of Public Opinion, which later became the Gallup Poll.</p>
+<p>The big takeaway from this story is that <strong>size alone is not enough</strong>. In other words, <strong>large sample sizes is a necessary but not sufficient condition</strong> for making general claims about a population.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./2_maths"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-statistical-distributions">Categorical Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli">Bernoulli 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical">Categorical 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial">Binomial 🪙 🪙 🪙</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">Multinomial 🎲 🎲 🎲</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-dogma-of-statistics">Central Dogma of Statistics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Syed Fahad Sultan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
