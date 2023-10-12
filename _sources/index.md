@@ -19,7 +19,7 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 
 
 ```{important}
-**Exam 2** is on **October 19th** during class time, from **8:30 to 9:50 AM**
+**Exam 2** is on **Thursday, October 19th** during class time, from **8:30 to 9:50 AM**
 
 Exam 2 is going to be the **same format as Exam 1** with one exception: 
 
