@@ -417,6 +417,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monotonically-increasing-function">Monotonically Increasing Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laws-of-logarithms">Laws of Logarithms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-probabilities">Multiplying Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratios-of-probabilities">Ratios of Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-skewed-distributions">Normalizing Skewed Distributions</a></li>
@@ -437,30 +438,140 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \text{if  } y = e^x \]</div>
 <div class="math notranslate nohighlight">
-\[ \text{then  } x = log_e y \]</div>
+\[ \text{then  } log_e y = x \]</div>
 <p>From the two equations above, it follows that</p>
 <div class="math notranslate nohighlight">
 \[  log_e e^x = x \]</div>
+<p>Here <span class="math notranslate nohighlight">\(e\)</span> is an irrational constant called Euler’s number that begins with 2.718281828459.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
 <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+
 <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
 
+<span class="c1"># data[&#39;Y2&#39;] = # such that Y2 == X, just using Y </span>
+
 <span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
-<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;$Y = f(x) = e^{~x}$&quot;</span> <span class="o">+</span> <span class="s2">&quot; where &quot;</span> <span class="o">+</span> <span class="s2">&quot;$x \in [0, 1000)$&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;$Y = f(x) = e^{~x}$&quot;</span> <span class="o">+</span> <span class="s2">&quot; where &quot;</span> <span class="o">+</span> <span class="s2">&quot;$x \in [0, 100)$&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/935293888906f78a33f48e106cc22ae7a2f6fb833ba4b12bd1813ac769a0bd52.png" src="../_images/935293888906f78a33f48e106cc22ae7a2f6fb833ba4b12bd1813ac769a0bd52.png" />
+<img alt="../_images/82ca0a8f7055e808d79d1fa9ac23d9df850cf111443edbe835c0089f18f762e7.png" src="../_images/82ca0a8f7055e808d79d1fa9ac23d9df850cf111443edbe835c0089f18f762e7.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Y</th>
+      <th>X</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.718282e+00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.389056e+00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.008554e+01</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.459815e+01</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.484132e+02</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>4.923458e+41</td>
+      <td>96.0</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>1.338335e+42</td>
+      <td>97.0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>3.637971e+42</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>9.889030e+42</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>2.688117e+43</td>
+      <td>100.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that to use the log function in python, we have to import it from the <code class="docutils literal notranslate"><span class="pre">math</span></code> library:</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">log</span></code></p>
+<p>Also note that the default base of the built-in <code class="docutils literal notranslate"><span class="pre">log</span></code> function is <span class="math notranslate nohighlight">\(e\)</span>.</p>
+</div>
+<p>Now let’s try to apply the logarithm to the equation <strong><span class="math notranslate nohighlight">\(y = e^x\)</span></strong> and call it <strong><span class="math notranslate nohighlight">\(log(y)\)</span></strong>. For additional comparison, let’s also compute <strong><span class="math notranslate nohighlight">\(log(x)\)</span></strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -504,8 +615,8 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>X</th>
       <th>Y</th>
+      <th>X</th>
       <th>log(Y)</th>
       <th>log(X)</th>
     </tr>
@@ -513,36 +624,36 @@ document.write(`
   <tbody>
     <tr>
       <th>95</th>
-      <td>96</td>
       <td>4.923458e+41</td>
+      <td>96.0</td>
       <td>96.0</td>
       <td>4.564348</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>97</td>
       <td>1.338335e+42</td>
+      <td>97.0</td>
       <td>97.0</td>
       <td>4.574711</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>98</td>
       <td>3.637971e+42</td>
+      <td>98.0</td>
       <td>98.0</td>
       <td>4.584967</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>99</td>
       <td>9.889030e+42</td>
+      <td>99.0</td>
       <td>99.0</td>
       <td>4.595120</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>100</td>
       <td>2.688117e+43</td>
+      <td>100.0</td>
       <td>100.0</td>
       <td>4.605170</td>
     </tr>
@@ -550,34 +661,236 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>The natural logarithm is the logarithm to the base <span class="math notranslate nohighlight">\(e\)</span>, where <span class="math notranslate nohighlight">\(e\)</span> is an irrational constant called Euler’s number, approximately equal to 2.718281828459. The natural logarithm of a number <span class="math notranslate nohighlight">\(x\)</span> is generally written as <span class="math notranslate nohighlight">\(ln x\)</span> or <span class="math notranslate nohighlight">\(log_e x\)</span>.</p>
+<p>For comparison, there are 1e+42 stars in the universe. Meaning <span class="math notranslate nohighlight">\(2.1718^{100} &gt;\)</span> stars in the universe.</p>
+<p>Logarithm to the base <span class="math notranslate nohighlight">\(e\)</span> is called the <strong>natural logarithm</strong>. The natural logarithm of a number <span class="math notranslate nohighlight">\(x\)</span> is generally written as <strong><span class="math notranslate nohighlight">\(\text{ln}~x\)</span></strong> or <span class="math notranslate nohighlight">\(log_e x\)</span>.</p>
 <p>The relationship between the exponential function and the logarithm is preserved when considering logarithms to any other base. Therefore, more generally,</p>
 <div class="math notranslate nohighlight">
 \[ \text{if  } y = b^x \]</div>
 <div class="math notranslate nohighlight">
-\[ \text{then  } x = log_b y \]</div>
+\[ \text{then  } log_b y = x \]</div>
 <p>The logarithm of a number y to base b is the exponent to which we must raise b to get y.</p>
 <p>For example, <span class="math notranslate nohighlight">\(2^3 = 8\)</span>, so <span class="math notranslate nohighlight">\(log_2 8 = 3\)</span>.</p>
 <p>Logarithms are very useful things, and arise often in data analysis. Here I detail three important roles logarithms play in data science.</p>
 <section id="monotonically-increasing-function">
 <h2>Monotonically Increasing Function<a class="headerlink" href="#monotonically-increasing-function" title="Permalink to this headline">#</a></h2>
-<p>A function <span class="math notranslate nohighlight">\(f (x)\)</span> is monotonically increasing if <span class="math notranslate nohighlight">\(x1 &gt; x2\)</span> implies that <span class="math notranslate nohighlight">\(f (x1) &gt; f (x2)\)</span>.</p>
-<p>The logarithm is a monotonically increasing function. This means that if <span class="math notranslate nohighlight">\(x1 &gt; x2\)</span> then <span class="math notranslate nohighlight">\(log(x1) &gt; log(x2)\)</span>.</p>
+<p>A function <span class="math notranslate nohighlight">\(f (x)\)</span> is monotonically increasing if <span class="math notranslate nohighlight">\(x_1 &gt; x_2\)</span> implies that <span class="math notranslate nohighlight">\(f (x_1) &gt; f (x_2)\)</span>.</p>
+<p>The logarithm is a monotonically increasing function. This means that if <span class="math notranslate nohighlight">\(x_1 &gt; x_2\)</span> then <span class="math notranslate nohighlight">\(log(x_1) &gt; log(x_2)\)</span>.</p>
 <p>This is a very useful property, because it means that we can apply a logarithmic transformation without changing the order of the data. Preserving the relative order of the data is important for many statistical techniques.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>      <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
-<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
-<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>      <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;bright&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;bright&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;bright&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;log(X)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
 <span class="n">axs</span><span class="o">.</span><span class="n">legend</span><span class="p">([],[],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Note that the order of the points is preserved between</span><span class="se">\n</span><span class="s2">top: $Y=e^X$, middle:$X$ and bottom:$log(X)$&quot;</span><span class="p">);</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Note that the order of the points is preserved between $e^X$, $X$ and $log(X)$&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/48f6e26b28e2d45fba8b112f859049fbe6ff49dfb0ab60e3b8fc638f6a8055fd.png" src="../_images/48f6e26b28e2d45fba8b112f859049fbe6ff49dfb0ab60e3b8fc638f6a8055fd.png" />
+<img alt="../_images/d95f2d736c6f45017bae89fa7423b47a545f2e0707598dd6a72d6f340b24ab04.png" src="../_images/d95f2d736c6f45017bae89fa7423b47a545f2e0707598dd6a72d6f340b24ab04.png" />
+</div>
+</div>
+<p>In the context of data science, this is useful because in many cases we are interested in comparing the relative size of things rather than the absolute size of things. For instance, often we are interested in answering if <span class="math notranslate nohighlight">\(P(X) &gt; P(X)\)</span>.</p>
+<p>With logarithms, we can answer this question by comparing <span class="math notranslate nohighlight">\(log(P(X))\)</span> and <span class="math notranslate nohighlight">\(log(P(X))\)</span> instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;log(X)&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;log(Y)&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>log(X)</th>
+      <th>log(Y)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>11</td>
+      <td>0.000000</td>
+      <td>2.397895</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>12</td>
+      <td>0.693147</td>
+      <td>2.484907</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>13</td>
+      <td>1.098612</td>
+      <td>2.564949</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>14</td>
+      <td>1.386294</td>
+      <td>2.639057</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>15</td>
+      <td>1.609438</td>
+      <td>2.708050</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>16</td>
+      <td>1.791759</td>
+      <td>2.772589</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>17</td>
+      <td>1.945910</td>
+      <td>2.833213</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>18</td>
+      <td>2.079442</td>
+      <td>2.890372</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>19</td>
+      <td>2.197225</td>
+      <td>2.944439</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>20</td>
+      <td>2.302585</td>
+      <td>2.995732</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">log</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    True
+1    True
+2    True
+3    True
+4    True
+5    True
+6    True
+7    True
+8    True
+9    True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="laws-of-logarithms">
+<h2>Laws of Logarithms<a class="headerlink" href="#laws-of-logarithms" title="Permalink to this headline">#</a></h2>
+<p>The three laws of logarithms are:</p>
+<p><strong>Product rule</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ log_b (x \cdot y) = log_b x + log_b y \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">log</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<hr/>
+<p><strong>Quotient rule</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ log_b (\frac{x}{y}) = log_b x - log_b y \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">log</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<hr/>
+<p><strong>Power rule</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ log_b (x^r) = r \cdot log_b x \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="mi">4</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -595,13 +908,17 @@ Probabilities are small numbers. Thus multiplying long chains of probability yie
 \[ \prod_{i=1}^{n} p_i = b^P , \text{where}~~P = \sum_{i=1}^{n} log_b(p_i) \]</div>
 <p>We can raise our sum to an exponential if we need the real probability, but usually this is not necessary.</p>
 <p>When we just need to compare two probabilities to decide which one is larger we can safely stay in log world, because bigger logarithms correspond to bigger probabilities.</p>
-<p><em>There is one quirk to be aware of. Recall that the log2(12) = −1. The logarithms of probabilities are all negative numbers except for log(1) = 0. This is the reason why equations with logs of probabilities often feature negative signs in strange places. Be on the lookout for them.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the <span class="math notranslate nohighlight">\(log(P(X=x))\)</span> are all negative numbers for the range <span class="math notranslate nohighlight">\(x \in (0, 1)\)</span>, 0 and 1 exclusive, since log(1) = 0 and log(0) is undefined.</p>
+<p>Equations with logs of probabilities involve negative numbers which might look odd. Don’t let that throw you off.</p>
+</div>
 </section>
 <section id="ratios-of-probabilities">
 <h2>Ratios of Probabilities<a class="headerlink" href="#ratios-of-probabilities" title="Permalink to this headline">#</a></h2>
-<p>Ratios are quantities of the form <span class="math notranslate nohighlight">\(\frac{a}/{b}\)</span>. They occur often in data sets either as elementary features or values derived from feature pairs. Ratios naturally occur in normalizing data for conditions (i.e. weight after some treatment over the initial weight) or time (i.e. today’s price over yesterday’s price).</p>
+<p>Ratios are quantities of the form <span class="math notranslate nohighlight">\(\frac{a}{b}\)</span>. They occur often in data sets either as elementary features or values derived from feature pairs. Ratios naturally occur in normalizing data for conditions (i.e. weight after some treatment over the initial weight) or time (i.e. today’s price over yesterday’s price).</p>
 <p>But ratios behave differently when reflecting increases than decreases. The ratio <span class="math notranslate nohighlight">\(200/100\)</span> is <span class="math notranslate nohighlight">\(200%\)</span> above baseline, but <span class="math notranslate nohighlight">\(100/200\)</span> is only 50% below despite being a similar magnitude change. Thus doing things like averaging ratios is committing a statistical sin. Do you really want a doubling followed by a halving to average out as an increase, as opposed to a neutral change?</p>
-<p>One solution here would have been to use the geometric mean. But better is taking the logarithm of these ratios, so that they yield equal displacement, since log_2 2 = 1 and log_2(1/2) = −1. We get the extra bonus that a unit ratio maps to zero, so positive and negative numbers correspond to improper and proper ratios, respectively.</p>
+<p>One solution here is taking the logarithm of these ratios, so that they yield equal displacement, since <span class="math notranslate nohighlight">\(log_2(2) = 1\)</span> and <span class="math notranslate nohighlight">\(log_2(1/2) = −1\)</span>. We get the extra bonus that a unit ratio maps to zero, so positive and negative numbers correspond to improper and proper ratios, respectively.</p>
 <figure class="align-default" id="log-ratio">
 <a class="reference internal image-reference" href="../_images/log_ratios.png"><img alt="../_images/log_ratios.png" src="../_images/log_ratios.png" style="width: 70%;" /></a>
 <figcaption>
@@ -637,12 +954,12 @@ Probabilities are small numbers. Thus multiplying long chains of probability yie
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dbc40416b392ce43dbf95c785ab64d8aa4a1f1ab5fa99cd1130213caa9a6378f.png" src="../_images/dbc40416b392ce43dbf95c785ab64d8aa4a1f1ab5fa99cd1130213caa9a6378f.png" />
+<img alt="../_images/0215ec1c99b1548acb915d5eefb82d3e8e7672c5ca8bc255b1a7d63af83f6ea8.png" src="../_images/0215ec1c99b1548acb915d5eefb82d3e8e7672c5ca8bc255b1a7d63af83f6ea8.png" />
 </div>
 </div>
 <p>Similarly, you can specify the use of log scale for both axes with <strong><code class="docutils literal notranslate"><span class="pre">log_scale</span> <span class="pre">=</span> <span class="pre">[True,</span> <span class="pre">False]</span></code></strong> in most plotting functions in <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. The first value in the list is for the x-axis, the second for the y-axis. <code class="docutils literal notranslate"><span class="pre">True</span></code> means log scale, <code class="docutils literal notranslate"><span class="pre">False</span></code> means the default linear scale.</p>
@@ -651,25 +968,156 @@ Probabilities are small numbers. Thus multiplying long chains of probability yie
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
-
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e3d80c85c7dd126277b5f0e87252ffc6775e249ec75b4884be310fd79e96dfe0.png" src="../_images/e3d80c85c7dd126277b5f0e87252ffc6775e249ec75b4884be310fd79e96dfe0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [39],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/distributions.py:1462,</span> in <span class="ni">histplot</span><span class="nt">(data, x, y, hue, weights, stat, bins, binwidth, binrange, discrete, cumulative, common_bins, common_norm, multiple, element, fill, shrink, kde, kde_kws, line_kws, thresh, pthresh, pmax, cbar, cbar_ax, cbar_kws, palette, hue_order, hue_norm, color, log_scale, legend, ax, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1451</span> <span class="n">estimate_kws</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1452</span>     <span class="n">stat</span><span class="o">=</span><span class="n">stat</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1453</span>     <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1457</span>     <span class="n">cumulative</span><span class="o">=</span><span class="n">cumulative</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1458</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1460</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">univariate</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1462</span>     <span class="n">p</span><span class="o">.</span><span class="n">plot_univariate_histogram</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1463</span>         <span class="n">multiple</span><span class="o">=</span><span class="n">multiple</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1464</span>         <span class="n">element</span><span class="o">=</span><span class="n">element</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1465</span>         <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1466</span>         <span class="n">shrink</span><span class="o">=</span><span class="n">shrink</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1467</span>         <span class="n">common_norm</span><span class="o">=</span><span class="n">common_norm</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1468</span>         <span class="n">common_bins</span><span class="o">=</span><span class="n">common_bins</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1469</span>         <span class="n">kde</span><span class="o">=</span><span class="n">kde</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1470</span>         <span class="n">kde_kws</span><span class="o">=</span><span class="n">kde_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span>         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1472</span>         <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1473</span>         <span class="n">estimate_kws</span><span class="o">=</span><span class="n">estimate_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1474</span>         <span class="n">line_kws</span><span class="o">=</span><span class="n">line_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1476</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1478</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1480</span>     <span class="n">p</span><span class="o">.</span><span class="n">plot_bivariate_histogram</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1481</span>         <span class="n">common_bins</span><span class="o">=</span><span class="n">common_bins</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1482</span>         <span class="n">common_norm</span><span class="o">=</span><span class="n">common_norm</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1492</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1493</span>     <span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/distributions.py:565,</span> in <span class="ni">_DistributionPlotter.plot_univariate_histogram</span><span class="nt">(self, multiple, element, fill, common_norm, common_bins, shrink, kde, kde_kws, color, legend, line_kws, estimate_kws, **plot_kws)</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span> <span class="k">if</span> <span class="n">element</span> <span class="o">==</span> <span class="s2">&quot;bars&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">561</span> 
+<span class="g g-Whitespace">    </span><span class="mi">562</span>     <span class="c1"># Use matplotlib bar plotting</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span>     <span class="n">plot_func</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_variable</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span> <span class="k">else</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span>
+<span class="ne">--&gt; </span><span class="mi">565</span>     <span class="n">artists</span> <span class="o">=</span> <span class="n">plot_func</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>         <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;edges&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span>         <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;heights&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>         <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;widths&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>         <span class="n">bottom</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>         <span class="n">align</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>         <span class="o">**</span><span class="n">artist_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>     <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_variable</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/__init__.py:1412,</span> in <span class="ni">_preprocess_data.&lt;locals&gt;.inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1409</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1410</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1411</span>     <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1414</span>     <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1415</span>     <span class="n">auto_label</span> <span class="o">=</span> <span class="p">(</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1416</span>                   <span class="ow">or</span> <span class="n">bound</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">))</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:2409,</span> in <span class="ni">Axes.bar</span><span class="nt">(self, x, height, width, bottom, align, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2407</span>     <span class="k">elif</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2408</span>         <span class="n">r</span><span class="o">.</span><span class="n">sticky_edges</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2409</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2410</span>     <span class="n">patches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2412</span> <span class="k">if</span> <span class="n">xerr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">yerr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_base.py:2358,</span> in <span class="ni">_AxesBase.add_patch</span><span class="nt">(self, p)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2356</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">get_clip_path</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2357</span>     <span class="n">p</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2358</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_patch_limits</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2359</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2360</span> <span class="n">p</span><span class="o">.</span><span class="n">_remove_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">remove</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_base.py:2382,</span> in <span class="ni">_AxesBase._update_patch_limits</span><span class="nt">(self, patch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2380</span>     <span class="k">return</span>
+<span class="g g-Whitespace">   </span><span class="mi">2381</span> <span class="n">patch_trf</span> <span class="o">=</span> <span class="n">patch</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">2382</span> <span class="n">updatex</span><span class="p">,</span> <span class="n">updatey</span> <span class="o">=</span> <span class="n">patch_trf</span><span class="o">.</span><span class="n">contains_branch_seperately</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2383</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">updatex</span> <span class="ow">or</span> <span class="n">updatey</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2384</span>     <span class="k">return</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:1424,</span> in <span class="ni">Transform.contains_branch_seperately</span><span class="nt">(self, other_transform)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;contains_branch_seperately only supports &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1421</span>                      <span class="s1">&#39;transforms with 2 output dimensions&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="c1"># for a non-blended transform each separate dimension is the same, so</span>
+<span class="g g-Whitespace">   </span><span class="mi">1423</span> <span class="c1"># just return the appropriate shape.</span>
+<span class="ne">-&gt; </span><span class="mi">1424</span> <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">contains_branch</span><span class="p">(</span><span class="n">other_transform</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:1403,</span> in <span class="ni">Transform.contains_branch</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1400</span>     <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="c1"># check that a subtree is equal to other (starting from self)</span>
+<span class="ne">-&gt; </span><span class="mi">1403</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">sub_tree</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_break_from_left_to_right</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="k">if</span> <span class="n">sub_tree</span> <span class="o">==</span> <span class="n">other</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1405</span>         <span class="k">return</span> <span class="kc">True</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:2403,</span> in <span class="ni">CompositeGenericTransform._iter_break_from_left_to_right</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2402</span> <span class="k">def</span> <span class="nf">_iter_break_from_left_to_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2403</span>     <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="o">.</span><span class="n">_iter_break_from_left_to_right</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">2404</span>         <span class="k">yield</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span>
+<span class="g g-Whitespace">   </span><span class="mi">2405</span>     <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="o">.</span><span class="n">_iter_break_from_left_to_right</span><span class="p">():</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:2403,</span> in <span class="ni">CompositeGenericTransform._iter_break_from_left_to_right</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2402</span> <span class="k">def</span> <span class="nf">_iter_break_from_left_to_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2403</span>     <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="o">.</span><span class="n">_iter_break_from_left_to_right</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">2404</span>         <span class="k">yield</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span>
+<span class="g g-Whitespace">   </span><span class="mi">2405</span>     <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="o">.</span><span class="n">_iter_break_from_left_to_right</span><span class="p">():</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:1373,</span> in <span class="ni">Transform._iter_break_from_left_to_right</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1363</span> <span class="k">def</span> <span class="nf">_iter_break_from_left_to_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1364</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1365</span><span class="sd">     Return an iterator breaking down this transform stack from left to</span>
+<span class="g g-Whitespace">   </span><span class="mi">1366</span><span class="sd">     right recursively. If self == ((A, N), A) then the result will be an</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1371</span><span class="sd">     ``flat_stack[:i], flat_stack[i:]`` where i=0..(n-1).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1372</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1373</span>     <span class="k">yield</span> <span class="n">IdentityTransform</span><span class="p">(),</span> <span class="bp">self</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/transforms.py:1783,</span> in <span class="ni">AffineBase.__init__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1778</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1779</span><span class="sd"> The base class of all affine transformations of any number of dimensions.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1780</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1781</span> <span class="n">is_affine</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">-&gt; </span><span class="mi">1783</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1784</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1785</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_inverted</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Y-axis is log-scaled&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;X-axis is log-scaled&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/db06ede166a5882e2847d7b723c364804bfcbf98c77515265b27112601f911b6.png" src="../_images/db06ede166a5882e2847d7b723c364804bfcbf98c77515265b27112601f911b6.png" />
 </div>
 </div>
 </section>
@@ -725,6 +1173,7 @@ Probabilities are small numbers. Thus multiplying long chains of probability yie
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monotonically-increasing-function">Monotonically Increasing Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laws-of-logarithms">Laws of Logarithms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-probabilities">Multiplying Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratios-of-probabilities">Ratios of Probabilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-skewed-distributions">Normalizing Skewed Distributions</a></li>
