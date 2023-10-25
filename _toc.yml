@@ -82,19 +82,19 @@ parts:
   - caption: Problems in Data Science
     numbered: true
     chapters:
-    # - file: 3_problems_in/10_ranking_assoc
-      # sections: 
-      #   - file: 3_problems_in/11_pagerank
-      #   - file: 3_problems_in/12_apriori
+    - file: 3_problems_in/40_supervised
+      sections: 
+        - file: 3_problems_in/41_classification
+        - file: 3_problems_in/42_regression
     - file: 3_problems_in/40_classification
-    - file: 3_problems_in/20_clustering
-    - file: 3_problems_in/30_regression
+    - file: 3_problems_in/20_unsupervised
+    - file: 3_problems_in/30_reinforcement
   - caption: Models in Data Science
     numbered: true
     chapters:
       - file: 4_models/graphical
-        # sections: 
-        # - file: 3_problems_in/41_naivebayes
+        sections: 
+        - file: 4_models/41_naivebayes
       - file: 3_problems_in/22_kmeans
       - file: 4_models/generalized
         # sections: 
