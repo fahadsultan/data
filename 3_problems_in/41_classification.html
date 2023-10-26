@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '3_problems_in/41_classification';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.7. Regression" href="42_regression.html" />
+    <link rel="next" title="8. Unsupervised Learning" href="20_unsupervised.html" />
     <link rel="prev" title="7. Supervised Learning" href="40_supervised.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -220,7 +220,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="40_supervised.html">7. Supervised Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.6. Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42_regression.html">7.7. Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="20_unsupervised.html">8. Unsupervised Learning</a></li>
@@ -425,7 +424,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-as-multiple-binary-classifications">7.6.1.1. Multi-class classification as multiple Binary classifications</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -440,6 +442,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="classification">
 <h1><span class="section-number">7.6. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h1>
 <p>Classification lies at the heart of both human and machine intelligence. Deciding what letter, word, or image has been presented to our senses, recognizing faces or voices, sorting mail, assigning grades to homeworks; these are all examples of assigning a category to an input.</p>
+<p>One method for classification is to use handwritten rules. There are many areas of data mining where handwritten rule-based classifiers constitute a state-of-the-art system, or at least part of it.
+Rules can be fragile, however, as situations or data change over time, and for some tasks <a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf">humans aren’t necessarily good at coming up with the rules</a>. Most cases of classification therefore are instead done via supervised machine learning.</p>
 <p><strong>Classification</strong> is the type of supervised learning where <strong><span class="math notranslate nohighlight">\(\mathcal{y}\)</span> is a <a src="../1_programming/41_types.html#categorical-features">discrete categorical variable</a></strong>.</p>
 <p>The discrete output variable <span class="math notranslate nohighlight">\(\mathcal{y}\)</span> is often also called the <strong>label</strong> or <strong>target</strong> or <strong>class</strong>.</p>
 <p>For example, we might want to predict whether a patient has a disease or not, based on their symptoms. In this case, <span class="math notranslate nohighlight">\(\mathcal{y}\)</span> is a binary variable, taking the value 1 if the patient has the disease, and 0 otherwise. Other examples of classification problems include predicting the sentiment of a movie review: positive, negative, or neutral.</p>
@@ -453,6 +457,14 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[Accuracy = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}\]</div>
 <p>For example, if we have a test set of 100 documents, and our classifier correctly predicts the class of 80 of them, then the accuracy is 80%.</p>
+<p>Accuracy is a good metric when the classes are <em>balanced</em> <span class="math notranslate nohighlight">\(N_{class1} \approx N_{class2}\)</span>. However, when the classes are imbalanced, accuracy can be misleading. For example, if we have a test set of 100 documents, and 95 of them are positive and 5 of them are negative, then a classifier that always predicts positive will have an accuracy of 95%. However, this classifier is not useful, because it never predicts negative.</p>
+<section id="multi-class-classification-as-multiple-binary-classifications">
+<h3><span class="section-number">7.6.1.1. </span>Multi-class classification as multiple Binary classifications<a class="headerlink" href="#multi-class-classification-as-multiple-binary-classifications" title="Permalink to this headline">#</a></h3>
+<p>Every multi-class classification problem can be decomposed into multiple binary classification problems. For example, if we have a multi-class classification problem with 3 classes, we can decompose it into 3 binary classification problems.</p>
+<br/>
+<img alt="../_images/binary_multiclass.png" src="../_images/binary_multiclass.png" />
+<br/>
+<br/>
 <p>Assuming the categorical variable that we are trying to predict is binary, we can define the accuracy in terms of the four possible outcomes of a binary classifier:</p>
 <ol class="arabic simple">
 <li><p>True Positive (TP): The classifier correctly predicted the positive class.</p></li>
@@ -465,7 +477,7 @@ document.write(`
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-left head"><p></p></th>
-<th class="text-center head"><p>Prediction <span class="math notranslate nohighlight">\(\hat{y} = f\prime(x)\)</span></p></th>
+<th class="text-center head"><p>Prediction <span class="math notranslate nohighlight">\(\hat{y} = f'(x)\)</span></p></th>
 <th class="text-right head"><p>Truth <span class="math notranslate nohighlight">\(y = f(x)\)</span></p></th>
 </tr>
 </thead>
@@ -490,27 +502,25 @@ document.write(`
 </table>
 <p>In terms of the four outcomes above, the accuracy is:</p>
 <div class="math notranslate nohighlight">
-\[Accuracy = \frac{TP + TN}{TP + TN + FP + FN}\]</div>
+\[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\]</div>
 <p>Accuracy is a useful metric, but it can be misleading.</p>
 <p>Other metrics that are often used to evaluate classifiers are:</p>
 <ul class="simple">
-<li><p><strong>Precision</strong>: The proportion of positive predictions that are correct. Mathematically, precision is defined as:</p></li>
+<li><p><strong>Precision</strong>: The proportion of positive predictions that are correct. Mathematically, it is defined as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[Precision = \frac{TP}{TP + FP}\]</div>
+\[\text{Precision} = \frac{TP}{TP + FP}\]</div>
 <ul class="simple">
-<li><p><strong>Recall</strong>: The proportion of positive instances that are correctly predicted. Mathematically, recall is defined as:</p></li>
+<li><p><strong>Recall</strong>: The proportion of positive instances that are correctly predicted. Mathematically, it is defined as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[Recall = \frac{TP}{TP + FN}\]</div>
+\[\text{Recall} = \frac{TP}{TP + FN}\]</div>
 <p>The precision and recall are often combined into a single metric called the <strong>F1 score</strong>. The F1 score is the harmonic mean of precision and recall. The harmonic mean of two numbers is given by:</p>
-<div class="math notranslate nohighlight">
-\[\frac{2}{\frac{1}{x} + \frac{1}{y}}\]</div>
 <ul class="simple">
 <li><p><strong>F1 Score</strong>: The harmonic mean of precision and recall.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[F1\ Score = \frac{2}{\frac{1}{Precision} + \frac{1}{Recall}}\]</div>
+\[\text{F1-Score} = 2 \times \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}\]</div>
 <!-- $$Baseline\ Accuracy = \frac{Number\ of\ majority\ class\ predictions}{Total\ number\ of\ predictions}$$ -->
 <!-- The baseline accuracy is the accuracy of the majority class classifier. It is the accuracy we would get if we just guessed the majority class for every instance. It is a useful baseline to compare our classifier to. If our classifier is not better than the baseline, then we should probably just use the baseline classifier.
 
@@ -528,15 +538,14 @@ Another way to evaluate a classifier is to look at the confusion matrix. A confu
 
 <img src="../assets/training_testing.png">
  -->
-<p>One method for classifying text is to use handwritten rules. There are many areas of language processing where handwritten rule-based classifiers constitute a state-of-the-art system, or at least part of it.</p>
-<p>We focus on one common text categorization task, sentiment analysis traction of sentiment, the positive or negative orientation that a writer expresses toward some object. A review of a movie, book, or product on the web expresses the author’s sentiment toward the product, while an editorial or political text expresses sentiment toward a candidate or political action. Extracting consumer or public sentiment is thus relevant for fields from marketing to politics.</p>
-<p><strong>Spam detection</strong> is another important commercial application, the binary classification task of assigning an email to one of the two classes spam or not-spam.</p>
-<p>Many lexical and other features can be used to perform this classification. For example you might quite reasonably be suspicious of an email containing phrases like “online pharmaceutical” or “WITHOUT ANY COST” or “Dear Winner”.</p>
-<p>Rules can be fragile, however, as situations or data change over time, and for some tasks humans aren’t necessarily good at coming up with the rules. Most cases of classification in language processing are instead done via supervised machine learning, and this will be the subject of the remainder of this chapter.</p>
-<p>Formally, the task of supervised classification is to take an input x and a fixed set of output classes <span class="math notranslate nohighlight">\(Y = {y_1, y_2,..., y_M}\)</span> and return a predicted class <span class="math notranslate nohighlight">\(y ∈ Y\)</span>. For text classification, we’ll sometimes talk about c (for “class”) instead of y as our output variable, and d (for “document”) instead of x as our input variable. In the
-supervised situation we have a training set of N documents that have each been hand labeled with a class: <span class="math notranslate nohighlight">\({(d1, c1),....,(dN, cN)}\)</span>.</p>
-<p>Our goal is to learn a classifier that is capable of mapping from a new document d to its correct class c ∈ C, where C is some set of useful document classes. A probabilistic classifier additionally will tell us the probability of the observation being in the class. This full distribution over the classes can be useful information for downstream decisions; avoiding making discrete decisions early on can be useful when combining system</p>
-<p>Many kinds of machine learning algorithms are used to build classifiers. This chapter introduces naive Bayes; the following one introduces logistic regression. These exemplify two ways of doing classification. Generative classifiers like naive Bayes build a model of how a class could generate some input data. Given an observation, they return the class most likely to have generated the observation. Discriminative classifiers like logistic regression instead learn what features from the input are most useful to discriminate between the different possible classes. While discriminative systems are often more accurate and hence more commonly used, generative classifiers still have a role</p>
+<p>Many kinds of machine learning algorithms are used to build classifiers. Two common classifiers are <strong>Naive Bayes</strong> and <strong>Logistic Regression</strong>.</p>
+<p>These exemplify two primary category of models for doing classification:</p>
+<ol class="arabic simple">
+<li><p><strong>Generative models</strong> like naive Bayes build a model of how a class could generate some input data. Given an observation, they return the class most likely to have generated the observation.</p></li>
+<li><p><strong>Discriminative models</strong> like logistic regression instead learn what features from the input are most useful to discriminate between the different possible classes.</p></li>
+</ol>
+<p>While discriminative systems are often more accurate and hence more commonly used, generative classifiers still have a role. They can be more robust to missing data, and can be used to generate synthetic data.</p>
+</section>
 </section>
 </section>
 
@@ -581,11 +590,11 @@ supervised situation we have a training set of N documents that have each been h
       </div>
     </a>
     <a class="right-next"
-       href="42_regression.html"
+       href="20_unsupervised.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.7. </span>Regression</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Unsupervised Learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -607,7 +616,10 @@ supervised situation we have a training set of N documents that have each been h
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-as-multiple-binary-classifications">7.6.1.1. Multi-class classification as multiple Binary classifications</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

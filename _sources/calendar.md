@@ -36,7 +36,7 @@
 
 | #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 9     | Classification|         |         |      |     |
+| 9     | Classification|         |    **[Supervised Learning](3_problems_in/40_supervised.ipynb)**     |  **[Classification](3_problems_in/41_classification.ipynb)** + **[Naive Bayes](4_models/41_naivebayes.ipynb)**  |     | **[PA 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)**
 | 10     | Naive Bayes            |         |                            |                        |
 | 11     | Linear Algebra          |         |                           |                        |
 | 12    | Nearest Neighbor       |         |                            |                        |

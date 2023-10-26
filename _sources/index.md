@@ -17,20 +17,9 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <img width="60%" src="https://images.squarespace-cdn.com/content/v1/55784beee4b06b39773765ab/1551633983260-R111JMHJ34G3YMDLGCNF/Processing_interface_1_detail_72.jpg">
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
-
 ```{important}
-**Exam 2** is on **Thursday, October 19th** during class time, from **8:30 to 9:50 AM**
-
-Exam 2 is going to be the **same format as Exam 1** with one exception: 
-
-_**You are allowed to bring in a double-sided cheat sheet** of size **A4 or US-Letter**_.
-```
-
-```{important}
-**[Programming Assignment 7](https://colab.research.google.com/drive/16VnL87TWiiBj2CTT2ntYAQSPIjyEV0ax?usp=sharing)** is due on **October 18th** at 11:59 PM
+**[Programming Assignment 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)** is due on **October 31st** at 11:59 PM
 ``` 
-
-
 
 ```{tip}
 **Drop by my office**: Riley Hall 200-D. I am in my office between 9 AM - 5 PM most weekdays and have an open-door policy! Alternatively, **send me an email** or **[schedule an appointment](https://calendly.com/ssultan-dpq)** 

@@ -220,7 +220,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_classification.html">7.6. Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/42_regression.html">7.7. Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_unsupervised.html">8. Unsupervised Learning</a></li>
@@ -442,7 +441,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
 <h1><span class="section-number">10.1. </span>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">#</a></h1>
-<p>Naive Bayes’ is a probabilistic model based on the Bayes Theorem (hence the name), used in a wide variety of classification tasks.</p>
+<p>Naive Bayes are a set of models for supervised learning based on applying Bayes’ theorem with a “naive” assumption.</p>
+<p>Naive Bayes models are generative and probabilistic.</p>
+<p>Generative models are ones that make an assumption about how the data is generated. Probabilistic models are ones that make an assumption about the probability distribution of the data.  A probabilistic models tell us the probability of the observation being in each class. This full distribution over the classes can be useful information for downstream decisions; avoiding making discrete decisions early on can be useful when combining system</p>
 <section id="bayes-theorem">
 <h2><span class="section-number">10.1.1. </span>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h2>
 <p>Recall Bayes’ Theorem from probability theory:</p>
@@ -450,13 +451,13 @@ document.write(`
 \[ Posterior = \frac{Likelihood \cdot Prior}{Evidence} \]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
-\[ P(y|X) = \frac{P(X|y)P(y)}{P(X)} \]</div>
+\[ P(\mathbf{y}|X) = \frac{P(X|\mathbf{y})P(\mathbf{y})}{P(X)} \]</div>
 <p>Here <span class="math notranslate nohighlight">\(X\)</span> is multi-dimensional input data (say Bag of Words representation of a set of documents) whereas <span class="math notranslate nohighlight">\(y\)</span> is the corresponding set of labels (say each document’s sentiment).</p>
 <a class="reference internal image-reference" href="../_images/sentiment.png"><img alt="../_images/sentiment.png" class="align-center" src="../_images/sentiment.png" style="width: 80%;" /></a>
 </section>
 <section id="naive-assumption">
 <h2><span class="section-number">10.1.2. </span>Naive Assumption<a class="headerlink" href="#naive-assumption" title="Permalink to this headline">#</a></h2>
-<p>Note that the likelihood term <span class="math notranslate nohighlight">\(P(X|y)\)</span> in the Bayes theorem can get very complicated to compute, for high dimensional data where X may be composed of many features.</p>
+<p>Note that the likelihood term <span class="math notranslate nohighlight">\(P(X|\mathbf{y})\)</span> in the Bayes theorem can get very complicated to compute, for high dimensional data where X may be composed of many features.</p>
 <p>Naive Bayes’ makes a <strong>simplifying naive assumption</strong> that the features are independent of each other, given the class. In other words,</p>
 <div class="math notranslate nohighlight">
 \[ P(X|y) = \prod_{i=1}^{D} P(x_i|y) \]</div>
@@ -467,28 +468,41 @@ document.write(`
 </section>
 <section id="bag-of-words-bow-as-multinomial-data">
 <h2><span class="section-number">10.1.3. </span>Bag of Words (BOW) as Multinomial Data<a class="headerlink" href="#bag-of-words-bow-as-multinomial-data" title="Permalink to this headline">#</a></h2>
-<p>Recall that multinomial distribution counts the number of times an outcome occurs when there are k-possible outcomes and N independent trials. Also recall that BOW representation of text is a count of how many times a word occurs in a document.</p>
-<p>BOW representation of text is a multinomial data, where each word in the vocabulary is a possible outcome and the length of the document is the number of trials.</p>
+<p>Recall that multinomial distribution counts the number of times an outcome occurs when there are k-possible outcomes and N independent trials that can be used to capture probability of counts for rolling a k-sided die n times. Also recall that BOW representation of text is a count of how many times a word occurs in a document.</p>
+<p>BOW representation, therefore, can be modeled using the multinomial distibution. Here, instead of k-sided die, imagine a <span class="math notranslate nohighlight">\(|V|\)</span> sided die where <span class="math notranslate nohighlight">\(V\)</span> is the set of all unique words (vocabulary) and <span class="math notranslate nohighlight">\(|V|\)</span> is the size of the vocabulary. Each word in the vocabulary, in other words, is a possible outcome and count of a word in all documents constitutes a binomial distribution of that word.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/bow.png"><img alt="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/bow.png" class="align-center" src="https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/assets/bow.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png"><img alt="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" class="align-center" src="https://miro.medium.com/v2/resize:fit:1400/1*yuiduGxcrHKlLwl4y6TiDA.png" style="width: 70%;" /></a>
 <p>So we can use the multinomial distribution to model the likelihood term <span class="math notranslate nohighlight">\(P(x_i|y)\)</span> in the prediction rule. The parameters of the multinomial distribution are estimated using Maximum Likelihood Estimation (MLE).</p>
-<p>The Multinomial Naive Bayes classifier is suitable for classification with discrete features (e.g., word counts for text classification). The multinomial distribution normally requires integer feature counts.</p>
-<p>It has multinomial in the name because it assumes that the features have a multinomial distribution.</p>
-<p>We can use Maximum Likelihood Estimation (MLE) to estimate the parameters of the model.</p>
 </section>
 <section id="multinomial-naive-bayes-classifier">
 <h2><span class="section-number">10.1.4. </span>Multinomial Naive Bayes Classifier<a class="headerlink" href="#multinomial-naive-bayes-classifier" title="Permalink to this headline">#</a></h2>
-<p>Naive Bayes classifier is simply a <strong>probabilistic classifier</strong> where the prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the class <span class="math notranslate nohighlight">\(y\)</span> that maximizes the posterior probability <span class="math notranslate nohighlight">\(P(y|X)\)</span> i.e.</p>
+<p>Naive Bayes classifier is simply a <strong>probabilistic classifier</strong> where the prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the class <span class="math notranslate nohighlight">\(y\)</span> that maximizes the posterior probability <span class="math notranslate nohighlight">\(P(\mathbf{y}|X)\)</span> i.e.</p>
 <div class="math notranslate nohighlight">
-\[ \hat{y} = \underset{y}{\operatorname{argmax}} P(y|X) \]</div>
+\[ \hat{y} = \underset{y}{\operatorname{argmax}} P(\mathbf{y}|X) \]</div>
 <p>In other words, if y=0 maximizes P(y | X), then the predicted class is 0. Otherwise, if y=1 maximizes P(y | X), then the predicted class is 1.</p>
-<p>P(y | X) is proportional to P(X | y)P(y), as per the Bayes’ theorem.  So, we can also write the prediction rule as:</p>
+<p>P(y | X) is <em>proportional</em> to P(X | y)P(y), as per the Bayes’ theorem.  In other words, we can ignore the denominator P(X) since it is the same for all classes (values of <span class="math notranslate nohighlight">\(\textbf{y}\)</span>).</p>
+<p>So, we can also write the prediction rule as:</p>
 <div class="math notranslate nohighlight">
-\[ \hat{y} = \underset{y}{\operatorname{argmax}} P(X|y)\cdot P(y) \]</div>
+\[ \hat{y} = \underset{y}{\operatorname{argmax}} P(X|\mathbf{y})\cdot P(\mathbf{y}) \]</div>
 <p>If we make the naive assumption that the features are independent of each other, given the class, then we can write the prediction rule as:</p>
 <div class="math notranslate nohighlight">
-\[ \hat{y} = \underset{y}{\operatorname{argmax}} \prod_{i=1}^{D} P(x_i|y) \cdot P(y)  \]</div>
-<p>Based on our conversation on logarithms, we can also write the prediction rule as:</p>
+\[ \hat{y} = \underset{y}{\operatorname{argmax}} \prod_{i=1}^{D} P(x_i|\mathbf{y}) \cdot P(\mathbf{y})  \]</div>
+<p>Based on our conversation on logarithms, when we apply log to the equation above, two things happen:</p>
+<ol class="arabic simple">
+<li><p>Due to log being a monotonically increasing function, the outcome of argmax remains unchanged.</p></li>
+<li><p>All multiplications in the equation become additions, making our lives easier.</p></li>
+</ol>
+<p>Therefore, we can write the prediction rule as:</p>
 <div class="math notranslate nohighlight">
-\[ \hat{y} = \underset{y}{\operatorname{argmax}} \sum_{i=1}^{D} \log P(x_i|y) + \log P(y)  \]</div>
+\[ \hat{y} = \underset{y}{\operatorname{argmax}} \sum_{i=1}^{D} \log P(x_i|\mathbf{y}) + \log P(\mathbf{y})  \]</div>
+<p>Now, let’s look at the two terms in the equation above:</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(P(\mathbf{y})\)</span> is the prior probability of the class <span class="math notranslate nohighlight">\(y\)</span>. It is estimated as the fraction of documents in the training set that belong to class <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x_i|\mathbf{y})\)</span> is the likelihood term. It is the sum of the log probabilities of each <span class="math notranslate nohighlight">\(x_i\)</span> <span class="math notranslate nohighlight">\(X\)</span> given the class <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>If, for example, we are trying to predict the sentiment of the document “Furman University” then the likelihood term would be <span class="math notranslate nohighlight">\(\text{log}~ P(\text{Furman}|y) + \text{log}~ P(\text{University}|y)\)</span>.</p>
+<p>Similarly, likelihood term for the document “Greeenville is in SC” would be <span class="math notranslate nohighlight">\(\text{log}~P(\text{Greenville}|y) + \text{log}~ P(\text{is}|y) + \text{log}~ P(\text{in}|y) + \text{log}~ P(\text{SC}|y)\)</span>.</p>
+</li>
+</ol>
 </section>
 </section>
 
