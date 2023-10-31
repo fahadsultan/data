@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/40_linearalgebra';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Calculus" href="50_calculus.html" />
+    <link rel="next" title="5.1. Vectors" href="41_vectors.html" />
     <link rel="prev" title="4.3. Logarithms" href="13_log.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -211,12 +211,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="13_log.html">4.3. Logarithms</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Linear Algebra and Geometry</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors.html">5.1. Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_matrices.html">5.2. Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_applications.html">5.3. Principal Component Analysis</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="50_calculus.html">6. Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_classification.html">7.6. Classification</a></li>
 </ul>
 </li>
@@ -225,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../4_models/41_naivebayes.html">10.1. Naive Bayes</a></li>
 </ul>
 </li>
@@ -426,107 +431,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-and-geometry">
 <h1><span class="section-number">5. </span>Linear Algebra and Geometry<a class="headerlink" href="#linear-algebra-and-geometry" title="Permalink to this headline">#</a></h1>
-<!-- Linear algebra is the branch of mathematics that deals with vector spaces. It is a fundamental tool in many fields, including data science and machine learning. In this section, we will review some of the basic concepts of linear algebra.
-
-## Vectors
-
-A vector is a quantity that has both magnitude and direction. Vectors are often represented as arrows in a coordinate system. The length of the arrow represents the magnitude of the vector, and the direction of the arrow represents the direction of the vector.
-
-Vectors are often used to represent physical quantities such as velocity, acceleration, and force. For example, the velocity of a car can be represented as a vector with a magnitude of 60 miles per hour and a direction of east.
-
-Vectors can also be used to represent abstract quantities such as the number of people in a city. For example, the population of a city can be represented as a vector with a magnitude of 100,000 and a direction of north.
-
-Vectors can be added together to form new vectors. For example, the velocity of a car can be added to the velocity of another car to form the velocity of a third car. Vectors can also be multiplied by scalars to form new vectors. For example, the velocity of a car can be multiplied by 2 to form the velocity of a car that is twice as fast.
-
-## Matrices
-
-A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.
-
-Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.
-
-Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.
-
-## Linear Transformations
-
-A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.
-
-Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
- -->
-<!-- 
-## Eigenvectors and Eigenvalues
-
-An eigenvector is a vector that does not change direction when a linear transformation is applied to it. For example, the vector (1, 0) is an eigenvector of the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-because it does not change direction when the matrix is applied to it.
-
-An eigenvalue is a scalar that represents the amount by which an eigenvector is scaled when a linear transformation is applied to it. For example, the eigenvalue of the vector (1, 0) for the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-is 1 because the vector is not scaled when the matrix is applied to it.
-
-## Matrix Decomposition
-
-Matrix decomposition is the process of breaking a matrix down into its constituent parts. For example, the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-can be decomposed into the product of two matrices
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-The matrix
-
-$$ \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} $$
-
-is called the left eigenvector of the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-and the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-is called the right eigenvector of the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-## Matrix Inversion
-
-Matrix inversion is the process of finding the inverse of a matrix. For example, the inverse of the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-is the matrix
-
-$$ \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} $$
-
-because
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} $$
-
-## Matrix Multiplication
-
-Matrix multiplication is the process of multiplying two matrices together. Conceptually, matrix multiplication is the process of applying a linear transformation to a vector. For example, the matrix
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
-
-can be multiplied by the vector
-
-$$ \begin{bmatrix} 1 \\ 0 \end{bmatrix} $$
-
-to produce the vector
-
-$$ \begin{bmatrix} 0 \\ 1 \end{bmatrix} $$
-
-because
-
-$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} $$
- -->
+<p>In Encoding and Representation, we discussed how all data, (regardless of its form, format or modality) needs to be converted into a matrix of numbers.</p>
+<center>
+<img width="40%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Linear_subspaces_with_shading.svg/1200px-Linear_subspaces_with_shading.svg.png"> 
+</center>
+<p>Linear Algebra is the mathematics of such matrices of numbers. It is a fundamental tool in many fields, including data science and machine learning. In this section, we will review some of the basic concepts of linear algebra.</p>
+<center>
+<a class="reference internal image-reference" href="../_images/linearalgebra.png"><img alt="../_images/linearalgebra.png" src="../_images/linearalgebra.png" style="width: 85%;" /></a>
+</center>
+<p>Before we talk about matrices however, we need to talk about vectors. In order to talk about vectors, in turn, we need to talk about scalars.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -570,11 +485,11 @@ $$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bma
       </div>
     </a>
     <a class="right-next"
-       href="50_calculus.html"
+       href="41_vectors.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Calculus</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Vectors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

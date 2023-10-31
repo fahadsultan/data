@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Unsupervised Learning &#8212; CSC-272 Data Mining</title>
+    <title>5.2. Matrices &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -67,11 +67,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3_problems_in/20_unsupervised';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/42_matrices';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. Reinforcement Learning" href="30_reinforcement.html" />
-    <link rel="prev" title="7.6. Classification" href="41_classification.html" />
+    <link rel="next" title="5.3. Principal Component Analysis" href="43_applications.html" />
+    <link rel="prev" title="5.1. Vectors" href="41_vectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -204,29 +206,29 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/10_prob_stats_log.html">4. Prob, Stats and Logs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/11_probability.html">4.1. Probability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/12_stats.html">4.2. Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/13_log.html">4.3. Logarithms</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_prob_stats_log.html">4. Prob, Stats and Logs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="11_probability.html">4.1. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_stats.html">4.2. Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_log.html">4.3. Logarithms</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../2_maths/40_linearalgebra.html">5. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/41_vectors.html">5.1. Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/42_matrices.html">5.2. Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_maths/43_applications.html">5.3. Principal Component Analysis</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41_vectors.html">5.1. Vectors</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.2. Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_applications.html">5.3. Principal Component Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../2_maths/50_calculus.html">6. Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_calculus.html">6. Calculus</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="41_classification.html">7.6. Classification</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_classification.html">7.6. Classification</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Unsupervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="30_reinforcement.html">9. Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_unsupervised.html">8. Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_reinforcement.html">9. Reinforcement Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
@@ -234,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../4_models/41_naivebayes.html">10.1. Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
@@ -304,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/3_problems_in/20_unsupervised.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/2_maths/42_matrices.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/3_problems_in/20_unsupervised.ipynb" target="_blank"
+      <li><a href="../_sources/2_maths/42_matrices.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,7 +406,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -415,11 +419,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unsupervised Learning</h1>
+    <h1>Matrices</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1. Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.2. Linear Transformations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.2.1. Norms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.3. Tensors</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -429,8 +446,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-learning">
-<h1><span class="section-number">8. </span>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="matrices">
+<h1><span class="section-number">5.2. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2><span class="section-number">5.2.1. </span>Matrices<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.</p>
+<p>Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
+<p>Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
+</section>
+<section id="linear-transformations">
+<h2><span class="section-number">5.2.2. </span>Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
+<p>A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.</p>
+<p>Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+<section id="norms">
+<h3><span class="section-number">5.2.2.1. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<p>Norms, in the case of matrices, are more complicated. After all, matrices can be viewed both as collections of individual entries and as objects that operate on vectors and transform them into other vectors. For instance, we can ask by how much longer the matrix–vector product <span class="math notranslate nohighlight">\(\mathbf{X} \mathbf{v}\)</span> could be relative to
+. This line of thought leads to what is called the spectral norm. For now, we introduce the Frobenius norm, which is much easier to compute and defined as the square root of the sum of the squares of a matrix’s elements:</p>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{X}\|_\textrm{F} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2} \]</div>
+<p>The Frobenius norm behaves as if it were an <span class="math notranslate nohighlight">\(l_2\)</span> norm of a matrix-shaped vector. Invoking the following function will calculate the Frobenius norm of a matrix.</p>
+<p>While we do not want to get too far ahead of ourselves, we already can plant some intuition about why these concepts are useful. In deep learning, we are often trying to solve optimization problems: maximize the probability assigned to observed data; maximize the revenue associated with a recommender model; minimize the distance between predictions and the ground truth observations; minimize the distance between representations of photos of the same person while maximizing the distance between representations of photos of different people. These distances, which constitute the objectives of deep learning algorithms, are often expressed as norms.</p>
+</section>
+</section>
+<section id="tensors">
+<h2><span class="section-number">5.2.3. </span>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">#</a></h2>
+<p>While you can go far in your machine learning journey with only scalars, vectors, and matrices, eventually you may need to work with higher-order tensors. Tensors give us a generic way of describing extensions to <span class="math notranslate nohighlight">\(n^{th}\)</span>-order arrays. We call software objects of the <em>tensor</em> class “tensors” precisely because they too can have arbitrary numbers of axes. While it may be confusing to use the word tensor for both the mathematical object and its realization in code, our meaning should usually be clear from context. We denote general tensors by capital letters with a special font face (e.g., <span class="math notranslate nohighlight">\(\mathsf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{Y}\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span>) and their indexing mechanism (e.g., <span class="math notranslate nohighlight">\(x_{ijk}\)</span> and <span class="math notranslate nohighlight">\([\mathsf{X}_{1,2i-1,3}]\)</span>) follows naturally from that of matrices.</p>
+<p>Tensors will become more important when we start working with images. Each image arrives as a
+-order tensor with axes corresponding to the height, width, and channel. At each spatial location, the intensities of each color (red, green, and blue) are stacked along the channel. Furthermore, a collection of images is represented in code by a
+-order tensor, where distinct images are indexed along the first axis. Higher-order tensors are constructed, as were vectors and matrices, by growing the number of shape components.</p>
+<center>
+<a class="reference internal image-reference" href="../_images/tensors.png"><img alt="../_images/tensors.png" src="../_images/tensors.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/tensors2.png"><img alt="../_images/tensors2.png" src="../_images/tensors2.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/tensors3.png"><img alt="../_images/tensors3.png" src="../_images/tensors3.png" style="width: 30%;" /></a>
+</center></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -446,7 +496,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./3_problems_in"
+            path: "./2_maths"
         },
         predefinedOutput: true
     }
@@ -465,20 +515,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="41_classification.html"
+       href="41_vectors.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.6. </span>Classification</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Vectors</p>
       </div>
     </a>
     <a class="right-next"
-       href="30_reinforcement.html"
+       href="43_applications.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Reinforcement Learning</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Principal Component Analysis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -491,6 +541,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1. Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.2. Linear Transformations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.2.1. Norms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.3. Tensors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

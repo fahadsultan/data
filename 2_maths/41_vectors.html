@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5.1. Vectors &#8212; CSC-272 Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHTXXD4572"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHTXXD4572');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/41_vectors';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Matrices" href="42_matrices.html" />
+    <link rel="prev" title="5. Linear Algebra and Geometry" href="40_linearalgebra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    CSC-272 Data Mining (Fall 2023)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syllabus/index.html">Syllabus</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/textbook.html">Textbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/mental_health.html">Mental Health</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/academic_success.html">Center for Academic Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/accomodations.html">Accomodations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/integrity.html">Academic Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syllabus/title_9.html">Nondiscrimination Policy and Sexual Misconduct</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project/project.html">Course Project</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/data.html">Data sets and Project ideas</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming for Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/10_dataops.html">1. Vectorized Operations on Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas1.html">1.1. Pandas I: Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas2.html">1.2. Pandas II: Selection, Filtering and Dropping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/pandas3.html">1.3. Pandas III: Aggregation, Merging and Concatenation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/40_modalities.html">2. Encoding and Representation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/41_types.html">2.1. Feature Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/42_formats.html">2.2. Common Data Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/43_modalities.html">2.3. Modalities of Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_programming/20_visualization.html">3. Visualizing Data</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/21_univariate.html">3.1. Univariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/22_multivariate.html">3.2. Multivariate Visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_programming/23_dosdonts.html">3.3. Dos and Donts of Visualization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="10_prob_stats_log.html">4. Prob, Stats and Logs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="11_probability.html">4.1. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_stats.html">4.2. Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_log.html">4.3. Logarithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42_matrices.html">5.2. Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43_applications.html">5.3. Principal Component Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50_calculus.html">6. Calculus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_problems_in/40_supervised.html">7. Supervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_problems_in/41_classification.html">7.6. Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/20_unsupervised.html">8. Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/30_reinforcement.html">9. Reinforcement Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_models/41_naivebayes.html">10.1. Naive Bayes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/2_maths/41_vectors.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/2_maths/41_vectors.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vectors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.2. Dot Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.3. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vectors">
+<h1><span class="section-number">5.1. </span>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
+<section id="scalars">
+<h2><span class="section-number">5.1.1. </span>Scalars<a class="headerlink" href="#scalars" title="Permalink to this headline">#</a></h2>
+<p>Most everyday mathematics consists of manipulating numbers one at a time. Formally, we call these values <strong>scalars</strong>.</p>
+<p>For example, the temperature in Greenville is a balmy <span class="math notranslate nohighlight">\(72\)</span> degrees Fahrenheit. If you wanted to convert the temperature to Celsius you would evaluate the expression <span class="math notranslate nohighlight">\(c = \frac{5}{9}(f - 32)\)</span>, setting <span class="math notranslate nohighlight">\(f = 72\)</span>. In this equation, the values <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, and <span class="math notranslate nohighlight">\(32\)</span> are <em>constant scalars</em>. The variables <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(f\)</span> in general represent <em>unknown scalars</em>.</p>
+<p>We denote scalars by ordinary lower-cased letters (e.g. <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>) and the space of all (continuous) <em>real-valued</em> scalars by <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. The expression <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span> is a formal way to say that <span class="math notranslate nohighlight">\(x\)</span> is a real-valued scalar. The symbol <span class="math notranslate nohighlight">\(\in\)</span> (pronounced “in”) denotes membership in a set. For example, <span class="math notranslate nohighlight">\(x, y \in {0, 1}\)</span> indicates that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are variables that can only take on values of <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Scalars in Python are represented by numeric types such as <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x+y:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;x-y:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;x*y:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;x/y:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;x**y:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2><span class="section-number">5.1.2. </span>Vectors<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>For current purposes, you can think of a vector as a fixed-length array of scalars. As with their code counterparts, we call these scalars the elements of the vector (synonyms include entries and components). When vectors represent examples from real-world datasets, their values hold some real-world significance. For example, if we were training a model to predict the risk of a loan defaulting, we might associate each applicant with a vector whose components correspond to quantities like their income, length of employment, or number of previous defaults. If we were studying the risk of heart attack, each vector might represent a patient and its components might correspond to their most recent vital signs, cholesterol levels, minutes of exercise per day, etc. We denote vectors by bold lowercase letters, (e.g.,
+<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>).</p>
+<p>Vectors are implemented in Python as <code class="docutils literal notranslate"><span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">tuples</span></code>. In pandas, we have for vectors <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> which additionally has labels for each value. In general, such <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> can have arbitrary lengths, subject to memory limitations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    10
+1    20
+2    30
+3    40
+4    50
+5    60
+6    70
+7    80
+8    90
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<!-- ### Alternative interpretation of vectors
+
+A vector is a quantity that has both magnitude and direction. Vectors are often represented as arrows in a coordinate system. The length of the arrow represents the magnitude of the vector, and the direction of the arrow represents the direction of the vector.
+
+Vectors are often used to represent physical quantities such as velocity, acceleration, and force. For example, the velocity of a car can be represented as a vector with a magnitude of 60 miles per hour and a direction of east.
+
+Vectors can be added together to form new vectors. For example, the velocity of a car can be added to the velocity of another car to form the velocity of a third car. Vectors can also be multiplied by scalars to form new vectors. For example, the velocity of a car can be multiplied by 2 to form the velocity of a car that is twice as fast. -->
+<section id="geometry-of-vectors">
+<h3><span class="section-number">5.1.2.1. </span>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
+<p>We can refer to an element of a vector by using a subscript. For example, <span class="math notranslate nohighlight">\(x_2\)</span> denotes the second element of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Since <span class="math notranslate nohighlight">\(x_2\)</span> is a scalar, we do not bold it. By default, we visualize vectors by stacking their elements vertically.</p>
+<div class="warning admonition">
+<p class="admonition-title">0-based indexing vs. 1-based indexing</p>
+<p>In Python, as in most programming languages, vector indices start at <span class="math notranslate nohighlight">\(0\)</span>. This is known as zero-based indexing.</p>
+<p>In linear algebra, however, subscripts begin at <span class="math notranslate nohighlight">\(1\)</span> (one-based indexing).</p>
+</div>
+<p>A <strong>vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x} ∈ \mathbb{R}^n\)</span> is a list of <span class="math notranslate nohighlight">\(n\)</span> numbers, usually written as a <strong>column vector</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(x_1 \ldots x_n \)</span> are elements of the vector. Later on, we will distinguish between such <strong>column vectors</strong> and <strong>row vectors</strong> whose elements are stacked horizontally. Recall that we access a tensor’s elements via indexing.</p>
+<p>The vector of all ones is denoted <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>. The vector of all zeros is denoted <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p>
+<p>The <strong>unit vector <span class="math notranslate nohighlight">\(e_i\)</span></strong> is a vector of all 0’s, except entry <span class="math notranslate nohighlight">\(i\)</span>, which has value 1:</p>
+<div class="math notranslate nohighlight">
+\[ e_i = (0, \ldots 0, 1, 0, \ldots 0) \]</div>
+<p>This is also called a <strong>one-hot vector</strong>.</p>
+<p>First, we need to discuss the two common geometric interpretations of vectors, as either points or directions in space. Fundamentally, a vector is a list of numbers such as the Python list below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mathematicians most often write this as either a column or row vector, which is to say either as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{x} = \begin{bmatrix}1\\7\\0\\1\end{bmatrix}\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}^\top = \begin{bmatrix}1 &amp; 7 &amp; 0 &amp; 1\end{bmatrix}.\]</div>
+<p>These often have different interpretations, where data examples are column vectors and weights used to form weighted sums are row vectors. However, it can be beneficial to be flexible.</p>
+<p>Even though a single vector’s default orientation is a column vector, <strong>for any matrix representing a tabular dataset, treating each data example as a row vector in the matrix is more conventional</strong>.</p>
+<p>Given a vector, the first interpretation that we should give it is as a point in space. In two or three dimensions, we can visualize these points by using the components of the vectors to define the location of the points in space compared to a fixed reference called the origin. This can be seen in the figure below.</p>
+<p>An illustration of visualizing vectors as points in the plane. The first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions are analogous, although much harder to visualize.</p>
+<figure class="align-default" id="grid-points">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/grid-points.svg"><img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" width="60%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">An illustration of visualizing vectors as points in the plane. The first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions are analogous, although much harder to visualize.</span><a class="headerlink" href="#grid-points" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img  width="60%" src="https://d2l.ai/_images/grid-points.svg"></center> --><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
+<p>In parallel, there is a second point of view that people often take of vectors: as directions in space. Not only can we think of the vector <span class="math notranslate nohighlight">\(\textbf{v} = [3, 2]^{T}\)</span> as the location <span class="math notranslate nohighlight">\(3\)</span> units to the right and
+<span class="math notranslate nohighlight">\(2\)</span> units up from the origin, we can also think of it as the direction itself to take <span class="math notranslate nohighlight">\(3\)</span> steps to the right and <span class="math notranslate nohighlight">\(2\)</span> steps up. In this way, we consider all the vectors in figure below the same.</p>
+<figure class="align-default" id="par-vec">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/par-vec.svg"><img alt="https://d2l.ai/_images/par-vec.svg" src="https://d2l.ai/_images/par-vec.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Any vector can be visualized as an arrow in the plane. In this case, every vector drawn is a representation of the vector <span class="math notranslate nohighlight">\((3, 2)^\top\)</span></span><a class="headerlink" href="#par-vec" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img width="50%" src="https://d2l.ai/_images/par-vec.svg"></center> --><p>One of the benefits of this shift is that we can make visual sense of the act of vector addition. In particular, we follow the directions given by one vector, and then follow the directions given by the other, as seen below:</p>
+<figure class="align-default" id="vec-add">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-add.svg"><img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">We can visualize vector addition by first following one vector, and then another.</span><a class="headerlink" href="#vec-add" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img width="50%" src="https://d2l.ai/_images/vec-add.svg"></center> --><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+</section>
+<section id="dot-product">
+<h3><span class="section-number">5.1.2.2. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
+<p>One of the most fundamental operations in linear algebra (and all of data science and machine learning) is the dot product.</p>
+<p>Given two vectors <span class="math notranslate nohighlight">\(\textbf{x}, \textbf{y} \in \mathbb{R}^d\)</span>, their <em>dot product</em> <span class="math notranslate nohighlight">\(\textbf{x}^{\top} \textbf{y}\)</span> (also known as <em>inner product</em> <span class="math notranslate nohighlight">\(\langle \textbf{x}, \textbf{y} \rangle\)</span>) is a sum over the products of the elements at the same position:</p>
+<div class="math notranslate nohighlight">
+\[\textbf{x}^\top \textbf{y} = \sum_{i=1}^{d} x_i y_i\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># 1*4 + 2*5 + 3*6 </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<p>Equivalently, we can calculate the dot product of two vectors by performing an elementwise multiplication followed by a sum:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dot products are useful in a wide range of contexts. For example, given some set of values, denoted by a vector <span class="math notranslate nohighlight">\( \mathbf{x} \in \mathbb{R}^{n} \)</span> , and a set of weights, denoted by <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>, the weighted sum of the values in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> according to the weights <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> could be expressed as the dot product <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{w}\)</span>. When the weights are nonnegative and sum to <span class="math notranslate nohighlight">\(1\)</span>, i.e., <span class="math notranslate nohighlight">\((\sum_{i=1}^n w_i = 1)\)</span>, the dot product expresses a <em>weighted average</em>. After normalizing two vectors to have unit length, the dot products express the cosine of the angle between them. Later in this section, we will formally introduce this notion of <em>length</em>.</p>
+</section>
+<section id="norms">
+<h3><span class="section-number">5.1.2.3. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<p>Some of the most useful operators in linear algebra are <em>norms</em>. Informally, the norm of a vector tells us how <em>big</em> it is.</p>
+<p>For instance, the <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the (Euclidean) length of a vector.</p>
+<p>Here, we are employing a notion of <em>size</em> that concerns the magnitude of a vector’s components (not its dimensionality).</p>
+<p>A norm is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that maps a vector to a scalar and satisfies the following three properties:</p>
+<ol class="arabic simple">
+<li><p>Given any vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, if we scale (all elements of) the vector by a scalar <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span>, its norm scales accordingly:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\|\alpha \mathbf{x}\| = |\alpha| \|\mathbf{x}\|\]</div>
+<ol class="arabic simple" start="2">
+<li><p>For any vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, norms satisfy the triangle inequality:
+$<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \|\mathbf{x}\| + \|\mathbf{y}\|\)</span>$</p></li>
+<li><p>The norm of a vector is nonnegative and it only vanishes if the vector is zero:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{x}\| &gt; 0 \textrm{ for all } \mathbf{x} \neq 0. \]</div>
+<p>Many functions are valid norms and different norms encode different notions of size. The Euclidean norm that we all learned in elementary school geometry when calculating the hypotenuse of a right triangle is the square root of the sum of squares of a vector’s elements. Formally, this is called the <span class="math notranslate nohighlight">\(l_2\)</span> norm and expressed as</p>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">l2_norm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.7416573867739413
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(l_1\)</span> norm is also common and the associated measure is called the Manhattan distance. By definition, the <span class="math notranslate nohighlight">\(l_1\)</span> norm sums the absolute values of a vector’s elements:</p>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right| \]</div>
+<p>Compared to the <span class="math notranslate nohighlight">\(l_2\)</span> norm, it is less sensitive to outliers. To compute the <span class="math notranslate nohighlight">\(l_1\)</span> norm, we compose the absolute value with the sum operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1_norm</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">l1_norm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both the <span class="math notranslate nohighlight">\(l_1\)</span> and <span class="math notranslate nohighlight">\(l_2\)</span> norms are special cases of the more general norms:</p>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}. \]</div>
+</section>
+<section id="dot-products-and-angles">
+<h3><span class="section-number">5.1.2.4. </span>Dot Products and Angles<a class="headerlink" href="#dot-products-and-angles" title="Permalink to this headline">#</a></h3>
+<p>If we take two column vectors <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, we can form their dot product by computing:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{u}^\top\mathbf{v} = \sum_i u_i\cdot v_i \]</div>
+<p>Because the equation above is symmetric, we will mirror the notation of classical multiplication and write</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u}, \]</div>
+<p>to highlight the fact that exchanging the order of the vectors will yield the same answer.</p>
+<p>The dot product also admits a geometric interpretation: dot product it is closely related to the angle between two vectors.</p>
+<figure class="align-default" id="vec-angle">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-angle.svg"><img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Between any two vectors in the plane there is a well defined angle <span class="math notranslate nohighlight">\(\theta\)</span>. We will see this angle is intimately tied to the dot product.</span><a class="headerlink" href="#vec-angle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To start, let’s consider two specific vectors:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{v} = (r,0) \; \textrm{and} \; \mathbf{w} = (s\cos(\theta), s \sin(\theta)) \]</div>
+<p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(mathbf{w}\)</span> is of length <span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
+<p>If we compute the dot product of these two vectors, we see that</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{v}\cdot\mathbf{w} = rs\cos(\theta) = \|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta) \]</div>
+<p>With some simple algebraic manipulation, we can rearrange terms to obtain <u>the equation for any two vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{w}\)</span></u>:</p>
+<div class="math notranslate nohighlight">
+\[ \theta = \arccos\left(\frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}\right) \]</div>
+<p>We will not use it right now, but it is useful to know that we will refer to vectors for which the angle is <span class="math notranslate nohighlight">\(\pi/2\)</span>(or equivalently <span class="math notranslate nohighlight">\(90^{\circ}\)</span>) as being orthogonal.</p>
+<p>By examining the equation above, we see that this happens when <span class="math notranslate nohighlight">\(\theta = \pi/2\)</span>, which is the same thing as <span class="math notranslate nohighlight">\(cos(\theta) = 0\)</span>.</p>
+<p>The only way this can happen is if the dot product itself is zero, and two vectors are orthogonal if and only if <span class="math notranslate nohighlight">\(\mathbf{v}\cdot\mathbf{w} = 0\)</span>.</p>
+<p>This will prove to be a helpful formula when understanding objects geometrically.</p>
+<p>It is reasonable to ask: why is computing the angle useful? Consider the problem of classifying text data. We might want the topic or sentiment in the text to not change if we write twice as long of document that says the same thing.</p>
+<p>For some encoding (such as counting the number of occurrences of words in some vocabulary), this corresponds to a doubling of the vector encoding the document, so again we can use the angle.</p>
+</section>
+<section id="cosine-similarity">
+<h3><span class="section-number">5.1.2.5. </span>Cosine Similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this headline">#</a></h3>
+<p>In ML contexts where the angle is employed to measure the closeness of two vectors, practitioners adopt the term cosine similarity to refer to the portion</p>
+<div class="math notranslate nohighlight">
+\[ \cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}. \]</div>
+<p>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span>
+when the two vectors are orthogonal.</p>
+<p>Note that if the components of high-dimensional vectors are sampled randomly with mean <span class="math notranslate nohighlight">\(0\)</span>, their cosine will nearly always be close to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</section>
+<section id="hyperplanes">
+<h3><span class="section-number">5.1.2.6. </span>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">#</a></h3>
+<p>In addition to working with vectors, another key object that you must understand to go far in linear algebra is the hyperplane, a generalization to higher dimensions of a line (two dimensions) or of a plane (three dimensions). In an
+-dimensional vector space, a hyperplane has
+dimensions and divides the space into two half-spaces.</p>
+<p>Let’s start with an example. Suppose that we have a column vector <span class="math notranslate nohighlight">\(\mathbf{w}=[2,1]^\top\)</span>. We want to know, “what are the points <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>?”</p>
+<p>By recalling the connection between dot products and angles above  we can see that this is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[ \|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta) = 1 \; \iff \; \|\mathbf{v}\|\cos(\theta) = \frac{1}{\|\mathbf{w}\|} = \frac{1}{\sqrt{5}}. \]</div>
+<!-- <center>
+<img src="https://d2l.ai/_images/proj-vec.svg">
+</center> -->
+<figure class="align-default" id="proj-vec">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/proj-vec.svg"><img alt="https://d2l.ai/_images/proj-vec.svg" src="https://d2l.ai/_images/proj-vec.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Recalling trigonometry, we see the formula <span class="math notranslate nohighlight">\(\|\mathbf{v}\|\cos(\theta)\)</span> is the length of the projection of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span></span><a class="headerlink" href="#proj-vec" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If we consider the geometric meaning of this expression, we see that this is equivalent to saying that the length of the projection of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of
+<span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is exactly <span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, as is shown in the figure above.</p>
+<p>The set of all points where this is true is a line at right angles to the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>.</p>
+<p>If we wanted, we could find the equation for this line and see that it is <span class="math notranslate nohighlight">\(2x + y = 1\)</span> or equivalently <span class="math notranslate nohighlight">\(y = 1 - 2x\)</span>.</p>
+<p>If we now look at what happens when we ask about the set of points with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &gt; 1\)</span> or <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &lt; 1\)</span> we can see that these are cases where the projections are longer or shorter than <span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, respectively.</p>
+<p>Thus, those two inequalities define either side of the line.</p>
+<p>In this way, we have found a way to cut our space into two halves, where all the points on one side have dot product below a threshold, and the other side above as we see below:</p>
+<figure class="align-default" id="space-division">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division.svg"><img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves.</span><a class="headerlink" href="#space-division" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
+<figure class="align-default" id="space-division-3d">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division-3d.svg"><img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#space-division-3d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
+<p>For instance, we can understand linear classification models, as methods to find hyperplanes that separate the different target classes. In this context, such hyperplanes are often referred to as decision planes. The majority of deep learned classification models end with a linear layer fed into a softmax, so one can interpret the role of the deep neural network to be to find a non-linear embedding such that the target classes can be separated cleanly by hyperplanes.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./2_maths"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="40_linearalgebra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Linear Algebra and Geometry</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="42_matrices.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Matrices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.2. Dot Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.3. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Syed Fahad Sultan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

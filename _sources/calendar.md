@@ -36,10 +36,9 @@
 
 | #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 9     | Classification|         |    **[Supervised Learning](3_problems_in/40_supervised.ipynb)**     |  **[Classification](3_problems_in/41_classification.ipynb)** + **[Naive Bayes](4_models/41_naivebayes.ipynb)**  |     | **[PA 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)**
-| 10     | Naive Bayes            |         |                            |                        |
-| 11     | Linear Algebra          |         |                           |                        |
-| 12    | Nearest Neighbor       |         |                            |                        |
+| 9     | Classification<br/> + Naive Bayes|    **[SLP 3rd edition Ch.4](https://web.stanford.edu/~jurafsky/slp3/4.pdf)**     |    **[Supervised Learning](3_problems_in/40_supervised.ipynb)**     |  **[Classification](3_problems_in/41_classification.ipynb)** + **[Naive Bayes](4_models/41_naivebayes.ipynb)**  |     | **[PA 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)**
+| 10     | Linear Algebra              |         |                            |                        |
+| 11    | Nearest Neighbor       |         |                            |                        |
 
 
 <center><b><i>Project phase 3 due</i></b><center>
@@ -49,11 +48,10 @@
 
 | #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 13      | Calculus                |         |                            |                        |
+| 12      | Calculus                |         |                            |                        |
 | 13      | Linear Regression                |         |                            |                        |
-| 13      | KMeans             |         |                            |                        |
-| 14      | Generalized Linear Models                 |         |                            |                        |
-| 15      | Graphical Models               |
+| 14      | KMeans             |         |                            |                        |
+| 15      | Generalized Linear Models                 |         |                            |                        |
 | 16      | Neural Networks            |
 
 <center><b><i>Project phase 4 due</i></b><center>
