@@ -70,10 +70,10 @@ parts:
       #   - file: 2_maths/22_simplification
       #   - file: 2_maths/23_log_notes
     - file: 2_maths/40_linearalgebra.ipynb
-      # sections: 
-      #   - file: 2_maths/41_vectors_matrices
-      #   - file: 2_maths/42_pca
-      #   - file: 2_maths/43_linearalgebra_notes
+      sections: 
+        - file: 2_maths/41_vectors
+        - file: 2_maths/42_matrices
+        - file: 2_maths/43_applications
     - file: 2_maths/50_calculus.ipynb
       # sections: 
         # - file: 2_maths/51_integral
@@ -85,7 +85,7 @@ parts:
     - file: 3_problems_in/40_supervised
       sections: 
         - file: 3_problems_in/41_classification
-        - file: 3_problems_in/42_regression
+        # - file: 3_problems_in/42_regression
     - file: 3_problems_in/40_classification
     - file: 3_problems_in/20_unsupervised
     - file: 3_problems_in/30_reinforcement
