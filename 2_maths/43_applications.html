@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5.3. Principal Component Analysis &#8212; CSC-272 Data Mining</title>
+    <title>5.3. Applications &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -216,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="41_vectors.html">5.1. Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="42_matrices.html">5.2. Matrices</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Principal Component Analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Applications</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="50_calculus.html">6. Calculus</a></li>
@@ -419,7 +419,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Principal Component Analysis</h1>
+    <h1>Applications</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -429,7 +429,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">5.3.1. Principal Component Analysis (PCA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1.1. Singular Value Decomposition (SVD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor">5.3.2. Nearest Neighbor</a></li>
 </ul>
             </nav>
         </div>
@@ -441,8 +445,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis">
-<h1><span class="section-number">5.3. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="applications">
+<h1><span class="section-number">5.3. </span>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h1>
+<section id="principal-component-analysis-pca">
+<h2><span class="section-number">5.3.1. </span>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">#</a></h2>
 <p>Principal Component Analysis (PCA) is a dimensionality reduction technique that is used to transform a high-dimensional dataset into a smaller-dimensional subspace prior to running a machine learning algorithm on the data. PCA is used to overcome the curse of dimensionality and also to reduce the computational complexity of the machine learning algorithms (e.g., due to reduced number of features).</p>
 <p>PCA is an unsupervised algorithm, which means that it does not require labels for training. PCA is a linear transformation technique that projects the data onto a new coordinate system such that the greatest variance by any projection of the data comes to lie on the first coordinate (called the first principal component), the second greatest variance on the second coordinate, and so on.</p>
 <p>The following figure illustrates the concept of PCA:</p>
@@ -453,11 +459,15 @@ document.write(`
 <li><p>PCA for feature extraction</p></li>
 </ul>
 <section id="singular-value-decomposition-svd">
-<h2><span class="section-number">5.3.1. </span>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">5.3.1.1. </span>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h3>
 <p>Before we discuss PCA, let’s first discuss Singular Value Decomposition (SVD). SVD is a matrix factorization technique that is used to decompose a matrix into three other matrices as follows:</p>
 <div class="math notranslate nohighlight">
 \[A = U \Sigma V^T\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, <span class="math notranslate nohighlight">\(U\)</span> is an <span class="math notranslate nohighlight">\(m \times m\)</span> orthogonal matrix, <span class="math notranslate nohighlight">\(\Sigma\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> diagonal matrix, and <span class="math notranslate nohighlight">\(V\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix. The diagonal elements of <span class="math notranslate nohighlight">\(\Sigma\)</span> are known as the singular values of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</section>
+</section>
+<section id="nearest-neighbor">
+<h2><span class="section-number">5.3.2. </span>Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -528,7 +538,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">5.3.1. Principal Component Analysis (PCA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1.1. Singular Value Decomposition (SVD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor">5.3.2. Nearest Neighbor</a></li>
 </ul>
   </nav></div>
 

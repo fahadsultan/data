@@ -18,7 +18,7 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-**[Programming Assignment 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)** is due on **October 31st** at 11:59 PM
+**[Programming Assignment 9](https://colab.research.google.com/drive/12opJKmG2QudW-w_0rfeHOLNRcpnFXgtI?usp=sharing)** is due on **November 7th** at 11:59 PM
 ``` 
 
 ```{tip}
