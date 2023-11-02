@@ -432,8 +432,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.2. Dot Product</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.3. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>
@@ -471,8 +471,23 @@ document.write(`
 </section>
 <section id="id1">
 <h2><span class="section-number">5.1.2. </span>Vectors<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>For current purposes, you can think of a vector as a fixed-length array of scalars. As with their code counterparts, we call these scalars the elements of the vector (synonyms include entries and components). When vectors represent examples from real-world datasets, their values hold some real-world significance. For example, if we were training a model to predict the risk of a loan defaulting, we might associate each applicant with a vector whose components correspond to quantities like their income, length of employment, or number of previous defaults. If we were studying the risk of heart attack, each vector might represent a patient and its components might correspond to their most recent vital signs, cholesterol levels, minutes of exercise per day, etc. We denote vectors by bold lowercase letters, (e.g.,
-<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>).</p>
+<p>For current purposes, you can think of a vector as a fixed-length array of scalars. As with their code counterparts, we call these scalars the elements of the vector (synonyms include entries and components).</p>
+<!-- When vectors represent examples from real-world datasets, their values hold some real-world significance. For example, if we were training a model to predict the risk of a loan defaulting, we might associate each applicant with a vector whose components correspond to quantities like their income, length of employment, or number of previous defaults. If we were studying the risk of heart attack, each vector might represent a patient and its components might correspond to their most recent vital signs, cholesterol levels, minutes of exercise per day, etc.  -->
+<p>We denote vectors by bold lowercase letters, (e.g.,  <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>). The vector of all ones is denoted <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>. The vector of all zeros is denoted <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p>
+<p>The <strong>unit vector <span class="math notranslate nohighlight">\(e_i\)</span></strong> is a vector of all 0’s, except entry <span class="math notranslate nohighlight">\(i\)</span>, which has value 1:</p>
+<div class="math notranslate nohighlight">
+\[ e_i = (0, \ldots 0, 1, 0, \ldots 0) \]</div>
+<p>This is also called a <strong>one-hot vector</strong>.</p>
+<p>We can refer to an element of a vector by using a subscript. For example, <span class="math notranslate nohighlight">\(x_2\)</span> denotes the second element of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Since <span class="math notranslate nohighlight">\(x_2\)</span> is a scalar, we do not bold it. By default, we visualize vectors by stacking their elements vertically.</p>
+<div class="warning admonition">
+<p class="admonition-title">0-based indexing vs. 1-based indexing</p>
+<p>In Python, as in most programming languages, vector indices start at <span class="math notranslate nohighlight">\(0\)</span>. This is known as zero-based indexing.</p>
+<p>In linear algebra, however, subscripts begin at <span class="math notranslate nohighlight">\(1\)</span> (one-based indexing).</p>
+</div>
+<p>A <strong>vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x} ∈ \mathbb{R}^n\)</span> is a list of <span class="math notranslate nohighlight">\(n\)</span> numbers, usually written as a <strong>column vector</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(x_1 \ldots x_n \)</span> are elements of the vector. Later on, we will distinguish between such <strong>column vectors</strong> and <strong>row vectors</strong> whose elements are stacked horizontally.</p>
 <p>Vectors are implemented in Python as <code class="docutils literal notranslate"><span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">tuples</span></code>. In pandas, we have for vectors <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> which additionally has labels for each value. In general, such <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> can have arbitrary lengths, subject to memory limitations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,24 +520,7 @@ A vector is a quantity that has both magnitude and direction. Vectors are often 
 Vectors are often used to represent physical quantities such as velocity, acceleration, and force. For example, the velocity of a car can be represented as a vector with a magnitude of 60 miles per hour and a direction of east.
 
 Vectors can be added together to form new vectors. For example, the velocity of a car can be added to the velocity of another car to form the velocity of a third car. Vectors can also be multiplied by scalars to form new vectors. For example, the velocity of a car can be multiplied by 2 to form the velocity of a car that is twice as fast. -->
-<section id="geometry-of-vectors">
-<h3><span class="section-number">5.1.2.1. </span>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
-<p>We can refer to an element of a vector by using a subscript. For example, <span class="math notranslate nohighlight">\(x_2\)</span> denotes the second element of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Since <span class="math notranslate nohighlight">\(x_2\)</span> is a scalar, we do not bold it. By default, we visualize vectors by stacking their elements vertically.</p>
-<div class="warning admonition">
-<p class="admonition-title">0-based indexing vs. 1-based indexing</p>
-<p>In Python, as in most programming languages, vector indices start at <span class="math notranslate nohighlight">\(0\)</span>. This is known as zero-based indexing.</p>
-<p>In linear algebra, however, subscripts begin at <span class="math notranslate nohighlight">\(1\)</span> (one-based indexing).</p>
-</div>
-<p>A <strong>vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x} ∈ \mathbb{R}^n\)</span> is a list of <span class="math notranslate nohighlight">\(n\)</span> numbers, usually written as a <strong>column vector</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \end{split}\]</div>
-<p>Here <span class="math notranslate nohighlight">\(x_1 \ldots x_n \)</span> are elements of the vector. Later on, we will distinguish between such <strong>column vectors</strong> and <strong>row vectors</strong> whose elements are stacked horizontally. Recall that we access a tensor’s elements via indexing.</p>
-<p>The vector of all ones is denoted <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>. The vector of all zeros is denoted <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p>
-<p>The <strong>unit vector <span class="math notranslate nohighlight">\(e_i\)</span></strong> is a vector of all 0’s, except entry <span class="math notranslate nohighlight">\(i\)</span>, which has value 1:</p>
-<div class="math notranslate nohighlight">
-\[ e_i = (0, \ldots 0, 1, 0, \ldots 0) \]</div>
-<p>This is also called a <strong>one-hot vector</strong>.</p>
-<p>First, we need to discuss the two common geometric interpretations of vectors, as either points or directions in space. Fundamentally, a vector is a list of numbers such as the Python list below.</p>
+<p>Fundamentally, a vector is a list of numbers such as the Python list below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -536,10 +534,10 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x}^\top = \begin{bmatrix}1 &amp; 7 &amp; 0 &amp; 1\end{bmatrix}.\]</div>
-<p>These often have different interpretations, where data examples are column vectors and weights used to form weighted sums are row vectors. However, it can be beneficial to be flexible.</p>
-<p>Even though a single vector’s default orientation is a column vector, <strong>for any matrix representing a tabular dataset, treating each data example as a row vector in the matrix is more conventional</strong>.</p>
+<section id="geometry-of-vectors">
+<h3><span class="section-number">5.1.2.1. </span>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
+<p>First, we need to discuss the two common geometric interpretations of vectors, as either points or directions in space.</p>
 <p>Given a vector, the first interpretation that we should give it is as a point in space. In two or three dimensions, we can visualize these points by using the components of the vectors to define the location of the points in space compared to a fixed reference called the origin. This can be seen in the figure below.</p>
-<p>An illustration of visualizing vectors as points in the plane. The first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions are analogous, although much harder to visualize.</p>
 <figure class="align-default" id="grid-points">
 <a class="reference internal image-reference" href="https://d2l.ai/_images/grid-points.svg"><img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" width="60%" /></a>
 <figcaption>
@@ -564,46 +562,8 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </figure>
 <!-- <center><img width="50%" src="https://d2l.ai/_images/vec-add.svg"></center> --><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
 </section>
-<section id="dot-product">
-<h3><span class="section-number">5.1.2.2. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
-<p>One of the most fundamental operations in linear algebra (and all of data science and machine learning) is the dot product.</p>
-<p>Given two vectors <span class="math notranslate nohighlight">\(\textbf{x}, \textbf{y} \in \mathbb{R}^d\)</span>, their <em>dot product</em> <span class="math notranslate nohighlight">\(\textbf{x}^{\top} \textbf{y}\)</span> (also known as <em>inner product</em> <span class="math notranslate nohighlight">\(\langle \textbf{x}, \textbf{y} \rangle\)</span>) is a sum over the products of the elements at the same position:</p>
-<div class="math notranslate nohighlight">
-\[\textbf{x}^\top \textbf{y} = \sum_{i=1}^{d} x_i y_i\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-
-<span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># 1*4 + 2*5 + 3*6 </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
-</pre></div>
-</div>
-</div>
-</div>
-<p>Equivalently, we can calculate the dot product of two vectors by performing an elementwise multiplication followed by a sum:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
-</pre></div>
-</div>
-</div>
-</div>
-<p>Dot products are useful in a wide range of contexts. For example, given some set of values, denoted by a vector <span class="math notranslate nohighlight">\( \mathbf{x} \in \mathbb{R}^{n} \)</span> , and a set of weights, denoted by <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>, the weighted sum of the values in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> according to the weights <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> could be expressed as the dot product <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{w}\)</span>. When the weights are nonnegative and sum to <span class="math notranslate nohighlight">\(1\)</span>, i.e., <span class="math notranslate nohighlight">\((\sum_{i=1}^n w_i = 1)\)</span>, the dot product expresses a <em>weighted average</em>. After normalizing two vectors to have unit length, the dot products express the cosine of the angle between them. Later in this section, we will formally introduce this notion of <em>length</em>.</p>
-</section>
 <section id="norms">
-<h3><span class="section-number">5.1.2.3. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.2.2. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
 <p>Some of the most useful operators in linear algebra are <em>norms</em>. Informally, the norm of a vector tells us how <em>big</em> it is.</p>
 <p>For instance, the <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the (Euclidean) length of a vector.</p>
 <p>Here, we are employing a notion of <em>size</em> that concerns the magnitude of a vector’s components (not its dimensionality).</p>
@@ -656,6 +616,44 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \
 <p>Both the <span class="math notranslate nohighlight">\(l_1\)</span> and <span class="math notranslate nohighlight">\(l_2\)</span> norms are special cases of the more general norms:</p>
 <div class="math notranslate nohighlight">
 \[ \|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}. \]</div>
+</section>
+<section id="dot-product">
+<h3><span class="section-number">5.1.2.3. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
+<p>One of the most fundamental operations in linear algebra (and all of data science and machine learning) is the dot product.</p>
+<p>Given two vectors <span class="math notranslate nohighlight">\(\textbf{x}, \textbf{y} \in \mathbb{R}^d\)</span>, their <em>dot product</em> <span class="math notranslate nohighlight">\(\textbf{x}^{\top} \textbf{y}\)</span> (also known as <em>inner product</em> <span class="math notranslate nohighlight">\(\langle \textbf{x}, \textbf{y} \rangle\)</span>) is a sum over the products of the elements at the same position:</p>
+<div class="math notranslate nohighlight">
+\[\textbf{x}^\top \textbf{y} = \sum_{i=1}^{d} x_i y_i\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># 1*4 + 2*5 + 3*6 </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<p>Equivalently, we can calculate the dot product of two vectors by performing an elementwise multiplication followed by a sum:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dot products are useful in a wide range of contexts. For example, given some set of values, denoted by a vector <span class="math notranslate nohighlight">\( \mathbf{x} \in \mathbb{R}^{n} \)</span> , and a set of weights, denoted by <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>, the weighted sum of the values in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> according to the weights <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> could be expressed as the dot product <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{w}\)</span>. When the weights are nonnegative and sum to <span class="math notranslate nohighlight">\(1\)</span>, i.e., <span class="math notranslate nohighlight">\((\sum_{i=1}^n w_i = 1)\)</span>, the dot product expresses a <em>weighted average</em>. After normalizing two vectors to have unit length, the dot products express the cosine of the angle between them. Later in this section, we will formally introduce this notion of <em>length</em>.</p>
 </section>
 <section id="dot-products-and-angles">
 <h3><span class="section-number">5.1.2.4. </span>Dot Products and Angles<a class="headerlink" href="#dot-products-and-angles" title="Permalink to this headline">#</a></h3>
@@ -813,8 +811,8 @@ dimensions and divides the space into two half-spaces.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.2. Dot Product</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.3. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>

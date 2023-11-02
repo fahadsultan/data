@@ -429,12 +429,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1. Matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.2. Linear Transformations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.2.1. Norms</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.3. Tensors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.1. Matrix-Vector Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.2. Matrix-Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.3. Linear Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.4. Norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.5. Tensors</a></li>
 </ul>
             </nav>
         </div>
@@ -448,20 +447,345 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matrices">
 <h1><span class="section-number">5.2. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h1>
-<section id="id1">
-<h2><span class="section-number">5.2.1. </span>Matrices<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.</p>
-<p>Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
-<p>Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.</p>
+<p>We denote matrices by bold capital letters (e.g., <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(Z\)</span>), and represent them in code by <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. The expression <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> indicates that a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> contains <span class="math notranslate nohighlight">\(m \times n\)</span> real-valued scalars, arranged as <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns. When
+<span class="math notranslate nohighlight">\(m = n\)</span>, we say that a matrix is <em>square</em>. Visually, we can illustrate any matrix as a table. To refer to an individual element, we subscript both the row and column indices, e.g., <span class="math notranslate nohighlight">\(a_{ij}\)</span> is the value that belongs to <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>’s <span class="math notranslate nohighlight">\(i^{th}\)</span> row and <span class="math notranslate nohighlight">\(j^{th}\)</span> column:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{split}\mathbf{A}=\begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \\ \end{bmatrix}.\end{split} \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">8</span><span class="p">]})</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>40</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scatterplot of a vs b&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" src="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" />
+</div>
+</div>
+<p>Sometimes we want to flip the axes. When we exchange a matrix’s rows and columns, the result is called its transpose. Formally, we signify a matrix’s <span class="math notranslate nohighlight">\(\textbf{A}\)</span> transpose by <span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span> and if <span class="math notranslate nohighlight">\(\mathbf{B} = \mathbf{A}^\top\)</span>, then <span class="math notranslate nohighlight">\(b_{ij} = a_{ij}\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. Thus, the transpose of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{split}\mathbf{A}^\top =
+\begin{bmatrix}
+    a_{11} &amp; a_{21} &amp; \dots  &amp; a_{m1} \\
+    a_{12} &amp; a_{22} &amp; \dots  &amp; a_{m2} \\
+    \vdots &amp; \vdots &amp; \ddots  &amp; \vdots \\
+    a_{1n} &amp; a_{2n} &amp; \dots  &amp; a_{mn}
+\end{bmatrix}.\end{split} \end{split}\]</div>
+<!-- We can convert any appropriately sized 
+ tensor into an 
+ matrix by passing the desired shape to reshape:
+
+A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.
+
+Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.
+
+Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin. -->
+<p>In pandas, you can transpose a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the <strong><code class="docutils literal notranslate"><span class="pre">.T</span></code></strong> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that columns of original dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code> are the same as index of <code class="docutils literal notranslate"><span class="pre">df.T</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">==</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True,  True])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1</td>
+      <td>20</td>
+      <td>3</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>50</td>
+      <td>6</td>
+      <td>70</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$A$&#39;</span><span class="p">);</span>
+<span class="c1"># ax = sns.scatterplot(x=&#39;b&#39;, y=&#39;a&#39;, data=df.T, s=100, label=r&#39;$A^T$&#39;);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scatterplot of a vs b&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9fface38ed9a18fdd77000d6f8c6c82b12fda01957a6abb43089cfe5daa537dc.png" src="../_images/9fface38ed9a18fdd77000d6f8c6c82b12fda01957a6abb43089cfe5daa537dc.png" />
+</div>
+</div>
+<section id="matrix-vector-products">
+<h2><span class="section-number">5.2.1. </span>Matrix-Vector Products<a class="headerlink" href="#matrix-vector-products" title="Permalink to this headline">#</a></h2>
+<p>Now that we know how to calculate dot products, we can begin to understand the product between an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and an
+<span class="math notranslate nohighlight">\(n\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<p>To start off, we visualize our matrix in terms of its row vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{split}\mathbf{A}=
+\begin{bmatrix}
+\mathbf{a}^\top_{1} \\
+\mathbf{a}^\top_{2} \\
+\vdots \\
+\mathbf{a}^\top_m \\
+\end{bmatrix},\end{split}
+\end{split}\]</div>
+<p>where each <span class="math notranslate nohighlight">\(\mathbf{a}^\top_{i} \in \mathbb{R}^n\)</span> is a row vector representing the <span class="math notranslate nohighlight">\(i^\textrm{th}\)</span> row of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p>The matrix–vector product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}\)</span>
+is simply a column vector of length <span class="math notranslate nohighlight">\(m\)</span>
+, whose <span class="math notranslate nohighlight">\(i^{th}\)</span>
+element is the dot product <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{x}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{split}\mathbf{A}\mathbf{x}
+= \begin{bmatrix}
+\mathbf{a}^\top_{1} \\
+\mathbf{a}^\top_{2} \\
+\vdots \\
+\mathbf{a}^\top_m \\
+\end{bmatrix}\mathbf{x}
+= \begin{bmatrix}
+ \mathbf{a}^\top_{1} \mathbf{x}  \\
+ \mathbf{a}^\top_{2} \mathbf{x} \\
+\vdots\\
+ \mathbf{a}^\top_{m} \mathbf{x}\\
+\end{bmatrix}.\end{split}
+\end{split}\]</div>
+<p>We can think of multiplication with a matrix <span class="math notranslate nohighlight">\(\mathbf{A}\in \mathbb{R}^{m \times n}\)</span> as a transformation that projects vectors from <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> to  <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>.</p>
+<p>These transformations are remarkably useful. For example, we can represent rotations as multiplications by certain square matrices. Matrix–vector products also describe the key calculation involved in computing the outputs of each layer in a neural network given the outputs from the previous layer.</p>
+</section>
+<section id="matrix-matrix-multiplication">
+<h2><span class="section-number">5.2.2. </span>Matrix-Matrix Multiplication<a class="headerlink" href="#matrix-matrix-multiplication" title="Permalink to this headline">#</a></h2>
+<p>Once you have gotten the hang of dot products and matrix–vector products, then matrix–matrix multiplication should be straightforward.</p>
+<p>Say that we have two matrices <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{n \times k}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} \in \mathbb{R}^{k \times m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{split}\mathbf{A}=\begin{bmatrix}
+ a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k} \\
+ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nk} \\
+\end{bmatrix},\quad
+\mathbf{B}=\begin{bmatrix}
+ b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1m} \\
+ b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
+\end{bmatrix}.\end{split}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{a}^\top_{i} \in \mathbb{R}^k\)</span>
+denote the row vector representing the <span class="math notranslate nohighlight">\(i^\textrm{th}\)</span>
+row of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>
+and let <span class="math notranslate nohighlight">\(\mathbf{b}_{j} \in \mathbb{R}^k\)</span>
+denote the column vector from the <span class="math notranslate nohighlight">\(j^\textrm{th}\)</span>
+column of the matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
+:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{split}\mathbf{A}=
+\begin{bmatrix}
+\mathbf{a}^\top_{1} \\
+\mathbf{a}^\top_{2} \\
+\vdots \\
+\mathbf{a}^\top_n \\
+\end{bmatrix},
+\quad \mathbf{B}=\begin{bmatrix}
+ \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{m} \\
+\end{bmatrix}.\end{split}
+\end{split}\]</div>
+<p>To form the matrix product <span class="math notranslate nohighlight">\(\mathbf{C} \in \mathbb{R}^{n \times m}\)</span>
+, we simply compute each element <span class="math notranslate nohighlight">\(c_{ij}\)</span>
+as the dot product between the <span class="math notranslate nohighlight">\(i^{\textrm{th}}\)</span>
+row of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>
+and the <span class="math notranslate nohighlight">\(i^{\textrm{th}}\)</span>
+column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
+, i.e., <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{b}_j\)</span>
+:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{split}\mathbf{C} = \mathbf{AB} = \begin{bmatrix}
+\mathbf{a}^\top_{1} \\
+\mathbf{a}^\top_{2} \\
+\vdots \\
+\mathbf{a}^\top_n \\
+\end{bmatrix}
+\begin{bmatrix}
+ \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{m} \\
+\end{bmatrix}
+= \begin{bmatrix}
+\mathbf{a}^\top_{1} \mathbf{b}_1 &amp; \mathbf{a}^\top_{1}\mathbf{b}_2&amp; \cdots &amp; \mathbf{a}^\top_{1} \mathbf{b}_m \\
+ \mathbf{a}^\top_{2}\mathbf{b}_1 &amp; \mathbf{a}^\top_{2} \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}^\top_{2} \mathbf{b}_m \\
+ \vdots &amp; \vdots &amp; \ddots &amp;\vdots\\
+\mathbf{a}^\top_{n} \mathbf{b}_1 &amp; \mathbf{a}^\top_{n}\mathbf{b}_2&amp; \cdots&amp; \mathbf{a}^\top_{n} \mathbf{b}_m
+\end{bmatrix}.\end{split}
+\end{split}\]</div>
+<p>We can think of the matrix–matrix multiplication <span class="math notranslate nohighlight">\(\mathbf{AB}\)</span> as performing <span class="math notranslate nohighlight">\(m\)</span> matrix–vector products or <span class="math notranslate nohighlight">\(m \times n\)</span> dot products and stitching the results together to form an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. In the following snippet, we perform matrix multiplication on A and B. Here, A is a matrix with two rows and three columns, and B is a matrix with three rows and four columns. After multiplication, we obtain a matrix with two rows and four columns.</p>
 </section>
 <section id="linear-transformations">
-<h2><span class="section-number">5.2.2. </span>Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.3. </span>Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
 <p>A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.</p>
 <p>Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
+</section>
 <section id="norms">
-<h3><span class="section-number">5.2.2.1. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<h2><span class="section-number">5.2.4. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h2>
 <p>Norms, in the case of matrices, are more complicated. After all, matrices can be viewed both as collections of individual entries and as objects that operate on vectors and transform them into other vectors. For instance, we can ask by how much longer the matrix–vector product <span class="math notranslate nohighlight">\(\mathbf{X} \mathbf{v}\)</span> could be relative to
 . This line of thought leads to what is called the spectral norm. For now, we introduce the Frobenius norm, which is much easier to compute and defined as the square root of the sum of the squares of a matrix’s elements:</p>
 <div class="math notranslate nohighlight">
@@ -469,9 +793,8 @@ document.write(`
 <p>The Frobenius norm behaves as if it were an <span class="math notranslate nohighlight">\(l_2\)</span> norm of a matrix-shaped vector. Invoking the following function will calculate the Frobenius norm of a matrix.</p>
 <p>While we do not want to get too far ahead of ourselves, we already can plant some intuition about why these concepts are useful. In deep learning, we are often trying to solve optimization problems: maximize the probability assigned to observed data; maximize the revenue associated with a recommender model; minimize the distance between predictions and the ground truth observations; minimize the distance between representations of photos of the same person while maximizing the distance between representations of photos of different people. These distances, which constitute the objectives of deep learning algorithms, are often expressed as norms.</p>
 </section>
-</section>
 <section id="tensors">
-<h2><span class="section-number">5.2.3. </span>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.5. </span>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">#</a></h2>
 <p>While you can go far in your machine learning journey with only scalars, vectors, and matrices, eventually you may need to work with higher-order tensors. Tensors give us a generic way of describing extensions to <span class="math notranslate nohighlight">\(n^{th}\)</span>-order arrays. We call software objects of the <em>tensor</em> class “tensors” precisely because they too can have arbitrary numbers of axes. While it may be confusing to use the word tensor for both the mathematical object and its realization in code, our meaning should usually be clear from context. We denote general tensors by capital letters with a special font face (e.g., <span class="math notranslate nohighlight">\(\mathsf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{Y}\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span>) and their indexing mechanism (e.g., <span class="math notranslate nohighlight">\(x_{ijk}\)</span> and <span class="math notranslate nohighlight">\([\mathsf{X}_{1,2i-1,3}]\)</span>) follows naturally from that of matrices.</p>
 <p>Tensors will become more important when we start working with images. Each image arrives as a
 -order tensor with axes corresponding to the height, width, and channel. At each spatial location, the intensities of each color (red, green, and blue) are stacked along the channel. Furthermore, a collection of images is represented in code by a
@@ -550,12 +873,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.1. Matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.2. Linear Transformations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.2.1. Norms</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.3. Tensors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.1. Matrix-Vector Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.2. Matrix-Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.3. Linear Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.4. Norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.5. Tensors</a></li>
 </ul>
   </nav></div>
 
