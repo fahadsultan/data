@@ -238,20 +238,19 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">13. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">14. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">15. Backpropogation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">16. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">18. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">19. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -429,11 +428,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">5.3.1. Principal Component Analysis (PCA)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1.1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">5.3.1. Dimensionality Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">5.3.2. K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems">5.3.3. Recommender Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-filtering">5.3.3.1. Collaborative Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-based-filtering">5.3.3.2. Content Based Filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor">5.3.2. Nearest Neighbor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media-feeds">5.3.4. Social Media Feeds</a></li>
 </ul>
             </nav>
         </div>
@@ -447,27 +449,155 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="applications">
 <h1><span class="section-number">5.3. </span>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h1>
-<section id="principal-component-analysis-pca">
-<h2><span class="section-number">5.3.1. </span>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">#</a></h2>
-<p>Principal Component Analysis (PCA) is a dimensionality reduction technique that is used to transform a high-dimensional dataset into a smaller-dimensional subspace prior to running a machine learning algorithm on the data. PCA is used to overcome the curse of dimensionality and also to reduce the computational complexity of the machine learning algorithms (e.g., due to reduced number of features).</p>
-<p>PCA is an unsupervised algorithm, which means that it does not require labels for training. PCA is a linear transformation technique that projects the data onto a new coordinate system such that the greatest variance by any projection of the data comes to lie on the first coordinate (called the first principal component), the second greatest variance on the second coordinate, and so on.</p>
-<p>The following figure illustrates the concept of PCA:</p>
-<p>PCA is a very useful technique for feature extraction and data visualization. In this tutorial, we will discuss the following topics:</p>
-<ul class="simple">
-<li><p>PCA for dimensionality reduction</p></li>
-<li><p>PCA for data visualization</p></li>
-<li><p>PCA for feature extraction</p></li>
-</ul>
-<section id="singular-value-decomposition-svd">
-<h3><span class="section-number">5.3.1.1. </span>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">#</a></h3>
-<p>Before we discuss PCA, let’s first discuss Singular Value Decomposition (SVD). SVD is a matrix factorization technique that is used to decompose a matrix into three other matrices as follows:</p>
-<div class="math notranslate nohighlight">
-\[A = U \Sigma V^T\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix, <span class="math notranslate nohighlight">\(U\)</span> is an <span class="math notranslate nohighlight">\(m \times m\)</span> orthogonal matrix, <span class="math notranslate nohighlight">\(\Sigma\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> diagonal matrix, and <span class="math notranslate nohighlight">\(V\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix. The diagonal elements of <span class="math notranslate nohighlight">\(\Sigma\)</span> are known as the singular values of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<section id="dimensionality-reduction">
+<h2><span class="section-number">5.3.1. </span>Dimensionality Reduction<a class="headerlink" href="#dimensionality-reduction" title="Permalink to this headline">#</a></h2>
+<p>Dimensionality reduction is a technique that is used to reduce the number of features in a dataset.</p>
+<p>Reducing the number of features of a dataset is desirable for the following reasons:</p>
+<ol class="arabic simple">
+<li><p>It reduces the time and storage space required and subsequently reduces the computation time.</p></li>
+<li><p>It removes redundant features and the overcome the <span class="xref myst">curse of dimensionality</span>.</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">Curse of dimensionality ☠️</p>
+<p>The curse of dimensionality refers to the fact that <strong>for each additional feature, the number of training examples required to train the machine learning algorithm grows exponentially</strong>. This is because the volume of the space increases so fast that the available data become sparse.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>It allows us to visualize high-dimensional data in a 2-dimensional or 3-dimensional space.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/chat_dataset.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># creating bow representation</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span> 
+    <span class="n">bow</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">bow_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>message</th>
+      <th>sentiment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>I really enjoyed the movie</td>
+      <td>positive</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The food was terrible</td>
+      <td>negative</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>I'm not sure how I feel about this</td>
+      <td>neutral</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The service was excellent</td>
+      <td>positive</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>I had a bad experience</td>
+      <td>negative</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;neutral&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">bow_reduced</span><span class="p">[</span><span class="n">labels</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">neg</span> <span class="o">=</span> <span class="n">bow_reduced</span><span class="p">[</span><span class="n">labels</span><span class="o">==-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">neu</span> <span class="o">=</span> <span class="n">bow_reduced</span><span class="p">[</span><span class="n">labels</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">neu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;neutral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pos</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;positive&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neg</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">neg</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;negative&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PCA on BOW: Each point is a message&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PC1&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PC2&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d6f71eaf7fbc78ccb2c45304203a1e97914a44839979d83d3fcb23cb6f42a6b9.png" src="../_images/d6f71eaf7fbc78ccb2c45304203a1e97914a44839979d83d3fcb23cb6f42a6b9.png" />
+</div>
+</div>
+<p>It is important to point out that <strong>dimensionality reduction is not the same as feature selection</strong>. The main difference is that in dimensionality reduction, we <strong>transform</strong> the data in a lower dimensional space while in feature selection we <strong>select</strong> a subset of the original features. In other words, PC1 and PC2 are linear combinations of the original features, while the features selected in feature selection are the original features.</p>
+</section>
+<section id="k-nearest-neighbors-knn">
+<h2><span class="section-number">5.3.2. </span>K-Nearest Neighbors (KNN)<a class="headerlink" href="#k-nearest-neighbors-knn" title="Permalink to this headline">#</a></h2>
+<p>K-Nearest Neighbors (KNN) is a supervised machine learning algorithm that can be used for both classification and regression problems. KNN is a non-parametric, lazy learning algorithm that classifies a data point based on the <span class="math notranslate nohighlight">\(k\)</span> data points that are nearest to it. KNN does not make any assumptions on the underlying data distribution.</p>
+<p>Note that nearest points (observations) can be found by multiplying the matrix representation of observations by its transpose. The resulting matrix contains the distances between all pairs of observations.</p>
+<p>Once you have the similarity matrix, you can find the <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors of a particular observation by sorting the row of the similarity matrix corresponding to that observation.</p>
+<p>Your prediction can then be mean or median of the target values of the <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors.</p>
+</section>
+<section id="recommender-systems">
+<h2><span class="section-number">5.3.3. </span>Recommender Systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">#</a></h2>
+<p>Recommender systems are a type of information filtering system that are used to predict the rating or preference that a user would give to an item. They are widely used in e-commerce, entertainment, and social media platforms. Recommender systems are of two types:</p>
+<p>Nearest Neighbors (KNN) are often used to build recommender systems. Recommender systems are used to recommend items to users based on their past preferences.</p>
+<center><img width="80%" src="https://miro.medium.com/v2/resize:fit:1064/1*aSq9viZGEYiWwL9uJ3Recw.png"></center>
+<section id="collaborative-filtering">
+<h3><span class="section-number">5.3.3.1. </span>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">#</a></h3>
+<p>Collaborative filtering is a technique that is used to filter out items that a user might like on the basis of reactions by similar users. It works by searching a large group of people and finding a smaller set of users with tastes similar to a particular user. It looks at the items they like and combines them to create a ranked list of suggestions.</p>
+<p>Nearest Neighbors (KNN) are used to find the users that are similar to a particular user. The items that are liked by the similar users are then recommended to the particular user.</p>
+</section>
+<section id="content-based-filtering">
+<h3><span class="section-number">5.3.3.2. </span>Content Based Filtering<a class="headerlink" href="#content-based-filtering" title="Permalink to this headline">#</a></h3>
+<p>Content based filtering is a technique that is used to filter out items that a user might like on the basis of the description of the item itself. It works by creating a profile of the user’s interests based on the items that the user has liked in the past. It then recommends items that match the user’s profile.</p>
+<p>Nearest Neighbors (KNN) are used to find the items that are similar to the items that a user has liked in the past. The similar items are then recommended to the user.</p>
 </section>
 </section>
-<section id="nearest-neighbor">
-<h2><span class="section-number">5.3.2. </span>Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Permalink to this headline">#</a></h2>
+<section id="social-media-feeds">
+<h2><span class="section-number">5.3.4. </span>Social Media Feeds<a class="headerlink" href="#social-media-feeds" title="Permalink to this headline">#</a></h2>
+<p>Social media platforms such as Facebook, Twitter, and Instagram use recommender systems to recommend posts to users. The posts that are recommended to a user are based on the posts that the user has liked in the past.</p>
+<center><img width="50%" src="https://miro.medium.com/v2/resize:fit:1400/1*RJwWtfrHtM_mUtJxvkLVOQ.png"></center>
+<p>These platforms also use algorithms similar to KNN to sort the posts in a user’s feed. The posts that are similar to the posts that a user has liked in the past are shown at the top of the user’s feed.</p>
 </section>
 </section>
 
@@ -538,11 +668,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">5.3.1. Principal Component Analysis (PCA)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">5.3.1.1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">5.3.1. Dimensionality Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">5.3.2. K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems">5.3.3. Recommender Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-filtering">5.3.3.1. Collaborative Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-based-filtering">5.3.3.2. Content Based Filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor">5.3.2. Nearest Neighbor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media-feeds">5.3.4. Social Media Feeds</a></li>
 </ul>
   </nav></div>
 

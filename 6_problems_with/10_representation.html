@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>17. Representation Matters &#8212; CSC-272 Data Mining</title>
+    <title>16. Representation Matters &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -70,8 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '6_problems_with/10_representation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="18. Positive Feedback Loops" href="40_feedback.html" />
-    <link rel="prev" title="16. Backpropogation" href="../5_algos/backprop.html" />
+    <link rel="next" title="17. Positive Feedback Loops" href="40_feedback.html" />
+    <link rel="prev" title="15. Backpropogation" href="../5_algos/backprop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -236,20 +236,19 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">13. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">14. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">15. Backpropogation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Representation Matters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40_feedback.html">18. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20_boundaries.html">19. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_feedback.html">17. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_boundaries.html">18. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30_incentives.html">19. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -427,17 +426,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-bias">17.1. Sampling Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">17.2. Selection Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survivorship-bias">17.3. Survivorship Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undercoverage-bias">17.4. Undercoverage Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-selection-bias">17.5. Self-Selection Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-bias">17.6. Response Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias">17.7. Publication Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bias">17.8. Reporting Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenter-s-bias">17.9. Experimenter’s Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underrepresentation-of-minorities-in-clinical-trials">17.10. Underrepresentation of minorities in clinical trials</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invisible-women">17.10.1. Invisible Women</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-bias">16.1. Sampling Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">16.2. Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survivorship-bias">16.3. Survivorship Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undercoverage-bias">16.4. Undercoverage Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-selection-bias">16.5. Self-Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-bias">16.6. Response Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias">16.7. Publication Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bias">16.8. Reporting Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenter-s-bias">16.9. Experimenter’s Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underrepresentation-of-minorities-in-clinical-trials">16.10. Underrepresentation of minorities in clinical trials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invisible-women">16.10.1. Invisible Women</a></li>
 </ul>
 </li>
 </ul>
@@ -452,41 +451,41 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="representation-matters">
-<h1><span class="section-number">17. </span>Representation Matters<a class="headerlink" href="#representation-matters" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">16. </span>Representation Matters<a class="headerlink" href="#representation-matters" title="Permalink to this headline">#</a></h1>
 <section id="sampling-bias">
-<h2><span class="section-number">17.1. </span>Sampling Bias<a class="headerlink" href="#sampling-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.1. </span>Sampling Bias<a class="headerlink" href="#sampling-bias" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The sample is not representative of the population</p></li>
 </ul>
 </section>
 <section id="selection-bias">
-<h2><span class="section-number">17.2. </span>Selection Bias<a class="headerlink" href="#selection-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.2. </span>Selection Bias<a class="headerlink" href="#selection-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="survivorship-bias">
-<h2><span class="section-number">17.3. </span>Survivorship Bias<a class="headerlink" href="#survivorship-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.3. </span>Survivorship Bias<a class="headerlink" href="#survivorship-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="undercoverage-bias">
-<h2><span class="section-number">17.4. </span>Undercoverage Bias<a class="headerlink" href="#undercoverage-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.4. </span>Undercoverage Bias<a class="headerlink" href="#undercoverage-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="self-selection-bias">
-<h2><span class="section-number">17.5. </span>Self-Selection Bias<a class="headerlink" href="#self-selection-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.5. </span>Self-Selection Bias<a class="headerlink" href="#self-selection-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="response-bias">
-<h2><span class="section-number">17.6. </span>Response Bias<a class="headerlink" href="#response-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.6. </span>Response Bias<a class="headerlink" href="#response-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="publication-bias">
-<h2><span class="section-number">17.7. </span>Publication Bias<a class="headerlink" href="#publication-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.7. </span>Publication Bias<a class="headerlink" href="#publication-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="reporting-bias">
-<h2><span class="section-number">17.8. </span>Reporting Bias<a class="headerlink" href="#reporting-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.8. </span>Reporting Bias<a class="headerlink" href="#reporting-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="experimenter-s-bias">
-<h2><span class="section-number">17.9. </span>Experimenter’s Bias<a class="headerlink" href="#experimenter-s-bias" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.9. </span>Experimenter’s Bias<a class="headerlink" href="#experimenter-s-bias" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="underrepresentation-of-minorities-in-clinical-trials">
-<h2><span class="section-number">17.10. </span>Underrepresentation of minorities in clinical trials<a class="headerlink" href="#underrepresentation-of-minorities-in-clinical-trials" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.10. </span>Underrepresentation of minorities in clinical trials<a class="headerlink" href="#underrepresentation-of-minorities-in-clinical-trials" title="Permalink to this headline">#</a></h2>
 <section id="invisible-women">
-<h3><span class="section-number">17.10.1. </span>Invisible Women<a class="headerlink" href="#invisible-women" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.10.1. </span>Invisible Women<a class="headerlink" href="#invisible-women" title="Permalink to this headline">#</a></h3>
 <!-- ## Minority Class as 1. Majority class as 0. --><!-- ## Weighted Cost Functions --><!-- ## Weighted Evaluation --><!-- ## Confusion matrix?  --></section>
 </section>
 </section>
@@ -528,7 +527,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Backpropogation</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Backpropogation</p>
       </div>
     </a>
     <a class="right-next"
@@ -536,7 +535,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Positive Feedback Loops</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Positive Feedback Loops</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -558,17 +557,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-bias">17.1. Sampling Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">17.2. Selection Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survivorship-bias">17.3. Survivorship Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undercoverage-bias">17.4. Undercoverage Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-selection-bias">17.5. Self-Selection Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-bias">17.6. Response Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias">17.7. Publication Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bias">17.8. Reporting Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenter-s-bias">17.9. Experimenter’s Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underrepresentation-of-minorities-in-clinical-trials">17.10. Underrepresentation of minorities in clinical trials</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invisible-women">17.10.1. Invisible Women</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-bias">16.1. Sampling Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">16.2. Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survivorship-bias">16.3. Survivorship Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undercoverage-bias">16.4. Undercoverage Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-selection-bias">16.5. Self-Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-bias">16.6. Response Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias">16.7. Publication Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bias">16.8. Reporting Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenter-s-bias">16.9. Experimenter’s Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underrepresentation-of-minorities-in-clinical-trials">16.10. Underrepresentation of minorities in clinical trials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invisible-women">16.10.1. Invisible Women</a></li>
 </ul>
 </li>
 </ul>

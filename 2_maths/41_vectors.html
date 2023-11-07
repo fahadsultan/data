@@ -238,20 +238,19 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">13. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">14. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">15. Backpropogation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">16. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">18. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">19. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -435,10 +434,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">5.1.2.5. Cosine Similarity/Distance</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.3. Hyperplanes</a></li>
 </ul>
             </nav>
         </div>
@@ -545,6 +544,42 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </figcaption>
 </figure>
 <!-- <center><img  width="60%" src="https://d2l.ai/_images/grid-points.svg"></center> --><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">vector1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">displacement</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Plotting vector 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+
+<span class="c1"># Plotting vector 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+
+<span class="c1"># Plotting the x and y axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="c1"># Plotting the legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;vector1&#39;</span><span class="p">,</span> <span class="s1">&#39;vector2&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1efc82b65ce64023204bf931fdcfdc0f236788ece9e5e684b6680ab684fbb2e9.png" src="../_images/1efc82b65ce64023204bf931fdcfdc0f236788ece9e5e684b6680ab684fbb2e9.png" />
+</div>
+</div>
 <p>In parallel, there is a second point of view that people often take of vectors: as directions in space. Not only can we think of the vector <span class="math notranslate nohighlight">\(\textbf{v} = [3, 2]^{T}\)</span> as the location <span class="math notranslate nohighlight">\(3\)</span> units to the right and
 <span class="math notranslate nohighlight">\(2\)</span> units up from the origin, we can also think of it as the direction itself to take <span class="math notranslate nohighlight">\(3\)</span> steps to the right and <span class="math notranslate nohighlight">\(2\)</span> steps up. In this way, we consider all the vectors in figure below the same.</p>
 <figure class="align-default" id="par-vec">
@@ -553,7 +588,34 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 <p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Any vector can be visualized as an arrow in the plane. In this case, every vector drawn is a representation of the vector <span class="math notranslate nohighlight">\((3, 2)^\top\)</span></span><a class="headerlink" href="#par-vec" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- <center><img width="50%" src="https://d2l.ai/_images/par-vec.svg"></center> --><p>One of the benefits of this shift is that we can make visual sense of the act of vector addition. In particular, we follow the directions given by one vector, and then follow the directions given by the other, as seen below:</p>
+<!-- <center><img width="50%" src="https://d2l.ai/_images/par-vec.svg"></center> --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Plotting vector 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="c1"># Plotting vector 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;violet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;vector1&#39;</span><span class="p">,</span> <span class="s1">&#39;vector2&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
+
+<span class="c1"># Plotting the x and y axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/829badb651a30506b694656a4864986952848b1a7b38380c3a896fb072be9d80.png" src="../_images/829badb651a30506b694656a4864986952848b1a7b38380c3a896fb072be9d80.png" />
+</div>
+</div>
+<p>One of the benefits of this shift is that we can make visual sense of the act of vector addition. In particular, we follow the directions given by one vector, and then follow the directions given by the other, as seen below:</p>
 <figure class="align-default" id="vec-add">
 <a class="reference internal image-reference" href="https://d2l.ai/_images/vec-add.svg"><img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" width="50%" /></a>
 <figcaption>
@@ -561,37 +623,107 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </figcaption>
 </figure>
 <!-- <center><img width="50%" src="https://d2l.ai/_images/vec-add.svg"></center> --><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">+</span> <span class="n">vector2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">vector2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    4
+1    6
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">+</span> <span class="n">vector2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Plotting vector 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="c1"># Plotting vector 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">vector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector2</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">sum</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">displacement</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="nb">sum</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
+             <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%s, %s)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">sum</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;vector1&#39;</span><span class="p">,</span> <span class="s1">&#39;vector2&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
+
+<span class="c1"># Plotting the x and y axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2c7c7c5635c826c1ef69ac3ebd720bb51911c3be1522b809477b822209426416.png" src="../_images/2c7c7c5635c826c1ef69ac3ebd720bb51911c3be1522b809477b822209426416.png" />
+</div>
+</div>
 </section>
 <section id="norms">
 <h3><span class="section-number">5.1.2.2. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
-<p>Some of the most useful operators in linear algebra are <em>norms</em>. Informally, the norm of a vector tells us how <em>big</em> it is.</p>
-<p>For instance, the <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the (Euclidean) length of a vector.</p>
-<p>Here, we are employing a notion of <em>size</em> that concerns the magnitude of a vector’s components (not its dimensionality).</p>
-<p>A norm is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that maps a vector to a scalar and satisfies the following three properties:</p>
-<ol class="arabic simple">
-<li><p>Given any vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, if we scale (all elements of) the vector by a scalar <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span>, its norm scales accordingly:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[\|\alpha \mathbf{x}\| = |\alpha| \|\mathbf{x}\|\]</div>
-<ol class="arabic simple" start="2">
-<li><p>For any vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, norms satisfy the triangle inequality:
-$<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \|\mathbf{x}\| + \|\mathbf{y}\|\)</span>$</p></li>
-<li><p>The norm of a vector is nonnegative and it only vanishes if the vector is zero:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[ \|\mathbf{x}\| &gt; 0 \textrm{ for all } \mathbf{x} \neq 0. \]</div>
-<p>Many functions are valid norms and different norms encode different notions of size. The Euclidean norm that we all learned in elementary school geometry when calculating the hypotenuse of a right triangle is the square root of the sum of squares of a vector’s elements. Formally, this is called the <span class="math notranslate nohighlight">\(l_2\)</span> norm and expressed as</p>
+<p>Some of the most useful operators in linear algebra are <em>norms</em>. A norm is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that maps a vector to a scalar.</p>
+<p>Informally, the norm of a vector tells us magnitude or length of the vector.</p>
+<p>For instance, the <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the euclidean length of a vector. That is, <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the euclidean distance of a vector from the origin <span class="math notranslate nohighlight">\((0, 0)\)</span>.</p>
+<!-- Here, we are employing a notion of _size_ that concerns the magnitude of a vector’s components (not its dimensionality). -->
+ <!--and satisfies the following three properties:
+
+1. Given any vector $\mathbf{x}$, if we scale (all elements of) the vector by a scalar $\alpha \in \mathbb{R}$, its norm scales accordingly:
+
+$$\|\alpha \mathbf{x}\| = |\alpha| \|\mathbf{x}\|$$
+
+2. For any vectors $\mathbf{x}$ and $\mathbf{y}$, norms satisfy the triangle inequality:
+$$\|\mathbf{x} + \mathbf{y}\| \leq \|\mathbf{x}\| + \|\mathbf{y}\|$$
+
+3. The norm of a vector is nonnegative and it only vanishes if the vector is zero:
+
+$$ \|\mathbf{x}\| > 0 \textrm{ for all } \mathbf{x} \neq 0. $$
+
+Many functions are valid norms and different norms encode different notions of size. The Euclidean norm that we all learned in elementary school geometry when calculating the hypotenuse of a right triangle is the square root of the sum of squares of a vector’s elements. Formally, this is called the $l_2$ norm and expressed as
+-->
 <div class="math notranslate nohighlight">
 \[ \|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span>
+<span class="n">l2_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">l2_norm</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.7416573867739413
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.23606797749979
 </pre></div>
 </div>
 </div>
@@ -616,6 +748,24 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \
 <p>Both the <span class="math notranslate nohighlight">\(l_1\)</span> and <span class="math notranslate nohighlight">\(l_2\)</span> norms are special cases of the more general norms:</p>
 <div class="math notranslate nohighlight">
 \[ \|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}. \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vec</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">lp_norm</span> <span class="o">=</span> <span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span><span class="o">**</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">lp_norm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.651489979526238
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="dot-product">
 <h3><span class="section-number">5.1.2.3. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
@@ -664,7 +814,7 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \
 <div class="math notranslate nohighlight">
 \[ \mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u}, \]</div>
 <p>to highlight the fact that exchanging the order of the vectors will yield the same answer.</p>
-<p>The dot product also admits a geometric interpretation: dot product it is closely related to the angle between two vectors.</p>
+<p>The dot product also admits a geometric interpretation: <strong>dot product it is closely related to the angle between two vectors</strong>.</p>
 <figure class="align-default" id="vec-angle">
 <a class="reference internal image-reference" href="https://d2l.ai/_images/vec-angle.svg"><img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" width="50%" /></a>
 <figcaption>
@@ -674,7 +824,7 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \
 <p>To start, let’s consider two specific vectors:</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = (r,0) \; \textrm{and} \; \mathbf{w} = (s\cos(\theta), s \sin(\theta)) \]</div>
-<p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(mathbf{w}\)</span> is of length <span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
+<p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is of length <span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
 <p>If we compute the dot product of these two vectors, we see that</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v}\cdot\mathbf{w} = rs\cos(\theta) = \|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta) \]</div>
@@ -687,57 +837,223 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x} + \mathbf{y}\| \leq \
 <p>This will prove to be a helpful formula when understanding objects geometrically.</p>
 <p>It is reasonable to ask: why is computing the angle useful? Consider the problem of classifying text data. We might want the topic or sentiment in the text to not change if we write twice as long of document that says the same thing.</p>
 <p>For some encoding (such as counting the number of occurrences of words in some vocabulary), this corresponds to a doubling of the vector encoding the document, so again we can use the angle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">acos</span>
+
+<span class="k">def</span> <span class="nf">l2_norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vec</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">acos</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">)))</span>
+
+<span class="n">theta</span> <span class="o">==</span> <span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="cosine-similarity">
-<h3><span class="section-number">5.1.2.5. </span>Cosine Similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this headline">#</a></h3>
+<section id="cosine-similarity-distance">
+<h3><span class="section-number">5.1.2.5. </span>Cosine Similarity/Distance<a class="headerlink" href="#cosine-similarity-distance" title="Permalink to this headline">#</a></h3>
 <p>In ML contexts where the angle is employed to measure the closeness of two vectors, practitioners adopt the term cosine similarity to refer to the portion</p>
 <div class="math notranslate nohighlight">
 \[ \cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}. \]</div>
-<p>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span>
-when the two vectors are orthogonal.</p>
-<p>Note that if the components of high-dimensional vectors are sampled randomly with mean <span class="math notranslate nohighlight">\(0\)</span>, their cosine will nearly always be close to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p><u>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span> when the two vectors are orthogonal. </u></p>
+<p>Note that <strong>cosine similarity</strong> can be converted to <strong>cosine distance</strong> by subtracting it from <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Cosine distance is a very useful alternative to Euclidean distance for data where the absolute magnitude of the features is not particularly meaningful, which is a very common scenario in practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" src="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" src="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" src="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" />
+</div>
+</div>
+<p>Note that cosine similarity can be negative, which means that the angle is greater than <span class="math notranslate nohighlight">\(90^{\circ}\)</span>, i.e., the vectors point in opposite directions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" src="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="hyperplanes">
-<h3><span class="section-number">5.1.2.6. </span>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">#</a></h3>
+<h2><span class="section-number">5.1.3. </span>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">#</a></h2>
 <p>In addition to working with vectors, another key object that you must understand to go far in linear algebra is the hyperplane, a generalization to higher dimensions of a line (two dimensions) or of a plane (three dimensions). In an
 -dimensional vector space, a hyperplane has
 dimensions and divides the space into two half-spaces.</p>
-<p>Let’s start with an example. Suppose that we have a column vector <span class="math notranslate nohighlight">\(\mathbf{w}=[2,1]^\top\)</span>. We want to know, “what are the points <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>?”</p>
-<p>By recalling the connection between dot products and angles above  we can see that this is equivalent to</p>
+<!-- <center><img width="70%" src='https://images.deepai.org/glossary-terms/3bb86574825445cba73a67222b744648/hyperplane.png'></center> -->
+<center><img width="70%" src="https://community.alteryx.com/t5/image/serverpage/image-id/53830i662E91D903B0F64B/image-size/large?v=v2&px=999"></center>
+<p>Let’s start with an example. Suppose that we have a column vector <span class="math notranslate nohighlight">\(\mathbf{w}=[2,1]^\top\)</span>. We want to know, “what are the points <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>?” We can define <span class="math notranslate nohighlight">\(\mathbf{v} = [x, y]\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta) = 1 \; \iff \; \|\mathbf{v}\|\cos(\theta) = \frac{1}{\|\mathbf{w}\|} = \frac{1}{\sqrt{5}}. \]</div>
+\[ \mathbf{w}\cdot\mathbf{v} = 1\]</div>
+<div class="math notranslate nohighlight">
+\[ [2, 1]^\top \cdot [x, y] = 1\]</div>
+<div class="math notranslate nohighlight">
+\[ 2x + y = 1\]</div>
+<div class="math notranslate nohighlight">
+\[ y = -2x + 1\]</div>
+<p>Recall that the equation for a line is <span class="math notranslate nohighlight">\(y = mx + b\)</span>. Therefore, in the equations above, we have defined a line where the slope (<span class="math notranslate nohighlight">\(m\)</span>) is <span class="math notranslate nohighlight">\(-2\)</span> and the intercept (<span class="math notranslate nohighlight">\(b\)</span>) is <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <!-- <center>
 <img src="https://d2l.ai/_images/proj-vec.svg">
 </center> -->
-<figure class="align-default" id="proj-vec">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/proj-vec.svg"><img alt="https://d2l.ai/_images/proj-vec.svg" src="https://d2l.ai/_images/proj-vec.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Recalling trigonometry, we see the formula <span class="math notranslate nohighlight">\(\|\mathbf{v}\|\cos(\theta)\)</span> is the length of the projection of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span></span><a class="headerlink" href="#proj-vec" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>If we consider the geometric meaning of this expression, we see that this is equivalent to saying that the length of the projection of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of
-<span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is exactly <span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, as is shown in the figure above.</p>
-<p>The set of all points where this is true is a line at right angles to the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>.</p>
-<p>If we wanted, we could find the equation for this line and see that it is <span class="math notranslate nohighlight">\(2x + y = 1\)</span> or equivalently <span class="math notranslate nohighlight">\(y = 1 - 2x\)</span>.</p>
-<p>If we now look at what happens when we ask about the set of points with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &gt; 1\)</span> or <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &lt; 1\)</span> we can see that these are cases where the projections are longer or shorter than <span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, respectively.</p>
-<p>Thus, those two inequalities define either side of the line.</p>
+<!-- ``` {figure} https://d2l.ai/_images/proj-vec.svg
+---
+width: 50%
+name: proj-vec
+---
+Recalling trigonometry, we see the formula $\|\mathbf{v}\|\cos(\theta)$ is the length of the projection of the vector $\mathbf{v}$ onto the direction of $\mathbf{w}$
+``` --><!-- If we consider the geometric meaning of this expression, we see that this is equivalent to saying that the length of the projection of $\mathbf{v}$ onto the direction of 
+$\mathbf{w}$ is exactly $1/\|\mathbf{w}\|$, as is shown in the figure above. 
+
+The set of all points where this is true is a line at right angles to the vector $\mathbf{w}$. 
+
+If we wanted, we could find the equation for this line and see that it is $2x + y = 1$ or equivalently $y = 1 - 2x$.
+
+If we now look at what happens when we ask about the set of points with $\mathbf{w}\cdot\mathbf{v} > 1$ or $\mathbf{w}\cdot\mathbf{v} < 1$ we can see that these are cases where the projections are longer or shorter than $1/\|\mathbf{w}\|$, respectively.
+
+Thus, those two inequalities define either side of the line.  -->
 <p>In this way, we have found a way to cut our space into two halves, where all the points on one side have dot product below a threshold, and the other side above as we see below:</p>
 <figure class="align-default" id="space-division">
 <a class="reference internal image-reference" href="https://d2l.ai/_images/space-division.svg"><img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" width="50%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves.</span><a class="headerlink" href="#space-division" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves.</span><a class="headerlink" href="#space-division" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
 <figure class="align-default" id="space-division-3d">
 <a class="reference internal image-reference" href="https://d2l.ai/_images/space-division-3d.svg"><img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" width="50%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#space-division-3d" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#space-division-3d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
 <p>For instance, we can understand linear classification models, as methods to find hyperplanes that separate the different target classes. In this context, such hyperplanes are often referred to as decision planes. The majority of deep learned classification models end with a linear layer fed into a softmax, so one can interpret the role of the deep neural network to be to find a non-linear embedding such that the target classes can be separated cleanly by hyperplanes.</p>
-</section>
 </section>
 </section>
 
@@ -814,10 +1130,10 @@ dimensions and divides the space into two half-spaces.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity">5.1.2.5. Cosine Similarity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.2.6. Hyperplanes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">5.1.2.5. Cosine Similarity/Distance</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.3. Hyperplanes</a></li>
 </ul>
   </nav></div>
 

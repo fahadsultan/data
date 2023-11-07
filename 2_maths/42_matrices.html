@@ -238,20 +238,19 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../3_problems_in/22_kmeans.html">11. Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_models/generalized.html">12. Generalized Linear Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_models/nn.html">13. Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Algorithms in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">14. Expectation Maximization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">15. Gradient Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">16. Backpropogation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/em.html">13. Expectation Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/gradient_descent.html">14. Gradient Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_algos/backprop.html">15. Backpropogation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Problems with Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">17. Representation Matters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">18. Positive Feedback Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">19. Decision Boundaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">20. Majority Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/10_representation.html">16. Representation Matters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/40_feedback.html">17. Positive Feedback Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/20_boundaries.html">18. Decision Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_problems_with/30_incentives.html">19. Majority Rule</a></li>
 </ul>
 
     </div>
@@ -429,11 +428,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.1. Matrix-Vector Products</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.2. Matrix-Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.3. Linear Transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.4. Norms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.5. Tensors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">5.2.1. Transpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.2. Matrix-Vector Products</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-similar-vectors">5.2.2.1. Finding similar vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.3. Matrix-Matrix Multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-similarity-distance-matrix">5.2.3.1. Computing similarity / distance matrix</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -522,6 +525,8 @@ document.write(`
 <img alt="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" src="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" />
 </div>
 </div>
+<section id="transpose">
+<h2><span class="section-number">5.2.1. </span>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">#</a></h2>
 <p>Sometimes we want to flip the axes. When we exchange a matrix’s rows and columns, the result is called its transpose. Formally, we signify a matrix’s <span class="math notranslate nohighlight">\(\textbf{A}\)</span> transpose by <span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span> and if <span class="math notranslate nohighlight">\(\mathbf{B} = \mathbf{A}^\top\)</span>, then <span class="math notranslate nohighlight">\(b_{ij} = a_{ij}\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. Thus, the transpose of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{split}\mathbf{A}^\top =
@@ -671,8 +676,9 @@ Matrices can also be multiplied together to form new matrices. For example, the 
 <img alt="../_images/9fface38ed9a18fdd77000d6f8c6c82b12fda01957a6abb43089cfe5daa537dc.png" src="../_images/9fface38ed9a18fdd77000d6f8c6c82b12fda01957a6abb43089cfe5daa537dc.png" />
 </div>
 </div>
+</section>
 <section id="matrix-vector-products">
-<h2><span class="section-number">5.2.1. </span>Matrix-Vector Products<a class="headerlink" href="#matrix-vector-products" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.2. </span>Matrix-Vector Products<a class="headerlink" href="#matrix-vector-products" title="Permalink to this headline">#</a></h2>
 <p>Now that we know how to calculate dot products, we can begin to understand the product between an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix and an
 <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <p>To start off, we visualize our matrix in terms of its row vectors</p>
@@ -709,9 +715,80 @@ element is the dot product <span class="math notranslate nohighlight">\(\mathbf{
 \end{split}\]</div>
 <p>We can think of multiplication with a matrix <span class="math notranslate nohighlight">\(\mathbf{A}\in \mathbb{R}^{m \times n}\)</span> as a transformation that projects vectors from <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> to  <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>.</p>
 <p>These transformations are remarkably useful. For example, we can represent rotations as multiplications by certain square matrices. Matrix–vector products also describe the key calculation involved in computing the outputs of each layer in a neural network given the outputs from the previous layer.</p>
+<section id="finding-similar-vectors">
+<h3><span class="section-number">5.2.2.1. </span>Finding similar vectors<a class="headerlink" href="#finding-similar-vectors" title="Permalink to this headline">#</a></h3>
+<p>Note that, given a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, vector-matrix products can also be used to compute the similarity of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and each row <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i\)</span> of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. This is because the matrix-vector product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{v}\)</span> will contain the dot products of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and each row in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p>There is one thing to be careful about: recall that the formula for cosine similarity is:</p>
+<div class="math notranslate nohighlight">
+\[\text{cos}(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\| \|\mathbf{b}\|}\]</div>
+<p><strong>The dot product (numerator, on the right hand side) is equal to the cosine of the angle between the two vectors when the vectors are normalized (i.e. each divided by their norms).</strong></p>
+<p>The example below shows how to compute the cosine similarity between a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and each row of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/chat_dataset.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating bow representation</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span> 
+    <span class="n">bow</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># l2 norm of a vector</span>
+<span class="k">def</span> <span class="nf">l2_norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">vec</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># bow where each row is a unit vectors i.e. ||row|| = 1</span>
+<span class="n">bow_unit</span> <span class="o">=</span> <span class="n">bow</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">/</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># random message : I don&#39;t have an opinion on this</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> 
+
+<span class="c1"># cosine similarity of first message with all other messages</span>
+<span class="n">msg_sim</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">msg_sim</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+
+<span class="n">msg_sim</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>message
+I don&#39;t have an opinion on this           1.000000
+I don&#39;t really have an opinion on this    0.984003
+I have no strong opinion about this       0.971575
+I have no strong opinions about this      0.971226
+I have no strong opinion on this          0.969768
+                                            ...   
+I&#39;m not sure what to do 😕                 0.204587
+I&#39;m not sure what to do next 🤷‍♂️         0.201635
+I&#39;m not sure what to do next 🤔            0.200593
+The food was not good                     0.200295
+The food was not very good                0.197220
+Length: 584, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="matrix-matrix-multiplication">
-<h2><span class="section-number">5.2.2. </span>Matrix-Matrix Multiplication<a class="headerlink" href="#matrix-matrix-multiplication" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.3. </span>Matrix-Matrix Multiplication<a class="headerlink" href="#matrix-matrix-multiplication" title="Permalink to this headline">#</a></h2>
 <p>Once you have gotten the hang of dot products and matrix–vector products, then matrix–matrix multiplication should be straightforward.</p>
 <p>Say that we have two matrices <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{n \times k}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} \in \mathbb{R}^{k \times m}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -776,34 +853,75 @@ column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
 \end{bmatrix}.\end{split}
 \end{split}\]</div>
 <p>We can think of the matrix–matrix multiplication <span class="math notranslate nohighlight">\(\mathbf{AB}\)</span> as performing <span class="math notranslate nohighlight">\(m\)</span> matrix–vector products or <span class="math notranslate nohighlight">\(m \times n\)</span> dot products and stitching the results together to form an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix. In the following snippet, we perform matrix multiplication on A and B. Here, A is a matrix with two rows and three columns, and B is a matrix with three rows and four columns. After multiplication, we obtain a matrix with two rows and four columns.</p>
+<section id="computing-similarity-distance-matrix">
+<h3><span class="section-number">5.2.3.1. </span>Computing similarity / distance matrix<a class="headerlink" href="#computing-similarity-distance-matrix" title="Permalink to this headline">#</a></h3>
+<p>Note that, given two matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, matrix-matrix products can also be used to compute the similarity between each row <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i\)</span> of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and each row <span class="math notranslate nohighlight">\(\mathbf{b}^\top_j\)</span> of matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>. This is because the matrix-matrix product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> will contain the dot products of each pair of rows in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity_matrix</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bow_unit</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Similarity Matrix&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/831f4073988af5f74b0701f39d9b4f863e31e2160b9599b5e766df1312c1924d.png" src="../_images/831f4073988af5f74b0701f39d9b4f863e31e2160b9599b5e766df1312c1924d.png" />
+</div>
+</div>
+<p>Note how 1. the similarity matrix is symmetric, i.e. <span class="math notranslate nohighlight">\(sim_{ij} = sim_{ji}\)</span> and 2. the diagonal elements are all 1, i.e. <span class="math notranslate nohighlight">\(sim_{ii} = 1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_matrix</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bow_unit</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distance Matrix&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/94dc77d954e29c271886eabe7999563cf0dbde0713c266b367d3c6ab215fd2f6.png" src="../_images/94dc77d954e29c271886eabe7999563cf0dbde0713c266b367d3c6ab215fd2f6.png" />
+</div>
+</div>
+<!-- ## Linear Transformations
+
+A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.
+
+Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix
+
+$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
+
+## Norms
+
+Norms, in the case of matrices, are more complicated. After all, matrices can be viewed both as collections of individual entries and as objects that operate on vectors and transform them into other vectors. For instance, we can ask by how much longer the matrix–vector product $\mathbf{X} \mathbf{v}$ could be relative to 
+. This line of thought leads to what is called the spectral norm. For now, we introduce the Frobenius norm, which is much easier to compute and defined as the square root of the sum of the squares of a matrix’s elements:
+
+$$ \|\mathbf{X}\|_\textrm{F} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2} $$
+
+The Frobenius norm behaves as if it were an $l_2$ norm of a matrix-shaped vector. Invoking the following function will calculate the Frobenius norm of a matrix.
+
+While we do not want to get too far ahead of ourselves, we already can plant some intuition about why these concepts are useful. In deep learning, we are often trying to solve optimization problems: maximize the probability assigned to observed data; maximize the revenue associated with a recommender model; minimize the distance between predictions and the ground truth observations; minimize the distance between representations of photos of the same person while maximizing the distance between representations of photos of different people. These distances, which constitute the objectives of deep learning algorithms, are often expressed as norms. --><!-- ## Tensors --><!-- While you can go far in your machine learning journey with only scalars, vectors, and matrices, eventually you may need to work with higher-order tensors. Tensors give us a generic way of describing extensions to $n^{th}$-order arrays. We call software objects of the _tensor_ class “tensors” precisely because they too can have arbitrary numbers of axes. While it may be confusing to use the word tensor for both the mathematical object and its realization in code, our meaning should usually be clear from context. We denote general tensors by capital letters with a special font face (e.g., $\mathsf{X}$, $\mathsf{Y}$, and $\mathsf{Z}$) and their indexing mechanism (e.g., $x_{ijk}$ and $[\mathsf{X}_{1,2i-1,3}]$) follows naturally from that of matrices.
+
+Tensors will become more important when we start working with images. Each image arrives as a 
+-order tensor with axes corresponding to the height, width, and channel. At each spatial location, the intensities of each color (red, green, and blue) are stacked along the channel. Furthermore, a collection of images is represented in code by a 
+-order tensor, where distinct images are indexed along the first axis. Higher-order tensors are constructed, as were vectors and matrices, by growing the number of shape components. --><!-- <center>
+
+<img width="70%" src="../assets/tensors.png">
+
+<img width="70%" src="../assets/tensors2.png">
+
+<img width="30%" src="../assets/tensors3.png">
+
+</center> --></section>
 </section>
-<section id="linear-transformations">
-<h2><span class="section-number">5.2.3. </span>Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
-<p>A linear transformation is a function that maps vectors to vectors. For example, a rotation of 90 degrees clockwise about the origin is a linear transformation that maps vectors to vectors.</p>
-<p>Linear transformations can be represented as matrices. For example, a rotation of 90 degrees clockwise about the origin can be represented as the matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \end{split}\]</div>
-</section>
-<section id="norms">
-<h2><span class="section-number">5.2.4. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h2>
-<p>Norms, in the case of matrices, are more complicated. After all, matrices can be viewed both as collections of individual entries and as objects that operate on vectors and transform them into other vectors. For instance, we can ask by how much longer the matrix–vector product <span class="math notranslate nohighlight">\(\mathbf{X} \mathbf{v}\)</span> could be relative to
-. This line of thought leads to what is called the spectral norm. For now, we introduce the Frobenius norm, which is much easier to compute and defined as the square root of the sum of the squares of a matrix’s elements:</p>
-<div class="math notranslate nohighlight">
-\[ \|\mathbf{X}\|_\textrm{F} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2} \]</div>
-<p>The Frobenius norm behaves as if it were an <span class="math notranslate nohighlight">\(l_2\)</span> norm of a matrix-shaped vector. Invoking the following function will calculate the Frobenius norm of a matrix.</p>
-<p>While we do not want to get too far ahead of ourselves, we already can plant some intuition about why these concepts are useful. In deep learning, we are often trying to solve optimization problems: maximize the probability assigned to observed data; maximize the revenue associated with a recommender model; minimize the distance between predictions and the ground truth observations; minimize the distance between representations of photos of the same person while maximizing the distance between representations of photos of different people. These distances, which constitute the objectives of deep learning algorithms, are often expressed as norms.</p>
-</section>
-<section id="tensors">
-<h2><span class="section-number">5.2.5. </span>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">#</a></h2>
-<p>While you can go far in your machine learning journey with only scalars, vectors, and matrices, eventually you may need to work with higher-order tensors. Tensors give us a generic way of describing extensions to <span class="math notranslate nohighlight">\(n^{th}\)</span>-order arrays. We call software objects of the <em>tensor</em> class “tensors” precisely because they too can have arbitrary numbers of axes. While it may be confusing to use the word tensor for both the mathematical object and its realization in code, our meaning should usually be clear from context. We denote general tensors by capital letters with a special font face (e.g., <span class="math notranslate nohighlight">\(\mathsf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{Y}\)</span>, and <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span>) and their indexing mechanism (e.g., <span class="math notranslate nohighlight">\(x_{ijk}\)</span> and <span class="math notranslate nohighlight">\([\mathsf{X}_{1,2i-1,3}]\)</span>) follows naturally from that of matrices.</p>
-<p>Tensors will become more important when we start working with images. Each image arrives as a
--order tensor with axes corresponding to the height, width, and channel. At each spatial location, the intensities of each color (red, green, and blue) are stacked along the channel. Furthermore, a collection of images is represented in code by a
--order tensor, where distinct images are indexed along the first axis. Higher-order tensors are constructed, as were vectors and matrices, by growing the number of shape components.</p>
-<center>
-<a class="reference internal image-reference" href="../_images/tensors.png"><img alt="../_images/tensors.png" src="../_images/tensors.png" style="width: 70%;" /></a>
-<a class="reference internal image-reference" href="../_images/tensors2.png"><img alt="../_images/tensors2.png" src="../_images/tensors2.png" style="width: 70%;" /></a>
-<a class="reference internal image-reference" href="../_images/tensors3.png"><img alt="../_images/tensors3.png" src="../_images/tensors3.png" style="width: 30%;" /></a>
-</center></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -873,11 +991,15 @@ column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.1. Matrix-Vector Products</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.2. Matrix-Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformations">5.2.3. Linear Transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.2.4. Norms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors">5.2.5. Tensors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">5.2.1. Transpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-products">5.2.2. Matrix-Vector Products</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-similar-vectors">5.2.2.1. Finding similar vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-matrix-multiplication">5.2.3. Matrix-Matrix Multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-similarity-distance-matrix">5.2.3.1. Computing similarity / distance matrix</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
