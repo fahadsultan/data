@@ -37,11 +37,9 @@
 | #     | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |-------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
 | 9     | Classification<br/> + Naive Bayes|    **[SLP 3rd edition Ch.4](https://web.stanford.edu/~jurafsky/slp3/4.pdf)**     |    **[Supervised Learning](3_problems_in/40_supervised.ipynb)**     |  **[Classification](3_problems_in/41_classification.ipynb)** + **[Naive Bayes](4_models/41_naivebayes.ipynb)**  |     | **[PA 8](https://colab.research.google.com/drive/17DFH4eL337ScNrUdzXZFsGb3oBLpm3uA?usp=sharing)**
-| 10     | Linear Algebra              |         |                            |                        |
-| 11    | Nearest Neighbor       |         |                            |                        |
+| 10     | Linear Algebra  + Nearest Neighbor             |    Skiena Ch. 8 and Ch. 10     |    **[Vectors](2_maths/41_vectors.ipynb)**   |         **[Matrices](2_maths/42_matrices.ipynb)**      |          | **[PA 9](https://colab.research.google.com/drive/12opJKmG2QudW-w_0rfeHOLNRcpnFXgtI?usp=sharing)**
 
-
-<center><b><i>Project phase 3 due</i></b><center>
+<center><b><i><a href="https://docs.google.com/document/d/18dTVFt2aoaQuupE2UNKsHJx6rE3qK3aVcXOXy-5Phtc/edit?usp=sharing">Project phase 3 due</a></i></b><center>
 <center><b><i>EXAM 3</i></b><center>
 <br><br>        
 <!-- <center><i>December: Problems, Models and Algorithms of Data Science</i></center>  -->
@@ -52,7 +50,6 @@
 | 13      | Linear Regression                |         |                            |                        |
 | 14      | KMeans             |         |                            |                        |
 | 15      | Generalized Linear Models                 |         |                            |                        |
-| 16      | Neural Networks            |
 
 <center><b><i>Project phase 4 due</i></b><center>
 <center><b><i>FINAL EXAM</i></b></center>
