@@ -100,7 +100,7 @@ parts:
         # sections: 
         # - file: 3_problems_in/31_linear
         # - file: 3_problems_in/42_perceptron
-      - file: 4_models/nn
+      # - file: 4_models/nn
   - caption: Algorithms in Data Science
     numbered: true
     chapters:
