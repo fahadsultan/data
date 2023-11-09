@@ -468,24 +468,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/fahadsultan/datascience_ml/main/data/chat_dataset.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># creating bow representation</span>
-<span class="n">vocab</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="n">bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span> 
-    <span class="n">bow</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">bow_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bow</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -544,6 +527,101 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating bow representation</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span> 
+    <span class="n">bow</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l2_norm</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">bow_unit</span> <span class="o">=</span> <span class="n">bow</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># n_components indicates how many dimensions</span>
+<span class="c1"># you want your data to be reduced to</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">bow_reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bow</span><span class="p">)</span>
+
+<span class="n">bow_reduced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bow_reduced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bow_reduced</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-13.183063</td>
+      <td>-13.360581</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-14.616593</td>
+      <td>-13.413976</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-11.650563</td>
+      <td>-15.537625</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-14.605181</td>
+      <td>-13.347637</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-16.310469</td>
+      <td>5.483213</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
 
 <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;neutral&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
@@ -552,9 +630,9 @@ document.write(`
 <span class="n">neg</span> <span class="o">=</span> <span class="n">bow_reduced</span><span class="p">[</span><span class="n">labels</span><span class="o">==-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">neu</span> <span class="o">=</span> <span class="n">bow_reduced</span><span class="p">[</span><span class="n">labels</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">neu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;neutral&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pos</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;positive&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neg</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">neg</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;negative&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neu</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">neu</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;neutral&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;positive&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">neg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">neg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;negative&#39;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 
@@ -586,11 +664,607 @@ document.write(`
 <h3><span class="section-number">5.3.3.1. </span>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">#</a></h3>
 <p>Collaborative filtering is a technique that is used to filter out items that a user might like on the basis of reactions by similar users. It works by searching a large group of people and finding a smaller set of users with tastes similar to a particular user. It looks at the items they like and combines them to create a ranked list of suggestions.</p>
 <p>Nearest Neighbors (KNN) are used to find the users that are similar to a particular user. The items that are liked by the similar users are then recommended to the particular user.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/bratings.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>User_id</th>
+      <th>profileName</th>
+      <th>review/helpfulness</th>
+      <th>review/score</th>
+      <th>review/time</th>
+      <th>review/summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gods and Kings (Chronicles of the Kings #1)</td>
+      <td>10.19</td>
+      <td>A7IMBNFYANPNV</td>
+      <td>JohnPal</td>
+      <td>0/0</td>
+      <td>5.0</td>
+      <td>1344211200</td>
+      <td>Christreader</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Gods and Kings (Chronicles of the Kings #1)</td>
+      <td>10.19</td>
+      <td>A1WV4Q44JE40UF</td>
+      <td>joedit</td>
+      <td>0/0</td>
+      <td>5.0</td>
+      <td>1344038400</td>
+      <td>An inspiration to read the O.T for the first t...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gods and Kings (Chronicles of the Kings #1)</td>
+      <td>10.19</td>
+      <td>A32MYDPSMCHT1L</td>
+      <td>Lowragh</td>
+      <td>0/0</td>
+      <td>5.0</td>
+      <td>1343952000</td>
+      <td>Amazing series</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gods and Kings (Chronicles of the Kings #1)</td>
+      <td>10.19</td>
+      <td>AAOJ5T6VS5Z6O</td>
+      <td>Jaq27</td>
+      <td>0/0</td>
+      <td>5.0</td>
+      <td>1343779200</td>
+      <td>God's of Kings</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Gods and Kings (Chronicles of the Kings #1)</td>
+      <td>10.19</td>
+      <td>A2X1OYBRURS04R</td>
+      <td>Anne Bradshaw "Author"</td>
+      <td>0/0</td>
+      <td>5.0</td>
+      <td>1343347200</td>
+      <td>Ancient Judah Comes to Life</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For instance, in the data above, if we wanted to recommend a book to user <code class="docutils literal notranslate"><span class="pre">JohnPal</span></code>, we would just find the most similar user using Nearest Neighbor and recommend what the most similar user liked that <code class="docutils literal notranslate"><span class="pre">JohnPal</span></code> hasn’t read.</p>
+<p>This would require re-formatting the data to a form where <strong>each row represents a user and each column is a book</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_titles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">agg_user</span><span class="p">(</span><span class="n">grobj</span><span class="p">):</span>
+    <span class="n">user_titles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">grobj</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">unique_titles</span><span class="p">)</span>
+    <span class="n">vec</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_titles</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">vec</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;profileName&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">agg_user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gods and Kings (Chronicles of the Kings #1)</th>
+      <th>The Mayor of Casterbridge</th>
+      <th>Blessings</th>
+      <th>Stitch 'N Bitch Crochet: The Happy Hooker</th>
+      <th>Why Men Love Bitches: From Doormat to Dreamgirl - A Woman's Guide to Holding Her Own in a Relationship</th>
+      <th>Red Storm Rising (Turtleback School &amp; Library Binding Edition)</th>
+      <th>Great Expectations</th>
+      <th>Sex, Drugs, and Cocoa Puffs: A Low Culture Manifesto</th>
+      <th>A Crown Of Swords (Turtleback School &amp; Library Binding Edition) (Wheel of Time (Pb))</th>
+      <th>The Bread Lover's Bread Machine Cookbook: A Master Baker's 300 Favorite Recipes for Perfect-Every-Time Bread-From Every Kind of Machine</th>
+      <th>...</th>
+      <th>Push: A Novel</th>
+      <th>Tarzan of the Apes</th>
+      <th>Ultra Black Hair Growth II 2000 Edition</th>
+      <th>Stone of Tears (Sword of Truth Series)</th>
+      <th>The Truth about Hillary (Clinton): What She Knew, When She Knew It, and How Far She'll Go to Become President</th>
+      <th>Left to Tell: Discovering God Amidst The Rwandan Holocaust</th>
+      <th>Good to Great</th>
+      <th>Blue Like Jazz: Nonreligious Thoughts on Christian Spirituality</th>
+      <th>Love &amp; Respect: The Love She Most Desires; The Respect He Desperately Needs</th>
+      <th>1491: New Revelations of the Americas Before Columbus</th>
+    </tr>
+    <tr>
+      <th>profileName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>! Metamorpho ;) "Reflective and Wiser Seer"</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>"</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>"-thewarlock-"</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>"24heineck"</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>"350am"</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>~LEON~</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>~Storm~</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>~S~</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>~Terry~</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>~auntysue~</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>42214 rows × 159 columns</p>
+</div></div></div>
+</div>
 </section>
 <section id="content-based-filtering">
 <h3><span class="section-number">5.3.3.2. </span>Content Based Filtering<a class="headerlink" href="#content-based-filtering" title="Permalink to this headline">#</a></h3>
 <p>Content based filtering is a technique that is used to filter out items that a user might like on the basis of the description of the item itself. It works by creating a profile of the user’s interests based on the items that the user has liked in the past. It then recommends items that match the user’s profile.</p>
 <p>Nearest Neighbors (KNN) are used to find the items that are similar to the items that a user has liked in the past. The similar items are then recommended to the user.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/imdb_top_1000.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Poster_Link</th>
+      <th>Series_Title</th>
+      <th>Released_Year</th>
+      <th>Certificate</th>
+      <th>Runtime</th>
+      <th>Genre</th>
+      <th>IMDB_Rating</th>
+      <th>Overview</th>
+      <th>Meta_score</th>
+      <th>Director</th>
+      <th>Star1</th>
+      <th>Star2</th>
+      <th>Star3</th>
+      <th>Star4</th>
+      <th>No_of_Votes</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMDFkYT...</td>
+      <td>The Shawshank Redemption</td>
+      <td>1994</td>
+      <td>A</td>
+      <td>142 min</td>
+      <td>Drama</td>
+      <td>9.3</td>
+      <td>Two imprisoned men bond over a number of years...</td>
+      <td>80.0</td>
+      <td>Frank Darabont</td>
+      <td>Tim Robbins</td>
+      <td>Morgan Freeman</td>
+      <td>Bob Gunton</td>
+      <td>William Sadler</td>
+      <td>2343110</td>
+      <td>28,341,469</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://m.media-amazon.com/images/M/MV5BM2MyNj...</td>
+      <td>The Godfather</td>
+      <td>1972</td>
+      <td>A</td>
+      <td>175 min</td>
+      <td>Crime, Drama</td>
+      <td>9.2</td>
+      <td>An organized crime dynasty's aging patriarch t...</td>
+      <td>100.0</td>
+      <td>Francis Ford Coppola</td>
+      <td>Marlon Brando</td>
+      <td>Al Pacino</td>
+      <td>James Caan</td>
+      <td>Diane Keaton</td>
+      <td>1620367</td>
+      <td>134,966,411</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMTMxNT...</td>
+      <td>The Dark Knight</td>
+      <td>2008</td>
+      <td>UA</td>
+      <td>152 min</td>
+      <td>Action, Crime, Drama</td>
+      <td>9.0</td>
+      <td>When the menace known as the Joker wreaks havo...</td>
+      <td>84.0</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale</td>
+      <td>Heath Ledger</td>
+      <td>Aaron Eckhart</td>
+      <td>Michael Caine</td>
+      <td>2303232</td>
+      <td>534,858,444</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMWMwMG...</td>
+      <td>The Godfather: Part II</td>
+      <td>1974</td>
+      <td>A</td>
+      <td>202 min</td>
+      <td>Crime, Drama</td>
+      <td>9.0</td>
+      <td>The early life and career of Vito Corleone in ...</td>
+      <td>90.0</td>
+      <td>Francis Ford Coppola</td>
+      <td>Al Pacino</td>
+      <td>Robert De Niro</td>
+      <td>Robert Duvall</td>
+      <td>Diane Keaton</td>
+      <td>1129952</td>
+      <td>57,300,000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://m.media-amazon.com/images/M/MV5BMWU4N2...</td>
+      <td>12 Angry Men</td>
+      <td>1957</td>
+      <td>U</td>
+      <td>96 min</td>
+      <td>Crime, Drama</td>
+      <td>9.0</td>
+      <td>A jury holdout attempts to prevent a miscarria...</td>
+      <td>96.0</td>
+      <td>Sidney Lumet</td>
+      <td>Henry Fonda</td>
+      <td>Lee J. Cobb</td>
+      <td>Martin Balsam</td>
+      <td>John Fiedler</td>
+      <td>689845</td>
+      <td>4,360,000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the data above, for instance, if a user liked <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">Shawshank</span> <span class="pre">Redemption</span></code> then you need to find the most-similar movie (not the user) using Nearest Neighbor and recommend that to the user.</p>
 </section>
 </section>
 <section id="social-media-feeds">

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5.1. Vectors &#8212; CSC-272 Data Mining</title>
+    <title>Vectors &#8212; CSC-272 Data Mining</title>
   
   
   
@@ -69,11 +69,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/41_vectors';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_maths/41_vectors-Copy1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. Matrices" href="42_matrices.html" />
-    <link rel="prev" title="5. Linear Algebra and Geometry" href="40_linearalgebra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -206,15 +204,15 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics for Data Science</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="10_prob_stats_log.html">4. Prob, Stats and Logs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="11_probability.html">4.1. Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_stats.html">4.2. Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_log.html">4.3. Logarithms</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Vectors</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="40_linearalgebra.html">5. Linear Algebra and Geometry</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="41_vectors.html">5.1. Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="42_matrices.html">5.2. Matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="43_applications.html">5.3. Applications</a></li>
 </ul>
@@ -305,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/2_maths/41_vectors.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fahadsultan/datascience_ml/blob/main/2_maths/41_vectors-Copy1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -336,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/2_maths/41_vectors.ipynb" target="_blank"
+      <li><a href="../_sources/2_maths/41_vectors-Copy1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -428,16 +426,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">5.1.2.5. Cosine Similarity/Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">Scalars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">Geometry of Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">Dot Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">Dot Products and Angles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">Cosine Similarity/Distance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.3. Hyperplanes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">Hyperplanes</a></li>
 </ul>
             </nav>
         </div>
@@ -450,9 +448,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vectors">
-<h1><span class="section-number">5.1. </span>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
+<h1>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
 <section id="scalars">
-<h2><span class="section-number">5.1.1. </span>Scalars<a class="headerlink" href="#scalars" title="Permalink to this headline">#</a></h2>
+<h2>Scalars<a class="headerlink" href="#scalars" title="Permalink to this headline">#</a></h2>
 <p>Most everyday mathematics consists of manipulating numbers one at a time. Formally, we call these values <strong>scalars</strong>.</p>
 <p>For example, the temperature in Greenville is a balmy <span class="math notranslate nohighlight">\(72\)</span> degrees Fahrenheit. If you wanted to convert the temperature to Celsius you would evaluate the expression <span class="math notranslate nohighlight">\(c = \frac{5}{9}(f - 32)\)</span>, setting <span class="math notranslate nohighlight">\(f = 72\)</span>. In this equation, the values <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, and <span class="math notranslate nohighlight">\(32\)</span> are <em>constant scalars</em>. The variables <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(f\)</span> in general represent <em>unknown scalars</em>.</p>
 <p>We denote scalars by ordinary lower-cased letters (e.g. <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>) and the space of all (continuous) <em>real-valued</em> scalars by <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. The expression <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span> is a formal way to say that <span class="math notranslate nohighlight">\(x\)</span> is a real-valued scalar. The symbol <span class="math notranslate nohighlight">\(\in\)</span> (pronounced “in”) denotes membership in a set. For example, <span class="math notranslate nohighlight">\(x, y \in {0, 1}\)</span> indicates that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are variables that can only take on values of <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>.</p>
@@ -469,7 +467,7 @@ document.write(`
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">5.1.2. </span>Vectors<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Vectors<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>For current purposes, you can think of a vector as a fixed-length array of scalars. As with their code counterparts, we call these scalars the elements of the vector (synonyms include entries and components).</p>
 <!-- When vectors represent examples from real-world datasets, their values hold some real-world significance. For example, if we were training a model to predict the risk of a loan defaulting, we might associate each applicant with a vector whose components correspond to quantities like their income, length of employment, or number of previous defaults. If we were studying the risk of heart attack, each vector might represent a patient and its components might correspond to their most recent vital signs, cholesterol levels, minutes of exercise per day, etc.  -->
 <p>We denote vectors by bold lowercase letters, (e.g.,  <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>). The vector of all ones is denoted <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>. The vector of all zeros is denoted <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p>
@@ -534,16 +532,10 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 <div class="math notranslate nohighlight">
 \[\mathbf{x}^\top = \begin{bmatrix}1 &amp; 7 &amp; 0 &amp; 1\end{bmatrix}.\]</div>
 <section id="geometry-of-vectors">
-<h3><span class="section-number">5.1.2.1. </span>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
+<h3>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
 <p>First, we need to discuss the two common geometric interpretations of vectors, as either points or directions in space.</p>
 <p>Given a vector, the first interpretation that we should give it is as a point in space. In two or three dimensions, we can visualize these points by using the components of the vectors to define the location of the points in space compared to a fixed reference called the origin. This can be seen in the figure below.</p>
-<figure class="align-default" id="grid-points">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/grid-points.svg"><img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" width="60%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">An illustration of visualizing vectors as points in the plane. The first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions are analogous, although much harder to visualize.</span><a class="headerlink" href="#grid-points" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<!-- <center><img  width="60%" src="https://d2l.ai/_images/grid-points.svg"></center> --><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
+<img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" /><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -582,13 +574,7 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </div>
 <p>In parallel, there is a second point of view that people often take of vectors: as directions in space. Not only can we think of the vector <span class="math notranslate nohighlight">\(\textbf{v} = [3, 2]^{T}\)</span> as the location <span class="math notranslate nohighlight">\(3\)</span> units to the right and
 <span class="math notranslate nohighlight">\(2\)</span> units up from the origin, we can also think of it as the direction itself to take <span class="math notranslate nohighlight">\(3\)</span> steps to the right and <span class="math notranslate nohighlight">\(2\)</span> steps up. In this way, we consider all the vectors in figure below the same.</p>
-<figure class="align-default" id="par-vec">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/par-vec.svg"><img alt="https://d2l.ai/_images/par-vec.svg" src="https://d2l.ai/_images/par-vec.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Any vector can be visualized as an arrow in the plane. In this case, every vector drawn is a representation of the vector <span class="math notranslate nohighlight">\((3, 2)^\top\)</span></span><a class="headerlink" href="#par-vec" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<!-- <center><img width="50%" src="https://d2l.ai/_images/par-vec.svg"></center> --><div class="cell docutils container">
+<img alt="https://d2l.ai/_images/par-vec.svg" src="https://d2l.ai/_images/par-vec.svg" /><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -616,13 +602,7 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </div>
 </div>
 <p>One of the benefits of this shift is that we can make visual sense of the act of vector addition. In particular, we follow the directions given by one vector, and then follow the directions given by the other, as seen below:</p>
-<figure class="align-default" id="vec-add">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-add.svg"><img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">We can visualize vector addition by first following one vector, and then another.</span><a class="headerlink" href="#vec-add" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<!-- <center><img width="50%" src="https://d2l.ai/_images/vec-add.svg"></center> --><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" /><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -692,7 +672,7 @@ dtype: int64
 </div>
 </section>
 <section id="norms">
-<h3><span class="section-number">5.1.2.2. </span>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
+<h3>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">#</a></h3>
 <p>Some of the most useful operators in linear algebra are <em>norms</em>. A norm is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that maps a vector to a scalar.</p>
 <p>Informally, the norm of a vector tells us magnitude or length of the vector.</p>
 <p>For instance, the <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the euclidean length of a vector. That is, <span class="math notranslate nohighlight">\(l_2\)</span> norm measures the euclidean distance of a vector from the origin <span class="math notranslate nohighlight">\((0, 0)\)</span>.</p>
@@ -768,7 +748,7 @@ Many functions are valid norms and different norms encode different notions of s
 </div>
 </section>
 <section id="dot-product">
-<h3><span class="section-number">5.1.2.3. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
+<h3>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this headline">#</a></h3>
 <p>One of the most fundamental operations in linear algebra (and all of data science and machine learning) is the dot product.</p>
 <p>Given two vectors <span class="math notranslate nohighlight">\(\textbf{x}, \textbf{y} \in \mathbb{R}^d\)</span>, their <em>dot product</em> <span class="math notranslate nohighlight">\(\textbf{x}^{\top} \textbf{y}\)</span> (also known as <em>inner product</em> <span class="math notranslate nohighlight">\(\langle \textbf{x}, \textbf{y} \rangle\)</span>) is a sum over the products of the elements at the same position:</p>
 <div class="math notranslate nohighlight">
@@ -806,7 +786,7 @@ Many functions are valid norms and different norms encode different notions of s
 <p>Dot products are useful in a wide range of contexts. For example, given some set of values, denoted by a vector <span class="math notranslate nohighlight">\( \mathbf{x} \in \mathbb{R}^{n} \)</span> , and a set of weights, denoted by <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>, the weighted sum of the values in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> according to the weights <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> could be expressed as the dot product <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{w}\)</span>. When the weights are nonnegative and sum to <span class="math notranslate nohighlight">\(1\)</span>, i.e., <span class="math notranslate nohighlight">\((\sum_{i=1}^n w_i = 1)\)</span>, the dot product expresses a <em>weighted average</em>. After normalizing two vectors to have unit length, the dot products express the cosine of the angle between them. Later in this section, we will formally introduce this notion of <em>length</em>.</p>
 </section>
 <section id="dot-products-and-angles">
-<h3><span class="section-number">5.1.2.4. </span>Dot Products and Angles<a class="headerlink" href="#dot-products-and-angles" title="Permalink to this headline">#</a></h3>
+<h3>Dot Products and Angles<a class="headerlink" href="#dot-products-and-angles" title="Permalink to this headline">#</a></h3>
 <p>If we take two column vectors <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, we can form their dot product by computing:</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{u}^\top\mathbf{v} = \sum_i u_i\cdot v_i \]</div>
@@ -815,13 +795,7 @@ Many functions are valid norms and different norms encode different notions of s
 \[ \mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u}, \]</div>
 <p>to highlight the fact that exchanging the order of the vectors will yield the same answer.</p>
 <p>The dot product also admits a geometric interpretation: <strong>dot product it is closely related to the angle between two vectors</strong>.</p>
-<figure class="align-default" id="vec-angle">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-angle.svg"><img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Between any two vectors in the plane there is a well defined angle <span class="math notranslate nohighlight">\(\theta\)</span>. We will see this angle is intimately tied to the dot product.</span><a class="headerlink" href="#vec-angle" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>To start, let’s consider two specific vectors:</p>
+<img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" /><p>To start, let’s consider two specific vectors:</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = (r,0) \; \textrm{and} \; \mathbf{w} = (s\cos(\theta), s \sin(\theta)) \]</div>
 <p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is of length <span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
@@ -890,41 +864,61 @@ Many functions are valid norms and different norms encode different notions of s
 </div>
 </section>
 <section id="cosine-similarity-distance">
-<h3><span class="section-number">5.1.2.5. </span>Cosine Similarity/Distance<a class="headerlink" href="#cosine-similarity-distance" title="Permalink to this headline">#</a></h3>
+<h3>Cosine Similarity/Distance<a class="headerlink" href="#cosine-similarity-distance" title="Permalink to this headline">#</a></h3>
 <p>In ML contexts where the angle is employed to measure the closeness of two vectors, practitioners adopt the term cosine similarity to refer to the portion</p>
 <div class="math notranslate nohighlight">
 \[ \cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}. \]</div>
 <p><u>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span> when the two vectors are orthogonal. </u></p>
-<p>Note that <strong>cosine similarity</strong> can be converted to <strong>cosine distance</strong> by subtracting it from <span class="math notranslate nohighlight">\(1\)</span> and dividing by 2.</p>
-<div class="math notranslate nohighlight">
-\[ \text{Cosine Distance} = \frac{1 - \text{Cosine Similarity}}{2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\text{Cosine Similarity} = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}\)</span></p>
+<p>Note that <strong>cosine similarity</strong> can be converted to <strong>cosine distance</strong> by subtracting it from <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Cosine distance is a very useful alternative to Euclidean distance for data where the absolute magnitude of the features is not particularly meaningful, which is a very common scenario in practice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine distance&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cosine distance&#39;</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cosine Similarity vs. Cosine Distance&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+
+<span class="c1"># Cosine DISTANCE between x and y </span>
+
+<span class="c1"># vs. </span>
+
+<span class="c1"># Euclidean DISTANCE between x and y (NON-ZERO)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cd15cb9affb955554fd3095c9aeb4a0ee774931ef58f407647bc00122bf44c3e.png" src="../_images/cd15cb9affb955554fd3095c9aeb4a0ee774931ef58f407647bc00122bf44c3e.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l2_norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">vec</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" src="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 
 <span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
@@ -939,17 +933,12 @@ Many functions are valid norms and different norms encode different notions of s
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ ≈ 0° (or 0 radians)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>\
-          <span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
-          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eb16a1f3c253cfdcdf4ab9aaf2bb0d8331906266e98c8f6507caee461c27d1bb.png" src="../_images/eb16a1f3c253cfdcdf4ab9aaf2bb0d8331906266e98c8f6507caee461c27d1bb.png" />
+<img alt="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" src="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -966,22 +955,16 @@ Many functions are valid norms and different norms encode different notions of s
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
+
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ = 90° (or π / 2 radians)&quot;</span><span class="o">+</span>\
-          <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cosine Similarity: </span><span class="si">%s</span><span class="s2"> &quot;</span><span class="o">+</span>\
-          <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
-          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b39ab41326f730324aaf61e6818fece13143ff83a364ad21acc69a509c0b3fef.png" src="../_images/b39ab41326f730324aaf61e6818fece13143ff83a364ad21acc69a509c0b3fef.png" />
+<img alt="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" src="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" />
 </div>
 </div>
 <p>Note that cosine similarity can be negative, which means that the angle is greater than <span class="math notranslate nohighlight">\(90^{\circ}\)</span>, i.e., the vectors point in opposite directions.</p>
@@ -1003,23 +986,18 @@ Many functions are valid norms and different norms encode different notions of s
 
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ = 180° (or π radians)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>\
-          <span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
-          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eba7c19c28d1c76010d15bc8cdfa5829a2093e5c11dc0b6ac6d3f4cc7a5b7272.png" src="../_images/eba7c19c28d1c76010d15bc8cdfa5829a2093e5c11dc0b6ac6d3f4cc7a5b7272.png" />
+<img alt="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" src="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="hyperplanes">
-<h2><span class="section-number">5.1.3. </span>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">#</a></h2>
+<h2>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">#</a></h2>
 <p>In addition to working with vectors, another key object that you must understand to go far in linear algebra is the hyperplane, a generalization to higher dimensions of a line (two dimensions) or of a plane (three dimensions). In an
 -dimensional vector space, a hyperplane has
 dimensions and divides the space into two half-spaces.</p>
@@ -1055,20 +1033,8 @@ If we now look at what happens when we ask about the set of points with $\mathbf
 
 Thus, those two inequalities define either side of the line.  -->
 <p>In this way, we have found a way to cut our space into two halves, where all the points on one side have dot product below a threshold, and the other side above as we see below:</p>
-<figure class="align-default" id="space-division">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division.svg"><img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves.</span><a class="headerlink" href="#space-division" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
-<figure class="align-default" id="space-division-3d">
-<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division-3d.svg"><img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" width="50%" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#space-division-3d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
+<img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" /><p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
+<img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" /><p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
 <p>For instance, we can understand linear classification models, as methods to find hyperplanes that separate the different target classes. In this context, such hyperplanes are often referred to as decision planes. The majority of deep learned classification models end with a linear layer fed into a softmax, so one can interpret the role of the deep neural network to be to find a non-linear embedding such that the target classes can be separated cleanly by hyperplanes.</p>
 </section>
 </section>
@@ -1104,24 +1070,6 @@ Thus, those two inequalities define either side of the line.  -->
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="40_linearalgebra.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Linear Algebra and Geometry</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="42_matrices.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.2. </span>Matrices</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1140,16 +1088,16 @@ Thus, those two inequalities define either side of the line.  -->
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">5.1.1. Scalars</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1.2. Vectors</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">5.1.2.1. Geometry of Vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">5.1.2.2. Norms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">5.1.2.3. Dot Product</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">5.1.2.4. Dot Products and Angles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">5.1.2.5. Cosine Similarity/Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalars">Scalars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-of-vectors">Geometry of Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">Dot Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-products-and-angles">Dot Products and Angles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-similarity-distance">Cosine Similarity/Distance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">5.1.3. Hyperplanes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperplanes">Hyperplanes</a></li>
 </ul>
   </nav></div>
 
