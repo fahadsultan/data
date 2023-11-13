@@ -535,7 +535,13 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 <h3>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">#</a></h3>
 <p>First, we need to discuss the two common geometric interpretations of vectors, as either points or directions in space.</p>
 <p>Given a vector, the first interpretation that we should give it is as a point in space. In two or three dimensions, we can visualize these points by using the components of the vectors to define the location of the points in space compared to a fixed reference called the origin. This can be seen in the figure below.</p>
-<img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" /><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
+<figure class="align-default" id="grid-points">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/grid-points.svg"><img alt="https://d2l.ai/_images/grid-points.svg" src="https://d2l.ai/_images/grid-points.svg" width="60%" /></a>
+<figcaption>
+<p><span class="caption-text">An illustration of visualizing vectors as points in the plane. The first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions are analogous, although much harder to visualize.</span><a class="headerlink" href="#grid-points" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img  width="60%" src="https://d2l.ai/_images/grid-points.svg"></center> --><p>This geometric point of view allows us to consider the problem on a more abstract level. No longer faced with some insurmountable seeming problem like classifying pictures as either cats or dogs, we can start considering tasks abstractly as collections of points in space and picturing the task as discovering how to separate two distinct clusters of points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -574,7 +580,13 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </div>
 <p>In parallel, there is a second point of view that people often take of vectors: as directions in space. Not only can we think of the vector <span class="math notranslate nohighlight">\(\textbf{v} = [3, 2]^{T}\)</span> as the location <span class="math notranslate nohighlight">\(3\)</span> units to the right and
 <span class="math notranslate nohighlight">\(2\)</span> units up from the origin, we can also think of it as the direction itself to take <span class="math notranslate nohighlight">\(3\)</span> steps to the right and <span class="math notranslate nohighlight">\(2\)</span> steps up. In this way, we consider all the vectors in figure below the same.</p>
-<img alt="https://d2l.ai/_images/par-vec.svg" src="https://d2l.ai/_images/par-vec.svg" /><div class="cell docutils container">
+<figure class="align-default" id="par-vec">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/par-vec.svg"><img alt="https://d2l.ai/_images/par-vec.svg" src="https://d2l.ai/_images/par-vec.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-text">Any vector can be visualized as an arrow in the plane. In this case, every vector drawn is a representation of the vector <span class="math notranslate nohighlight">\((3, 2)^\top\)</span></span><a class="headerlink" href="#par-vec" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img width="50%" src="https://d2l.ai/_images/par-vec.svg"></center> --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -602,7 +614,13 @@ Vectors can be added together to form new vectors. For example, the velocity of 
 </div>
 </div>
 <p>One of the benefits of this shift is that we can make visual sense of the act of vector addition. In particular, we follow the directions given by one vector, and then follow the directions given by the other, as seen below:</p>
-<img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" /><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<figure class="align-default" id="vec-add">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-add.svg"><img alt="https://d2l.ai/_images/vec-add.svg" src="https://d2l.ai/_images/vec-add.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-text">We can visualize vector addition by first following one vector, and then another.</span><a class="headerlink" href="#vec-add" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <center><img width="50%" src="https://d2l.ai/_images/vec-add.svg"></center> --><p>Vector subtraction has a similar interpretation. By considering the identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u} - \mathbf{v})\)</span>, we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u} - \mathbf{v}\)</span> is the direction that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -795,7 +813,13 @@ Many functions are valid norms and different norms encode different notions of s
 \[ \mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u}, \]</div>
 <p>to highlight the fact that exchanging the order of the vectors will yield the same answer.</p>
 <p>The dot product also admits a geometric interpretation: <strong>dot product it is closely related to the angle between two vectors</strong>.</p>
-<img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" /><p>To start, let’s consider two specific vectors:</p>
+<figure class="align-default" id="vec-angle">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/vec-angle.svg"><img alt="https://d2l.ai/_images/vec-angle.svg" src="https://d2l.ai/_images/vec-angle.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-text">Between any two vectors in the plane there is a well defined angle <span class="math notranslate nohighlight">\(\theta\)</span>. We will see this angle is intimately tied to the dot product.</span><a class="headerlink" href="#vec-angle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To start, let’s consider two specific vectors:</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = (r,0) \; \textrm{and} \; \mathbf{w} = (s\cos(\theta), s \sin(\theta)) \]</div>
 <p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is of length <span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
@@ -869,56 +893,36 @@ Many functions are valid norms and different norms encode different notions of s
 <div class="math notranslate nohighlight">
 \[ \cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}. \]</div>
 <p><u>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span> when the two vectors are orthogonal. </u></p>
-<p>Note that <strong>cosine similarity</strong> can be converted to <strong>cosine distance</strong> by subtracting it from <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Note that <strong>cosine similarity</strong> can be converted to <strong>cosine distance</strong> by subtracting it from <span class="math notranslate nohighlight">\(1\)</span> and dividing by 2.</p>
+<div class="math notranslate nohighlight">
+\[ \text{Cosine Distance} = \frac{1 - \text{Cosine Similarity}}{2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{Cosine Similarity} = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}\)</span></p>
 <p>Cosine distance is a very useful alternative to Euclidean distance for data where the absolute magnitude of the features is not particularly meaningful, which is a very common scenario in practice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-
-<span class="c1"># Cosine DISTANCE between x and y </span>
-
-<span class="c1"># vs. </span>
-
-<span class="c1"># Euclidean DISTANCE between x and y (NON-ZERO)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine distance&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;cosine similarity&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cosine distance&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cosine Similarity vs. Cosine Distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
-
-<span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" src="../_images/debed7a7890cf02932b9218422357faa9d6dbf60c07c951a38c0c7b2fd5b76c9.png" />
+<img alt="../_images/cd15cb9affb955554fd3095c9aeb4a0ee774931ef58f407647bc00122bf44c3e.png" src="../_images/cd15cb9affb955554fd3095c9aeb4a0ee774931ef58f407647bc00122bf44c3e.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l2_norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vec</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 
 <span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
@@ -933,12 +937,17 @@ Many functions are valid norms and different norms encode different notions of s
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ ≈ 0° (or 0 radians)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>\
+          <span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
+          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" src="../_images/8d9e92a3c5d575b252bcd5a362507c94c16fd77623261df26e8984cbf80134f8.png" />
+<img alt="../_images/eb16a1f3c253cfdcdf4ab9aaf2bb0d8331906266e98c8f6507caee461c27d1bb.png" src="../_images/eb16a1f3c253cfdcdf4ab9aaf2bb0d8331906266e98c8f6507caee461c27d1bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -955,16 +964,22 @@ Many functions are valid norms and different norms encode different notions of s
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">l2_norm</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ = 90° (or π / 2 radians)&quot;</span><span class="o">+</span>\
+          <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cosine Similarity: </span><span class="si">%s</span><span class="s2"> &quot;</span><span class="o">+</span>\
+          <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
+          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" src="../_images/68e72831142912ab7267fc2e4b75ced1b2ae66cbc45893cfb0cbeff3b8e7db1b.png" />
+<img alt="../_images/b39ab41326f730324aaf61e6818fece13143ff83a364ad21acc69a509c0b3fef.png" src="../_images/b39ab41326f730324aaf61e6818fece13143ff83a364ad21acc69a509c0b3fef.png" />
 </div>
 </div>
 <p>Note that cosine similarity can be negative, which means that the angle is greater than <span class="math notranslate nohighlight">\(90^{\circ}\)</span>, i.e., the vectors point in opposite directions.</p>
@@ -986,12 +1001,17 @@ Many functions are valid norms and different norms encode different notions of s
 
 <span class="n">cosine_similarity</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">cosine_distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">cosine_distance</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;θ = 180° (or π radians)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>\
+          <span class="s2">&quot;Cosine Similarity: </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Cosine Distance: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
+          <span class="p">(</span><span class="n">cosine_similarity</span><span class="p">,</span> <span class="n">cosine_distance</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" src="../_images/5be519889d28f5e3c0a1498204e4a58b54fe7e0ffe687913517b897fa879853b.png" />
+<img alt="../_images/eba7c19c28d1c76010d15bc8cdfa5829a2093e5c11dc0b6ac6d3f4cc7a5b7272.png" src="../_images/eba7c19c28d1c76010d15bc8cdfa5829a2093e5c11dc0b6ac6d3f4cc7a5b7272.png" />
 </div>
 </div>
 </section>
@@ -1033,8 +1053,20 @@ If we now look at what happens when we ask about the set of points with $\mathbf
 
 Thus, those two inequalities define either side of the line.  -->
 <p>In this way, we have found a way to cut our space into two halves, where all the points on one side have dot product below a threshold, and the other side above as we see below:</p>
-<img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" /><p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
-<img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" /><p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
+<figure class="align-default" id="space-division">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division.svg"><img alt="https://d2l.ai/_images/space-division.svg" src="https://d2l.ai/_images/space-division.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-text">If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves.</span><a class="headerlink" href="#space-division" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The story in higher dimension is much the same. If we now take <span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two inequalities again define the two sides of the plane as is shown below:</p>
+<figure class="align-default" id="space-division-3d">
+<a class="reference internal image-reference" href="https://d2l.ai/_images/space-division-3d.svg"><img alt="https://d2l.ai/_images/space-division-3d.svg" src="https://d2l.ai/_images/space-division-3d.svg" width="50%" /></a>
+<figcaption>
+<p><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#space-division-3d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>While our ability to visualize runs out at this point, nothing stops us from doing this in tens, hundreds, or billions of dimensions. This occurs often when thinking about machine learned models.</p>
 <p>For instance, we can understand linear classification models, as methods to find hyperplanes that separate the different target classes. In this context, such hyperplanes are often referred to as decision planes. The majority of deep learned classification models end with a linear layer fed into a softmax, so one can interpret the role of the deep neural network to be to find a non-linear embedding such that the target classes can be separated cleanly by hyperplanes.</p>
 </section>
 </section>

@@ -458,6 +458,8 @@ document.write(`
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">8</span><span class="p">]})</span>
 
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v2&#39;</span><span class="p">,</span> <span class="s1">&#39;v3&#39;</span><span class="p">,</span> <span class="s1">&#39;v4&#39;</span><span class="p">]</span>
+
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -487,22 +489,22 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>v1</th>
       <td>1</td>
       <td>50</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>v2</th>
       <td>20</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>v3</th>
       <td>3</td>
       <td>70</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>v4</th>
       <td>40</td>
       <td>8</td>
     </tr>
@@ -510,6 +512,46 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scatterplot of a vs b&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+
+<span class="k">def</span> <span class="nf">annotate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">annotate</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/36b1bb27bd6e0e5b84f8ce74e33330d76b6337c36664171c680893ccc89b5056.png" src="../_images/36b1bb27bd6e0e5b84f8ce74e33330d76b6337c36664171c680893ccc89b5056.png" />
+</div>
+</div>
+<section id="transpose">
+<h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">#</a></h2>
+<p>Sometimes we want to flip the axes. When we exchange a matrix’s rows and columns, the result is called its transpose. Formally, we signify a matrix’s <span class="math notranslate nohighlight">\(\textbf{A}\)</span> transpose by <span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span> and if <span class="math notranslate nohighlight">\(\mathbf{B} = \mathbf{A}^\top\)</span>, then <span class="math notranslate nohighlight">\(b_{ij} = a_{ij}\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. Thus, the transpose of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{split}\mathbf{A}^\top =
+\begin{bmatrix}
+    a_{11} &amp; a_{21} &amp; \dots  &amp; a_{m1} \\
+    a_{12} &amp; a_{22} &amp; \dots  &amp; a_{m2} \\
+    \vdots &amp; \vdots &amp; \ddots  &amp; \vdots \\
+    a_{1n} &amp; a_{2n} &amp; \dots  &amp; a_{mn}
+\end{bmatrix}.\end{split} \end{split}\]</div>
+<!-- We can convert any appropriately sized 
+ tensor into an 
+ matrix by passing the desired shape to reshape:
+
+A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.
+
+Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.
+
+Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin. -->
+<p>In pandas, you can transpose a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the <strong><code class="docutils literal notranslate"><span class="pre">.T</span></code></strong> attribute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span>
@@ -538,78 +580,30 @@ document.write(`
       <th>0</th>
       <th>1</th>
       <th>2</th>
-      <th>3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>a</th>
       <td>1</td>
-      <td>20</td>
+      <td>2</td>
       <td>3</td>
-      <td>40</td>
     </tr>
     <tr>
       <th>b</th>
-      <td>50</td>
+      <td>4</td>
+      <td>5</td>
       <td>6</td>
-      <td>70</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>7</td>
       <td>8</td>
+      <td>9</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scatterplot of a vs b&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" src="../_images/eac7336398feb6858bc7a07aa15149ea45dd91c5ced9e390da9bd9ec55a9c199.png" />
-</div>
-</div>
-<section id="transpose">
-<h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">#</a></h2>
-<p>Sometimes we want to flip the axes. When we exchange a matrix’s rows and columns, the result is called its transpose. Formally, we signify a matrix’s <span class="math notranslate nohighlight">\(\textbf{A}\)</span> transpose by <span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span> and if <span class="math notranslate nohighlight">\(\mathbf{B} = \mathbf{A}^\top\)</span>, then <span class="math notranslate nohighlight">\(b_{ij} = a_{ij}\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. Thus, the transpose of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{split}\mathbf{A}^\top =
-\begin{bmatrix}
-    a_{11} &amp; a_{21} &amp; \dots  &amp; a_{m1} \\
-    a_{12} &amp; a_{22} &amp; \dots  &amp; a_{m2} \\
-    \vdots &amp; \vdots &amp; \ddots  &amp; \vdots \\
-    a_{1n} &amp; a_{2n} &amp; \dots  &amp; a_{mn}
-\end{bmatrix}.\end{split} \end{split}\]</div>
-<!-- We can convert any appropriately sized 
- tensor into an 
- matrix by passing the desired shape to reshape:
-
-A matrix is a rectangular array of numbers. Matrices are often used to represent linear transformations such as rotations and reflections. For example, a matrix can be used to represent a rotation of 90 degrees clockwise about the origin.
-
-Matrices can be added together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be added to the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin.
-
-Matrices can also be multiplied together to form new matrices. For example, the matrix representing a rotation of 90 degrees clockwise about the origin can be multiplied by the matrix representing a rotation of 90 degrees counterclockwise about the origin to form the matrix representing a rotation of 180 degrees about the origin. -->
-<p>In pandas, you can transpose a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the <strong><code class="docutils literal notranslate"><span class="pre">.T</span></code></strong> attribute:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that columns of original dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code> are the same as index of <code class="docutils literal notranslate"><span class="pre">df.T</span></code></p>
 <div class="cell docutils container">
@@ -728,65 +722,6 @@ element is the dot product <span class="math notranslate nohighlight">\(\mathbf{
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>message</th>
-      <th>sentiment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I really enjoyed the movie</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>The food was terrible</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I'm not sure how I feel about this</td>
-      <td>neutral</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>The service was excellent</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>I had a bad experience</td>
-      <td>negative</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -987,11 +922,186 @@ element is the dot product <span class="math notranslate nohighlight">\(\mathbf{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bow_unit</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>i</th>
+      <th>really</th>
+      <th>enjoyed</th>
+      <th>the</th>
+      <th>movie</th>
+      <th>the</th>
+      <th>food</th>
+      <th>was</th>
+      <th>terrible</th>
+      <th>i'm</th>
+      <th>...</th>
+      <th>ex</th>
+      <th>is</th>
+      <th>dating</th>
+      <th>someone</th>
+      <th>new.</th>
+      <th>i</th>
+      <th>feel</th>
+      <th>so</th>
+      <th>heartbroken</th>
+      <th>💔😢</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.040962</td>
+      <td>0.040962</td>
+      <td>0.040962</td>
+      <td>0.040962</td>
+      <td>0.040962</td>
+      <td>0.040962</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.040962</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.045932</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.045932</td>
+      <td>0.045932</td>
+      <td>0.045932</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.045932</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.036637</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.036637</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.036637</td>
+      <td>0.036637</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.045739</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.045739</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.045739</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.045739</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.029683</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.029683</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.029683</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 4291 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># random message : I don&#39;t have an opinion on this</span>
 <span class="n">msg</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> 
 
 <span class="c1"># cosine similarity of first message with all other messages</span>
 <span class="n">msg_sim</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
 <span class="n">msg_sim</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
 
 <span class="n">msg_sim</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1089,19 +1199,217 @@ column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
 <p>Note that, given two matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, matrix-matrix products can also be used to compute the similarity between each row <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i\)</span> of matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and each row <span class="math notranslate nohighlight">\(\mathbf{b}^\top_j\)</span> of matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>. This is because the matrix-matrix product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> will contain the dot products of each pair of rows in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(584, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity_matrix</span> <span class="o">=</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bow_unit</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">similarity_matrix</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(584, 584)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity_matrix</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>574</th>
+      <th>575</th>
+      <th>576</th>
+      <th>577</th>
+      <th>578</th>
+      <th>579</th>
+      <th>580</th>
+      <th>581</th>
+      <th>582</th>
+      <th>583</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.000000</td>
+      <td>0.568191</td>
+      <td>0.453216</td>
+      <td>0.565809</td>
+      <td>0.612787</td>
+      <td>0.608156</td>
+      <td>0.377769</td>
+      <td>0.631309</td>
+      <td>0.793969</td>
+      <td>0.642410</td>
+      <td>...</td>
+      <td>0.516106</td>
+      <td>0.612624</td>
+      <td>0.660911</td>
+      <td>0.490580</td>
+      <td>0.845518</td>
+      <td>0.573549</td>
+      <td>0.648564</td>
+      <td>0.629598</td>
+      <td>0.594468</td>
+      <td>0.570452</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.568191</td>
+      <td>1.000000</td>
+      <td>0.508206</td>
+      <td>0.928580</td>
+      <td>0.687137</td>
+      <td>0.681944</td>
+      <td>0.423604</td>
+      <td>0.707906</td>
+      <td>0.551139</td>
+      <td>0.720354</td>
+      <td>...</td>
+      <td>0.573755</td>
+      <td>0.686954</td>
+      <td>0.741100</td>
+      <td>0.546166</td>
+      <td>0.801864</td>
+      <td>0.643139</td>
+      <td>0.721001</td>
+      <td>0.705988</td>
+      <td>0.652357</td>
+      <td>0.639666</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.453216</td>
+      <td>0.508206</td>
+      <td>1.000000</td>
+      <td>0.506075</td>
+      <td>0.548093</td>
+      <td>0.707857</td>
+      <td>0.778316</td>
+      <td>0.621438</td>
+      <td>0.538883</td>
+      <td>0.648861</td>
+      <td>...</td>
+      <td>0.457088</td>
+      <td>0.547948</td>
+      <td>0.650512</td>
+      <td>0.443105</td>
+      <td>0.593732</td>
+      <td>0.512998</td>
+      <td>0.574392</td>
+      <td>0.605515</td>
+      <td>0.520351</td>
+      <td>0.609064</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.565809</td>
+      <td>0.928580</td>
+      <td>0.506075</td>
+      <td>1.000000</td>
+      <td>0.685614</td>
+      <td>0.679085</td>
+      <td>0.421828</td>
+      <td>0.704938</td>
+      <td>0.548828</td>
+      <td>0.717334</td>
+      <td>...</td>
+      <td>0.571349</td>
+      <td>0.684074</td>
+      <td>0.737993</td>
+      <td>0.543876</td>
+      <td>0.798502</td>
+      <td>0.640442</td>
+      <td>0.717978</td>
+      <td>0.703027</td>
+      <td>0.649622</td>
+      <td>0.638039</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.612787</td>
+      <td>0.687137</td>
+      <td>0.548093</td>
+      <td>0.685614</td>
+      <td>1.000000</td>
+      <td>0.735468</td>
+      <td>0.273748</td>
+      <td>0.559585</td>
+      <td>0.714100</td>
+      <td>0.599091</td>
+      <td>...</td>
+      <td>0.926494</td>
+      <td>0.825530</td>
+      <td>0.806139</td>
+      <td>0.933257</td>
+      <td>0.802775</td>
+      <td>0.945544</td>
+      <td>0.931874</td>
+      <td>0.913601</td>
+      <td>0.928473</td>
+      <td>0.690556</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 584 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Similarity Matrix&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Similarity Matrix: Each cell contains cosine </span><span class="se">\n</span><span class="s2">similarity between two messages&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/831f4073988af5f74b0701f39d9b4f863e31e2160b9599b5e766df1312c1924d.png" src="../_images/831f4073988af5f74b0701f39d9b4f863e31e2160b9599b5e766df1312c1924d.png" />
+<img alt="../_images/b80182e0757515e9d7a8f98a11f46e59e632fa9ce0ce139e45f128afb19935f9.png" src="../_images/b80182e0757515e9d7a8f98a11f46e59e632fa9ce0ce139e45f128afb19935f9.png" />
 </div>
 </div>
 <p>Note how 1. the similarity matrix is symmetric, i.e. <span class="math notranslate nohighlight">\(sim_{ij} = sim_{ji}\)</span> and 2. the diagonal elements are all 1, i.e. <span class="math notranslate nohighlight">\(sim_{ii} = 1\)</span>.</p>
@@ -1110,16 +1418,16 @@ column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_matrix</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bow_unit</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bow_unit</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distance Matrix&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distance Matrix: Each cell contains cosine </span><span class="se">\n</span><span class="s2">distance between two messages&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Message Index&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/94dc77d954e29c271886eabe7999563cf0dbde0713c266b367d3c6ab215fd2f6.png" src="../_images/94dc77d954e29c271886eabe7999563cf0dbde0713c266b367d3c6ab215fd2f6.png" />
+<img alt="../_images/b869a4aff696c7d352926bc60304476184d9717975994f8430378db0ae220742.png" src="../_images/b869a4aff696c7d352926bc60304476184d9717975994f8430378db0ae220742.png" />
 </div>
 </div>
 <!-- ## Linear Transformations
