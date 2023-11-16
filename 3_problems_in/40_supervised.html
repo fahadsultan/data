@@ -428,11 +428,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.1. Train-Test Split</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-phase">7.2. Training Phase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-phase">7.3. Testing Phase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.4. Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">7.5. Cross Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.1. Train-Test Split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">7.1.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-phase">7.2. Training Phase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-phase">7.3. Testing Phase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.4. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">7.5. Cross Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.1. Code Example</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -469,7 +484,61 @@ document.write(`
 <li><p><strong>Classification</strong> - when the target variable <span class="math notranslate nohighlight">\(\mathcal{y}\)</span> is categorical</p></li>
 <li><p><strong>Regression</strong> - when the target variable <span class="math notranslate nohighlight">\(\mathcal{y}\)</span> is continuous</p></li>
 </ol>
-<br/>
+<hr/>
+<p><strong>Example Dataset</strong></p>
+<p>The code below loads the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset from the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library. This dataset is a classic example of a classification problem.</p>
+<center><img width="60%" src="https://editor.analyticsvidhya.com/uploads/51518iris%20img1.png"></center>
+<p><code class="docutils literal notranslate"><span class="pre">X</span></code> is a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code> with 4 columns and 150 rows. Each row represents a flower and each column represents a feature of the flower. The features are:</p>
+<ol class="arabic simple">
+<li><p>sepal length in cm</p></li>
+<li><p>sepal width in cm</p></li>
+<li><p>petal length in cm</p></li>
+<li><p>petal width in cm</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">y</span></code> is a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">Series</span></code> with 150 rows. Each row represents the species of the flower. The species are:</p>
+<ol class="arabic simple">
+<li><p>Iris Setosa</p></li>
+<li><p>Iris Versicolour</p></li>
+<li><p>Iris Virginica</p></li>
+</ol>
+<p>The goal is to predict the species of a flower given its features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">================= X - Features ==================</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">============== y (Classification) ==============</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================= X - Features ==================
+
+     sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
+73                 6.1               2.8                4.7               1.2
+18                 5.7               3.8                1.7               0.3
+118                7.7               2.6                6.9               2.3
+78                 6.0               2.9                4.5               1.5
+76                 6.8               2.8                4.8               1.4
+
+============== y (Classification) ==============
+
+73     1
+18     0
+118    2
+78     1
+76     1
+Name: target, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
 <section id="train-test-split">
 <h2><span class="section-number">7.1. </span>Train-Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
 <p>The first step in supervised learning is to split the data into two sets: a <strong>training set</strong> and a <strong>test set</strong>.</p>
@@ -486,6 +555,32 @@ document.write(`
 </ol>
 <p>To ensure this, the train set must be randomly drawn from the data.</p>
 <p>This can be implemented by randomly shuffling the data before splitting it into train and test sets or using the built-in <code class="docutils literal notranslate"><span class="pre">.sample</span></code> method.</p>
+<section id="code-example">
+<h3><span class="section-number">7.1.1. </span>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">#</a></h3>
+<p>The code below uses the <strong><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></strong> function from the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library to split the data into train and test sets.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_size</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">0.2</span></code> which means that 20% of the data will be used for testing and the remaining 80% will be used for training.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">42</span></code> which means that the random number generator will be initialized to a known state. This ensures that the results are reproducible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train set:</span><span class="se">\n</span><span class="s2"> X_train.shape =&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;, y_train.shape =&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set: </span><span class="se">\n</span><span class="s2"> X_test.shape =&quot;</span><span class="p">,</span>  <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>  <span class="s2">&quot;, y_test.shape =&quot;</span><span class="p">,</span>  <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train set:
+ X_train.shape = (112, 4) , y_train.shape = (112,)
+Test set: 
+ X_test.shape = (38, 4) , y_test.shape = (38,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="training-phase">
 <h2><span class="section-number">7.2. </span>Training Phase<a class="headerlink" href="#training-phase" title="Permalink to this headline">#</a></h2>
@@ -502,11 +597,64 @@ document.write(`
 \[f(x) = x \cdot \frac{9}{5} + 32\]</div>
 <p>where x is the input temperature in Celsius and f(x) is the output temperature in Fahrenheit.</p>
 <p>The above is just an example and there exist many other families of functions that we can consider. These will be covered in Chapters 10-13.</p>
+<section id="id1">
+<h3><span class="section-number">7.2.1. </span>Code Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>The code below uses K-Nearest Neighbors (KNN) to learn the relationship between the features and the target variable.</p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method is used to <em>train</em> the model</strong>. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method takes two arguments:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train</span></code> - the features of the training data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_train</span></code> - the target variable of the training data</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method learns the relationship between the features and the target variable and stores it in the model object.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method is common to all models in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> and is used to train the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultinomialNB()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="testing-phase">
 <h2><span class="section-number">7.3. </span>Testing Phase<a class="headerlink" href="#testing-phase" title="Permalink to this headline">#</a></h2>
 <p>Once we have learned the function <span class="math notranslate nohighlight">\(f\)</span> from the training data, we can apply it to the test data to predict the target variable <span class="math notranslate nohighlight">\(\mathcal{y}\)</span>.</p>
 <img alt="../_images/testing.png" src="../_images/testing.png" />
+<section id="id2">
+<h3><span class="section-number">7.3.1. </span>Code Example<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>The code below uses the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method to predict the target variable for the test data.</p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method is used to <em>test</em> the model</strong>. The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method takes one argument:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_test</span></code> - the features of the test data</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method applies the learned function <span class="math notranslate nohighlight">\(f\)</span> to the test data and returns the predicted target variable.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method is common to all models in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> and is used to test the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">preds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2,
+       0, 2, 1, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="evaluation">
 <h2><span class="section-number">7.4. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h2>
@@ -514,11 +662,64 @@ document.write(`
 <p>The evaluation phase is where we evaluate how well we have learned the function <span class="math notranslate nohighlight">\(f\)</span> from the training data and how well we can predict the target variable <span class="math notranslate nohighlight">\(\mathcal{y}\)</span> from the test data.</p>
 <p>The exact criteria for evaluation depends on the type of supervised learning problem. That is, evaluation metrics used for classification problems are different from those used for regression problems. These metrics are discussed in detail in the following chapters.</p>
 <!-- Finally, we evaluate the performance of our model by comparing the predicted values of $\mathcal{y}$ to the actual values of $\mathcal{y}$. -->
+<section id="id3">
+<h3><span class="section-number">7.4.1. </span>Code Example<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>The code below uses the <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> method to evaluate the performance of the model.</p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> method is used to <em>evaluate</em> the model</strong>. The <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> method takes two arguments:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y_test</span></code> - the actual target variable of the test data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code> - the predicted target variable of the test data</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> method compares the predicted target variable to the actual target variable and returns the accuracy of the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="cross-validation">
 <h2><span class="section-number">7.5. </span>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
 <p>Just as most courses in school don’t have just the final test, most machine learning problems don’t have just one test set either. Often times, it is better to create multiple test sets, evaluate the performance of the model on each of them and then report the average performance of the model. This practice is called <strong>cross validation</strong> in machine learning.</p>
+<center><img width="70%" src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png"></center>
 <p>There exist many different ways to create multiple test sets. The most common way is to randomly split the data into multiple randomly sampled train and test sets. This is called <strong>random cross validation</strong>.</p>
+<section id="id4">
+<h3><span class="section-number">7.5.1. </span>Code Example<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>The code below uses the <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method to perform random cross validation.</p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method is used to <em>cross validate</em> the model</strong>. The <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method takes four arguments:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">estimator</span></code> - the model object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> - the features of the data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> - the target variable of the data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cv</span></code> - the number of cross validation splits</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method performs random cross validation and returns an evaluation metric of the model for each split.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.96666667, 0.9       , 0.9       , 1.        ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -591,11 +792,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.1. Train-Test Split</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-phase">7.2. Training Phase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-phase">7.3. Testing Phase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.4. Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">7.5. Cross Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.1. Train-Test Split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">7.1.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-phase">7.2. Training Phase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-phase">7.3. Testing Phase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.4. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4.1. Code Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">7.5. Cross Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.1. Code Example</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

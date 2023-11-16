@@ -430,6 +430,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-as-multiple-binary-classifications">7.6.1.1. Multi-class classification as multiple Binary classifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">7.6.1.2. Code Example</a></li>
 </ul>
 </li>
 </ul>
@@ -550,6 +551,63 @@ Another way to evaluate a classifier is to look at the confusion matrix. A confu
 </ol>
 <p>While discriminative systems are often more accurate and hence more commonly used, generative classifiers still have a role. They can be more robust to missing data, and can be used to generate synthetic data.</p>
 </section>
+<section id="code-example">
+<h3><span class="section-number">7.6.1.2. </span>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">#</a></h3>
+<p>The code below shows how to train a Nearest Neighbor classifier on the Iris dataset. The Iris dataset is a dataset of 150 observations of iris flowers. There are 3 classes of iris flowers: setosa, versicolor, and virginica. For each observation, there are 4 features: sepal length, sepal width, petal length, and petal width. The goal is to predict the class of iris flower given the 4 features.</p>
+<p>The code below uses the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> library to train a Nearest Neighbor classifier on the Iris dataset. The Nearest Neighbor classifier is a simple classifier that works by finding the training observation that is closest to the test observation, and predicting the class of the closest training observation. The Nearest Neighbor classifier is a discriminative classifier.</p>
+<p>There are 5 steps shown in the code below:</p>
+<ol class="arabic simple">
+<li><p><strong>Import the dataset</strong>: The Iris dataset is included in scikit-learn. We import it using the <code class="docutils literal notranslate"><span class="pre">load_iris</span></code> function.</p></li>
+<li><p><strong>Split the dataset into training and test sets</strong>: We split the dataset into a training set and a test set. The training set is used to train the classifier, and the test set is used to evaluate the classifier.</p></li>
+<li><p><strong>Instantiate the classifier</strong>: We instantiate the classifier using the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> class.</p></li>
+<li><p><strong>Train the classifier</strong>: We train the classifier using the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p></li>
+<li><p><strong>Make predictions</strong>: We make predictions on the test set using the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method.</p></li>
+<li><p><strong>Print the classification report</strong>: We evaluate the classifier using the <code class="docutils literal notranslate"><span class="pre">classification_report</span></code> function.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># 1. Load the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+
+<span class="c1"># 2. Create a train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># 3. Instantiate a model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+
+<span class="c1"># 4. Fit a model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 5. Predict on the test set</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 6. Print classification report</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         8
+           1       0.91      1.00      0.95        10
+           2       1.00      0.92      0.96        12
+
+    accuracy                           0.97        30
+   macro avg       0.97      0.97      0.97        30
+weighted avg       0.97      0.97      0.97        30
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -622,6 +680,7 @@ Another way to evaluate a classifier is to look at the confusion matrix. A confu
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">7.6.1. Evaluation Metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-as-multiple-binary-classifications">7.6.1.1. Multi-class classification as multiple Binary classifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">7.6.1.2. Code Example</a></li>
 </ul>
 </li>
 </ul>
