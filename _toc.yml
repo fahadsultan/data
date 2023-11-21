@@ -86,8 +86,10 @@ parts:
       sections: 
         - file: 3_problems_in/41_classification
         # - file: 3_problems_in/42_regression
-    - file: 3_problems_in/40_classification
+    # - file: 3_problems_in/40_classification
     - file: 3_problems_in/20_unsupervised
+      sections: 
+        - file: 3_problems_in/21_clustering
     - file: 3_problems_in/30_reinforcement
   - caption: Models in Data Science
     numbered: true
