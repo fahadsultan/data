@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '3_problems_in/20_unsupervised';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. Reinforcement Learning" href="30_reinforcement.html" />
+    <link rel="next" title="8.1. Clustering" href="21_clustering.html" />
     <link rel="prev" title="7.6. Classification" href="41_classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -225,12 +225,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="41_classification.html">7.6. Classification</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Unsupervised Learning</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8. Unsupervised Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="21_clustering.html">8.1. Clustering</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="30_reinforcement.html">9. Reinforcement Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models in Data Science</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4_models/graphical.html">10. Graphical Models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../4_models/41_naivebayes.html">10.1. Naive Bayes</a></li>
 </ul>
 </li>
@@ -430,6 +433,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-learning">
 <h1><span class="section-number">8. </span>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h1>
+<br/>
+<p>In contrast to supervised learning, in <strong>unsupervised learning</strong> there are <strong>no available labels</strong> in the dataset. The <strong>goal</strong> of unsupervised learning is to <strong><em>“infer”</em> labels</strong>. This is done by <strong>learning the structure</strong> of the data by analyzing <strong>how different observations (rows) relate to one another</strong>.</p>
+<p>In the figure below, the <strong>top row</strong> shows the <strong>inputs</strong> to supervised and unsupervised learning problems. Note that points in the top right panel are colored based on available labels. In contrast, the panel in top left shows the same data, but without labels.</p>
+<center><img width="60%" src="https://www.researchgate.net/publication/351953193/figure/fig3/AS:11431281117150742@1675395484096/Supervised-and-unsupervised-machine-learning-a-Schematic-representation-of-an.png"></center>
+<br/>
+<p>The <strong>bottom row</strong> shows the <strong>outputs</strong> of the two problems. Note that supervised learning (right column) uses the labels to infer the underlying distributions so that a new incoming point could be categorized into one of the two labels. Unsupervised learning, in contrast, infers the structure of the data, and <strong>assigns labels</strong> to the data <strong>based on the inferred structure</strong>. This structure is captured by relative proximity or distances of observations to each other, not too differently from nearest neighbor.</p>
+<p>Note that in unsupervised learning, there is no need to split the data into training and test sets. This is because there are no labels to predict. Instead, the goal is to learn the structure of the data, and then use this structure to infer labels for new data points.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -473,11 +485,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="30_reinforcement.html"
+       href="21_clustering.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Reinforcement Learning</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Clustering</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
