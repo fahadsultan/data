@@ -18,11 +18,11 @@ I am excited to talk math 🔢, programming 💻 and all-things data 📊 in thi
 <p style="text-align: right;color:gray;font-size: 0.75rem;"><a href="https://en.wikipedia.org/wiki/Julie_Mehretu">Laurie Frick <i>Retopistics: A Renegade Excavation</i>, 2001</a></p>  -->
 
 ```{important}
-**Exam 3** is on **Tuesday, November 14th** at 8:30 AM in class 
+**Final Exam** is on **Friday, December 8th** at 8:30 AM in class 
 ``` 
 
 ```{important}
-**[Project Phase 3](https://docs.google.com/document/d/18dTVFt2aoaQuupE2UNKsHJx6rE3qK3aVcXOXy-5Phtc/edit?usp=sharing)** is due on **Tuesday, November 14th** before Exam 3 at 8:30 AM
+**[Final Project Report](https://docs.google.com/document/d/1jIfASiCo5cZGQfgAOOOeUnWBNeqxAU6S633TTCJn-kk/edit?usp=sharing)** is due **before Final exam Friday, Dec 8th, 8:30 AM**
 ``` 
 
 ```{tip}
