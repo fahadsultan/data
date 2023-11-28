@@ -46,10 +46,8 @@
 
 | #       | TOPIC                      | READING | MEETING 1                  | MEETING 2              | WRITTEN  ASSIGNMENT | PROGRAMMING ASSIGNMENT |
 |---------|----------------------------|---------|----------------------------|------------------------|-----|-------------------|
-| 12      | Calculus                |         |                            |                        |
-| 13      | Linear Regression                |         |                            |                        |
-| 14      | KMeans             |         |                            |                        |
-| 15      | Generalized Linear Models                 |         |                            |                        |
+| 12      | Clustering                |      Skiena Ch.10<br/>(10.5)   |        **[DBSCAN](3_problems_in/21_clustering.ipynb)**                    |      **[K-Means](3_problems_in/21_clustering.ipynb)**                  |
+| 13      | Regression                |     Skiena Ch.9<br/>(9.1-9.5)    |     **[Regression](3_problems_in/42_regression.ipynb)**                       |                        |
 
 <center><b><i>Project phase 4 due</i></b><center>
 <center><b><i>FINAL EXAM</i></b></center>

@@ -74,7 +74,7 @@ parts:
         - file: 2_maths/41_vectors
         - file: 2_maths/42_matrices
         - file: 2_maths/43_applications
-    - file: 2_maths/50_calculus.ipynb
+    # - file: 2_maths/50_calculus.ipynb
       # sections: 
         # - file: 2_maths/51_integral
         # - file: 2_maths/52_differential
@@ -85,37 +85,37 @@ parts:
     - file: 3_problems_in/40_supervised
       sections: 
         - file: 3_problems_in/41_classification
-        # - file: 3_problems_in/42_regression
+        - file: 3_problems_in/42_regression
     # - file: 3_problems_in/40_classification
     - file: 3_problems_in/20_unsupervised
       sections: 
         - file: 3_problems_in/21_clustering
-    - file: 3_problems_in/30_reinforcement
+    # - file: 3_problems_in/30_reinforcement
   - caption: Models in Data Science
     numbered: true
     chapters:
       - file: 4_models/graphical
         sections: 
         - file: 4_models/41_naivebayes
-      - file: 3_problems_in/22_kmeans
+      # - file: 3_problems_in/22_kmeans
       - file: 4_models/generalized
         # sections: 
         # - file: 3_problems_in/31_linear
         # - file: 3_problems_in/42_perceptron
-      # - file: 4_models/nn
-  - caption: Algorithms in Data Science
-    numbered: true
-    chapters:
-      - file: 5_algos/em
-      - file: 5_algos/gradient_descent
-      - file: 5_algos/backprop
-  - caption: Problems with Data Science
-    numbered: true
-    chapters:
-    - file: 6_problems_with/10_representation
-    - file: 6_problems_with/40_feedback
-    - file: 6_problems_with/20_boundaries
-    - file: 6_problems_with/30_incentives
+      - file: 4_models/nn
+  # - caption: Algorithms in Data Science
+  #   numbered: true
+  #   chapters:
+  #     - file: 5_algos/em
+  #     - file: 5_algos/gradient_descent
+  #     - file: 5_algos/backprop
+  # - caption: Problems with Data Science
+  #   numbered: true
+  #   chapters:
+  #   - file: 6_problems_with/10_representation
+  #   - file: 6_problems_with/40_feedback
+  #   - file: 6_problems_with/20_boundaries
+  #   - file: 6_problems_with/30_incentives
   # - caption: Applications of Data Science
   #   numbered: true
   #   chapters:
